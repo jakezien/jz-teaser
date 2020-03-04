@@ -1,6 +1,7 @@
 import React from "react"
 import SiteNav from './siteNav'
 import styled from "styled-components"
+import { Link } from "gatsby"
 
 const HeaderEl = styled.header`
   display: flex
@@ -9,7 +10,7 @@ const HeaderEl = styled.header`
 const Header = () => {
   return (
     <HeaderEl>
-      <div>Logo</div>
+      <div><Link to="/">Logo</Link></div>
       <SiteNav />
     </HeaderEl>
 

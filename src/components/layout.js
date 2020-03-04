@@ -3,6 +3,7 @@ import { Link } from "gatsby"
 import { rhythm, scale } from "../utils/typography"
 
 import Header from './header'
+import Footer from './footer'
 
 
 const Layout = ({ location, title, children }) => {
@@ -10,7 +11,7 @@ const Layout = ({ location, title, children }) => {
     <div>
       <Header />
       <main>{children}</main>
-      <footer>© {new Date().getFullYear()}</footer>
+      <Footer />
     </div>
   )
 }

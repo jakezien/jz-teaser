@@ -6,8 +6,7 @@ import SEO from "../components/seo"
 import { rhythm } from "../utils/typography"
 
 import Intro from "../components/intro"
-import WorkTeaser from "../components/workTeaser"
-import ThingsTeaser from "../components/thingsTeaser"
+import Teaser from "../components/teaser"
 
 const Home = ({ data, location }) => {
 
@@ -16,8 +15,8 @@ const Home = ({ data, location }) => {
       <SEO title="Jake Zien" />
 
       <Intro />
-      <WorkTeaser posts={data.workPosts.edges}/>
-      <ThingsTeaser posts={data.thingsPosts.edges}/>
+      <Teaser posts={data.workPosts.edges} title="Work" link-to="/work" link-text="All work"/>
+      <Teaser posts={data.thingsPosts.edges} title="Things" link-to="/things" link-text="All things"/>
 
     </Layout>
   )
@@ -34,6 +33,7 @@ export const pageQuery = graphql`
       }
     }
     workPosts: allMdx(
+      limit: 4,
       filter: { fileAbsolutePath: {regex: "\\/content/work/"} },
       sort: { fields: [frontmatter___date], order: DESC }) {
         edges {
@@ -51,6 +51,7 @@ export const pageQuery = graphql`
         }
     }
     thingsPosts: allMdx(
+      limit: 4,
       filter: { fileAbsolutePath: {regex: "\\/content/things/"} },
       sort: { fields: [frontmatter___date], order: DESC }) {
         edges {

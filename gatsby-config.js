@@ -1,14 +1,15 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Starter Blog`,
+    title: `Jake Zien`,
     author: {
-      name: `Kyle Mathews`,
-      summary: `who lives and works in San Francisco building useful things.`,
+      name: `Jake Zien`,
+      summary: `Product designer with visual design and front end chops.`,
     },
-    description: `A starter blog demonstrating what Gatsby can do.`,
-    siteUrl: `https://gatsby-starter-blog-demo.netlify.com/`,
+    description: `Personal and portfolio site.`,
+    siteUrl: `https://jakezien.com/`,
     social: {
-      twitter: `kylemathews`,
+      twitter: `hova414`,
+      instagram: `hova414`,
     },
   },
   plugins: [
