@@ -13,11 +13,9 @@ const Home = ({ data, location }) => {
   return (
     <Layout>
       <SEO title="Jake Zien" />
-
       <Intro />
-      <Teaser posts={data.workPosts.edges} title="Work" link-to="/work" link-text="All work"/>
-      <Teaser posts={data.thingsPosts.edges} title="Things" link-to="/things" link-text="All things"/>
-
+      <Teaser posts={data.workPosts.edges} title="Work" linkTo="/work" linkText="All work"/>
+      <Teaser posts={data.thingsPosts.edges} title="Things" linkTo="/things" linkText="All things"/>
     </Layout>
   )
 }
