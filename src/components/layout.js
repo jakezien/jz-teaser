@@ -1,18 +1,23 @@
 import React from "react"
 import { Link } from "gatsby"
 import { rhythm, scale } from "../utils/typography"
+import styled from "styled-components"
 
 import Header from './header'
 import Footer from './footer'
 
+const Container = styled.div`
+  max-width: ${rhythm(30)};
+  margin: 0 auto;
+`
 
 const Layout = ({ location, title, children }) => {
   return (
-    <div>
+    <Container>
       <Header />
       <main>{children}</main>
       <Footer />
-    </div>
+    </Container>
   )
 }
 

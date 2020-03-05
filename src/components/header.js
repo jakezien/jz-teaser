@@ -7,11 +7,15 @@ const HeaderEl = styled.header`
   display: flex
 `
 
+const StyledSiteNav = styled(SiteNav)`
+  margin-left: auto
+`
+
 const Header = () => {
   return (
     <HeaderEl>
       <div><Link to="/">Logo</Link></div>
-      <SiteNav />
+      <StyledSiteNav />
     </HeaderEl>
 
   )

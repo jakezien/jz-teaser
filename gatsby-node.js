@@ -76,8 +76,6 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
       }
       value = path
     }
-    console.log(value)
-
     createNodeField({
       name: `slug`,
       node,

@@ -1,16 +1,21 @@
 import React from "react"
 import { Link } from "gatsby"
-import PostPreview  from "./PostPreview"
+import PostGrid  from "./postGrid"
+import { rhythm, scale } from "../utils/typography"
+import styled from "styled-components"
+
+
+const Section = styled.section`
+  margin-bottom: ${rhythm(4)}
+`
 
 const Teaser = ({ posts, title, linkTo, linkText }) => {
   return (
-    <section>
+    <Section>
       <h2><Link to={linkTo}>{title}</Link></h2>
-        {posts.map( ({node}) => {
-          return(<PostPreview post={node} />)
-        })}
+      <PostGrid posts={posts} />
       <Link to={linkTo}>{linkText}</Link>
-    </section>
+    </Section>
   )
 }
 

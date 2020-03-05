@@ -11,9 +11,9 @@ const Li = styled.li`
   margin-right: 1em;
 `
 
-const SiteNav = () => {
+const SiteNav = ({className}) => {
   return (
-    <nav>
+    <nav className={className}>
       <Ul>
         <Li><Link to="/work">Work</Link></Li>
         <Li><Link to="/writing">Writing</Link></Li>
