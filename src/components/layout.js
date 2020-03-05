@@ -8,6 +8,7 @@ import Footer from './footer'
 
 const Container = styled.div`
   max-width: ${rhythm(30)};
+  padding: ${rhythm(1)} ${rhythm(1)} ${rhythm(2)} ${rhythm(1)};
   margin: 0 auto;
 `
 
