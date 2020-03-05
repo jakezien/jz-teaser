@@ -54,7 +54,18 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions
 
   if (node.internal.type === `Mdx`) {
-    const value = createFilePath({ node, getNode })
+    let value;
+    if (node.frontmatter.slug) 
+      value = node.frontmatter.slug
+    else {
+      let path = createFilePath({ node, getNode })
+      if (path.match(/\//g || []).length > 3) {
+        console.log(path)
+        // TODO: replace third instance of slash with dash
+      }
+      value = path
+    }
+
     createNodeField({
       name: `slug`,
       node,
