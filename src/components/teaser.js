@@ -4,6 +4,9 @@ import PostGrid  from "./postGrid"
 import { rhythm, scale } from "../utils/typography"
 import styled from "styled-components"
 
+const StyledLink = styled(Link)`
+  text-decoration: none
+`
 
 const Section = styled.section`
   margin-bottom: ${rhythm(4)}
@@ -12,7 +15,7 @@ const Section = styled.section`
 const Teaser = ({ posts, title, linkTo, linkText }) => {
   return (
     <Section>
-      <h2><Link to={linkTo}>{title}</Link></h2>
+      <h2><StyledLink to={linkTo}>{title}</StyledLink></h2>
       <PostGrid posts={posts} />
       <Link to={linkTo}>{linkText}</Link>
     </Section>

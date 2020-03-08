@@ -11,14 +11,19 @@ const Li = styled.li`
   margin-right: 1em;
 `
 
+const StyledLink = styled(Link)`
+  text-decoration: none
+`
+
+
 const SiteNav = ({className}) => {
   return (
     <nav className={className}>
       <Ul>
-        <Li><Link to="/work">Work</Link></Li>
-        <Li><Link to="/writing">Writing</Link></Li>
-        <Li><Link to="/things">Things I Like</Link></Li>
-        <Li><Link to="/about">About</Link></Li>
+        <Li><StyledLink to="/work">Work</StyledLink></Li>
+        <Li><StyledLink to="/writing">Writing</StyledLink></Li>
+        <Li><StyledLink to="/things">Things I Like</StyledLink></Li>
+        <Li><StyledLink to="/about">About</StyledLink></Li>
       </Ul>
     </nav>
   )

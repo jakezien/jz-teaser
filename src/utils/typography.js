@@ -2,20 +2,28 @@ import Typography from "typography"
 
 const typography = new Typography({
   baseFontSize: "18px",
-  baseLineHeight: 1.666,
+  baseLineHeight: 1.4,
+  scaleRatio: 1.4,
   headerFontFamily: [
-    "Avenir Next",
-    "Helvetica Neue",
-    "Segoe UI",
-    "Helvetica",
-    "Arial",
+    "Maple",
     "sans-serif",
   ],
+
   bodyFontFamily: [
-    "Helvetica",
+    "Theinhardt",
     "Arial",
     "sans-serif",
   ],
+  overrideStyles: ({ adjustFontSizeTo, rhythm }, options, styles) => ({
+    'h2': {
+      fontSize: '1.33em',
+    },
+    'h3': {
+      fontWeight: 500
+    }
+  })
+
+
 })
 
 // Hot reload typography in development.

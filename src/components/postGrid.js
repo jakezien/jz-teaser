@@ -8,8 +8,9 @@ const Section = styled.section`
 `
 
 const StyledPostPreview = styled(PostPreview)`
-  flex-basis: calc(25% - ${rhythm(1)});
-  margin-right: ${rhythm(1)};
+  flex-basis: calc(33% - ${rhythm(1)});
+  margin-right: ${rhythm(0.5)};
+  margin-bottom: ${rhythm(1)};
 `
 
 const PostGrid = ({ posts }) => {

@@ -7,7 +7,7 @@ import Header from './header'
 import Footer from './footer'
 
 const Container = styled.div`
-  max-width: ${rhythm(30)};
+  max-width: ${rhythm(40)};
   padding: ${rhythm(1)} ${rhythm(1)} ${rhythm(2)} ${rhythm(1)};
   margin: 0 auto;
 `
