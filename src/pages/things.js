@@ -13,7 +13,7 @@ const Things = ({ data, location }) => {
       <SEO title="Jake Zien" />
 
       <h1>Things</h1>
-      <PostGrid posts={data.posts.edges} />
+      <PostGrid posts={data.posts.edges} postsPerRow="2"/>
 
     </Layout>
   )

@@ -7,8 +7,8 @@ const StyledLink = styled(Link)`
   text-decoration: none;
 `
 
-const Category = styled.span`
-  opacity: 0.5
+const Category = styled.p`
+  opacity: 0.5;
 `
 
 const Container = styled.div`

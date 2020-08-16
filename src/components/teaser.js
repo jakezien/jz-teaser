@@ -12,11 +12,11 @@ const Section = styled.section`
   margin-bottom: ${rhythm(4)}
 `
 
-const Teaser = ({ posts, title, linkTo, linkText }) => {
+const Teaser = ({ posts, title, linkTo, linkText, postsPerRow=2 }) => {
   return (
     <Section>
       <h2><StyledLink to={linkTo}>{title}</StyledLink></h2>
-      <PostGrid posts={posts} />
+      <PostGrid posts={posts} postsPerRow={postsPerRow} />
       <Link to={linkTo}>{linkText}</Link>
     </Section>
   )

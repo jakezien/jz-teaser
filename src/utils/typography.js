@@ -5,13 +5,13 @@ const typography = new Typography({
   baseLineHeight: 1.4,
   scaleRatio: 1.4,
   headerFontFamily: [
-    "Maple",
+    "Maple Regular",
     "sans-serif",
   ],
 
   bodyFontFamily: [
     "Theinhardt",
-    "Arial",
+    "Maple",
     "sans-serif",
   ],
   overrideStyles: ({ adjustFontSizeTo, rhythm }, options, styles) => ({

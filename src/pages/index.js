@@ -15,7 +15,7 @@ const Home = ({ data, location }) => {
       <SEO title="Jake Zien" />
       <Intro />
       <Teaser posts={data.workPosts.edges} title="Work" linkTo="/work" linkText="All work"/>
-      <Teaser posts={data.thingsPosts.edges} title="Things" linkTo="/things" linkText="All things"/>
+      <Teaser posts={data.thingsPosts.edges} title="Things" linkTo="/things" linkText="All things" postsPerRow="4"/>
     </Layout>
   )
 }
@@ -50,7 +50,7 @@ export const pageQuery = graphql`
         }
     }
     thingsPosts: allMdx(
-      limit: 4,
+      limit: 8,
       filter: { fileAbsolutePath: {regex: "\\/content/things/"} },
       sort: { fields: [frontmatter___date], order: DESC }) {
         edges {

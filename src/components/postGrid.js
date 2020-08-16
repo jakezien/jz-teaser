@@ -5,19 +5,23 @@ import styled from "styled-components"
 
 const Section = styled.section`
   display: flex;
+  flex-wrap: wrap;
 `
 
+let width = props => 100/props.postsPerRow;
+
 const StyledPostPreview = styled(PostPreview)`
-  flex-basis: calc(33% - ${rhythm(1)});
+  flex-basis: calc(${width}% - ${rhythm(.5)});
+  min-width:  calc(${width}% - ${rhythm(.5)});
   margin-right: ${rhythm(0.5)};
   margin-bottom: ${rhythm(1)};
 `
 
-const PostGrid = ({ posts }) => {
+const PostGrid = ({ posts, postsPerRow }) => {
   return (
     <Section>
       {posts.map( ({node}) => {
-        return(<StyledPostPreview post={node}/>)
+        return(<StyledPostPreview post={node} postsPerRow={postsPerRow}/>)
       })}
     </Section>
   )

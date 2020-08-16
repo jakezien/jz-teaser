@@ -2,6 +2,8 @@ import React from "react"
 import SiteNav from './siteNav'
 import styled from "styled-components"
 import { Link } from "gatsby"
+import Monogram from "./monogram"
+
 
 const HeaderEl = styled.header`
   display: flex
@@ -18,7 +20,7 @@ const StyledLink = styled(Link)`
 const Header = () => {
   return (
     <HeaderEl>
-      <div><StyledLink to="/">Home</StyledLink></div>
+      <div><StyledLink to="/"><Monogram/></StyledLink></div>
       <StyledSiteNav />
     </HeaderEl>
 

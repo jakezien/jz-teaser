@@ -13,7 +13,7 @@ const Work = ({ data, location }) => {
       <SEO title="Jake Zien" />
 
       <h1>Work</h1>
-      <PostGrid posts={data.workPosts.edges} />
+      <PostGrid posts={data.workPosts.edges} postsPerRow="1" />
 
     </Layout>
   )
