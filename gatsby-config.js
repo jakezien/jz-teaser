@@ -12,6 +12,7 @@ module.exports = {
       instagram: `hova414`,
     },
   },
+  pathPrefix: "/jz",
   plugins: [
     {
       resolve: `gatsby-source-filesystem`,
