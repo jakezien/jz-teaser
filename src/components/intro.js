@@ -13,7 +13,8 @@ const Container = styled.div`
 const Intro = () => {
   return (
     <Container>
-      Hey, I'm Jake Zien. I'm a design generalist, working across the product process in business strategy, UX research and execution, identity development, and visual design. <Link to="/about">More about me.</Link>
+      <h2 style={{marginBottom:rhythm(.5)}}>Hey, I'm Jake <span>Zien.</span></h2>
+      <p>I'm a design generalist, working across the product process in business strategy, UX research and execution, identity development, and visual design. <Link to="/about">More about me.</Link></p>
     </Container>
   )
 }
