@@ -5,8 +5,8 @@ import { rhythm, scale } from "../utils/typography"
 import Monogram from "./monogram"
 
 const Container = styled.div`
-  margin-top: ${rhythm(1.5)};
-  margin-bottom: ${rhythm(3)}
+  margin-top: ${rhythm(1)};
+  margin-bottom: ${rhythm(2)}
 `
 
 

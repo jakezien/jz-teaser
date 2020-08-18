@@ -11,7 +11,7 @@ const Section = styled.section`
 let width = props => 100/props.postsPerRow;
 
 const StyledPostPreview = styled(PostPreview)`
-  flex-basis: 100%;
+  flex-basis: calc(${width}% - ${rhythm(.5)});
   margin-right: ${rhythm(0.5)};
   margin-bottom: ${rhythm(1)};
   @media only screen and (min-width:641px) {

@@ -21,7 +21,7 @@ const PostPreview = ({ post, className }) => {
   return (
     <Container className={className}>
       <StyledLink to={post.fields.slug}>
-        <h3>{post.frontmatter.title}</h3>
+        <h3 style={{marginBottom:0}}>{post.frontmatter.title}</h3>
         <Category>{post.frontmatter.category}</Category>
         <p>{post.excerpt}</p>
       </StyledLink>
