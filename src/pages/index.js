@@ -45,7 +45,14 @@ export const pageQuery = graphql`
               title
               description
               category
-            }
+              coverImage {
+                childImageSharp {
+                  fluid(maxWidth: 400, maxHeight: 250) {
+                    ...GatsbyImageSharpFluid
+                  }
+                }
+              }
+                          }
           }
         }
     }
@@ -64,6 +71,15 @@ export const pageQuery = graphql`
               title
               description
               category
+              author
+              artist
+              coverImage {
+                childImageSharp {
+                  fluid(maxWidth: 400, maxHeight: 400) {
+                    ...GatsbyImageSharpFluid
+                  }
+                }
+              }
             }
           }
         }
