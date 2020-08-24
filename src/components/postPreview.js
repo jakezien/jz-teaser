@@ -24,13 +24,18 @@ const TextContainer = styled.div`
 const PostPreview = ({ post, className }) => {
   let coverImage;
   if (post.frontmatter.coverImage) {
-    coverImage = post.frontmatter.coverImage.childImageSharp.fluid;
+    coverImage = post.frontmatter.coverImage.childImageSharp;
   }
 
   return (
     <Container className={className}>
       <StyledLink to={post.fields.slug}>
-        {coverImage ? <Img fluid={coverImage} /> : ""}
+        {coverImage ? 
+          <Img 
+            fluid={{ ...coverImage.fluid, aspectRatio: 1 }} 
+            imgStyle={{ objectFit: "contain", padding: post.frontmatter.imagePadding + '%' }}
+          /> 
+        : ""}
         <TextContainer>
           <h3 style={{marginBottom:0}}>{post.frontmatter.title}</h3>
           <Category>{post.frontmatter.category || post.frontmatter.author || post.frontmatter.artist}</Category>

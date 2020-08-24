@@ -73,9 +73,10 @@ export const pageQuery = graphql`
               category
               author
               artist
+              imagePadding
               coverImage {
                 childImageSharp {
-                  fluid(maxWidth: 400, maxHeight: 400) {
+                  fluid(maxWidth: 400) {
                     ...GatsbyImageSharpFluid
                   }
                 }
