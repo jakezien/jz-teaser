@@ -1,5 +1,6 @@
 import Typography from "typography"
 
+
 const typography = new Typography({
   baseFontSize: "18px",
   baseLineHeight: 1.4,
@@ -15,6 +16,9 @@ const typography = new Typography({
     "sans-serif",
   ],
   overrideStyles: ({ adjustFontSizeTo, rhythm }, options, styles) => ({
+    'h1': {
+      fontSize: '2.5em',
+    },
     'h2': {
       fontSize: '1.33em',
     },

@@ -75,6 +75,14 @@ module.exports = {
     {
       resolve: `gatsby-plugin-react-svg`,
     },
+    {
+      resolve: 'gatsby-plugin-web-font-loader',
+      options: {
+        google: {
+          families: ['Droid Sans', 'Droid Serif']
+        }
+      }
+    }
 
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
