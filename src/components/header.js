@@ -3,6 +3,7 @@ import SiteNav from './siteNav'
 import styled from "styled-components"
 import { Link } from "gatsby"
 import Monogram from "../../content/assets/monogram.svg"
+import { rhythm } from "../utils/typography"
 
 
 const HeaderEl = styled.header`
@@ -18,7 +19,8 @@ const StyledLink = styled(Link)`
 `
 
 const StyledMonogram = styled(Monogram)`
-  width: 54px
+  width: 54px;
+  margin-bottom:18px
 `
 
 const Header = () => {
