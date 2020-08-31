@@ -6,7 +6,7 @@ import Img from "gatsby-image"
 import { rhythm } from "../utils/typography"
 import styled from "styled-components"
 
-export const JakeyImg = styled(Img)`
+export const JakeyImg = styled.div`
   max-height: 480px;
   margin-left: auto;
   margin-right: auto;
@@ -35,7 +35,9 @@ export default Layout
 
 <SEO title="About" />
  
-<JakeyImg fluid={{ ...props.data.jakey.childImageSharp.fluid, aspectRatio:0.75}} />
+<JakeyImg>
+  <Img fluid={{ ...props.data.jakey.childImageSharp.fluid, aspectRatio:0.75}} />
+</JakeyImg>
 
 # About
 
