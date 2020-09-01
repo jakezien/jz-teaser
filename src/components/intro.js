@@ -6,7 +6,8 @@ import Monogram from "./monogram"
 
 const Container = styled.div`
   margin-top: ${rhythm(1)};
-  margin-bottom: ${rhythm(2)}
+  margin-bottom: ${rhythm(2)};
+  max-width: 720px;
 `
 
 

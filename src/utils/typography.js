@@ -6,11 +6,12 @@ const typography = new Typography({
   baseLineHeight: 1.4,
   scaleRatio: 2.25,
   headerFontFamily: [
-    "Maple Regular",
+    "Authentic Sans",
     "sans-serif",
   ],
 
   bodyFontFamily: [
+    "Authentic Sans",
     "Theinhardt",
     "Maple",
     "sans-serif",
@@ -18,12 +19,18 @@ const typography = new Typography({
   overrideStyles: ({ adjustFontSizeTo, rhythm }, options, styles) => ({
     'h1': {
       // fontSize: '2.5em',
+      fontWeight: 700
     },
     'h2': {
       // fontSize: '1.33em',
+      fontWeight: 700
     },
     'h3': {
       // fontWeight: 500
+      fontWeight: 500
+    },
+    'p': {
+      fontWeight: 300
     }
   })
 
