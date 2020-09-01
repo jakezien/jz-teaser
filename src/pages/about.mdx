@@ -4,21 +4,6 @@ import { graphql } from "gatsby"
 import Img from "gatsby-image"
 import { rhythm } from "../utils/typography"
 import Resume from "./resume.mdx"
-import styled from "styled-components"
-
-export const JakeyImg = styled.div`
-  max-height: 480px;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: ${rhythm(2)};
-  @media only screen and (min-width: 768px) {
-    max-height: none;
-    margin-left: ${rhythm(2)};
-    width: 50%;
-    float: right;
-  }
-`
-
 
 export const query = graphql`
   query {
@@ -35,10 +20,8 @@ export const query = graphql`
 export default Layout
 
 <SEO title="About" />
- 
-<JakeyImg>
-  <Img fluid={{ ...props.data.jakey.childImageSharp.fluid, aspectRatio:0.75}} />
-</JakeyImg>
+
+<Img fluid={{ ...props.data.jakey.childImageSharp.fluid, aspectRatio:0.75}} />
 
 # About
 
