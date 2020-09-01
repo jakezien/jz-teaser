@@ -4,7 +4,7 @@ import Typography from "typography"
 const typography = new Typography({
   baseFontSize: "18px",
   baseLineHeight: 1.4,
-  scaleRatio: 1.4,
+  scaleRatio: 2.25,
   headerFontFamily: [
     "Maple Regular",
     "sans-serif",
@@ -17,13 +17,13 @@ const typography = new Typography({
   ],
   overrideStyles: ({ adjustFontSizeTo, rhythm }, options, styles) => ({
     'h1': {
-      fontSize: '2.5em',
+      // fontSize: '2.5em',
     },
     'h2': {
-      fontSize: '1.33em',
+      // fontSize: '1.33em',
     },
     'h3': {
-      fontWeight: 500
+      // fontWeight: 500
     }
   })
 

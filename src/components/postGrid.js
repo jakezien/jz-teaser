@@ -23,8 +23,8 @@ const StyledPostPreview = styled(PostPreview)`
 const PostGrid = ({ posts, postsPerRow }) => {
   return (
     <Section>
-      {posts.map( ({node}) => {
-        return(<StyledPostPreview post={node} postsPerRow={postsPerRow}/>)
+      {posts.map( ({node}, index ) => {
+        return(<StyledPostPreview key={index} post={node} postsPerRow={postsPerRow}/>)
       })}
     </Section>
   )
