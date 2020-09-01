@@ -6,12 +6,6 @@ import { rhythm } from "../utils/typography"
 import Resume from "./resume.mdx"
 import styled from "styled-components"
 
-export const ImgWrapper = styled.div`
-  float: right;
-  width: 40%;
-  max-width: 400px;
-`
-
 export const query = graphql`
   query {
     jakey: file(relativePath: { regex: "/jakey0/i" }) {
