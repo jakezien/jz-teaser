@@ -22,3 +22,20 @@
     font-weight: 700;
   }
 
+  @font-face {
+    font-family: "IBM Plex Mono";
+    src: url("plex/IBMPlexMono-Light.woff");
+    font-weight: 300;
+  }
+
+  @font-face {
+    font-family: "IBM Plex Mono";
+    src: url("plex/IBMPlexMono-Regular.woff");
+    font-weight: 400;
+  }
+
+  @font-face {
+    font-family: "IBM Plex Mono";
+    src: url("plex/IBMPlexMono-Bold.woff");
+    font-weight: 700;
+  }
