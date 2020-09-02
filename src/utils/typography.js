@@ -6,11 +6,13 @@ const typography = new Typography({
   baseLineHeight: 1.4,
   scaleRatio: 2.25,
   headerFontFamily: [
+    "IBM Plex Mono",
     "Authentic Sans",
     "sans-serif",
   ],
 
   bodyFontFamily: [
+    "IBM Plex Mono",
     "Authentic Sans",
     "Theinhardt",
     "Maple",
@@ -18,19 +20,17 @@ const typography = new Typography({
   ],
   overrideStyles: ({ adjustFontSizeTo, rhythm }, options, styles) => ({
     'h1': {
+      letterSpacing: '-0.0075em'
       // fontSize: '2.5em',
-      fontWeight: 700
     },
     'h2': {
+      letterSpacing: '-0.0125em'
       // fontSize: '1.33em',
-      fontWeight: 700
     },
     'h3': {
       // fontWeight: 500
-      fontWeight: 500
     },
     'p': {
-      fontWeight: 300
     }
   })
 

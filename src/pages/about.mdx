@@ -6,9 +6,13 @@ import { rhythm } from "../utils/typography"
 import Resume from "./resume.mdx"
 import styled from "styled-components"
 
-// TRAILHEAD:
-// Figure out how to create a styled component here to control the image!
-
+export const AboutImg = styled(Img)`
+  width: 50%;
+  float: right;
+  max-width: ${rhythm(20)};
+  margin-left: ${rhythm(2)};
+  margin-bottom: ${rhythm(1)};
+`
 
 export const query = graphql`
   query {
@@ -26,7 +30,7 @@ export default Layout
 
 <SEO title="About" />
 
-<Img fluid={{ ...props.data.jakey.childImageSharp.fluid, aspectRatio:0.75}} />
+<AboutImg fluid={{ ...props.data.jakey.childImageSharp.fluid, aspectRatio:0.75}} />
 
 # About
 
