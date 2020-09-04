@@ -77,23 +77,3 @@ const WorkPostTemplate = ({ data, pageContext, location }) => {
 }
 
 export default WorkPostTemplate
-
-export const pageQuery = graphql`
-  query WorkPostBySlug($slug: String!) {
-    site {
-      siteMetadata {
-        title
-      }
-    }
-    mdx(fields: { slug: { eq: $slug } }) {
-      id
-      excerpt(pruneLength: 160)
-      body
-      frontmatter {
-        title
-        date(formatString: "MMMM DD, YYYY")
-        description
-      }
-    }
-  }
-`
