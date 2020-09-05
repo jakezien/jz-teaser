@@ -10,30 +10,39 @@ import styled from "styled-components"
 import Resume from "./resume.mdx"
 import AboutText from "./aboutText.mdx"
 
-const AboutImg = styled(Img)`
-  border-radius: 4px;
-  height: 400px;
-  width: auto;
-  margin-bottom: ${rhythm(2)}; 
-  @media screen and (min-width: 641px) {
-    width: 50%;
-    float: right;    
-    margin-right: ${rhythm(1)};
-  }
-`
+const About = ({data, location}) => {
 
-const About = ({ data, location }) => {
+  const AboutImg = styled(Img)`
+    border-radius: 4px;
+    width: auto;
+    margin-bottom: ${rhythm(2)}; 
+    @media screen and (min-width: 641px) {
+      width: 50%;
+      float: right;    
+      margin-left: ${rhythm(1)};
+    }
+  `
+
+  const StyledWrapper = styled.div`
+    border-radius: 4px;
+    background: #fcfcfc;
+    padding: ${rhythm(1)};
+  `
 
   return (
-    <Layout>
+    <Layout location={location}>
       <SEO title="About" />
-        <h1>About</h1>
-        <AboutImg 
-          fluid = {{ ...data.jakey.childImageSharp.fluid }}
-          imgStyle = "object-fit:contain"
-        />
+      <h1>About</h1>
+      <AboutImg 
+        fluid= {{ ...data.jakey.childImageSharp.fluid }}
+        objectFit= "contain"
+        imgStyle= {{objectFit: "contain"}}
+        aspectRatio= '0.75'
+      />
       <AboutText/>
-      <Resume/>
+      <StyledWrapper>
+        <Resume/>
+      </StyledWrapper>
     </Layout>
   )
 }
@@ -43,7 +52,7 @@ export default About
 
 export const pageQuery = graphql`
   query {
-    jakey: file(relativePath: { regex: "/jakey0/i" }) {
+    jakey: file( relativePath: { regex: "/jakey0/i" }) {
       childImageSharp {
         fluid(maxWidth: 1000) {
           ...GatsbyImageSharpFluid

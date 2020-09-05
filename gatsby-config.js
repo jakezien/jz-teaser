@@ -79,8 +79,8 @@ module.exports = {
       resolve: 'gatsby-plugin-web-font-loader',
       options: {
         custom: {
-          families: ['Authentic Sans'],
-          urls: ['/fonts/fonts.css']
+          families: ['IBM Plex Mono', 'Authentic Sans'],
+          urls: ['/jz/fonts/fonts.css']
         }
       }
     }

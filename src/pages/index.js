@@ -33,56 +33,57 @@ export const pageQuery = graphql`
     workPosts: allMdx(
       limit: 4,
       filter: { fileAbsolutePath: {regex: "\\/content/work/"} },
-      sort: { fields: [frontmatter___date], order: DESC }) {
-        edges {
-          node {
-            excerpt
-            fields {
-              slug
-            }
-            frontmatter {
-              date(formatString: "MMMM DD, YYYY")
-              title
-              description
-              category
-              coverImage {
-                childImageSharp {
-                  fluid(maxWidth: 400, maxHeight: 250) {
-                    ...GatsbyImageSharpFluid
-                  }
+      sort: { fields: [frontmatter___date], order: DESC }
+    ){
+      edges {
+        node {
+          excerpt
+          fields {
+            slug
+          }
+          frontmatter {
+            date(formatString: "MMMM DD, YYYY")
+            title
+            description
+            category
+            coverImage {
+              childImageSharp {
+                fluid(maxWidth: 400, maxHeight: 250) {
+                  ...GatsbyImageSharpFluid
                 }
               }
-                          }
+            }
           }
         }
+      }
     }
     thingsPosts: allMdx(
-      limit: 8,
-      filter: { fileAbsolutePath: {regex: "\\/content/things/"} },
-      sort: { fields: [frontmatter___date], order: DESC }) {
-        edges {
-          node {
-            excerpt
-            fields {
-              slug
-            }
-            frontmatter {
-              date(formatString: "MMMM DD, YYYY")
-              title
-              description
-              category
-              author
-              artist
-              imagePadding coverImage {
-                childImageSharp {
-                  fluid(maxWidth: 400) {
-                    ...GatsbyImageSharpFluid
-                  }
+    limit: 8,
+    filter: { fileAbsolutePath: {regex: "\\/content/things/"} },
+    sort: { fields: [frontmatter___date], order: DESC }) {
+      edges {
+        node {
+          excerpt
+          fields {
+            slug
+          }
+          frontmatter {
+            date(formatString: "MMMM DD, YYYY")
+            title
+            description
+            category
+            author
+            artist
+            imagePadding coverImage {
+              childImageSharp {
+                fluid(maxWidth: 400) {
+                  ...GatsbyImageSharpFluid
                 }
               }
             }
           }
         }
+      }
     }
   }
 `

@@ -18,23 +18,24 @@ const typography = new Typography({
     "Maple",
     "sans-serif",
   ],
+
   overrideStyles: ({ adjustFontSizeTo, rhythm }, options, styles) => ({
     'h1': {
       letterSpacing: '-0.0075em'
       // fontSize: '2.5em',
     },
     'h2': {
-      letterSpacing: '-0.0125em'
+      letterSpacing: '-0.0125em',
+      marginBottom: '1rem'
       // fontSize: '1.33em',
     },
     'h3': {
+      marginBottom: '1rem'
       // fontWeight: 500
     },
     'p': {
     }
   })
-
-
 })
 
 // Hot reload typography in development.
