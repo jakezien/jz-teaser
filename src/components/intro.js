@@ -3,18 +3,27 @@ import { Link } from "gatsby"
 import styled from "styled-components"
 import { rhythm, scale } from "../utils/typography"
 import Monogram from "./monogram"
+import Tooltip from "./tooltip"
 
 const Container = styled.div`
   margin-top: ${rhythm(1)};
   margin-bottom: ${rhythm(2)};
-  max-width: 720px;
+  max-width: ${rhythm(26)};
 `
 
+const StyledH2 = styled.h2`
+  display: inline-block;
+  margin-bottom:${rhythm(.5)};
+`
 
 const Intro = () => {
   return (
     <Container>
-      <h2 style={{marginBottom:rhythm(.5)}}>Hey, I'm Jake <span>Zien.</span></h2>
+      <StyledH2>Hey, I'm Jake&nbsp;</StyledH2>
+      <Tooltip text="Zien">
+        <p>Rhymes with <i>lyin'</i>, <i>cryin'</i>, and <i>dyin'</i>.</p>
+      </Tooltip>
+      <StyledH2>.</StyledH2>
       <p>I'm a design generalist, working across the product process in business strategy, UX research and execution, identity development, and visual design. <Link to="/about">More about me.</Link></p>
     </Container>
   )

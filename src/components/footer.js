@@ -6,9 +6,7 @@ import { rhythm } from "../utils/typography"
 
 const StyledFooter = styled.footer`
   display: flex;
-  background: #444;
-  color: #aaa;
-  min-height: ${ rhythm(12) };
+  min-height: ${ rhythm(8) };
   position: relative;
   z-index: 0;
 `

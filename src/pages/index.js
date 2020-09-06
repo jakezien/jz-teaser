@@ -10,7 +10,6 @@ import Header from '../components/header'
 import Footer from '../components/footer'
 import Intro from "../components/intro"
 import Teaser from "../components/teaser"
-import FullWidthBackground from "../components/fullWidthBackground.js"
 
 const Home = ({ data, location }) => {
 
@@ -22,12 +21,16 @@ const Home = ({ data, location }) => {
         <Intro />
       </Section>
       
-      <Section>
+      <Section bgColor="#f8f8f8">
         <Teaser posts={data.workPosts.edges} title="Work" linkTo="/work" linkText="All work"/>
       </Section>
 
       <Section bgColor="#f0f0f0">
         <Teaser posts={data.thingsPosts.edges} title="Things" linkTo="/things" linkText="All things" postsPerRow="4"/>
+      </Section>
+
+      <Section bgColor="#e8e8e8">
+        <Footer />
       </Section>
     </div>
   )
