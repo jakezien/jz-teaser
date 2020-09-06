@@ -25,7 +25,7 @@ const typography = new Typography({
       // fontSize: '2.5em',
     },
     'h2': {
-      letterSpacing: '-0.0125em',
+      // letterSpacing: '-0.0125em',
       marginBottom: '1rem'
       // fontSize: '1.33em',
     },

@@ -6,10 +6,11 @@ import styled from "styled-components"
 import Header from './header'
 import Footer from './footer'
 
-const Container = styled.div`
+export const Container = styled.div`
   max-width: ${rhythm(40)};
   padding: ${rhythm(1)} ${rhythm(1)} ${rhythm(2)} ${rhythm(1)};
   margin: 0 auto;
+  overflow: visible;
 `
 
 const Layout = ({ location, title, children }) => {

@@ -80,8 +80,9 @@ module.exports = {
       options: {
         custom: {
           families: ['IBM Plex Mono', 'Authentic Sans'],
-          urls: ['/jz/fonts/fonts.css']
-        }
+          urls: ['/fonts/fonts.css']
+        },
+        prefixPaths: "true"
       }
     }
 

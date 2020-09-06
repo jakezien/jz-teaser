@@ -1,22 +1,35 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
 
-import Layout from "../components/layout"
+import { Container } from "../components/layout"
 import SEO from "../components/seo"
 import { rhythm } from "../utils/typography"
 
+import Section from '../components/section'
+import Header from '../components/header'
+import Footer from '../components/footer'
 import Intro from "../components/intro"
 import Teaser from "../components/teaser"
+import FullWidthBackground from "../components/fullWidthBackground.js"
 
 const Home = ({ data, location }) => {
 
   return (
-    <Layout>
+    <div>
       <SEO title="Jake Zien" />
-      <Intro />
-      <Teaser posts={data.workPosts.edges} title="Work" linkTo="/work" linkText="All work"/>
-      <Teaser posts={data.thingsPosts.edges} title="Things" linkTo="/things" linkText="All things" postsPerRow="4"/>
-    </Layout>
+      <Section>
+        <Header />
+        <Intro />
+      </Section>
+      
+      <Section>
+        <Teaser posts={data.workPosts.edges} title="Work" linkTo="/work" linkText="All work"/>
+      </Section>
+
+      <Section bgColor="#f0f0f0">
+        <Teaser posts={data.thingsPosts.edges} title="Things" linkTo="/things" linkText="All things" postsPerRow="4"/>
+      </Section>
+    </div>
   )
 }
 

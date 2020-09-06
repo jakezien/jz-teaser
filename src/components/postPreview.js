@@ -15,6 +15,7 @@ const Category = styled.p`
 const Container = styled.div`
   border-radius: 2px;
   box-shadow: 0 2px 3px rgba(0,0,0,0.15);
+  background: white;
 `
 
 const TextContainer = styled.div`

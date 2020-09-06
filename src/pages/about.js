@@ -14,9 +14,10 @@ const About = ({data, location}) => {
 
   const AboutImg = styled(Img)`
     border-radius: 4px;
-    width: auto;
     margin-bottom: ${rhythm(2)}; 
+    max-height: ${rhythm(18)}; 
     @media screen and (min-width: 641px) {
+      max-height: inherit ;
       width: 50%;
       float: right;    
       margin-left: ${rhythm(1)};
@@ -34,10 +35,9 @@ const About = ({data, location}) => {
       <SEO title="About" />
       <h1>About</h1>
       <AboutImg 
-        fluid= {{ ...data.jakey.childImageSharp.fluid }}
+        fluid= {{ ...data.jakey.childImageSharp.fluid, aspectRatio:0.75}}
         objectFit= "contain"
         imgStyle= {{objectFit: "contain"}}
-        aspectRatio= '0.75'
       />
       <AboutText/>
       <StyledWrapper>
