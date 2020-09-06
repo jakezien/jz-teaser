@@ -23,7 +23,7 @@ const StyledMonogram = styled(Monogram)`
   margin-bottom:18px
 `
 
-const Header = () => {
+const Header = ({location}) => {
   return (
     <HeaderEl>
       <div>
@@ -31,7 +31,7 @@ const Header = () => {
           <StyledMonogram/>
         </StyledLink>
       </div>
-      <StyledSiteNav/>
+      <StyledSiteNav location={location}/>
     </HeaderEl>
 
   )

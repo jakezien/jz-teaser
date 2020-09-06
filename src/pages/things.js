@@ -9,7 +9,7 @@ import PostGrid from "../components/postGrid"
 const Things = ({ data, location }) => {
 
   return (
-    <Layout>
+    <Layout location={location}>
       <SEO title="Jake Zien" />
 
       <h1>Things</h1>

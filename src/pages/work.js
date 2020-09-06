@@ -9,7 +9,7 @@ import PostGrid from "../components/postGrid"
 const Work = ({ data, location }) => {
 
   return (
-    <Layout>
+    <Layout location={location}>
       <SEO title="Jake Zien" />
 
       <h1>Work</h1>

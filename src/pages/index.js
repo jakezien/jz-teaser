@@ -19,7 +19,7 @@ const Home = ({ data, location }) => {
     <div>
       <SEO title="Jake Zien" />
       <Section>
-        <Header />
+        <Header location={location}/>
         <Intro />
       </Section>
       

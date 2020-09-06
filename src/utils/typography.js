@@ -34,6 +34,9 @@ const typography = new Typography({
     'h2 a, a h2': {
       color: '#444'
     },
+    'h3 a, a h3': {
+      color: '#585858'
+    },
     'h3': {
       marginBottom: '1rem'
       // fontWeight: 500

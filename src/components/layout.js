@@ -16,7 +16,7 @@ export const Container = styled.div`
 const Layout = ({ location, title, children }) => {
   return (
     <Container>
-      <Header />
+      <Header location={location}/>
       <main>{children}</main>
       <Footer />
     </Container>
