@@ -13,6 +13,7 @@ const Container = styled.div`
 
 const StyledH2 = styled.h2`
   display: inline-block;
+  margin-top:0;
   margin-bottom:${rhythm(.5)};
 `
 
@@ -21,7 +22,7 @@ const Intro = () => {
     <Container>
       <StyledH2>Hey, I'm Jake&nbsp;</StyledH2>
       <Tooltip text="Zien">
-        <p>Rhymes with <i>lyin'</i>, <i>cryin'</i>, and <i>dyin'</i>.</p>
+        Rhymes with <i>lyin',</i> <i>cryin',</i> and <i>dyin'.</i>
       </Tooltip>
       <StyledH2>.</StyledH2>
       <p>I'm a design generalist, working across the product process in business strategy, UX research and execution, identity development, and visual design. <Link to="/about">More about me.</Link></p>

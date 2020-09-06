@@ -1,5 +1,6 @@
 import Typography from "typography"
 
+export const jzYellow = 'rgb(255, 194, 41)';
 
 const typography = new Typography({
   baseFontSize: "18px",
@@ -26,14 +27,25 @@ const typography = new Typography({
     },
     'h2': {
       // letterSpacing: '-0.0125em',
+      marginTop: '1rem',
       marginBottom: '1rem'
       // fontSize: '1.33em',
+    },
+    'h2 a, a h2': {
+      color: '#444'
     },
     'h3': {
       marginBottom: '1rem'
       // fontWeight: 500
     },
     'p': {
+      color: '#444'
+    },
+    'a': {
+      color: '#777'
+    },
+    'a:hover': {
+      color: jzYellow
     }
   })
 })

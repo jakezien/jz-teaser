@@ -15,7 +15,7 @@ const Section = styled.section`
 const Teaser = ({ posts, title, linkTo, linkText, postsPerRow=2 }) => {
   return (
     <Section>
-      <h2><StyledLink to={linkTo}>{title}</StyledLink></h2>
+      <StyledLink to={linkTo}><h2>{title}</h2></StyledLink>
       <PostGrid posts={posts} postsPerRow={postsPerRow} />
       <Link to={linkTo}>{linkText}</Link>
     </Section>

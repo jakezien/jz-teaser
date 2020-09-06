@@ -8,7 +8,7 @@ const Ul = styled.ul`
 
 const Li = styled.li`
   list-style: none;
-  margin-right: 1em;
+  margin-left: 2em;
 `
 
 const StyledLink = styled(Link)`

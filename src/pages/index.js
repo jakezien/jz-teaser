@@ -4,12 +4,14 @@ import { Link, graphql } from "gatsby"
 import { Container } from "../components/layout"
 import SEO from "../components/seo"
 import { rhythm } from "../utils/typography"
+import Colors from "../utils/colors"
 
 import Section from '../components/section'
 import Header from '../components/header'
 import Footer from '../components/footer'
 import Intro from "../components/intro"
 import Teaser from "../components/teaser"
+
 
 const Home = ({ data, location }) => {
 
@@ -21,15 +23,15 @@ const Home = ({ data, location }) => {
         <Intro />
       </Section>
       
-      <Section bgColor="#f8f8f8">
+      <Section bgColor={Colors.bg0}>
         <Teaser posts={data.workPosts.edges} title="Work" linkTo="/work" linkText="All work"/>
       </Section>
 
-      <Section bgColor="#f0f0f0">
+      <Section bgColor={Colors.bg1}>
         <Teaser posts={data.thingsPosts.edges} title="Things" linkTo="/things" linkText="All things" postsPerRow="4"/>
       </Section>
 
-      <Section bgColor="#e8e8e8">
+      <Section bgColor={Colors.yellow}>
         <Footer />
       </Section>
     </div>
