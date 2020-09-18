@@ -19,7 +19,7 @@ const Home = ({ data, location }) => {
     <div>
       <SEO title="Jake Zien" />
       <Section>
-        <Header location={location}/>
+        <Header location={location }/>
         <Intro />
       </Section>
       
@@ -40,7 +40,6 @@ const Home = ({ data, location }) => {
 
 export default Home
 
-
 export const pageQuery = graphql`
   query {
     site {
@@ -48,6 +47,7 @@ export const pageQuery = graphql`
         title
       }
     }
+
     workPosts: allMdx(
       limit: 4,
       filter: { fileAbsolutePath: {regex: "\\/content/work/"} },
@@ -75,6 +75,7 @@ export const pageQuery = graphql`
         }
       }
     }
+
     thingsPosts: allMdx(
     limit: 8,
     filter: { fileAbsolutePath: {regex: "\\/content/things/"} },
@@ -86,13 +87,15 @@ export const pageQuery = graphql`
             slug
           }
           frontmatter {
+            postType
             date(formatString: "MMMM DD, YYYY")
             title
             description
             category
             author
             artist
-            imagePadding coverImage {
+            imagePadding
+            coverImage {
               childImageSharp {
                 fluid(maxWidth: 400) {
                   ...GatsbyImageSharpFluid
