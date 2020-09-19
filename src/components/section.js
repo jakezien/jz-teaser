@@ -11,15 +11,16 @@ export const Container = styled.div`
 `
 
 
-const Section = ({children, bgColor}) => {
+const Section = ({children, bgColor, className}) => {
 
   const StyledSection = styled.section`
     width: 100%;  
     background-color: ${bgColor};  
   `
+
   
   return (
-    <StyledSection>
+    <StyledSection className={className}>
       <Container>
         {children}
       </Container>
