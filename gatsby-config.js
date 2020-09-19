@@ -17,7 +17,7 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/content/`,
+      path: `${__dirname}/content/`,
         name: `content`,
       },
     },
@@ -80,7 +80,7 @@ module.exports = {
       options: {
         custom: {
           families: ['IBM Plex Mono', 'Authentic Sans'],
-          urls: ['/fonts/fonts.css']
+          urls: ['fonts/fonts.css']
         },
         prefixPaths: "true"
       }
