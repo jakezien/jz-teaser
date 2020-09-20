@@ -13,7 +13,6 @@ const Section = ({children, bgColor, className}) => {
   
   return (
     <StyledSection className={className} style={{backgroundColor:bgColor}}>
-      <pre>{bgColor}</pre>
       <Container>
         {children}
       </Container>
