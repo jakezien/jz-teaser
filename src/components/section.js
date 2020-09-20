@@ -15,7 +15,8 @@ const Section = ({children, bgColor, className}) => {
 
   const StyledSection = styled.section`
     width: 100%;  
-    background-color: ${bgColor};  
+    background-color: ${bgColor}; 
+    border: 10px solid red;
   `
 
   
