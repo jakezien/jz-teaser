@@ -6,22 +6,37 @@ import Img from "gatsby-image"
 import { MDXProvider } from "@mdx-js/react"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 
+const Dates = styled.h4`
+  margin-top: 0;
+  margin-bottom: .5rem;
+  opacity: 0.7;
+`
+
+const Title = styled.h2`
+  margin-top: 0;
+  margin-bottom: .5rem;
+`
+
+const Org = styled.h3`
+  margin-top: 0;
+  margin-bottom: 1rem;
+  opacity: 0.7;
+`
+
+
 const ResumeItem = ({ item, className }) => {
 
-  const Container = styled.div`
-    background:yellow;
-  `
 
 
   return (
-    <Container className={className}>
-      <h2>{item.frontmatter.title}</h2>
-      <h3>{item.frontmatter.org}</h3>
-      <h4>{item.frontmatter.jobDates}</h4>
+    <div className={className}>
+      <Dates>{item.frontmatter.jobDates}</Dates>
+      <Title>{item.frontmatter.title}</Title>
+      <Org>{item.frontmatter.org}</Org>
       <MDXProvider>
         <MDXRenderer>{item.body}</MDXRenderer>
       </MDXProvider>
-    </Container>
+    </div>
   )
 }
 
