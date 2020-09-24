@@ -9,14 +9,14 @@ const Section = styled.section`
 `
 
 let width = props => 100/props.postsPerRow;
-
+let space = rhythm(1);
+let doubleSpace = rhythm(1.5);
 const StyledPostPreview = styled(PostPreview)`
-  flex-basis: calc(${width}% - ${rhythm(.5)});
-  margin-right: ${rhythm(0.5)};
-  margin-bottom: ${rhythm(1)};
+  margin-bottom: ${doubleSpace};
   @media only screen and (min-width:641px) {
-    flex-basis: calc(${width}% - ${rhythm(.5)});
-    min-width:  calc(${width}% - ${rhythm(.5)});
+    flex-basis: calc(${width}% - ${space});
+    min-width:  calc(${width}% - ${space});
+    margin-right: ${space};
   }
 `
 

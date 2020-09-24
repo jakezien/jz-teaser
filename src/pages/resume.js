@@ -14,13 +14,14 @@ const StyledResumeContainer = styled.div`
 
 let width = 50
 let space = rhythm(1)
+let doubleSpace = rhythm(2)
 const StyledResumeItem = styled(ResumeItem)`
-  flex-basis: calc(${width}% - ${space});
-  margin-right: ${space};
-  margin-bottom: ${2 * space};
-  @media only screen and (min-width:641px) {
+  margin-bottom: ${doubleSpace};
+  @media only screen and (min-width:720px) {
     flex-basis: calc(${width}% - ${space});
     min-width:  calc(${width}% - ${space});
+    margin-bottom: ${doubleSpace};
+    margin-right: ${space};
   }
 `
 
