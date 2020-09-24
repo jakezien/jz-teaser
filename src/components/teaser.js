@@ -17,7 +17,7 @@ const Teaser = ({ posts, title, linkTo, linkText, postsPerRow=2 }) => {
     <Section>
       <StyledLink to={linkTo}><h2>{title}</h2></StyledLink>
       <PostGrid posts={posts} postsPerRow={postsPerRow} />
-      <Link to={linkTo}>{linkText}</Link>
+      <Link className="link" to={linkTo}>{linkText}</Link>
     </Section>
   )
 }

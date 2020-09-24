@@ -1,6 +1,5 @@
 import Typography from "typography"
-
-export const jzYellow = 'rgb(255, 194, 41)';
+import Colors from './colors'
 
 const typography = new Typography({
   baseFontSize: "18px",
@@ -13,8 +12,8 @@ const typography = new Typography({
   ],
 
   bodyFontFamily: [
-    "IBM Plex Mono",
     "Authentic Sans",
+    "IBM Plex Mono",
     "Theinhardt",
     "Maple",
     "sans-serif",
@@ -44,11 +43,17 @@ const typography = new Typography({
     'p': {
       color: '#444'
     },
-    'a': {
+    'p>a, *.link': {
+      fontFamily: "IBM Plex Mono",
       color: '#777'
     },
-    'a:hover': {
-      color: jzYellow
+    'p>a:hover, *.link:hover': {
+      background: Colors.bg3,
+      color: '#444',
+      border: '4px solid ' + Colors.bg3,
+      borderRadius: '4px',
+      position: 'relative',
+      left: '-4px'
     }
   })
 })

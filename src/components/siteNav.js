@@ -39,10 +39,10 @@ const SiteNav = ({className, location}) => {
     <nav className={className}>
       <Ul>
         {/*<pre>{location.pathname}</pre>;*/}
-        <StyledLink to="/work"><Li>Work</Li></StyledLink>
-        <StyledLink to="/writing"><Li>Writing</Li></StyledLink>
-        <StyledLink to="/things"><Li>Things I Like</Li></StyledLink>
-        <StyledLink to="/about"><Li>About</Li></StyledLink>
+        <StyledLink className="link" to="/work"><Li>Work</Li></StyledLink>
+        <StyledLink className="link" to="/writing"><Li>Writing</Li></StyledLink>
+        <StyledLink className="link" to="/things"><Li>Things I Like</Li></StyledLink>
+        <StyledLink className="link" to="/about"><Li>About</Li></StyledLink>
       </Ul>
     </nav>
   )
