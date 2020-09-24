@@ -3,18 +3,22 @@ import SiteNav from './siteNav'
 import styled from "styled-components"
 import { Link } from "gatsby"
 import { rhythm } from "../utils/typography"
+import { Container } from "./layout"
+import Colors from "../utils/colors"
 
 const StyledFooter = styled.footer`
-  display: flex;
   min-height: ${ rhythm(8) };
   position: relative;
   z-index: 0;
+  background: ${ Colors.bg0 };
 `
 
 const Footer = () => {
   return (
     <StyledFooter>
-      <h3>© {new Date().getFullYear()} Jake Zien.</h3>
+      <Container>
+        <h3>© {new Date().getFullYear()} Jake Zien.</h3>
+      </Container>
     </StyledFooter>
 
   )

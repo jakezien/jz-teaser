@@ -6,9 +6,17 @@ import SEO from "../components/seo"
 import { rhythm } from "../utils/typography"
 import Img from "gatsby-image"
 import styled from "styled-components"
+import Section from "../components/section"
 
-import Resume from "./resume.mdx"
+import Resume from "./resume.js"
 import AboutText from "./aboutText.mdx"
+
+const StyledSection = styled(Section)`
+  > div {
+    padding-left: 0;
+    padding-right: 0;
+  }
+`
 
 const About = ({data, location}) => {
 
@@ -20,7 +28,7 @@ const About = ({data, location}) => {
       max-height: inherit ;
       width: 50%;
       float: right;    
-      margin-left: ${rhythm(1)};
+      margin-left: ${rhythm(2)};
     }
   `
 
@@ -33,16 +41,19 @@ const About = ({data, location}) => {
   return (
     <Layout location={location}>
       <SEO title="About" />
-      <h1>About</h1>
-      <AboutImg 
-        fluid= {{ ...data.jakey.childImageSharp.fluid, aspectRatio:0.75}}
-        objectFit= "contain"
-        imgStyle= {{objectFit: "contain"}}
-      />
-      <AboutText/>
-      <StyledWrapper>
+      <StyledSection>
+        <h1>About</h1>
+        <AboutImg 
+          fluid= {{ ...data.jakey.childImageSharp.fluid, aspectRatio:0.75}}
+          objectFit= "contain"
+          imgStyle= {{objectFit: "contain"}}
+        />
+        <AboutText/>
+      </StyledSection>
+      <StyledSection>
+        <h1>What I've done</h1>
         <Resume/>
-      </StyledWrapper>
+      </StyledSection>
     </Layout>
   )
 }

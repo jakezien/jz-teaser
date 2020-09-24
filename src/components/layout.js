@@ -15,11 +15,13 @@ export const Container = styled.div`
 
 const Layout = ({ location, title, children }) => {
   return (
-    <Container>
-      <Header location={location}/>
-      <main>{children}</main>
+    <div>
+      <Container>
+        <Header location={location}/>
+        <main>{children}</main>
+      </Container>
       <Footer />
-    </Container>
+    </div>
   )
 }
 

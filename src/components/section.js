@@ -8,11 +8,18 @@ const Section = ({children, bgColor, className}) => {
   let StyledSection = styled.section`
     width: 100%;  
     background: ${bgColor}; 
+    * footer {
+      background: ${bgColor}; 
+      > div {
+        padding: ${ rhythm(1) } 0 0 0;
+        padding-right: 0;
+      }
+    }
   `
 
   
   return (
-    <StyledSection className={className} style={{backgroundColor:bgColor}}>
+    <StyledSection className={className}>
       <Container>
         {children}
       </Container>
