@@ -50,7 +50,7 @@ const Tooltip = ({children, text}) => {
     display: none;
     opacity: 0;
     z-index: 0;
-    min-width: ${rhythm(8)};
+    min-width: ${rhythm(7)};
     padding: ${rhythm(0.5)};
     padding-bottom: ${rhythm(1)};
     background-color: ${Colors.bg2};
