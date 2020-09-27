@@ -25,7 +25,11 @@ const Intro = () => {
         Rhymes with <i>lyin',</i> <i>cryin',</i> and <i>dyin'.</i>
       </Tooltip>
       <StyledH2>.</StyledH2>
-      <p>I'm a design generalist, working across the product process in business strategy, UX research and execution, identity development, and visual design. <Link to="/about">More about me.</Link></p>
+      <p>
+        I'm a design generalist, working across the product process in business strategy, UX research and execution, identity development, and visual design.
+        <br/>
+        <Link to="/about">More about me.</Link>
+      </p>
     </Container>
   )
 }

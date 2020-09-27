@@ -1,41 +1,117 @@
-  @font-face {
-    font-family: "Authentic Sans";
-    src: url("authenticsans/WOFF/AUTHENTICSans-60.woff2");
-    font-weight: 300;
-  }
+@font-face {
+  font-family: "Bau";
+  src: url("bau/Bau-Regular.ttf");
+  font-weight: 400;
+}
 
-  @font-face {
-    font-family: "Authentic Sans";
-    src: url("authenticsans/WOFF/AUTHENTICSans-90.woff2");
-    font-weight: 400;
-  }
+@font-face {
+  font-family: "Bau";
+  src: url("bau/Bau-Medium.ttf");
+  font-weight: 500;
+}
 
-  @font-face {
-    font-family: "Authentic Sans";
-    src: url("authenticsans/WOFF/AUTHENTICSans-130.woff2");
-    font-weight: 600;
-  }
+@font-face {
+  font-family: "Bau";
+  src: url("bau/Bau-Bold.ttf");
+  font-weight: 600;
+}
 
-  @font-face {
-    font-family: "Authentic Sans";
-    src: url("authenticsans/WOFF/AUTHENTICSans-150.woff2");
-    font-weight: 700;
-  }
+@font-face {
+  font-family: "Bau";
+  src: url("bau/Bau-Black.ttf");
+  font-weight: 700;
+}
 
-  @font-face {
-    font-family: "IBM Plex Mono";
-    src: url("plex/IBMPlexMono-Light.woff");
-    font-weight: 300;
-  }
 
-  @font-face {
-    font-family: "IBM Plex Mono";
-    src: url("plex/IBMPlexMono-Regular.woff");
-    font-weight: 400;
-  }
+@font-face {
+  font-family: "Input";
+  src: url("input/InputSerifNarrow-ExtraLight.ttf");
+  font-weight: 100;
+}
 
-  @font-face {
-    font-family: "IBM Plex Mono";
-    src: url("plex/IBMPlexMono-Bold.woff");
-    font-weight: 700;
-  }
+@font-face {
+  font-family: "Input";
+  src: url("input/InputSerifNarrow-ExtraLightItalic.ttf");
+  font-weight: 100;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Input";
+  src: url("input/InputSerifNarrow-Thin.ttf");
+  font-weight: 200;
+}
+
+@font-face {
+  font-family: "Input";
+  src: url("input/InputSerifNarrow-ThinItalic.ttf");
+  font-weight: 200;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Input";
+  src: url("input/InputSerifNarrow-Light.ttf");
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: "Input";
+  src: url("input/InputSerifNarrow-LightItalic.ttf");
+  font-weight: 300;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Input";
+  src: url("input/InputSerifNarrow-Regular.ttf");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Input";
+  src: url("input/InputSerifNarrow-RegularItalic.ttf");
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Input";
+  src: url("input/InputSerifNarrow-Medium.ttf");
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "Input";
+  src: url("input/InputSerifNarrow-MediumItalic.ttf");
+  font-weight: 500;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Input";
+  src: url("input/InputSerifNarrow-Bold.ttf");
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: "Input";
+  src: url("input/InputSerifNarrow-BoldItalic.ttf");
+  font-weight: 600;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Input";
+  src: url("input/InputSerifNarrow-Black.ttf");
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: "Input";
+  src: url("input/InputSerifNarrow-BlackItalic.ttf");
+  font-weight: 700;
+  font-style: italic;
+}
+
+

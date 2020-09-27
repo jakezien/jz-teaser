@@ -18,25 +18,26 @@ const StyledSection = styled(Section)`
   }
 `
 
+const AboutImg = styled(Img)`
+  border-radius: 4px;
+  margin-bottom: ${rhythm(2)}; 
+  max-height: ${rhythm(18)}; 
+  @media screen and (min-width: 641px) {
+    max-height: inherit ;
+    width: 50%;
+    float: right;    
+    margin-left: ${rhythm(2)};
+  }
+`
+
+const StyledWrapper = styled.div`
+  border-radius: 4px;
+  background: #fcfcfc;
+  padding: ${rhythm(1)};
+`
+
 const About = ({data, location}) => {
 
-  const AboutImg = styled(Img)`
-    border-radius: 4px;
-    margin-bottom: ${rhythm(2)}; 
-    max-height: ${rhythm(18)}; 
-    @media screen and (min-width: 641px) {
-      max-height: inherit ;
-      width: 50%;
-      float: right;    
-      margin-left: ${rhythm(2)};
-    }
-  `
-
-  const StyledWrapper = styled.div`
-    border-radius: 4px;
-    background: #fcfcfc;
-    padding: ${rhythm(1)};
-  `
 
   return (
     <Layout location={location}>

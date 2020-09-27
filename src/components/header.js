@@ -7,7 +7,9 @@ import { rhythm } from "../utils/typography"
 
 
 const HeaderEl = styled.header`
-  display: flex
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 `
 
 const StyledSiteNav = styled(SiteNav)`
@@ -15,22 +17,22 @@ const StyledSiteNav = styled(SiteNav)`
 `
 
 const StyledLink = styled(Link)`
-  text-decoration: none
+  text-decoration: none;
+  display: block;
+  height: 54px;
 `
 
 const StyledMonogram = styled(Monogram)`
   width: 54px;
-  margin-bottom:18px
+  height: 54px
 `
 
 const Header = ({location}) => {
   return (
     <HeaderEl>
-      <div>
-        <StyledLink to="/">
-          <StyledMonogram/>
-        </StyledLink>
-      </div>
+      <StyledLink to="/">
+        <StyledMonogram/>
+      </StyledLink>
       <StyledSiteNav location={location}/>
     </HeaderEl>
 

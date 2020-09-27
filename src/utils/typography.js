@@ -1,51 +1,56 @@
 import Typography from "typography"
 import Colors from './colors'
 
+const headerOpacity = 0.9
+
+const inputFontStyles = { 
+  fontFamily: "Input",
+  letterSpacing: '-0.066em;',
+  fontWeight: 500
+}
+
 const typography = new Typography({
-  baseFontSize: "18px",
+  baseFontSize: "19px",
   baseLineHeight: 1.4,
+  headerWeight: 600,
   scaleRatio: 2.25,
   headerFontFamily: [
+    "Input",
     "IBM Plex Mono",
-    "Authentic Sans",
-    "sans-serif",
+    "monospace",
   ],
-
   bodyFontFamily: [
-    "Authentic Sans",
-    "IBM Plex Mono",
-    "Theinhardt",
-    "Maple",
+    "Bau",
+    "system-ui",
     "sans-serif",
   ],
-
   overrideStyles: ({ adjustFontSizeTo, rhythm }, options, styles) => ({
     'h1': {
-      letterSpacing: '-0.0075em'
-      // fontSize: '2.5em',
+      letterSpacing: '-0.066em',
+      opacity: headerOpacity
     },
     'h2': {
-      // letterSpacing: '-0.0125em',
-      marginTop: '1rem',
-      marginBottom: '1rem'
-      // fontSize: '1.33em',
-    },
-    'h2 a, a h2': {
-      color: '#444'
-    },
-    'h3 a, a h3': {
-      color: '#585858'
+      letterSpacing: '-0.066em',
+      opacity: headerOpacity
     },
     'h3': {
-      marginBottom: '1rem'
-      // fontWeight: 500
+      letterSpacing: '-0.066em',
+      opacity: 0.8
     },
-    'p': {
-      color: '#444'
+    'a, a *': {
+      color: 'inherit'
+    },
+    '*.inputFont': {
+      ...inputFontStyles
     },
     'p>a, *.link': {
-      fontFamily: "IBM Plex Mono",
-      color: '#777'
+      ...inputFontStyles,
+      color: '#777',
+      textDecoration: 'none',
+      borderBottom: '2px solid ' + Colors.bg1,
+    },
+    'p>a': {
+      fontSize: '0.95em'
     },
     'p>a:hover, *.link:hover': {
       background: Colors.bg3,

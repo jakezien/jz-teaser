@@ -55,7 +55,7 @@ const PostPreview = ({ post, className, aspectRatio = 1.5 }) => {
         : <ImagePlaceholder />}
         <TextContainer>
           <h3 style={{marginBottom:0}}>{post.frontmatter.title}</h3>
-          <Category>{post.frontmatter.category || post.frontmatter.author || post.frontmatter.artist}</Category>
+          <Category className="inputFont">{post.frontmatter.category || post.frontmatter.author || post.frontmatter.artist}</Category>
           <p>{post.excerpt}</p>
         </TextContainer>
       </StyledLink>

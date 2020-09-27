@@ -3,23 +3,24 @@ import styled from "styled-components"
 import { rhythm } from "../utils/typography"
 import { Container } from "../components/layout"
 
+let StyledSection = styled.section`
+  width: 100%;  
+  background: ${props => props.bgColor}; 
+  * footer {
+    background: ${props => props.bgColor}; 
+    > div {
+      padding: ${ rhythm(1) } 0 0 0;
+      padding-right: 0;
+    }
+  }
+`
+
 const Section = ({children, bgColor, className}) => {
 
-  let StyledSection = styled.section`
-    width: 100%;  
-    background: ${bgColor}; 
-    * footer {
-      background: ${bgColor}; 
-      > div {
-        padding: ${ rhythm(1) } 0 0 0;
-        padding-right: 0;
-      }
-    }
-  `
 
   
   return (
-    <StyledSection className={className}>
+    <StyledSection className={className} bgColor={bgColor}>
       <Container>
         {children}
       </Container>
