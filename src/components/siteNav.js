@@ -17,8 +17,17 @@ const StyledLi = styled.li`
 const StyledLink = styled(Link)`
   margin-left: 2em;
   &:hover {
-    left:0;
+    left: inherit;
     right:-4px;
+    margin-left: calc(2em - 8px);
+  }
+  &[aria-current=page] {
+    color: #333;
+    background: ${Colors.bg3};
+    border: 4px solid ${Colors.bg3};
+    position: relative;
+    right: -4px;
+    margin-left: calc(2em - 8px);
   }
 `
 
