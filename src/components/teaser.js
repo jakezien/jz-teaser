@@ -8,17 +8,17 @@ const StyledLink = styled(Link)`
   text-decoration: none
 `
 
-const Section = styled.section`
+const StyledDiv = styled.div`
   margin-bottom: ${rhythm(4)}
 `
 
 const Teaser = ({ posts, title, linkTo, linkText, postsPerRow=2 }) => {
   return (
-    <Section>
+    <StyledDiv>
       <StyledLink to={linkTo}><h2>{title}</h2></StyledLink>
       <PostGrid posts={posts} postsPerRow={postsPerRow} />
       <Link className="link" to={linkTo}>{linkText}</Link>
-    </Section>
+    </StyledDiv>
   )
 }
 

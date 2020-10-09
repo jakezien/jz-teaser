@@ -16,13 +16,25 @@ const Container = styled.div`
   border-radius: 5px;
   box-shadow: 0 2px 3px rgba(0,0,0,0.075);
   background: #fdfdfd;
-  // border: 1px solid white
   overflow: hidden;
+  &.thing {
+    > a {
+      display: flex;
+    }
+    .imageContainer {
+      width: 33%;
+    }
+    .textContainer {
+      width: 66%;
+    }
+  }
 `
 
 const TextContainer = styled.div`
   padding: ${rhythm(0.5)};
 `
+
+const ImageContainer = styled.div``
 
 const ImagePlaceholder = styled.div`
   width: auto;
@@ -41,19 +53,27 @@ const PostPreview = ({ post, className, aspectRatio = 1.5 }) => {
     postType = post.frontmatter.postType;
     if (postType === "THING") {
       aspectRatio = 1;
+      className += " thing"
     }
   }
 
   return (
     <Container className={className}>
       <StyledLink to={post.fields.slug}>
-        {coverImage ? 
-          <Img 
-            fluid={{ ...coverImage.fluid, aspectRatio: aspectRatio }} 
-            imgStyle={{ objectFit: "contain", objectPosition: "top center", minHeight:'100%', padding: post.frontmatter.imagePadding + '%' }}
-          /> 
-        : <ImagePlaceholder />}
-        <TextContainer>
+        <ImageContainer className="imageContainer">
+          {coverImage ? 
+            <Img 
+              fluid={{ ...coverImage.fluid, aspectRatio: aspectRatio }} 
+              imgStyle={{ 
+                objectFit: "contain", 
+                objectPosition: "top center", 
+                minHeight:'100%', 
+                padding: post.frontmatter.imagePadding + '%' 
+              }}
+            /> 
+          : <ImagePlaceholder />}
+        </ImageContainer>
+        <TextContainer className="textContainer">
           <h3 style={{marginBottom:0}}>{post.frontmatter.title}</h3>
           <Category className="inputFont">{post.frontmatter.category || post.frontmatter.author || post.frontmatter.artist}</Category>
           <p>{post.excerpt}</p>

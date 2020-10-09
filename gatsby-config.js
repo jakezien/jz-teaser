@@ -80,7 +80,7 @@ module.exports = {
       resolve: 'gatsby-plugin-web-font-loader',
       options: {
         custom: {
-          families: ['IBM Plex Mono', 'Authentic Sans'],
+          families: ['Input', 'Bau'],
           urls: ['fonts/fonts.css']
         },
         prefixPaths: "true"

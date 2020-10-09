@@ -10,10 +10,10 @@ const inputFontStyles = {
 }
 
 const typography = new Typography({
-  baseFontSize: "19px",
-  baseLineHeight: 1.4,
+  baseFontSize: "18px",
+  baseLineHeight: 1.35,
   headerWeight: 600,
-  scaleRatio: 2.25,
+  scaleRatio: 2.5,
   headerFontFamily: [
     "Input",
     "IBM Plex Mono",
@@ -27,15 +27,20 @@ const typography = new Typography({
   overrideStyles: ({ adjustFontSizeTo, rhythm }, options, styles) => ({
     'h1': {
       letterSpacing: '-0.066em',
-      opacity: headerOpacity
+      opacity: headerOpacity,
+      marginBottom: rhythm(.5),
+      marginTop: rhythm(1.5),
     },
     'h2': {
       letterSpacing: '-0.066em',
-      opacity: headerOpacity
+      opacity: headerOpacity,
+      marginBottom: rhythm(.5),
+      marginTop: rhythm(1.5),
     },
     'h3': {
       letterSpacing: '-0.066em',
-      opacity: 0.8
+      opacity: 0.8,
+      marginTop: rhythm(.5),
     },
     'a, a *': {
       color: 'inherit'

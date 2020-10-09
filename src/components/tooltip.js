@@ -24,6 +24,7 @@ const StyledSpan = styled.span`
   display: inline-block;
   border-bottom: 4px solid ${Colors.yellow};
   padding-bottom: 0;
+  margin-top: initial;
   margin-bottom: 0.5rem;
   position: relative;
 
