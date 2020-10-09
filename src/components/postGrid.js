@@ -3,14 +3,14 @@ import PostPreview from "./postPreview"
 import { rhythm, scale } from "../utils/typography"
 import styled from "styled-components"
 
-const Section = styled.section`
+const StyledDiv = styled.div`
   display: flex;
   flex-wrap: wrap;
 `
 
 let width = props => 100/props.postsPerRow;
-let space = rhythm(1);
-let doubleSpace = rhythm(1.5);
+let space = rhythm(.5);
+let doubleSpace = rhythm(1);
 const StyledPostPreview = styled(PostPreview)`
   margin-bottom: ${doubleSpace};
   @media only screen and (min-width:641px) {
@@ -22,11 +22,11 @@ const StyledPostPreview = styled(PostPreview)`
 
 const PostGrid = ({ posts, postsPerRow }) => {
   return (
-    <Section>
+    <StyledDiv>
       {posts.map( ({node}, index ) => {
         return(<StyledPostPreview key={index} post={node} postsPerRow={postsPerRow}/>)
       })}
-    </Section>
+    </StyledDiv>
   )
 }
 

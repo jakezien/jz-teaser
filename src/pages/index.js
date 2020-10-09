@@ -27,7 +27,7 @@ const Home = ({ data, location }) => {
       </Section>
 
       <Section bgColor={Colors.bg1}>
-        <Teaser posts={data.thingsPosts.edges} title="Things" linkTo="/things" linkText="All things" />
+        <Teaser posts={data.thingsPosts.edges} title="Things" linkTo="/things" linkText="All things" postsPerRow="4"/>
       </Section>
 
       <Section bgColor={Colors.yellow}>
