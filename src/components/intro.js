@@ -22,7 +22,7 @@ const Intro = () => {
     <Container>
       <StyledH2>Hey, I'm Jake&nbsp;</StyledH2>
       <Tooltip text="Zien">
-        Rhymes with <i>lyin',</i> <i>cryin',</i> and <i>dyin'.</i>
+        Rhymes with <i>lyin',</i> <i>cryin',</i> and&nbsp;<i>dyin'.</i>
       </Tooltip>
       <StyledH2>.</StyledH2>
       <p>

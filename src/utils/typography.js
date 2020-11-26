@@ -4,9 +4,10 @@ import Colors from './colors'
 const headerOpacity = 0.9
 
 const inputFontStyles = { 
+  fontFamily: "IBM Plex Mono",
   fontFamily: "Input",
   letterSpacing: '-0.066em;',
-  fontWeight: 500
+  fontWeight: 600
 }
 
 const typography = new Typography({
@@ -31,31 +32,37 @@ const typography = new Typography({
       marginBottom: rhythm(.5),
       marginTop: rhythm(1.5),
     },
+
     'h2': {
       letterSpacing: '-0.066em',
       opacity: headerOpacity,
       marginBottom: rhythm(.5),
       marginTop: rhythm(1.5),
     },
+    
     'h3': {
       letterSpacing: '-0.066em',
       opacity: 0.8,
       marginTop: rhythm(.5),
     },
+    
     'a, a *': {
       color: 'inherit'
     },
     '*.inputFont': {
       ...inputFontStyles
     },
+    
     'p>a, *.link': {
       ...inputFontStyles,
       color: '#777',
       textDecoration: 'none',
       borderBottom: '2px solid ' + Colors.bg1,
+      fontWeight: 500
     },
     'p>a': {
-      fontSize: '0.95em'
+      fontSize: '0.925em',
+      lineHeight: '1em'
     },
     'p>a:hover, *.link:hover': {
       background: Colors.bg3,

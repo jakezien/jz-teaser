@@ -25,91 +25,91 @@
 
 @font-face {
   font-family: "Input";
-  src: url("input/InputSerifNarrow-ExtraLight.ttf");
+  src: url("input/InputSerifCondensed-ExtraLight.ttf");
   font-weight: 100;
 }
 
 @font-face {
   font-family: "Input";
-  src: url("input/InputSerifNarrow-ExtraLightItalic.ttf");
+  src: url("input/InputSerifCondensed-ExtraLightItalic.ttf");
   font-weight: 100;
   font-style: italic;
 }
 
 @font-face {
   font-family: "Input";
-  src: url("input/InputSerifNarrow-Thin.ttf");
+  src: url("input/InputSerifCondensed-Thin.ttf");
   font-weight: 200;
 }
 
 @font-face {
   font-family: "Input";
-  src: url("input/InputSerifNarrow-ThinItalic.ttf");
+  src: url("input/InputSerifCondensed-ThinItalic.ttf");
   font-weight: 200;
   font-style: italic;
 }
 
 @font-face {
   font-family: "Input";
-  src: url("input/InputSerifNarrow-Light.ttf");
+  src: url("input/InputSerifCondensed-Light.ttf");
   font-weight: 300;
 }
 
 @font-face {
   font-family: "Input";
-  src: url("input/InputSerifNarrow-LightItalic.ttf");
+  src: url("input/InputSerifCondensed-LightItalic.ttf");
   font-weight: 300;
   font-style: italic;
 }
 
 @font-face {
   font-family: "Input";
-  src: url("input/InputSerifNarrow-Regular.ttf");
+  src: url("input/InputSerifCondensed-Regular.ttf");
   font-weight: 400;
 }
 
 @font-face {
   font-family: "Input";
-  src: url("input/InputSerifNarrow-RegularItalic.ttf");
+  src: url("input/InputSerifCondensed-RegularItalic.ttf");
   font-weight: 400;
   font-style: italic;
 }
 
 @font-face {
   font-family: "Input";
-  src: url("input/InputSerifNarrow-Medium.ttf");
+  src: url("input/InputSerifCondensed-Medium.ttf");
   font-weight: 500;
 }
 
 @font-face {
   font-family: "Input";
-  src: url("input/InputSerifNarrow-MediumItalic.ttf");
+  src: url("input/InputSerifCondensed-MediumItalic.ttf");
   font-weight: 500;
   font-style: italic;
 }
 
 @font-face {
   font-family: "Input";
-  src: url("input/InputSerifNarrow-Bold.ttf");
+  src: url("input/InputSerifCondensed-Bold.ttf");
   font-weight: 600;
 }
 
 @font-face {
   font-family: "Input";
-  src: url("input/InputSerifNarrow-BoldItalic.ttf");
+  src: url("input/InputSerifCondensed-BoldItalic.ttf");
   font-weight: 600;
   font-style: italic;
 }
 
 @font-face {
   font-family: "Input";
-  src: url("input/InputSerifNarrow-Black.ttf");
+  src: url("input/InputSerifCondensed-Black.ttf");
   font-weight: 700;
 }
 
 @font-face {
   font-family: "Input";
-  src: url("input/InputSerifNarrow-BlackItalic.ttf");
+  src: url("input/InputSerifCondensed-BlackItalic.ttf");
   font-weight: 700;
   font-style: italic;
 }

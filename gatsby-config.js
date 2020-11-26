@@ -83,10 +83,14 @@ module.exports = {
           families: ['Input', 'Bau'],
           urls: ['fonts/fonts.css']
         },
+        google: {
+          families: ['IBM Plex Mono\:100,200,300,400,500,600,700']
+        },
         prefixPaths: "true"
       }
-    }
+    },
 
+ 
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,

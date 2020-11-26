@@ -5,7 +5,10 @@ import { rhythm, scale } from "../utils/typography"
 import styled from "styled-components"
 
 const StyledLink = styled(Link)`
-  text-decoration: none
+  text-decoration: none;
+  h2 {
+    margin-bottom: 1em;
+  }
 `
 
 const StyledDiv = styled.div`
