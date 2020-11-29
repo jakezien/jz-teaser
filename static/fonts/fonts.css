@@ -1,115 +1,126 @@
 @font-face {
   font-family: "Bau";
-  src: url("bau/Bau-Regular.ttf");
+  src: url("./bau/Bau-Regular.ttf");
   font-weight: 400;
 }
 
 @font-face {
   font-family: "Bau";
-  src: url("bau/Bau-Medium.ttf");
+  src: url("./bau/Bau-Medium.ttf");
   font-weight: 500;
 }
 
 @font-face {
   font-family: "Bau";
-  src: url("bau/Bau-Bold.ttf");
+  src: url("./bau/Bau-Bold.ttf");
   font-weight: 600;
 }
 
 @font-face {
   font-family: "Bau";
-  src: url("bau/Bau-Black.ttf");
+  src: url("./bau/Bau-Black.ttf");
   font-weight: 700;
 }
 
 
+
+/* —————————————————————— */
+
+
+
+
+
+
+
+
+
 @font-face {
   font-family: "Input";
-  src: url("input/InputSerifCondensed-ExtraLight.ttf");
+  src: url("./input/InputSerifCondensed-ExtraLight.ttf");
   font-weight: 100;
 }
 
 @font-face {
   font-family: "Input";
-  src: url("input/InputSerifCondensed-ExtraLightItalic.ttf");
+  src: url("./input/InputSerifCondensed-ExtraLightItalic.ttf");
   font-weight: 100;
   font-style: italic;
 }
 
 @font-face {
   font-family: "Input";
-  src: url("input/InputSerifCondensed-Thin.ttf");
+  src: url("./input/InputSerifCondensed-Thin.ttf");
   font-weight: 200;
 }
 
 @font-face {
   font-family: "Input";
-  src: url("input/InputSerifCondensed-ThinItalic.ttf");
+  src: url("./input/InputSerifCondensed-ThinItalic.ttf");
   font-weight: 200;
   font-style: italic;
 }
 
 @font-face {
   font-family: "Input";
-  src: url("input/InputSerifCondensed-Light.ttf");
+  src: url("./input/InputSerifCondensed-Light.ttf");
   font-weight: 300;
 }
 
 @font-face {
   font-family: "Input";
-  src: url("input/InputSerifCondensed-LightItalic.ttf");
+  src: url("./input/InputSerifCondensed-LightItalic.ttf");
   font-weight: 300;
   font-style: italic;
 }
 
 @font-face {
   font-family: "Input";
-  src: url("input/InputSerifCondensed-Regular.ttf");
+  src: url("./input/InputSerifCondensed-Regular.ttf");
   font-weight: 400;
 }
 
 @font-face {
   font-family: "Input";
-  src: url("input/InputSerifCondensed-RegularItalic.ttf");
+  src: url("./input/InputSerifCondensed-RegularItalic.ttf");
   font-weight: 400;
   font-style: italic;
 }
 
 @font-face {
   font-family: "Input";
-  src: url("input/InputSerifCondensed-Medium.ttf");
+  src: url("./input/InputSerifCondensed-Medium.ttf");
   font-weight: 500;
 }
 
 @font-face {
   font-family: "Input";
-  src: url("input/InputSerifCondensed-MediumItalic.ttf");
+  src: url("./input/InputSerifCondensed-MediumItalic.ttf");
   font-weight: 500;
   font-style: italic;
 }
 
 @font-face {
   font-family: "Input";
-  src: url("input/InputSerifCondensed-Bold.ttf");
+  src: url("./input/InputSerifCondensed-Bold.ttf");
   font-weight: 600;
 }
 
 @font-face {
   font-family: "Input";
-  src: url("input/InputSerifCondensed-BoldItalic.ttf");
+  src: url("./input/InputSerifCondensed-BoldItalic.ttf");
   font-weight: 600;
   font-style: italic;
 }
 
 @font-face {
   font-family: "Input";
-  src: url("input/InputSerifCondensed-Black.ttf");
+  src: url("./input/InputSerifCondensed-Black.ttf");
   font-weight: 700;
 }
 
 @font-face {
   font-family: "Input";
-  src: url("input/InputSerifCondensed-BlackItalic.ttf");
+  src: url("./input/InputSerifCondensed-BlackItalic.ttf");
   font-weight: 700;
   font-style: italic;
 }
@@ -117,7 +128,7 @@
 
 @font-face {
   font-family: "Input";
-  src: url("input/InputSerifCondensed-BlackItalic.ttf");
+  src: url("./input/InputSerifCondensed-BlackItalic.ttf");
   font-weight: 700;
   font-style: italic;
 }
@@ -126,136 +137,251 @@
 
 @font-face {
   font-family: "Input";
-  src: url("input/InputSerifCondensed-BlackItalic.ttf");
+  src: url("./input/InputSerifCondensed-BlackItalic.ttf");
   font-weight: 700;
   font-style: italic;
-}*/
+}
+
+
+
+
+
+/* —————————————————————— */
+
+
+
+
+
+
+
+
 
 @font-face {
-  font-family: "Pantograph Trial";
-  src: url("colophon/pantograph-light-trial.otf")
+  font-family: "Pantograph";
+  src: url("./colophon/pantograph-light-trial.otf");
+  font-stretch: normal;
   font-weight: 300;
 }
 
 @font-face {
-  font-family: "Pantograph Trial";
-  src: url("colophon/pantograph-regular-trial.otf")
+  font-family: "Pantograph";
+  src: url("./colophon/pantograph-regular-trial.otf");
+  font-stretch: normal;
   font-weight: 400;
 }
 
 @font-face {
-  font-family: "Pantograph Trial";
-  src: url("colophon/pantograph-medium-trial.otf")
+  font-family: "Pantograph";
+  src: url("./colophon/pantograph-medium-trial.otf");
+  font-stretch: normal;
   font-weight: 500;
 }
 
 @font-face {
-  font-family: "Pantograph Trial";
-  src: url("colophon/pantograph-semibold-trial.otf")
+  font-family: "Pantograph";
+  src: url("./colophon/pantograph-semibold-trial.otf");
+  font-stretch: normal;
   font-weight: 600;
 }
 
 @font-face {
-  font-family: "Pantograph Trial";
-  src: url("colophon/pantograph-bold-trial.otf")
+  font-family: "Pantograph";
+  src: url("./colophon/pantograph-bold-trial.otf");
+  font-stretch: normal;
   font-weight: 700;
 }
 
+
+
 @font-face {
-  font-family: "Pantograph Trial Condensed";
-  src: url("colophon/pantograph-condensed-light-trial.otf")
+  font-family: "Pantograph";
+  src: url("./colophon/pantograph-condensed-light-trial.otf");
   font-weight: 300;
+  font-stretch: condensed;
 }
 
 @font-face {
-  font-family: "Pantograph Trial Condensed";
-  src: url("colophon/pantograph-condensed-regular-trial.otf")
+  font-family: "Pantograph";
+  src: url("./colophon/pantograph-condensed-regular-trial.otf");
   font-weight: 400;
+  font-stretch: condensed;
 }
 
 @font-face {
-  font-family: "Pantograph Trial Condensed";
-  src: url("colophon/pantograph-condensed-medium-trial.otf")
+  font-family: "Pantograph";
+  src: url("./colophon/pantograph-condensed-medium-trial.otf");
   font-weight: 500;
+  font-stretch: condensed;
 }
 
 @font-face {
-  font-family: "Pantograph Trial Condensed";
-  src: url("colophon/pantograph-condensed-semibold-trial.otf")
+  font-family: "Pantograph";
+  src: url("./colophon/pantograph-condensed-semibold-trial.otf");
   font-weight: 600;
+  font-stretch: condensed;
 }
 
 @font-face {
-  font-family: "Pantograph Trial Condensed";
-  src: url("colophon/pantograph-condensed-bold-trial.otf")
+  font-family: "Pantograph";
+  src: url("./colophon/pantograph-condensed-bold-trial.otf");
   font-weight: 700;
+  font-stretch: condensed;
 }
 
 
+
+
 @font-face {
-  font-family: "Pantograph Trial Compressed";
-  src: url("colophon/pantograph-compressed-light-trial.otf")
+  font-family: "Pantograph";
+  src: url("./colophon/pantograph-compressed-light-trial.otf");
   font-weight: 300;
+  font-stretch: extra-condensed;
 }
 
 @font-face {
-  font-family: "Pantograph Trial Compressed";
-  src: url("colophon/pantograph-compressed-regular-trial.otf")
+  font-family: "Pantograph";
+  src: url("./colophon/pantograph-compressed-regular-trial.otf");
   font-weight: 400;
+  font-stretch: extra-condensed;
 }
 
 @font-face {
-  font-family: "Pantograph Trial Compressed";
-  src: url("colophon/pantograph-compressed-medium-trial.otf")
+  font-family: "Pantograph";
+  src: url("./colophon/pantograph-compressed-medium-trial.otf");
   font-weight: 500;
+  font-stretch: extra-condensed;
 }
 
 @font-face {
-  font-family: "Pantograph Trial Compressed";
-  src: url("colophon/pantograph-compressed-semibold-trial.otf")
+  font-family: "Pantograph";
+  src: url("./colophon/pantograph-compressed-semibold-trial.otf");
   font-weight: 600;
+  font-stretch: extra-condensed;
 }
 
 @font-face {
-  font-family: "Pantograph Trial Compressed";
-  src: url("colophon/pantograph-compressed-bold-trial.otf")
+  font-family: "Pantograph";
+  src: url("./colophon/pantograph-compressed-bold-trial.otf");
   font-weight: 700;
+  font-stretch: extra-condensed;
 }
+
+
+
+@font-face {
+  font-family: "Pantograph";
+  src: url("./colophon/pantograph-wide-light-trial.otf");
+  font-weight: 300;
+  font-stretch: expanded;
+}
+
+@font-face {
+  font-family: "Pantograph";
+  src: url("./colophon/pantograph-wide-regular-trial.otf");
+  font-weight: 400;
+  font-stretch: expanded;
+}
+
+@font-face {
+  font-family: "Pantograph";
+  src: url("./colophon/pantograph-wide-medium-trial.otf");
+  font-weight: 500;
+  font-stretch: expanded;
+}
+
+@font-face {
+  font-family: "Pantograph";
+  src: url("./colophon/pantograph-wide-semibold-trial.otf");
+  font-weight: 600;
+  font-stretch: expanded;
+}
+
+@font-face {
+  font-family: "Pantograph";
+  src: url("./colophon/pantograph-wide-bold-trial.otf");
+  font-weight: 700;
+  font-stretch: expanded;
+}
+
+
+
+@font-face {
+  font-family: "Pantograph";
+  src: url("./colophon/pantograph-extended-light-trial.otf");
+  font-weight: 300;
+  font-stretch: extra-expanded;
+}
+
+@font-face {
+  font-family: "Pantograph";
+  src: url("./colophon/pantograph-extended-regular-trial.otf");
+  font-weight: 400;
+  font-stretch: extra-expanded;
+}
+
+@font-face {
+  font-family: "Pantograph";
+  src: url("./colophon/pantograph-extended-medium-trial.otf");
+  font-weight: 500;
+  font-stretch: extra-expanded;
+}
+
+@font-face {
+  font-family: "Pantograph";
+  src: url("./colophon/pantograph-extended-semibold-trial.otf");
+  font-weight: 600;
+  font-stretch: extra-expanded;
+}
+
+@font-face {
+  font-family: "Pantograph";
+  src: url("./colophon/pantograph-extended-bold-trial.otf");
+  font-weight: 700;
+  font-stretch: extra-expanded;
+}
+
+
+
+
+
+/* —————————————————————— */
+
+
 
 
 @font-face {
   font-family: "Montefiore";
-  src: url("colophon/montefiore-condensed-thin-trial.otf")
+  src: url("./colophon/montefiore-condensed-thin-trial.ttf");
   font-weight: 200;
 }
 
 @font-face {
   font-family: "Montefiore";
-  src: url("colophon/montefiore-condensed-light-trial.otf")
+  src: url("./colophon/montefiore-condensed-light-trial.ttf");
   font-weight: 300;
 }
 
 @font-face {
   font-family: "Montefiore";
-  src: url("colophon/montefiore-condensed-regular-trial.otf")
+  src: url("./colophon/montefiore-condensed-regular-trial.ttf");
   font-weight: 400;
 }
 
 @font-face {
   font-family: "Montefiore";
-  src: url("colophon/montefiore-condensed-semibold-trial.otf")
+  src: url("./colophon/montefiore-condensed-semibold-trial.ttf");
   font-weight: 500;
 }
 
 @font-face {
   font-family: "Montefiore";
-  src: url("colophon/montefiore-condensed-bold-trial.otf")
+  src: url("./colophon/montefiore-condensed-bold-trial.ttf");
   font-weight: 600;
 }
 
 @font-face {
   font-family: "Montefiore";
-  src: url("colophon/montefiore-condensed-extrabold-trial.otf")
+  src: url("./colophon/montefiore-condensed-extrabold-trial.ttf");
   font-weight: 700;
 }
 

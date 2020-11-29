@@ -14,6 +14,14 @@ module.exports = {
   },
   pathPrefix: "/jz",
   plugins: [
+
+    `gatsby-plugin-feed-mdx`,
+    `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-react-svg`,
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
+    `gatsby-plugin-styled-components`,
+  
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -21,66 +29,68 @@ module.exports = {
         name: `content`,
       },
     },
+
     {
       resolve: `gatsby-plugin-mdx`,
       options: {
         extensions: [".mdx", ".md"],
         gatsbyRemarkPlugins: [
+          `gatsby-remark-prismjs`,
+          `gatsby-remark-copy-linked-files`,
+          `gatsby-remark-smartypants`,
+
           {
             resolve: `gatsby-remark-images`,
             options: {
               maxWidth: 590,
             },
           },
+
           {
             resolve: `gatsby-remark-responsive-iframe`,
             options: {
               wrapperStyle: `margin-bottom: 1.0725rem`,
             },
           },
-          `gatsby-remark-prismjs`,
-          `gatsby-remark-copy-linked-files`,
-          `gatsby-remark-smartypants`,
+
         ],
       },
     },
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
-    `gatsby-plugin-styled-components`,
+
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
         //trackingId: `ADD YOUR TRACKING ID HERE`,
       },
     },
-    `gatsby-plugin-feed-mdx`,
+
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Gatsby Starter Blog`,
-        short_name: `GatsbyJS`,
+        name: `Jake Zien`,
+        short_name: `JZ`,
         start_url: `/`,
         background_color: `#ffffff`,
-        theme_color: `#663399`,
+        theme_color: `rgb(255, 194, 41)`,
         display: `minimal-ui`,
-        icon: `content/assets/gatsby-icon.png`,
+        icon: `content/assets/monogram.svg`,
       },
     },
-    `gatsby-plugin-react-helmet`,
-    {
-      resolve: `gatsby-plugin-react-svg`,
-    },
+
+
+    
+
     {
       resolve: 'gatsby-plugin-web-font-loader',
       options: {
         custom: {
-          // families: ['Bau', 'Input', 'Pantograph', 'Pantograph Condensed', 'Montefiore'],
-          families: ['Bau', 'Input', 'Pantograph Trial', 'Pantograph Trial Condensed', 'Pantograph Trial Compressed', 'Montefiore'],
+          families: ['Bau', 'Input', 'Pantograph', 'Montefiore'],
           urls: ['fonts/fonts.css']
         },
         prefixPaths: "true"
       }
     },
+
     {
       resolve: `gatsby-plugin-typography`,
       options: {

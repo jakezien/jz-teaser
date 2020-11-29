@@ -6,7 +6,7 @@ import Monogram from "./monogram"
 import Tooltip from "./tooltip"
 
 const Container = styled.div`
-  margin-top: ${rhythm(1)};
+  margin-top: ${rhythm(4)};
   margin-bottom: ${rhythm(2)};
   max-width: ${rhythm(26)};
 `
