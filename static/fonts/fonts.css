@@ -115,3 +115,147 @@
 }
 
 
+@font-face {
+  font-family: "Input";
+  src: url("input/InputSerifCondensed-BlackItalic.ttf");
+  font-weight: 700;
+  font-style: italic;
+}
+
+
+
+@font-face {
+  font-family: "Input";
+  src: url("input/InputSerifCondensed-BlackItalic.ttf");
+  font-weight: 700;
+  font-style: italic;
+}*/
+
+@font-face {
+  font-family: "Pantograph Trial";
+  src: url("colophon/pantograph-light-trial.otf")
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: "Pantograph Trial";
+  src: url("colophon/pantograph-regular-trial.otf")
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Pantograph Trial";
+  src: url("colophon/pantograph-medium-trial.otf")
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "Pantograph Trial";
+  src: url("colophon/pantograph-semibold-trial.otf")
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: "Pantograph Trial";
+  src: url("colophon/pantograph-bold-trial.otf")
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: "Pantograph Trial Condensed";
+  src: url("colophon/pantograph-condensed-light-trial.otf")
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: "Pantograph Trial Condensed";
+  src: url("colophon/pantograph-condensed-regular-trial.otf")
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Pantograph Trial Condensed";
+  src: url("colophon/pantograph-condensed-medium-trial.otf")
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "Pantograph Trial Condensed";
+  src: url("colophon/pantograph-condensed-semibold-trial.otf")
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: "Pantograph Trial Condensed";
+  src: url("colophon/pantograph-condensed-bold-trial.otf")
+  font-weight: 700;
+}
+
+
+@font-face {
+  font-family: "Pantograph Trial Compressed";
+  src: url("colophon/pantograph-compressed-light-trial.otf")
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: "Pantograph Trial Compressed";
+  src: url("colophon/pantograph-compressed-regular-trial.otf")
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Pantograph Trial Compressed";
+  src: url("colophon/pantograph-compressed-medium-trial.otf")
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "Pantograph Trial Compressed";
+  src: url("colophon/pantograph-compressed-semibold-trial.otf")
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: "Pantograph Trial Compressed";
+  src: url("colophon/pantograph-compressed-bold-trial.otf")
+  font-weight: 700;
+}
+
+
+@font-face {
+  font-family: "Montefiore";
+  src: url("colophon/montefiore-condensed-thin-trial.otf")
+  font-weight: 200;
+}
+
+@font-face {
+  font-family: "Montefiore";
+  src: url("colophon/montefiore-condensed-light-trial.otf")
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: "Montefiore";
+  src: url("colophon/montefiore-condensed-regular-trial.otf")
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Montefiore";
+  src: url("colophon/montefiore-condensed-semibold-trial.otf")
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "Montefiore";
+  src: url("colophon/montefiore-condensed-bold-trial.otf")
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: "Montefiore";
+  src: url("colophon/montefiore-condensed-extrabold-trial.otf")
+  font-weight: 700;
+}
+

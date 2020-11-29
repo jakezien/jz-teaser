@@ -23,11 +23,24 @@ const Home = ({ data, location }) => {
       </Section>
       
       <Section bgColor={Colors.bg0}>
-        <Teaser posts={data.workPosts.edges} title="Work" linkTo="/work" linkText="All work"/>
+        <Teaser 
+          posts={data.workPosts.edges} 
+          title="Work" 
+          subtitle="Things I have made or worked on." 
+          linkTo="/work" 
+          linkText="All work"
+        />
       </Section>
 
       <Section bgColor={Colors.bg1}>
-        <Teaser posts={data.thingsPosts.edges} title="Things" linkTo="/things" linkText="All things" postsPerRow="4"/>
+        <Teaser 
+          posts={data.thingsPosts.edges} 
+          title="Things"
+          subtitle="Things I like enough to recommend." 
+          linkTo="/things" 
+          linkText="All things" 
+          postsPerRow="4"
+        />
       </Section>
 
       <Section bgColor={Colors.yellow}>

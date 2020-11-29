@@ -34,17 +34,19 @@ const StyledSpan = styled.span`
     padding: 8px;
     top: -8px;
     left: -8px;
-    // content: '${props.text}';
+    width: calc(100% + 16px);
+    height: calc(100% + 16px);
+    content: '';
     background-color: ${Colors.yellow};
     opacity: 0;
-    z-index: 0;
+    z-index: -1;
   }
 `
 
 const StyledPopup = styled.div`
   position: absolute;
   top: 2%;
-  left: 102%;
+  left: 95%;
   display: none;
   opacity: 0;
   z-index: 0;
@@ -66,7 +68,7 @@ const Tooltip = ({children, text}) => {
   
   return (
     <StyledOuterSpan>
-      <StyledSpan as='h2' className="jz-tooltip-trigger">
+      <StyledSpan as='h1' className="jz-tooltip-trigger">
         {text}
       </StyledSpan>
       <StyledPopup className="jz-tooltip inputFont">

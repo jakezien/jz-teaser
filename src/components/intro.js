@@ -11,7 +11,7 @@ const Container = styled.div`
   max-width: ${rhythm(26)};
 `
 
-const StyledH2 = styled.h2`
+const StyledH2 = styled.h1`
   display: inline-block;
   margin-top:0;
   margin-bottom:${rhythm(.5)};

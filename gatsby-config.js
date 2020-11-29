@@ -68,26 +68,24 @@ module.exports = {
     },
     `gatsby-plugin-react-helmet`,
     {
-      resolve: `gatsby-plugin-typography`,
-      options: {
-        pathToConfigModule: `src/utils/typography`,
-      },
-    },
-    {
       resolve: `gatsby-plugin-react-svg`,
     },
     {
       resolve: 'gatsby-plugin-web-font-loader',
       options: {
         custom: {
-          families: ['Input', 'Bau'],
+          // families: ['Bau', 'Input', 'Pantograph', 'Pantograph Condensed', 'Montefiore'],
+          families: ['Bau', 'Input', 'Pantograph Trial', 'Pantograph Trial Condensed', 'Pantograph Trial Compressed', 'Montefiore'],
           urls: ['fonts/fonts.css']
-        },
-        google: {
-          families: ['IBM Plex Mono\:100,200,300,400,500,600,700']
         },
         prefixPaths: "true"
       }
+    },
+    {
+      resolve: `gatsby-plugin-typography`,
+      options: {
+        pathToConfigModule: `src/utils/typography`,
+      },
     },
 
  

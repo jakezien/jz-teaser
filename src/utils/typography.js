@@ -3,22 +3,13 @@ import Colors from './colors'
 
 const headerOpacity = 0.9
 
-const inputFontStyles = { 
-  fontFamily: "IBM Plex Mono",
-  fontFamily: "Input",
-  letterSpacing: '-0.066em;',
-  fontWeight: 600
-}
-
 const typography = new Typography({
   baseFontSize: "18px",
   baseLineHeight: 1.35,
-  headerWeight: 600,
-  scaleRatio: 2.5,
+  headerWeight: 500,
+  scaleRatio: 4.5,
   headerFontFamily: [
-    "Input",
-    "IBM Plex Mono",
-    "monospace",
+    "Pantograph Trial Compressed",
   ],
   bodyFontFamily: [
     "Bau",
@@ -27,34 +18,34 @@ const typography = new Typography({
   ],
   overrideStyles: ({ adjustFontSizeTo, rhythm }, options, styles) => ({
     'h1': {
-      letterSpacing: '-0.066em',
       opacity: headerOpacity,
       marginBottom: rhythm(.5),
       marginTop: rhythm(1.5),
+      fontWeight: 500
     },
 
     'h2': {
-      letterSpacing: '-0.066em',
       opacity: headerOpacity,
       marginBottom: rhythm(.5),
       marginTop: rhythm(1.5),
+      fontWeight: 600
     },
     
     'h3': {
-      letterSpacing: '-0.066em',
       opacity: 0.8,
       marginTop: rhythm(.5),
+      fontWeight: 500
     },
     
     'a, a *': {
       color: 'inherit'
     },
     '*.inputFont': {
-      ...inputFontStyles
+      fontFamily: 'Pantograph Trial Wide',
     },
     
     'p>a, *.link': {
-      ...inputFontStyles,
+      fontFamily: 'Pantograph Trial Wide',
       color: '#777',
       textDecoration: 'none',
       borderBottom: '2px solid ' + Colors.bg1,

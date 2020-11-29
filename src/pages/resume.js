@@ -18,10 +18,8 @@ let doubleSpace = rhythm(2)
 const StyledResumeItem = styled(ResumeItem)`
   margin-bottom: ${doubleSpace};
   @media only screen and (min-width:720px) {
-    flex-basis: calc(${width}% - ${space});
-    min-width:  calc(${width}% - ${space});
-    margin-bottom: ${doubleSpace};
-    margin-right: ${space};
+    margin-left: 12.5%;
+    margin-right: 12.5%;
   }
 `
 
