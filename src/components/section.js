@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import { rhythm } from "../utils/typography"
-import { Container } from "../components/layout"
+import Container from "../components/container"
 
 let StyledSection = styled.section`
   width: 100%;  
@@ -16,9 +16,6 @@ let StyledSection = styled.section`
 `
 
 const Section = ({children, bgColor, className}) => {
-
-
-  
   return (
     <StyledSection className={className} bgColor={bgColor}>
       <Container>

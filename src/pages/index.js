@@ -5,12 +5,16 @@ import SEO from "../components/seo"
 import { rhythm } from "../utils/typography"
 import Colors from "../utils/colors"
 
+import Container from '../components/container'
 import Section from '../components/section'
 import Header from '../components/header'
 import Footer from '../components/footer'
-import Intro from "../components/intro"
 import Teaser from "../components/teaser"
 
+import Hello from "../../content/index/hello"
+import Think from "../../content/index/think"
+import Do from "../../content/index/do"
+import Like from "../../content/index/like"
 
 const Home = ({ data, location }) => {
 
@@ -19,28 +23,22 @@ const Home = ({ data, location }) => {
       <SEO title="Jake Zien" />
       <Section>
         <Header location={location}/>
-        <Intro />
       </Section>
-      
+
+      <Section>
+        <Hello />
+      </Section>
+
       <Section bgColor={Colors.bg0}>
-        <Teaser 
-          posts={data.workPosts.edges} 
-          title="Work" 
-          subtitle="Things I have made or worked on." 
-          linkTo="/work" 
-          linkText="All work"
-        />
+        <Think />
       </Section>
 
       <Section bgColor={Colors.bg1}>
-        <Teaser 
-          posts={data.thingsPosts.edges} 
-          title="Things"
-          subtitle="Things I like enough to recommend." 
-          linkTo="/things" 
-          linkText="All things" 
-          postsPerRow="4"
-        />
+        <Do products={data.products.edges} brands={data.brands.edges}/>
+      </Section>
+
+      <Section bgColor={Colors.bg2}>
+        <Like things={data.likes.edges}/>
       </Section>
 
       <Section bgColor={Colors.yellow}>
@@ -60,9 +58,8 @@ export const pageQuery = graphql`
       }
     }
 
-    workPosts: allMdx(
-      limit: 4,
-      filter: { fileAbsolutePath: {regex: "\\/content/work/"} },
+    products: allMdx(
+      filter: { fileAbsolutePath: {regex: "\\/content/products/"} },
       sort: { fields: [frontmatter___date], order: DESC }
     ){
       edges {
@@ -74,6 +71,7 @@ export const pageQuery = graphql`
           frontmatter {
             date(formatString: "MMMM DD, YYYY")
             title
+            oneliner
             description
             category
             coverImage {
@@ -88,9 +86,37 @@ export const pageQuery = graphql`
       }
     }
 
-    thingsPosts: allMdx(
+    brands: allMdx(
+      filter: { fileAbsolutePath: {regex: "\\/content/brands/"} },
+      sort: { fields: [frontmatter___date], order: DESC }
+    ){
+      edges {
+        node {
+          excerpt
+          fields {
+            slug
+          }
+          frontmatter {
+            date(formatString: "MMMM DD, YYYY")
+            title
+            oneliner
+            description
+            category
+            coverImage {
+              childImageSharp {
+                fluid(maxWidth: 400, maxHeight: 250) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    likes: allMdx(
     limit: 8,
-    filter: { fileAbsolutePath: {regex: "\\/content/things/"} },
+    filter: { fileAbsolutePath: {regex: "\\/content/likes/"} },
     sort: { fields: [frontmatter___date], order: DESC }) {
       edges {
         node {
@@ -102,6 +128,7 @@ export const pageQuery = graphql`
             postType
             date(formatString: "MMMM DD, YYYY")
             title
+            oneliner
             description
             category
             author
