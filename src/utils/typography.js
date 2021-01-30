@@ -31,6 +31,21 @@ const typography = new Typography({
       fontStretch: 'condensed',
       fontWeight: 500
     },
+
+    'h4': {
+      opacity: 0.8,
+      fontStretch: 'condensed',
+      textTransform: 'uppercase',
+      letterSpacing: '0.1em',
+    },
+
+    'h5': {
+      fontFamily: 'Bau',
+      fontWeight: 400,
+      fontSize: '1.25rem',
+      lineHeight: '1.66rem',
+      maxWidth: '80%'
+    },
     
     'a, a *': {
       color: 'inherit'

@@ -9,7 +9,7 @@ const ExampleList = ({items}) => {
     <ul>
       {items.map( 
         ({node}, index ) => {
-          return(<li>{node.frontmatter.title}, {node.frontmatter.oneliner}</li>)
+          return(<li key={index}>{node.frontmatter.title}, {node.frontmatter.oneliner}</li>)
         }
       )}
     </ul>

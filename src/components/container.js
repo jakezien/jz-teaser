@@ -3,10 +3,13 @@ import styled from "styled-components"
 import { rhythm, scale } from "../utils/typography"
 
 const StyledDiv = styled.div`
-  max-width: ${rhythm(44)};
-  padding: ${rhythm(1)} ${rhythm(1)} ${rhythm(2)} ${rhythm(1)};
+  padding: ${rhythm(1)};
   margin: 0 auto;
   overflow: visible;
+  @media screen and (min-width: 768px) {
+    max-width: ${rhythm(40)};
+    padding: ${rhythm(1)} ${rhythm(3)};
+  }
 `
 
 const Container = ({children}) => {
