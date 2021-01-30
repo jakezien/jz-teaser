@@ -10,7 +10,8 @@ const typography = new Typography({
   headerWeight: 500,
   headerGray: 50,
  
-  bodyFontFamily: ["Bau"],
+  bodyFontFamily: ["covik-sans"],
+  bodyWeight: 300,
   bodyGray: 30,
 
   overrideStyles: ({ adjustFontSizeTo, rhythm }, options, styles) => ({
@@ -40,7 +41,7 @@ const typography = new Typography({
     },
 
     'h5': {
-      fontFamily: 'Bau',
+      fontFamily: 'covik-sans',
       fontWeight: 400,
       fontSize: '1.25rem',
       lineHeight: '1.66rem',

@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 module.exports = {
   siteMetadata: {
     title: `Jake Zien`,
@@ -83,6 +85,9 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-web-font-loader',
       options: {
+        typekit:{
+          id: process.env.TYPEKIT_ID,
+        },
         custom: {
           families: ['Bau', 'Input', 'Pantograph', 'Montefiore'],
           urls: ['fonts/fonts.css']
