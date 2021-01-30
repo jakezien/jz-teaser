@@ -12,7 +12,7 @@ const typography = new Typography({
  
   bodyFontFamily: ["covik-sans"],
   bodyWeight: 300,
-  bodyGray: 30,
+  bodyGray: '40',
 
   overrideStyles: ({ adjustFontSizeTo, rhythm }, options, styles) => ({
     'h1': {
@@ -23,29 +23,43 @@ const typography = new Typography({
     },
 
     'h2': {
+      opacity: 0.9,
+      marginBottom: '1rem',
       fontStretch: 'extra-condensed',
       ...adjustFontSizeTo(rhythm(2.25))
     },
     
     'h3': {
       opacity: 0.8,
+      marginBottom: '.5rem',
       fontStretch: 'condensed',
       fontWeight: 500
     },
 
     'h4': {
-      opacity: 0.8,
+      opacity: 0.9,
+      marginBottom: '.5rem',
       fontStretch: 'condensed',
       textTransform: 'uppercase',
       letterSpacing: '0.1em',
     },
 
     'h5': {
+      opacity: 0.75,
       fontFamily: 'covik-sans',
       fontWeight: 400,
       fontSize: '1.25rem',
-      lineHeight: '1.66rem',
+      lineHeight: '1.5rem',
+      letterSpacing: '-0.02em',
       maxWidth: '80%'
+    },
+
+    'strong': {
+      opacity: 0.9
+    },
+
+    'p, a, span, li': {
+      letterSpacing: '-0.02em'
     },
     
     'a, a *': {

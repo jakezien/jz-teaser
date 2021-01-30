@@ -56,15 +56,14 @@ const StyledPopup = styled.div`
   background-color: ${Colors.bg2};
   box-shadow: -4px 4px 0px rgba(0,0,0,0.15);
   font-weight: 300;
+  font-family: 'covik-sans';
   transform: rotate(-1.5deg);
   i {
-    font-stretch: condensed;
-    letter-spacing: 0.2em;
+    letter-spacing: 0.05em;
     font-style: normal;
-    font-weight: 400;
-    text-transform: uppercase;
-    font-size: 0.75em;
-    margin-left: 0.2em;
+    font-weight: 300;
+    text-transform: lowercase;
+    font-feature-settings: 'smcp';
   }
 `
 
