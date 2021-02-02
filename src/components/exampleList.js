@@ -7,20 +7,19 @@ import Colors from "../utils/colors"
 const ExampleList = ({items}) => {
   return (
     <ul>
-      {if (items) {
-        items.map( 
-          ({node}, index ) => {
-            let title = node.frontmatter.title ? node.frontmatter.title : ''
-            let oneliner = node.frontmatter.oneliner ? node.frontmatter.oneliner : ''
+      {
+        items ? items.map( 
+        ({node}, index ) => {
+          let title = node.frontmatter.title ? node.frontmatter.title : ''
+          let oneliner = node.frontmatter.oneliner ? node.frontmatter.oneliner : ''
 
-            return(
-              <li key={index}>
-                <strong>{title}</strong>, {oneliner}
-              </li>
-            )
-          }
-        )
-      }}
+          return(
+            <li key={index}>
+              <strong>{title}</strong>, {oneliner}
+            </li>
+          )
+        }
+      ) : ''}
     </ul>
   )
 }
