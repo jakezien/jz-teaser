@@ -23,9 +23,9 @@ const StyledPostPreview = styled(PostPreview)`
 const PostGrid = ({ posts, postsPerRow }) => {
   return (
     <StyledDiv>
-      {posts.map( ({node}, index ) => {
+      {posts ? posts.map( ({node}, index ) => {
         return(<StyledPostPreview key={index} post={node} postsPerRow={postsPerRow}/>)
-      })}
+      }) : ''}
     </StyledDiv>
   )
 }

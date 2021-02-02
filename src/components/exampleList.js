@@ -7,8 +7,7 @@ import Colors from "../utils/colors"
 const ExampleList = ({items}) => {
   return (
     <ul>
-      {
-        items ? items.map( 
+      {items ? items.map( 
         ({node}, index ) => {
           let title = node.frontmatter.title ? node.frontmatter.title : ''
           let oneliner = node.frontmatter.oneliner ? node.frontmatter.oneliner : ''
