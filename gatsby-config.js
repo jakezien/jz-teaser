@@ -90,9 +90,9 @@ module.exports = {
         },
         custom: {
           families: ['Bau', 'Input', 'Pantograph', 'Montefiore'],
-          urls: ['/fonts.css']
+          urls: ['/jz/fonts.css']
         },
-        prefixPaths: "true"
+        prefixPaths: true
       }
     },
 
