@@ -1,7 +1,7 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
-import Layout from "../components/layout"
+import Layout from "./layout"
 import SEO from "../components/seo"
 import { rhythm, scale } from "../utils/typography"
 
@@ -77,3 +77,23 @@ const WorkPostTemplate = ({ data, pageContext, location }) => {
 }
 
 export default WorkPostTemplate
+
+export const pageQuery = graphql`
+  query WorkPostBySlug($slug: String!) {
+    site {
+      siteMetadata {
+        title
+      }
+    }
+    mdx(fields: { slug: { eq: $slug } }) {
+      id
+      excerpt(pruneLength: 160)
+      body
+      frontmatter {
+        title
+        date(formatString: "MMMM DD, YYYY")
+        description
+      }
+    }
+  }
+`

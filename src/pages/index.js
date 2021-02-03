@@ -34,7 +34,7 @@ const Home = ({ data, location }) => {
       </Section>
 
       <Section bgColor={Colors.bg1}>
-        <Do products={data.products.edges} brands={data.brands.edges}/>
+        <Do work={data.work.edges}/>
       </Section>
 
       <Section bgColor={Colors.bg2}>
@@ -58,8 +58,8 @@ export const pageQuery = graphql`
       }
     }
 
-    products: allMdx(
-      filter: { fileAbsolutePath: {regex: "\\/content/products/"} },
+    work: allMdx(
+      filter: { fileAbsolutePath: {regex: "\\/content/work/"} },
       sort: { fields: [frontmatter___date], order: DESC }
     ){
       edges {
@@ -72,35 +72,9 @@ export const pageQuery = graphql`
             date(formatString: "MMMM DD, YYYY")
             title
             oneliner
+            company
             description
-            category
-            coverImage {
-              childImageSharp {
-                fluid(maxWidth: 400, maxHeight: 250) {
-                  ...GatsbyImageSharpFluid
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-
-    brands: allMdx(
-      filter: { fileAbsolutePath: {regex: "\\/content/brands/"} },
-      sort: { fields: [frontmatter___date], order: DESC }
-    ){
-      edges {
-        node {
-          excerpt
-          fields {
-            slug
-          }
-          frontmatter {
-            date(formatString: "MMMM DD, YYYY")
-            title
-            oneliner
-            description
+            type
             category
             coverImage {
               childImageSharp {
@@ -125,7 +99,6 @@ export const pageQuery = graphql`
             slug
           }
           frontmatter {
-            postType
             date(formatString: "MMMM DD, YYYY")
             title
             oneliner

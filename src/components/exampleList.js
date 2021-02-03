@@ -11,11 +11,14 @@ const ExampleList = ({items}) => {
         ({node}, index ) => {
           let title = node.frontmatter.title ? node.frontmatter.title : ''
           let oneliner = node.frontmatter.oneliner ? node.frontmatter.oneliner : ''
+          let slug = node.fields.slug ? node.fields.slug : ''
 
           return(
-            <li key={index}>
-              <strong>{title}</strong>, {oneliner}
-            </li>
+            <Link to={slug} key={index}>
+              <li>
+                <strong>{title}</strong>, {oneliner}
+              </li>
+            </Link>
           )
         }
       ) : ''}

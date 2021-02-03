@@ -3,8 +3,8 @@ import { Link } from "gatsby"
 import { rhythm, scale } from "../utils/typography"
 import styled from "styled-components"
 
-import Header from './header'
-import Footer from './footer'
+import Header from '../components/header'
+import Footer from '../components/footer'
 
 export const Container = styled.div`
   max-width: ${rhythm(44)};

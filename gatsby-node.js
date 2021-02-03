@@ -1,14 +1,68 @@
 const path = require(`path`)
 const { createFilePath } = require(`gatsby-source-filesystem`)
 
+
 exports.createPages = async ({ graphql, actions }) => {
+
   const { createPage } = actions
 
-  const blogPost = path.resolve(`./src/templates/blog-post.js`)
-  const result = await graphql(
+  // ———— WORK PAGES ———— //
+  const workPostTemplate = path.resolve(`./src/templates/work-post.js`)
+  const workResult = await graphql(
     `
       {
         allMdx(
+          filter: {fileAbsolutePath: {regex: "/content/work/"}}
+          sort: { fields: [frontmatter___date], order: DESC }
+          limit: 1000
+        ) {
+          edges {
+            node {
+              fields {
+                slug
+              }
+              frontmatter {
+                title
+                type
+              }
+            }
+          }
+        }
+      }
+    `
+  )
+
+  if (workResult.errors) {
+    throw workResult.errors
+  }
+
+  // Create work pages
+  const workPages = workResult.data.allMdx.edges
+  workPages.forEach((post, index) => {
+    const previous = index === workPages.length - 1 ? null : workPages[index + 1].node
+    const next = index === 0 ? null : workPages[index - 1].node
+
+    createPage({
+      path: post.node.fields.slug,
+      component: workPostTemplate,
+      context: {
+        slug: post.node.fields.slug,
+        previous,
+        next,
+      },
+    })
+  })
+
+
+
+
+  // ———— BLOG PAGES ———— //
+  const blogPostTemplate = path.resolve(`./src/templates/blog-post.js`)
+  const blogResult = await graphql(
+    `
+      {
+        allMdx(
+          filter: {fileAbsolutePath: {regex: "/content/blog/"}}
           sort: { fields: [frontmatter___date], order: DESC }
           limit: 1000
         ) {
@@ -27,12 +81,12 @@ exports.createPages = async ({ graphql, actions }) => {
     `
   )
 
-  if (result.errors) {
-    throw result.errors
+  if (blogResult.errors) {
+    throw blogResult.errors
   }
 
   // Create blog posts pages.
-  const posts = result.data.allMdx.edges
+  const posts = blogResult.data.allMdx.edges
 
   posts.forEach((post, index) => {
     const previous = index === posts.length - 1 ? null : posts[index + 1].node
@@ -40,7 +94,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
     createPage({
       path: post.node.fields.slug,
-      component: blogPost,
+      component: blogPostTemplate,
       context: {
         slug: post.node.fields.slug,
         previous,
@@ -48,6 +102,7 @@ exports.createPages = async ({ graphql, actions }) => {
       },
     })
   })
+
 }
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
