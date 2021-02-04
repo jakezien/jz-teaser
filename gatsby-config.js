@@ -79,20 +79,18 @@ module.exports = {
       },
     },
 
-
-    
-
     {
-      resolve: 'gatsby-plugin-web-font-loader',
+      resolve: 'gatsby-omni-font-loader',
       options: {
-        typekit:{
-          id: process.env.TYPEKIT_ID,
-        },
-        custom: {
-          families: ['Bau', 'Input', 'Pantograph', 'Montefiore'],
-          urls: ['/jz/fonts.css']
-        },
-        prefixPaths: true
+        mode: "async",
+        custom: [{
+          name: "Pantograph",
+          file: "/fonts/fonts.css",
+        }],
+        web: [{
+          name: "covik-sans",
+          file: "https://use.typekit.net/ath0ajt.css"
+        }]
       }
     },
 
