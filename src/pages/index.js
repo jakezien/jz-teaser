@@ -5,6 +5,8 @@ import SEO from "../components/seo"
 import { rhythm } from "../utils/typography"
 import Colors from "../utils/colors"
 
+import Layout from "../templates/layout"
+
 import Container from '../components/container'
 import Section from '../components/section'
 import Header from '../components/header'
@@ -19,11 +21,8 @@ import Like from "../../content/index/like"
 const Home = ({ data, location }) => {
 
   return (
-    <div>
+    <Layout>
       <SEO title="Jake Zien" />
-      <Section>
-        <Header location={location}/>
-      </Section>
 
       <Section>
         <Hello />
@@ -40,11 +39,7 @@ const Home = ({ data, location }) => {
       <Section bgColor={Colors.bg2}>
         <Like things={data.likes.edges}/>
       </Section>
-
-      <Section bgColor={Colors.yellow}>
-        <Footer />
-      </Section>
-    </div>
+    </Layout>
   )
 }
 

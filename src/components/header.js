@@ -4,9 +4,10 @@ import styled from "styled-components"
 import { Link } from "gatsby"
 import Monogram from "../../content/assets/monogram.svg"
 import { rhythm } from "../utils/typography"
+import Container from "./container"
 
 
-const HeaderEl = styled.header`
+const StyledHeader = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -29,12 +30,14 @@ const StyledMonogram = styled(Monogram)`
 
 const Header = ({location}) => {
   return (
-    <HeaderEl>
-      <StyledLink to="/">
-        <StyledMonogram/>
-      </StyledLink>
-      <StyledSiteNav location={location}/>
-    </HeaderEl>
+    <Container>
+      <StyledHeader>
+        <StyledLink to="/">
+          <StyledMonogram/>
+        </StyledLink>
+        <StyledSiteNav location={location}/>
+      </StyledHeader>
+    </Container>
 
   )
 }

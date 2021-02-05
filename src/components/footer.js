@@ -3,7 +3,7 @@ import SiteNav from './siteNav'
 import styled from "styled-components"
 import { Link } from "gatsby"
 import { rhythm } from "../utils/typography"
-import { Container } from "../templates/layout"
+import Container from "./container"
 import Colors from "../utils/colors"
 
 const StyledFooter = styled.footer`
