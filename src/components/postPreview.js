@@ -49,13 +49,6 @@ const PostPreview = ({ post, className, aspectRatio = 1.5 }) => {
   if (post.frontmatter.coverImage) {
     coverImage = post.frontmatter.coverImage.childImageSharp;
   }
-  if (post.frontmatter.postType) {
-    postType = post.frontmatter.postType;
-    if (postType === "THING") {
-      aspectRatio = 1;
-      className += " thing"
-    }
-  }
 
   return (
     <Container className={className}>
@@ -63,7 +56,7 @@ const PostPreview = ({ post, className, aspectRatio = 1.5 }) => {
         <ImageContainer className="imageContainer">
           {coverImage ? 
             <Img 
-              fluid={{ ...coverImage.fluid, aspectRatio: aspectRatio }} 
+              fluid={{ ...coverImage.fluid, aspectRatio: 1 }} 
               imgStyle={{ 
                 objectFit: "contain", 
                 objectPosition: "top center", 
