@@ -16,7 +16,7 @@ const HelloHeadline = () => {
       <StyledH1>Hey, I'm Jake&nbsp;</StyledH1>
       <Tooltip text="Zien">
         Rhymes with <i>lyin',</i> <i>cryin',</i> and&nbsp;<i>dyin'.</i>
-      </Tooltip>
+      </Tooltip>&nbsp;
       <StyledH1>.</StyledH1>
     </div>
   )
