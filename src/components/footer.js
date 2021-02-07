@@ -20,7 +20,6 @@ const Footer = () => {
         <h3>© {new Date().getFullYear()} Jake Zien.</h3>
       </Container>
     </StyledFooter>
-
   )
 }
 
