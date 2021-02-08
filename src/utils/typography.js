@@ -1,5 +1,4 @@
 import Typography from "typography"
-import Colors from './colors'
 
 const typography = new Typography({
 
@@ -71,23 +70,13 @@ const typography = new Typography({
     
     'p>a, *.link': {
       fontFamily: 'Pantograph',
-      color: '#777',
       textDecoration: 'none',
-      borderBottom: '2px solid ' + Colors.bg1,
       letterSpacing: '0.02em',
       fontSize: '1.1em',
       fontWeight: 400,
       position: 'relative',
       top: '.05em'
     },
-
-    'p>a:hover, *.link:hover': {
-      background: Colors.bg3,
-      color: '#444',
-      border: '4px solid ' + Colors.bg3,
-      borderRadius: '4px',
-      left: '-4px'
-    }
   })
 })
 

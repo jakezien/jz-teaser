@@ -47,7 +47,7 @@ const Home = ({ data, location }) => {
       </DoSection>
 
       <LikeSection>
-        <Like things={data.likes.edges}/>
+        <Like likes={data.likes.edges}/>
       </LikeSection>
     </Layout>
   )

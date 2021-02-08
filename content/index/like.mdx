@@ -1,12 +1,8 @@
-import ExampleList from "../../src/components/exampleList"
-import Teaser from "../../src/components/teaser"
+import Grid from "../../src/components/grid"
+import LikePostPreview from "../../src/templates/likePost"
+
 
 ## Things That I Like
 Things I like enough to recommend generally, publicly, indefinitely.
 
-<Teaser 
-  posts={props.things} 
-  linkTo="/things" 
-  linkText="All things" 
-  postsPerRow="4"
-/>
+<Grid posts={props.likes} postTemplate={LikePostPreview} postsPerRow="4" />

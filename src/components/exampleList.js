@@ -2,7 +2,6 @@ import React from "react"
 import styled from "styled-components"
 import { Link } from "gatsby"
 import { rhythm } from "../utils/typography"
-import Colors from "../utils/colors"
 
 const ExampleList = ({items}) => {
   return (

@@ -1,7 +1,6 @@
 import React from "react"
 import { Link } from "gatsby"
 import styled from "styled-components"
-import Colors from "../utils/colors"
 
 const StyledUl = styled.ul`
   margin: 0;
@@ -16,18 +15,13 @@ const StyledLi = styled.li`
 
 const StyledLink = styled(Link)`
   margin-left: 2em;
-  &:hover {
+  &:hover, &[aria-current=page] {
     left: inherit;
     right:-4px;
     margin-left: calc(2em - 8px);
   }
   &[aria-current=page] {
-    color: #333;
-    background: ${Colors.bg3};
-    border: 4px solid ${Colors.bg3};
-    position: relative;
-    right: -4px;
-    margin-left: calc(2em - 8px);
+    color: ${props => props.theme.textShade};
   }
 `
 

@@ -1,7 +1,6 @@
 import React from "react"
 import styled from "styled-components"
 import { rhythm } from "../utils/typography"
-import Colors from "../utils/colors"
 
 const StyledOuterSpan = styled.span`
   position: relative;
@@ -14,15 +13,18 @@ const StyledOuterSpan = styled.span`
       z-index: 2;
       opacity: 1;
     }
-    .jz-tooltip-trigger:before {
-      opacity: 1
+    .jz-tooltip-trigger{
+      color: ${props => props.theme.textOnYellow};
+      &:before {
+        opacity: 1
+      }
     }
   }
 `
 
 const StyledSpan = styled.span`
   display: inline-block;
-  border-bottom: 4px solid ${Colors.yellow};
+  border-bottom: 4px solid ${props => props.theme.yellow};
   padding-bottom: 0;
   margin-top: initial;
   margin-bottom: 0.5rem;
@@ -37,7 +39,7 @@ const StyledSpan = styled.span`
     width: calc(100% + 16px);
     height: calc(100% + 16px);
     content: '';
-    background-color: ${Colors.yellow};
+    background-color: ${props => props.theme.yellow};
     opacity: 0;
     z-index: -1;
   }
@@ -53,7 +55,7 @@ const StyledPopup = styled.div`
   min-width: ${rhythm(7)};
   padding: ${rhythm(0.5)};
   padding-bottom: ${rhythm(1)};
-  background-color: ${Colors.bg2};
+  background-color: ${props => props.theme.bg3};
   box-shadow: -4px 4px 0px rgba(0,0,0,0.15);
   font-weight: 300;
   font-family: 'covik-sans';
@@ -74,7 +76,7 @@ const Tooltip = ({children, text}) => {
       <StyledSpan as='h1' className="jz-tooltip-trigger">
         {text}
       </StyledSpan>
-      <StyledPopup className="jz-tooltip inputFont">
+      <StyledPopup className="jz-tooltip">
         {children}
       </StyledPopup>
     </StyledOuterSpan>
