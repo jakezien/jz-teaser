@@ -17,7 +17,7 @@ let StyledSection = styled.section`
 
 const Section = ({children, bgColor, className}) => {
   return (
-    <StyledSection className={className} bgColor={bgColor}>
+    <StyledSection className={className}>
       <Container>
         {children}
       </Container>

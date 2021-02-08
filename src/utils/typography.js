@@ -2,17 +2,16 @@ import Typography from "typography"
 import Colors from './colors'
 
 const typography = new Typography({
+
   baseFontSize: "20px",
   baseLineHeight: 1.35,
   scaleRatio: 4.5,
  
   headerFontFamily: ["Pantograph"],
   headerWeight: 500,
-  headerGray: 50,
  
   bodyFontFamily: ["covik-sans"],
   bodyWeight: 300,
-  bodyGray: '40',
 
   overrideStyles: ({ adjustFontSizeTo, rhythm }, options, styles) => ({
     'h1': {
@@ -97,6 +96,6 @@ if (process.env.NODE_ENV !== `production`) {
   typography.injectStyles()
 }
 
-export default typography
+export default typography;
 export const rhythm = typography.rhythm
 export const scale = typography.scale

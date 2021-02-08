@@ -3,7 +3,7 @@ import { Link, graphql } from "gatsby"
 
 import SEO from "../components/seo"
 import { rhythm } from "../utils/typography"
-import Colors from "../utils/colors"
+import styled from "styled-components"
 
 import Layout from "../templates/layout"
 
@@ -18,6 +18,16 @@ import Think from "../../content/index/think"
 import Do from "../../content/index/do"
 import Like from "../../content/index/like"
 
+const ThinkSection = styled(Section)`
+  background-color: ${props => props.theme.bg1};
+`
+const DoSection = styled(Section)`
+  background-color: ${props => props.theme.bg2};
+`
+const LikeSection = styled(Section)`
+  background-color: ${props => props.theme.bg3};
+`
+
 const Home = ({ data, location }) => {
 
   return (
@@ -28,17 +38,17 @@ const Home = ({ data, location }) => {
         <Hello />
       </Section>
 
-      <Section bgColor={Colors.bg0}>
+      <ThinkSection>
         <Think />
-      </Section>
+      </ThinkSection>
 
-      <Section bgColor={Colors.bg1}>
+      <DoSection>
         <Do work={data.work.edges}/>
-      </Section>
+      </DoSection>
 
-      <Section bgColor={Colors.bg2}>
+      <LikeSection>
         <Like things={data.likes.edges}/>
-      </Section>
+      </LikeSection>
     </Layout>
   )
 }
