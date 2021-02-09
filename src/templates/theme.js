@@ -19,7 +19,7 @@ const darkTheme = {
   text:         '#bbb',
   textTint:     '#ddd',
   textShade:    '#999',
-  textOnYellow: lightTheme.text,
+  textOnYellow: lightTheme.textShade,
   bg0:    'black',
   bg1:    'hsl(46, 100%, 4%)',
   bg2:    'hsl(46, 100%, 8%)',
