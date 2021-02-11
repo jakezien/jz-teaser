@@ -17,11 +17,11 @@ module.exports = {
   pathPrefix: "/jz",
   plugins: [
 
+    `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`,
     `gatsby-plugin-feed-mdx`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-react-svg`,
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
     `gatsby-plugin-styled-components`,
   
     {

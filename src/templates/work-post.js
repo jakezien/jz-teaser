@@ -4,13 +4,16 @@ import { MDXRenderer } from "gatsby-plugin-mdx"
 import Layout from "./layout"
 import SEO from "../components/seo"
 import { rhythm, scale } from "../utils/typography"
+
 import Container from "../components/container"
+import FullBleedImg from "../components/fullBleedImg"
 import PostFooterNav from "../components/postFooterNav"
 
 
 const WorkPostTemplate = ({ data, pageContext, location }) => {
   const post = data.mdx
   const siteTitle = data.site.siteMetadata.title
+  const coverImage = data.allFile.edges[0].node.childImageSharp
 
   return (
     <Layout location={location} title={siteTitle}>
@@ -21,6 +24,9 @@ const WorkPostTemplate = ({ data, pageContext, location }) => {
 
       <Container>
         <article>
+
+          <FullBleedImg fluid={coverImage.fluid} />
+
           <header>
             <h1>{post.frontmatter.title}</h1>
             <p>{post.frontmatter.date}</p>
@@ -47,6 +53,7 @@ export const pageQuery = graphql`
       }
     }
     mdx(fields: { slug: { eq: $slug } }) {
+      slug
       id
       excerpt(pruneLength: 160)
       body
@@ -54,6 +61,20 @@ export const pageQuery = graphql`
         title
         date(formatString: "MMMM DD, YYYY")
         description
+      }
+    }
+    allFile(filter: {extension: {regex: "/(jpg)|(jpeg)|(png)/"}, relativeDirectory: {regex: $slug}}) {
+      edges {
+        node {
+          name
+          id
+          extension
+          childImageSharp {
+            fluid {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
       }
     }
   }

@@ -81,13 +81,6 @@ export const pageQuery = graphql`
             description
             type
             category
-            coverImage {
-              childImageSharp {
-                fluid(maxWidth: 400, maxHeight: 250) {
-                  ...GatsbyImageSharpFluid
-                }
-              }
-            }
           }
         }
       }
