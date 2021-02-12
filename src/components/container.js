@@ -2,13 +2,17 @@ import React from "react"
 import styled from "styled-components"
 import { rhythm, scale } from "../utils/typography"
 
+export const hPadding = rhythm(1); 
+export const wideMaxWidth = rhythm(40); 
+export const wideHPadding = rhythm(3); 
+
 const StyledDiv = styled.div`
-  padding: ${rhythm(1)};
+  padding: ${hPadding};
   margin: 0 auto;
   overflow: visible;
   @media screen and (min-width: 768px) {
-    max-width: ${rhythm(40)};
-    padding: ${rhythm(1)} ${rhythm(3)};
+    max-width: ${wideMaxWidth};
+    padding: ${rhythm(1)} ${wideHPadding};
   }
 `
 

@@ -1,5 +1,6 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
+import Img from "gatsby-image"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import Layout from "./layout"
 import SEO from "../components/seo"
@@ -7,13 +8,17 @@ import { rhythm, scale } from "../utils/typography"
 
 import Container from "../components/container"
 import FullBleedImg from "../components/fullBleedImg"
+import WidthBleeder from "../components/widthBleeder"
 import PostFooterNav from "../components/postFooterNav"
 
 
 const WorkPostTemplate = ({ data, pageContext, location }) => {
   const post = data.mdx
   const siteTitle = data.site.siteMetadata.title
-  const coverImage = data.allFile.edges[0].node.childImageSharp
+  const nodes = data.allFile.nodes
+  const coverImage = nodes[0].childImageSharp
+  let imagesArray = [];
+  for (let n in nodes) imagesArray.push(nodes[n].childImageSharp.original)
 
   return (
     <Layout location={location} title={siteTitle}>
@@ -25,14 +30,16 @@ const WorkPostTemplate = ({ data, pageContext, location }) => {
       <Container>
         <article>
 
-          <FullBleedImg fluid={coverImage.fluid} />
+          <WidthBleeder>
+            <Img fluid={coverImage.fluid} />
+          </WidthBleeder>
 
           <header>
             <h1>{post.frontmatter.title}</h1>
             <p>{post.frontmatter.date}</p>
           </header>
 
-          <MDXRenderer>{post.body}</MDXRenderer>
+          <MDXRenderer images={imagesArray}>{post.body}</MDXRenderer>
         </article>
 
         <PostFooterNav pageContext={pageContext} />
@@ -42,7 +49,6 @@ const WorkPostTemplate = ({ data, pageContext, location }) => {
     </Layout>
   )
 }
-
 export default WorkPostTemplate
 
 export const pageQuery = graphql`
@@ -64,15 +70,18 @@ export const pageQuery = graphql`
       }
     }
     allFile(filter: {extension: {regex: "/(jpg)|(jpeg)|(png)/"}, relativeDirectory: {regex: $slug}}) {
-      edges {
-        node {
-          name
-          id
-          extension
-          childImageSharp {
-            fluid {
-              ...GatsbyImageSharpFluid
-            }
+      nodes {
+        name
+        id
+        extension
+        childImageSharp {
+          fluid {
+            ...GatsbyImageSharpFluid
+          }
+          original {
+            src
+            height
+            width
           }
         }
       }

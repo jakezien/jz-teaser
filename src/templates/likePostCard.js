@@ -3,18 +3,7 @@ import { Link } from "gatsby"
 import { rhythm, scale } from "../utils/typography"
 import styled from "styled-components"
 import Img from "gatsby-image"
-
-
-const StyledCard = styled.div`
-  border-radius: 5px;
-  box-shadow: 0 2px 3px ${props => props.theme.shadow};
-  background: ${props => props.theme.bg0};
-  height: 100%;
-  overflow: hidden;
-  a {
-    text-decoration: none;
-  }
-`
+import Card from "../components/card"
 
 const StyledDiv = styled.div`
   padding: ${rhythm(0.5)};
@@ -34,7 +23,7 @@ const StyledSubtitle = styled.p`
 const LikePostPreview = (post) => {
 
   return (
-    <StyledCard>
+    <Card>
       <Link to={post.fields.slug}>
         <div>
           {post.frontmatter.coverImage ? 
@@ -54,7 +43,7 @@ const LikePostPreview = (post) => {
           <p>{post.excerpt}</p>
         </StyledDiv>
       </Link>
-    </StyledCard>
+    </Card>
 
   )
 }

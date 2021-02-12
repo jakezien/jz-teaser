@@ -6,6 +6,10 @@ type: brand
 date: "2020-03-04"
 ---
 
+import Gallery from "react-photo-gallery";
+import WidthBleeder from "../../../src/components/widthBleeder";
+
+
 [My blog post about the story and design details of this project](https://medium.com/cbrebuild/how-we-made-cbre-build-part-1-d303f0b5fd6d?source=friends_link&sk=8afab89c487068da9e37e67e4fdb96ba)
 
 [CBRE Build reviewed on Brand New](https://www.underconsideration.com/brandnew/archives/new_logo_and_identity_for_cbre_build_done_in_house.php)
@@ -13,6 +17,11 @@ date: "2020-03-04"
 ## What it is
 ##### When Floored, the startup I’d helped build for 4 years, was acquired by CBRE, the world’s biggest commercial real estate firm, we faced an identity crisis. 
 Our techy team, office, and culture were unchanged, but we had to let go of our name, logo, and visual brand — and with them went our recruiting power, as well as our group's sense of self. I recognized this unmooring as an identity problem, and initiated a project to create a new identity that would position us within our new parent company, clarifying our purpose for CBRE and for ourselves.
+
+<WidthBleeder>
+  <Gallery photos={props.images} />
+</WidthBleeder>
+
 ## What I did
 - Pitched the brand in a one-on-one session with CEO Bob Sulentic, who approved the work enthusiastically, including special praise for my presentation skill, storytelling and slides.
 - Interviewed dozens of people across CBRE and the globe — including brokers, IT professionals, managers, makers of maps and presentations, C-level executives, and tech recruits who rejected our offers — to learn what makes CBRE unique, its values, and its point of view on technology.

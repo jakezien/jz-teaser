@@ -43,7 +43,7 @@ const Home = ({ data, location }) => {
       </ThinkSection>
 
       <DoSection>
-        <Do work={data.work.edges}/>
+        <Do work={data.work.edges} workCoverImages={data.workCoverImages.nodes} />
       </DoSection>
 
       <LikeSection>
@@ -86,10 +86,25 @@ export const pageQuery = graphql`
       }
     }
 
+    workCoverImages: allFile(
+      filter: {absolutePath: {regex: "\\/content/work/.*/cover/"}}
+    ){
+      nodes {
+        relativeDirectory
+        childImageSharp {
+          fluid {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+    }
+  
+
     likes: allMdx(
-    limit: 8,
-    filter: { fileAbsolutePath: {regex: "\\/content/likes/"} },
-    sort: { fields: [frontmatter___date], order: DESC }) {
+      limit: 8,
+      filter: { fileAbsolutePath: {regex: "\\/content/likes/"} },
+      sort: { fields: [frontmatter___date], order: DESC }
+    ){
       edges {
         node {
           excerpt
