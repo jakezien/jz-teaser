@@ -4,7 +4,7 @@ import { Link, graphql } from "gatsby"
 import Layout from "../templates/layout"
 import SEO from "../components/seo"
 import { rhythm } from "../utils/typography"
-import Img from "gatsby-image"
+import { GatsbyImage } from "gatsby-plugin-image";
 import styled from "styled-components"
 import Section from "../components/section"
 
@@ -18,7 +18,7 @@ const StyledSection = styled(Section)`
   }
 `
 
-const AboutImg = styled(Img)`
+const AboutImg = styled(GatsbyImage)`
   border-radius: 4px;
   margin-bottom: ${rhythm(2)}; 
   max-height: ${rhythm(18)}; 
@@ -45,7 +45,7 @@ const About = ({data, location}) => {
       <StyledSection>
         <h1>About</h1>
         <AboutImg 
-          fluid= {{ ...data.jakey.childImageSharp.fluid, aspectRatio:0.75}}
+          fluid= {{ ...data.jakey.childImageSharp.gatsbyImageData, aspectRatio:0.75}}
           objectFit= "contain"
           imgStyle= {{objectFit: "contain"}}
         />
@@ -56,20 +56,17 @@ const About = ({data, location}) => {
         <Resume/>
       </StyledSection>
     </Layout>
-  )
+  );
 }
 
 export default About
 
 
-export const pageQuery = graphql`
-  query {
-    jakey: file( relativePath: { regex: "/jakey0/i" }) {
-      childImageSharp {
-        fluid(maxWidth: 1000) {
-          ...GatsbyImageSharpFluid
-        }
-      }
+export const pageQuery = graphql`{
+  jakey: file(relativePath: {regex: "/jakey0/i"}) {
+    childImageSharp {
+      gatsbyImageData(layout: FULL_WIDTH)
     }
   }
+}
 `;

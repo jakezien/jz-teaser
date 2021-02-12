@@ -1,13 +1,12 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
-import Img from "gatsby-image"
+import { GatsbyImage } from "gatsby-plugin-image";
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import Layout from "./layout"
 import SEO from "../components/seo"
 import { rhythm, scale } from "../utils/typography"
 
 import Container from "../components/container"
-import FullBleedImg from "../components/fullBleedImg"
 import WidthBleeder from "../components/widthBleeder"
 import PostFooterNav from "../components/postFooterNav"
 
@@ -31,7 +30,7 @@ const WorkPostTemplate = ({ data, pageContext, location }) => {
         <article>
 
           <WidthBleeder>
-            <Img fluid={coverImage.fluid} />
+            <GatsbyImage image={coverImage.gatsbyImageData} alt={post.frontmatter.title}/>
           </WidthBleeder>
 
           <header>
@@ -47,44 +46,41 @@ const WorkPostTemplate = ({ data, pageContext, location }) => {
 
 
     </Layout>
-  )
+  );
 }
 export default WorkPostTemplate
 
-export const pageQuery = graphql`
-  query WorkPostBySlug($slug: String!) {
-    site {
-      siteMetadata {
-        title
-      }
+export const pageQuery = graphql`query WorkPostBySlug($slug: String!) {
+  site {
+    siteMetadata {
+      title
     }
-    mdx(fields: { slug: { eq: $slug } }) {
-      slug
+  }
+  mdx(fields: {slug: {eq: $slug}}) {
+    slug
+    id
+    excerpt(pruneLength: 160)
+    body
+    frontmatter {
+      title
+      date(formatString: "MMMM DD, YYYY")
+      description
+    }
+  }
+  allFile(filter: {extension: {regex: "/(jpg)|(jpeg)|(png)/"}, relativeDirectory: {regex: $slug}}) {
+    nodes {
+      name
       id
-      excerpt(pruneLength: 160)
-      body
-      frontmatter {
-        title
-        date(formatString: "MMMM DD, YYYY")
-        description
-      }
-    }
-    allFile(filter: {extension: {regex: "/(jpg)|(jpeg)|(png)/"}, relativeDirectory: {regex: $slug}}) {
-      nodes {
-        name
-        id
-        extension
-        childImageSharp {
-          fluid {
-            ...GatsbyImageSharpFluid
-          }
-          original {
-            src
-            height
-            width
-          }
+      extension
+      childImageSharp {
+        gatsbyImageData(layout: FULL_WIDTH)
+        original {
+          src
+          height
+          width
         }
       }
     }
   }
+}
 `

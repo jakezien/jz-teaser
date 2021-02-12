@@ -7,6 +7,8 @@ const StyledDiv = styled.div`
   background: ${props => props.theme.bg0};
   height: 100%;
   overflow: hidden;
+  position: relative;
+  z-index: 0;
   a {
     text-decoration: none;
   }

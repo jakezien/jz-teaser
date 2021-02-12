@@ -11,7 +11,6 @@ import Container from '../components/container'
 import Section from '../components/section'
 import Header from '../components/header'
 import Footer from '../components/footer'
-import Teaser from "../components/teaser"
 
 import Hello from "../../content/index/hello"
 import Think from "../../content/index/think"
@@ -43,7 +42,7 @@ const Home = ({ data, location }) => {
       </ThinkSection>
 
       <DoSection>
-        <Do work={data.work.edges} workCoverImages={data.workCoverImages.nodes} />
+        <Do posts={data.work.edges} postCoverImages={data.workCoverImages.nodes} />
       </DoSection>
 
       <LikeSection>
@@ -55,81 +54,63 @@ const Home = ({ data, location }) => {
 
 export default Home
 
-export const pageQuery = graphql`
-  query {
-    site {
-      siteMetadata {
-        title
-      }
+export const pageQuery = graphql`{
+  site {
+    siteMetadata {
+      title
     }
-
-    work: allMdx(
-      filter: { fileAbsolutePath: {regex: "\\/content/work/"} },
-      sort: { fields: [frontmatter___date], order: DESC }
-    ){
-      edges {
-        node {
-          excerpt
-          fields {
-            slug
-          }
-          frontmatter {
-            date(formatString: "MMMM DD, YYYY")
-            title
-            oneliner
-            company
-            description
-            type
-            category
-          }
+  }
+  work: allMdx(filter: {fileAbsolutePath: {regex: "\\/content/work/"}}, sort: {fields: [frontmatter___date], order: DESC}) {
+    edges {
+      node {
+        excerpt
+        fields {
+          slug
+        }
+        frontmatter {
+          date(formatString: "MMMM DD, YYYY")
+          title
+          oneliner
+          company
+          description
+          type
+          category
         }
       }
     }
-
-    workCoverImages: allFile(
-      filter: {absolutePath: {regex: "\\/content/work/.*/cover/"}}
-    ){
-      nodes {
-        relativeDirectory
-        childImageSharp {
-          fluid {
-            ...GatsbyImageSharpFluid
-          }
-        }
+  }
+  workCoverImages: allFile(filter: {absolutePath: {regex: "\\/content/work/.*/cover/"}}) {
+    nodes {
+      relativeDirectory
+      childImageSharp {
+        gatsbyImageData(layout: FULL_WIDTH)
       }
     }
-  
-
-    likes: allMdx(
-      limit: 8,
-      filter: { fileAbsolutePath: {regex: "\\/content/likes/"} },
-      sort: { fields: [frontmatter___date], order: DESC }
-    ){
-      edges {
-        node {
-          excerpt
-          fields {
-            slug
-          }
-          frontmatter {
-            date(formatString: "MMMM DD, YYYY")
-            title
-            oneliner
-            description
-            category
-            author
-            artist
-            imagePadding
-            coverImage {
-              childImageSharp {
-                fluid(maxWidth: 400) {
-                  ...GatsbyImageSharpFluid
-                }
-              }
+  }
+  likes: allMdx(limit: 8, filter: {fileAbsolutePath: {regex: "\\/content/likes/"}}, sort: {fields: [frontmatter___date], order: DESC}) {
+    edges {
+      node {
+        excerpt
+        fields {
+          slug
+        }
+        frontmatter {
+          date(formatString: "MMMM DD, YYYY")
+          title
+          oneliner
+          description
+          category
+          author
+          artist
+          imagePadding
+          coverImage {
+            childImageSharp {
+              gatsbyImageData(width: 400, layout: CONSTRAINED)
             }
           }
         }
       }
     }
   }
+}
 `

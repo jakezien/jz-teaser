@@ -2,7 +2,7 @@ import React from "react"
 import { Link } from "gatsby"
 import { rhythm, scale } from "../utils/typography"
 import styled from "styled-components"
-import Img from "gatsby-image"
+import { GatsbyImage } from "gatsby-plugin-image";
 import Card from "../components/card"
 
 const StyledDiv = styled.div`
@@ -20,22 +20,23 @@ const StyledSubtitle = styled.p`
 `
 
 
-const LikePostPreview = (post) => {
+const LikePostPreview = (props) => {
+  const {post} = props;
 
   return (
     <Card>
       <Link to={post.fields.slug}>
         <div>
           {post.frontmatter.coverImage ? 
-            <Img 
-              fluid={{ ...post.frontmatter.coverImage.childImageSharp.fluid, aspectRatio: 1 }} 
+            <GatsbyImage
+              alt={post.frontmatter.title}
+              image={{ ...post.frontmatter.coverImage.childImageSharp.gatsbyImageData, aspectRatio: 1 }}
               imgStyle={{ 
                 objectFit: "contain", 
                 objectPosition: "top center", 
                 minHeight:'100%', 
                 padding: post.frontmatter.imagePadding + '%' 
-              }}
-            /> : <StyledImagePlaceholder />}
+              }} /> : <StyledImagePlaceholder />}
         </div>
         <StyledDiv>
           <h3>{post.frontmatter.title}</h3>
@@ -44,8 +45,7 @@ const LikePostPreview = (post) => {
         </StyledDiv>
       </Link>
     </Card>
-
-  )
+  );
 }
 
 export default LikePostPreview

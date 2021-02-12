@@ -17,6 +17,7 @@ module.exports = {
   pathPrefix: "/jz",
   plugins: [
 
+    `gatsby-plugin-image`,
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-feed-mdx`,

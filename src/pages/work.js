@@ -4,7 +4,7 @@ import { Link, graphql } from "gatsby"
 import Layout from "../templates/layout"
 import SEO from "../components/seo"
 import { rhythm } from "../utils/typography"
-import PostGrid from "../components/postGrid"
+import Grid from "../components/grid"
 
 const Work = ({ data, location }) => {
 
@@ -13,7 +13,7 @@ const Work = ({ data, location }) => {
       <SEO title="Jake Zien" />
 
       <h1>Work</h1>
-      <PostGrid posts={data.workPosts.edges} postsPerRow="1" />
+      <Grid posts={data.workPosts.edges} postsPerRow="1" />
 
     </Layout>
   )

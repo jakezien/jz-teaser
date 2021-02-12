@@ -21,16 +21,25 @@ const StyledPostWrapper = styled.div`
   }
 `
 
-const Grid = ({ posts, postTemplate, postsPerRow }) => {
+const Grid = (props) => {
+  const { posts, postCoverImages, postTemplate, postsPerRow } = props;
+  const PostTemplate = props.postTemplate
+
   return (
     <StyledDiv>
-      {posts ? posts.map( ({node}, index ) => {
+      {posts && posts.map( ({node}, index ) => {
+
+        let coverImage
+        if (typeof postCoverImages != 'undefined') {
+          coverImage = postCoverImages.filter(imgNode => node.fields.slug.includes(imgNode.relativeDirectory))
+        }
+
         return(
           <StyledPostWrapper key={index} postsPerRow={postsPerRow}>
-            {postTemplate(node)}
+            <PostTemplate post={node} coverImage={coverImage ? coverImage : ''} />
           </StyledPostWrapper>
         )
-      }) : ''}
+      })}
     </StyledDiv>
   )
 }
