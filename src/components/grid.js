@@ -31,7 +31,9 @@ const Grid = (props) => {
 
         let coverImage
         if (typeof postCoverImages != 'undefined') {
-          coverImage = postCoverImages.filter(imgNode => node.fields.slug.includes(imgNode.relativeDirectory))
+          coverImage = postCoverImages.filter(imgNode => {
+            return node.fields.slug.includes(imgNode.relativeDirectory) || node.fields.slug.includes(imgNode.name)
+          })
         }
 
         return(

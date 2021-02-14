@@ -46,7 +46,7 @@ const Home = ({ data, location }) => {
       </DoSection>
 
       <LikeSection>
-        <Like likes={data.likes.edges}/>
+        <Like posts={data.likes.edges} postCoverImages={data.likesCoverImages.nodes} />
       </LikeSection>
     </Layout>
   )
@@ -87,6 +87,7 @@ export const pageQuery = graphql`{
       }
     }
   }
+
   likes: allMdx(limit: 8, filter: {fileAbsolutePath: {regex: "\\/content/likes/"}}, sort: {fields: [frontmatter___date], order: DESC}) {
     edges {
       node {
@@ -112,5 +113,15 @@ export const pageQuery = graphql`{
       }
     }
   }
+
+  likesCoverImages: allFile(filter: {extension: {regex: "/(jpg)|(jpeg)|(png)/"}, absolutePath: {regex: "\\/content/likes/"}}) {
+    nodes {
+      name
+      childImageSharp {
+        gatsbyImageData(layout: FULL_WIDTH, aspectRatio:1, backgroundColor:"transparent", transformOptions:{fit:CONTAIN})
+      }
+    }
+  }
+
 }
 `
