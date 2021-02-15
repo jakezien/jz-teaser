@@ -51,7 +51,6 @@ const Resume = ({ className }) => {
 
   return (
     <div>
-      <SEO title="Jake Zien" />
       <h2>Resume</h2>
       <StyledResumeContainer className={className}>
         {data.resumeItems.edges.map( ({node}, index ) => {

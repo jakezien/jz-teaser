@@ -1,22 +1,15 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
-
-import Layout from "../templates/layout"
-import SEO from "../components/seo"
-import { rhythm } from "../utils/typography"
 import { GatsbyImage } from "gatsby-plugin-image";
+import { MDXRenderer } from "gatsby-plugin-mdx"
+
 import styled from "styled-components"
+import Layout from "../templates/layout"
+import { rhythm } from "../utils/typography"
+import SEO from "../components/seo"
 import Section from "../components/section"
 
 import Resume from "./resume.js"
-import AboutText from "./aboutText.mdx"
-
-const StyledSection = styled(Section)`
-  > div {
-    padding-left: 0;
-    padding-right: 0;
-  }
-`
 
 const AboutImg = styled(GatsbyImage)`
   border-radius: 4px;
@@ -30,31 +23,23 @@ const AboutImg = styled(GatsbyImage)`
   }
 `
 
-const StyledWrapper = styled.div`
-  border-radius: 4px;
-  background: #fcfcfc;
-  padding: ${rhythm(1)};
-`
-
 const About = ({data, location}) => {
 
-
   return (
-    <Layout location={location}>
+    <Layout>
       <SEO title="About" />
-      <StyledSection>
+
+      <Section>
         <h1>About</h1>
-        <AboutImg 
-          fluid= {{ ...data.jakey.childImageSharp.gatsbyImageData, aspectRatio:0.75}}
-          objectFit= "contain"
-          imgStyle= {{objectFit: "contain"}}
-        />
-        <AboutText/>
-      </StyledSection>
-      <StyledSection>
+        {/*IMAGE*/}
+        <MDXRenderer>{data.mdx.body}</MDXRenderer>
+      </Section>
+
+      <Section>
         <h1>What I've done</h1>
         <Resume/>
-      </StyledSection>
+      </Section>
+
     </Layout>
   );
 }
@@ -62,11 +47,16 @@ const About = ({data, location}) => {
 export default About
 
 
-export const pageQuery = graphql`{
-  jakey: file(relativePath: {regex: "/jakey0/i"}) {
-    childImageSharp {
-      gatsbyImageData(layout: FULL_WIDTH)
+export const pageQuery = graphql`query About {
+  site {
+    siteMetadata {
+      title
     }
   }
-}
-`;
+  mdx(fields: {slug: {regex: "/about/"}}) {
+    id
+    slug
+    body
+  }
+}  
+`
