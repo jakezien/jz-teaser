@@ -3,7 +3,9 @@ import { rhythm, scale } from "../utils/typography"
 import { hPadding, wideMaxWidth, wideHPadding } from "./container"
 import styled from "styled-components"
 
-const remToPx = parseInt(getComputedStyle(document.documentElement).fontSize);
+let remToPx
+if (typeof(window) != 'undefined')
+  remToPx = parseInt(getComputedStyle(document.documentElement).fontSize);
 
 let hPaddingPx = parseFloat(hPadding) * remToPx;
 let wideMaxWidthPx = parseFloat(wideMaxWidth) * remToPx;
