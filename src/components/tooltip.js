@@ -14,7 +14,7 @@ const StyledOuterSpan = styled.span`
       opacity: 1;
     }
     .jz-tooltip-trigger{
-      color: ${props => props.theme.textOnYellow};
+      border-bottom-color: transparent;
       &:before {
         opacity: 1
       }
@@ -39,7 +39,7 @@ const StyledSpan = styled.span`
     width: calc(100% + 16px);
     height: calc(100% + 16px);
     content: '';
-    background-color: ${props => props.theme.yellow};
+    background-color: ${props => props.theme.isDark ? props.theme.bg4 : props.theme.yellow};
     opacity: 0;
     z-index: -1;
   }
@@ -55,7 +55,8 @@ const StyledPopup = styled.div`
   min-width: ${rhythm(7)};
   padding: ${rhythm(0.5)};
   padding-bottom: ${rhythm(1)};
-  background-color: ${props => props.theme.bg3};
+  background-color: ${props => props.theme.isDark ? props.theme.yellow : props.theme.bg3};
+  color: ${props => props.theme.isDark ? props.theme.textOnYellow : props.theme.text};
   box-shadow: -4px 4px 0px rgba(0,0,0,0.15);
   font-weight: 300;
   font-family: 'covik-sans';

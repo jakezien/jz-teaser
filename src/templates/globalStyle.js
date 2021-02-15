@@ -12,7 +12,7 @@ const GlobalStyle = createGlobalStyle`
 
   p>a, *.link {
     color: ${props => props.theme.text};
-    border-bottom: 2px solid ${props => props.theme.bg2};
+    border-bottom: 2px solid ${props => props.theme.bg4};
 
     &:hover, &[aria-current=page] {
       background: ${props => props.theme.bg4};
