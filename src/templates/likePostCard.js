@@ -24,7 +24,11 @@ const LikePostCard = (props) => {
   return (
     <Card>
       <Link to={post.fields.slug}>
-        <GatsbyImage image={image ? image : ''} alt={post.frontmatter.title}/>
+        <GatsbyImage 
+          image={image ? image : ''} 
+          alt={post.frontmatter.title}
+          style={{'margin': post.frontmatter.imageMargin ? post.frontmatter.imageMargin : 0}}
+        />
         <StyledDiv>
           <h3>{post.frontmatter.title}</h3>
           <StyledSubtitle>{post.frontmatter.category || post.frontmatter.author || post.frontmatter.artist}</StyledSubtitle>

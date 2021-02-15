@@ -56,7 +56,13 @@ const typography = new Typography({
       opacity: 0.9
     },
 
-    'p, a, span, li': {
+    'figcaption': {
+      opacity: 0.6,
+      marginBottom: '1em',
+      textAlign: 'center'
+    },
+
+    'p, a, span, li, figcaption': {
       letterSpacing: '-0.02em'
     },
     

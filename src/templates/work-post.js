@@ -14,10 +14,10 @@ import PostFooterNav from "../components/postFooterNav"
 const WorkPostTemplate = ({ data, pageContext, location }) => {
   const post = data.mdx
   const siteTitle = data.site.siteMetadata.title
-  const nodes = data.allFile.nodes
-  const coverImage = nodes[0].childImageSharp
-  let imagesArray = [];
-  for (let n in nodes) imagesArray.push(nodes[n].childImageSharp.original)
+  const imgNodes = data.allFile.nodes
+  const coverImage = imgNodes.filter(node => 
+    {return node.name.includes("cover")})[0].childImageSharp
+
 
   return (
     <Layout location={location} title={siteTitle}>
@@ -38,7 +38,7 @@ const WorkPostTemplate = ({ data, pageContext, location }) => {
             <p>{post.frontmatter.date}</p>
           </header>
 
-          <MDXRenderer images={imagesArray}>{post.body}</MDXRenderer>
+          <MDXRenderer images={imgNodes}>{post.body}</MDXRenderer>
         </article>
 
         <PostFooterNav pageContext={pageContext} />
