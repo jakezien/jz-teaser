@@ -27,7 +27,7 @@ const LikePostCard = (props) => {
         <GatsbyImage 
           image={image ? image : ''} 
           alt={post.frontmatter.title}
-          style={{'margin': post.frontmatter.imageMargin ? post.frontmatter.imageMargin : 0}}
+          style={post.frontmatter.imageMargin ? {margin:post.frontmatter.imageMargin} : {}}
         />
         <StyledDiv>
           <h3>{post.frontmatter.title}</h3>

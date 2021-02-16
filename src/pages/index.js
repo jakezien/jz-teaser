@@ -103,7 +103,7 @@ export const pageQuery = graphql`{
           category
           author
           artist
-          imagePadding
+          imageMargin
           coverImage {
             childImageSharp {
               gatsbyImageData(width: 400, layout: CONSTRAINED)
