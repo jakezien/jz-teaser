@@ -34,7 +34,7 @@ const typography = new Typography({
       marginBottom: rhythm(.25),
       fontStretch: 'condensed',
       fontWeight: 500,
-      ...adjustFontSizeTo(rhythm(1.5))
+      ...adjustFontSizeTo(rhythm(1.5), 1.5)
     },
 
     'h4': {
