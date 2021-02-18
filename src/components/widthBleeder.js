@@ -20,6 +20,7 @@ const StyledOuterDiv = styled.div`
   width: 100vw;
   box-sizing: border-box;
   height: ${props => props.height || 'auto'};
+  max-height: ${props => props.maxHeight || 'auto'};
   overflow: hidden;
   
   left: calc(-1 * ${hPaddingPx}px);

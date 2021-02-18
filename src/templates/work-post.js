@@ -30,7 +30,11 @@ const WorkPostTemplate = ({ data, pageContext, location }) => {
         <article>
 
           <WidthBleeder>
-            <GatsbyImage image={coverImage.gatsbyImageData} alt={post.frontmatter.title}/>
+            <GatsbyImage 
+              image={coverImage.gatsbyImageData} 
+              alt={post.frontmatter.title} 
+              style={{maxHeight: '60vh'}}
+            />
           </WidthBleeder>
 
           <header>
