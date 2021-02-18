@@ -2,7 +2,7 @@ import React from "react"
 import styled from "styled-components"
 import { rhythm, scale } from "../utils/typography"
 
-export const hPadding = rhythm(1); 
+export const hPadding = rhythm(.5); 
 export const wideMaxWidth = rhythm(40); 
 export const wideHPadding = rhythm(3); 
 

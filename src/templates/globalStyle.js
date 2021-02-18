@@ -1,4 +1,6 @@
 import { createGlobalStyle } from "styled-components"
+import { rhythm, scale } from "../utils/typography"
+
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -21,10 +23,21 @@ const GlobalStyle = createGlobalStyle`
     }
   }
 
+  ul {
+    margin: 0;
+  }
+
   *.yellowBg {
     color: ${props => props.theme.textOnYellow}
   }
 
+  .react-photo-gallery--gallery {
+    margin-bottom: ${rhythm(1)}
+  }
+
+  [class*=widthBleeder] .react-photo-gallery--gallery {
+    margin-bottom: 0
+  }
 
 
 `

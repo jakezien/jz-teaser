@@ -16,7 +16,7 @@ let wideHSpacePx = wideMaxWidthPx - (wideHPaddingPx * 2);
 
 const StyledOuterDiv = styled.div`
   position: relative;
-  margin-bottom: 2em;
+  margin-bottom: ${rhythm(1)};
   width: 100vw;
   box-sizing: border-box;
   height: ${props => props.height || 'auto'};

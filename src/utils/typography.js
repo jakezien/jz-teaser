@@ -22,21 +22,24 @@ const typography = new Typography({
 
     'h2': {
       opacity: 0.9,
-      marginBottom: '1rem',
+      marginTop: rhythm(1),
+      marginBottom: rhythm(.5),
       fontStretch: 'extra-condensed',
       ...adjustFontSizeTo(rhythm(2.25))
     },
     
     'h3': {
       opacity: 0.8,
-      marginBottom: '.5rem',
+      marginTop: rhythm(1),
+      marginBottom: rhythm(.25),
       fontStretch: 'condensed',
-      fontWeight: 500
+      fontWeight: 500,
+      ...adjustFontSizeTo(rhythm(1.5))
     },
 
     'h4': {
       opacity: 0.9,
-      marginBottom: '.5rem',
+      marginBottom: rhythm(.5),
       fontStretch: 'condensed',
       textTransform: 'uppercase',
       letterSpacing: '0.1em',
@@ -46,8 +49,7 @@ const typography = new Typography({
       opacity: 0.75,
       fontFamily: 'covik-sans',
       fontWeight: 400,
-      fontSize: '1.25rem',
-      lineHeight: '1.5rem',
+      ...adjustFontSizeTo(rhythm(1), 1.25),
       letterSpacing: '-0.02em',
       maxWidth: '80%'
     },
