@@ -19,6 +19,7 @@
          root.findAndReplaceDOMText = factory();
      }
  }(this, function factory() {
+ 	if (typeof document === 'undefined') return;
 
 	var PORTION_MODE_RETAIN = 'retain';
 	var PORTION_MODE_FIRST = 'first';

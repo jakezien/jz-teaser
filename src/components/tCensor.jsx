@@ -1,5 +1,5 @@
 import React, {useLayoutEffect} from "react"
-import FindAndReplaceDOMText from "findAndReplaceDOMText"
+import FindAndReplaceDOMText from "../utils/findAndReplaceDOMText"
 
 const TCensor = () => {
   // let trumps = [];
