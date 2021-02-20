@@ -12,6 +12,7 @@ import Section from '../components/section'
 import Header from '../components/header'
 import Footer from '../components/footer'
 import TCensor from '../components/tCensor'
+import Pixellator from '../components/pixellator'
 
 import Hello from "../../content/index/hello"
 import Think from "../../content/index/think"
@@ -50,7 +51,9 @@ const Home = ({ data, location }) => {
       <LikeSection>
         <Like posts={data.likes.edges} postCoverImages={data.likesCoverImages.nodes} />
       </LikeSection>
+      
       <TCensor/>
+      <Pixellator/>
     </Layout>
   )
 }
