@@ -26,7 +26,7 @@ const WorkPostCard = (props) => {
       <Link to={post.fields.slug}>
         <GatsbyImage image={image ? image : ''} alt={post.frontmatter.oneliner} />
         <StyledDiv>
-          <h3>{post.frontmatter.title}</h3>
+            <h3>{post.frontmatter.title}</h3>
           <StyledSubtitle>{post.frontmatter.oneliner}</StyledSubtitle>
         </StyledDiv>
       </Link>

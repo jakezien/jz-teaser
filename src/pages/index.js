@@ -11,11 +11,13 @@ import Container from '../components/container'
 import Section from '../components/section'
 import Header from '../components/header'
 import Footer from '../components/footer'
+import TCensor from '../components/tCensor'
 
 import Hello from "../../content/index/hello"
 import Think from "../../content/index/think"
 import Do from "../../content/index/do"
 import Like from "../../content/index/like"
+
 
 const ThinkSection = styled(Section)`
   background-color: ${props => props.theme.bg1};
@@ -48,6 +50,7 @@ const Home = ({ data, location }) => {
       <LikeSection>
         <Like posts={data.likes.edges} postCoverImages={data.likesCoverImages.nodes} />
       </LikeSection>
+      <TCensor/>
     </Layout>
   )
 }
