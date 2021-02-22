@@ -1,6 +1,7 @@
 import React, {useCallback, useEffect} from "react"
 import styled from "styled-components"
 import { rhythm } from "../utils/typography"
+const rgba = require('color-rgba')
 
 const StyledSpan = styled.span`
   display: inline-block;
@@ -15,59 +16,112 @@ const Pixellator = (props) => {
   })
 
   const pixellateNode = (node) => {
-    let canvas = createCanvas(node);
-    fillCanvas(canvas);
-    drawCanvas(canvas, node);  
+    node.style.visibility = 'hidden';
+    setTimeout(() => {    
+      let canvas = createCanvas(node);
+      fillCanvas(canvas);
+      renderCanvas(canvas, node);  
+      node.style.visibility = 'visible'
+    }, 250)
   }
 
-  const createCanvas = (node) => {
-    let canvas = document.createElement('canvas');
-    let rect = node.getBoundingClientRect();
-
-    let nodeStyle = window.getComputedStyle(node);
-    
-    canvas.width = rect.width;
-    canvas.height = parseFloat(nodeStyle.lineHeight); 
-    let ctx = canvas.getContext('2d');
-    // document.body.appendChild(canvas); // Uncomment for debug
-    ctx.fillStyle = nodeStyle.color;
-    return canvas;
-  };
+  const getPxSize = (c) => {
+    let pxSize = 6;
+    if (c.height >= 36)
+      pxSize = 8;
+    if (c.height >= 64)
+      pxSize = 16;
+    return pxSize
+  }
 
   const roundTo = (input, round) => { 
     return Math.ceil(input/round)*round;
   }
 
-  const fillCanvas = function(c) {
-    var pxSize = 6;
-    if (c.height >= 36)
-      pxSize = 8;
-    if (c.height >= 64)
-      pxSize = 16;
+  const createCanvas = (node) => {
+    let c = document.createElement('canvas');
+    let nodeStyle = window.getComputedStyle(node);
+    
+    c.width = node.getBoundingClientRect().width;
+    c.height = parseFloat(nodeStyle.lineHeight);
 
+    let pxSize = getPxSize(c);
     c.width = roundTo(c.width, pxSize)
     c.height = roundTo(c.height, pxSize)
 
-    var ctx = c.getContext('2d');
+    let ctx = c.getContext('2d');
+    // document.body.appendChild(c); // Uncomment for debug
 
-    var xPx = c.width / pxSize;
-    var yPx = c.height / pxSize;
+    let color = rgba(nodeStyle.color);
+
+    ctx.fillStyle = 'rgb(' + color[0] + ', ' + color[1] + ', ' + color[2] + ')'
+    ctx.strokeStyle = 'rgb(' + color[0] + ', ' + color[1] + ', ' + color[2] + ')'
+    ctx.lineWidth = 2
+    ctx.font = nodeStyle.font;
+    ctx.textBaseline = "middle";
+
+    return c;
+  };
+
+
+  const fillCanvas = (c) => {
+    let ctx = c.getContext('2d');
+
+    let pxSize = getPxSize(c);
+
+    let xPx = c.width / pxSize;
+    let yPx = c.height / pxSize;
     ctx.clearRect(0, 0, c.width, c.height);
+
     for (var i = 0; i < yPx; i++) {
       for (var j = 0; j < xPx; j++) {
         ctx.globalAlpha = getWeightedRandom();
         ctx.fillRect(j * pxSize, i * pxSize, pxSize, pxSize);
       }
     }
+
+    ctx.globalAlpha = 1;
+    ctx.fillText('Trump', 0, c.height/2, c.width)
+    ctx.strokeText('Trump', 0, c.height/2, c.width)
+
+    pixellateCanvas(c)
   }
 
-  const drawCanvas = function(c, node) {
-    var style = node.style;
+
+  const pixellateCanvas = (c) => {
+    let pxSize = getPxSize(c)
+    let size = pxSize > 8 ? pxSize/200 : pxSize / 60,
+        w = c.width * size,
+        h = c.height * size;
+
+    // draw the original image at a fraction of the final size
+    let clone = c.cloneNode(true);
+    clone.getContext('2d').drawImage(c, 0, 0, c.width, c.height, 0, 0, w, h);
+    
+    let ctx = c.getContext ('2d');
+    ctx.clearRect(0, 0, c.width, c.height)
+
+    // turn off image aliasing
+    ctx.msImageSmoothingEnabled = false;
+    ctx.mozImageSmoothingEnabled = false;
+    ctx.webkitImageSmoothingEnabled = false;
+    ctx.imageSmoothingEnabled = false;
+
+    // enlarge the minimized image to full size    
+    ctx.drawImage(clone, 0, 0, w, h, 0, 0, c.width, c.height);
+  }
+
+  const renderCanvas = function(c, node) {
+    let style = node.style;
+
+    let color = rgba(window.getComputedStyle(node).color);
+    let alphaColor = 'rgba(' + color[0] + ', ' + color[1] + ', ' + color[2] + ', 0)';
+
+    style.color = alphaColor;
     style.backgroundImage = 'url('+ c.toDataURL() +')';
     style.backgroundRepeat = 'no-repeat';
     style.backgroundPosition = 'center center';
     style.backgroundSize = '100%';
-    style.color = 'transparent';
     style.textShadow = 'none';
   }
 
@@ -102,11 +156,15 @@ const Pixellator = (props) => {
     array.forEach(node => pixellateNode(node))
   })
 
+  if (children) {  
+    return (
+      <StyledSpan ref={spanRef}>
+        {children}
+      </StyledSpan>
+    )
+  }
 
-  return (
-    <StyledSpan ref={spanRef}>
-      {children}
-    </StyledSpan>
-  )
+  return null;
+
 }
 export default Pixellator;

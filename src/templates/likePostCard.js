@@ -14,20 +14,26 @@ const StyledSubtitle = styled.p`
   color: ${props => props.theme.textTint}
 `
 
+const StyledGatsbyImage = styled(GatsbyImage)`
+  background: ${props => props.theme.bg1}
+`
+
 const LikePostCard = (props) => {
 
   const {post, coverImage} = props;
 
   let image
   if (coverImage.length) image = getImage(coverImage[0])
+  let imageMargin = 0;
+  if (post.frontmatter.imageMargin) imageMargin = post.frontmatter.imageMargin;
 
   return (
     <Card>
       <Link to={post.fields.slug}>
-        <GatsbyImage 
+        <StyledGatsbyImage 
           image={image ? image : ''} 
           alt={post.frontmatter.title}
-          style={post.frontmatter.imageMargin ? {margin:post.frontmatter.imageMargin} : {}}
+          imgStyle={{padding:imageMargin}}
         />
         <StyledDiv>
           <h3>{post.frontmatter.title}</h3>
