@@ -164,10 +164,6 @@ const Pixellator = (props) => {
 
     processCensoredNodes();
 
-    let delayedReprocess = () => {
-      setTimeout(processCensoredNodes)
-    }
-
     let mediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
     mediaQuery.addEventListener('change', processCensoredNodes);
     

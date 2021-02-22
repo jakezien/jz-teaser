@@ -12,6 +12,11 @@ const TCensor = () => {
       find: 'Trump',
       wrap: "span",
       wrapClass: 'censored',
+      filterElements: (node) => {
+        if (node.parentNode.classList.contains('censored')) 
+          return false
+        else return true;
+      }
     });
     
     return 
