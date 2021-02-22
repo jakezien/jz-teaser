@@ -19,7 +19,7 @@ const Pixellator = (props) => {
     node.style.visibility = 'hidden';
     setTimeout(() => {    
       let canvas = createCanvas(node);
-      fillCanvas(canvas);
+      fillCanvas(canvas, node);
       renderCanvas(canvas, node);  
       node.style.visibility = 'visible'
     }, 250)
@@ -49,23 +49,26 @@ const Pixellator = (props) => {
     c.width = roundTo(c.width, pxSize)
     c.height = roundTo(c.height, pxSize)
 
-    let ctx = c.getContext('2d');
-    // document.body.appendChild(c); // Uncomment for debug
+    return c;
+  };
 
+  const setCanvasColors = (ctx, node) => {
+    node.style.color = 'inherit'
+    let nodeStyle = window.getComputedStyle(node);
     let color = rgba(nodeStyle.color);
+    console.log(color)
 
     ctx.fillStyle = 'rgb(' + color[0] + ', ' + color[1] + ', ' + color[2] + ')'
     ctx.strokeStyle = 'rgb(' + color[0] + ', ' + color[1] + ', ' + color[2] + ')'
     ctx.lineWidth = 2
     ctx.font = nodeStyle.font;
     ctx.textBaseline = "middle";
-
-    return c;
-  };
+  }
 
 
-  const fillCanvas = (c) => {
+  const fillCanvas = (c, node) => {
     let ctx = c.getContext('2d');
+    setCanvasColors(ctx, node);
 
     let pxSize = getPxSize(c);
 
@@ -128,7 +131,7 @@ const Pixellator = (props) => {
   const setupWeightedRandomTable = function(spec) {
     var i, j, table=[];
     for (i in spec) {
-      for (j=0; j<spec[i]*10; j++) {
+      for (j=0; j < spec[i]*10; j++) {
         table.push(i);
       }
     }
@@ -151,10 +154,28 @@ const Pixellator = (props) => {
     1 : 0.25
   });
 
-  useEffect(() => {
+  const processCensoredNodes = () => {
     let array = [...document.getElementsByClassName('censored')];
     array.forEach(node => pixellateNode(node))
-  })
+  }
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    processCensoredNodes();
+
+    let delayedReprocess = () => {
+      setTimeout(processCensoredNodes)
+    }
+
+    let mediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
+    mediaQuery.addEventListener('change', processCensoredNodes);
+    
+    // Specify how to clean up after this effect:
+    return function cleanup() {
+      mediaQuery.removeEventListener('change', processCensoredNodes)
+    };
+  });
 
   if (children) {  
     return (
