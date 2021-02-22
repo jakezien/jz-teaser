@@ -94,7 +94,7 @@ export const pageQuery = graphql`{
     }
   }
 
-  likes: allMdx(limit: 8, filter: {fileAbsolutePath: {regex: "\\/content/likes/"}}, sort: {fields: [frontmatter___date], order: DESC}) {
+  likes: allMdx(limit: 12, filter: {fileAbsolutePath: {regex: "\\/content/likes/"}}, sort: {fields: [frontmatter___date], order: DESC}) {
     edges {
       node {
         body
