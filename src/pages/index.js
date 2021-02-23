@@ -7,10 +7,7 @@ import styled from "styled-components"
 
 import Layout from "../templates/layout"
 
-import Container from '../components/container'
 import Section from '../components/section'
-import Header from '../components/header'
-import Footer from '../components/footer'
 import TCensor from '../components/tCensor'
 import Pixellator from '../components/pixellator'
 
@@ -26,7 +23,7 @@ const ThinkSection = styled(Section)`
 const DoSection = styled(Section)`
   background-color: ${props => props.theme.bg2};
 `
-const LikeSection = styled(Section)`
+const FavoriteSection = styled(Section)`
   background-color: ${props => props.theme.bg3};
 `
 
@@ -48,9 +45,9 @@ const Home = ({ data, location }) => {
         <Do posts={data.work.edges} postCoverImages={data.workCoverImages.nodes} />
       </DoSection>
 
-      <LikeSection>
-        <Like posts={data.likes.edges} postCoverImages={data.likesCoverImages.nodes} />
-      </LikeSection>
+      <FavoriteSection>
+        <Like posts={data.favorites.edges} postCoverImages={data.favoritesCoverImages.nodes} />
+      </FavoriteSection>
       
       <TCensor/>
       <Pixellator/>
@@ -94,7 +91,7 @@ export const pageQuery = graphql`{
     }
   }
 
-  likes: allMdx(limit: 12, filter: {fileAbsolutePath: {regex: "\\/content/likes/"}}, sort: {fields: [frontmatter___date], order: DESC}) {
+  favorites: allMdx(limit: 12, filter: {fileAbsolutePath: {regex: "\\/content/favorites/"}}, sort: {fields: [frontmatter___date], order: DESC}) {
     edges {
       node {
         body
@@ -120,7 +117,7 @@ export const pageQuery = graphql`{
     }
   }
 
-  likesCoverImages: allFile(filter: {extension: {regex: "/(jpg)|(jpeg)|(png)/"}, absolutePath: {regex: "\\/content/likes/"}}) {
+  favoritesCoverImages: allFile(filter: {extension: {regex: "/(jpg)|(jpeg)|(png)/"}, absolutePath: {regex: "\\/content/favorites/"}}) {
     nodes {
       name
       childImageSharp {

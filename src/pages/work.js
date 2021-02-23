@@ -1,19 +1,38 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
+import styled from "styled-components"
 
 import Layout from "../templates/layout"
-import SEO from "../components/seo"
 import { rhythm } from "../utils/typography"
+
+import SEO from "../components/seo"
+import Section from '../components/section'
 import Grid from "../components/grid"
+import WorkPostCard from "../../src/templates/workPostCard"
+
+
+const StyledSection = styled(Section)`
+  background-color: ${props => props.theme.bg2};
+`
 
 const Work = ({ data, location }) => {
 
   return (
     <Layout location={location}>
-      <SEO title="Jake Zien" />
 
-      <h1>Work</h1>
-      <Grid posts={data.workPosts.edges} postsPerRow="1" />
+      <SEO title="Work" />
+
+      <Section>
+        <h1>Things That I've Worked On</h1>
+      </Section>
+    
+      <StyledSection>
+        <Grid posts={data.work.edges} 
+              postCoverImages={data.coverImages.nodes}
+              postTemplate={WorkPostCard} 
+              postsPerRow="2"
+        />
+      </StyledSection>
 
     </Layout>
   )
@@ -29,9 +48,10 @@ export const pageQuery = graphql`
         title
       }
     }
-    workPosts: allMdx(
-      filter: { fileAbsolutePath: {regex: "\\/content/work/"} },
-      sort: { fields: [frontmatter___date], order: DESC }) {
+
+    work: allMdx(
+      filter: { fileAbsolutePath: {regex: "\\/content/work/"}},
+      sort: { fields: [frontmatter___date], order: DESC } ) {
         edges {
           node {
             excerpt
@@ -45,6 +65,16 @@ export const pageQuery = graphql`
             }
           }
         }
+      }
+    
+    coverImages: allFile(filter: {absolutePath: {regex: "\\/content/work/.*/cover/"}}) {
+      nodes {
+        relativeDirectory
+        childImageSharp {
+          gatsbyImageData(layout: FULL_WIDTH)
+        }
+      }
     }
+
   }
 `

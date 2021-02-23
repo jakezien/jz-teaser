@@ -21,7 +21,7 @@ const StyledLink = styled(Link)`
     margin-left: calc(2em - 8px);
   }
   &[aria-current=page] {
-    color: ${props => props.theme.textShade};
+    color: ${props => props.theme.isDark ? props.theme.textTint : props.theme.textShade};
   }
 `
 
@@ -37,8 +37,8 @@ const SiteNav = ({className, location}) => {
         <StyledLink className="link" to="/writing">
           <StyledLi>Writing</StyledLi>
         </StyledLink>
-        <StyledLink className="link" to="/things">
-          <StyledLi>Things I Like</StyledLi>
+        <StyledLink className="link" to="/favorites">
+          <StyledLi>Favorites</StyledLi>
         </StyledLink>
         <StyledLink className="link" to="/about">
           <StyledLi>About</StyledLi>

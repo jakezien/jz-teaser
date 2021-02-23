@@ -18,7 +18,7 @@ const StyledGatsbyImage = styled(GatsbyImage)`
   background: ${props => props.theme.bg1}
 `
 
-const LikePostCard = (props) => {
+const FavoritePostCard = (props) => {
 
   const {post, coverImage} = props;
 
@@ -45,4 +45,4 @@ const LikePostCard = (props) => {
   );
 }
 
-export default LikePostCard
+export default FavoritePostCard
