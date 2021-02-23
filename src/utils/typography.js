@@ -13,28 +13,31 @@ const typography = new Typography({
   bodyWeight: 300,
 
   overrideStyles: ({ adjustFontSizeTo, rhythm }, options, styles) => ({
+
     'h1': {
       fontStretch: 'extra-condensed',
       fontWeight: 400,
       letterSpacing: '-0.01em',
-      lineHeight: '0.9'
+      lineHeight: '0.9',
+      ...adjustFontSizeTo(rhythm(3), 2.5)
     },
 
     'h2': {
       opacity: 0.9,
-      marginTop: rhythm(1),
+      marginTop: rhythm(.75),
       marginBottom: rhythm(.5),
       fontStretch: 'extra-condensed',
-      ...adjustFontSizeTo(rhythm(2.25))
+      ...adjustFontSizeTo(rhythm(1.85), 1.66),
+      maxWidth:"90%"
     },
     
     'h3': {
       opacity: 0.8,
-      marginTop: rhythm(1),
+      marginTop: rhythm(.25),
       marginBottom: rhythm(.25),
       fontStretch: 'condensed',
       fontWeight: 500,
-      ...adjustFontSizeTo(rhythm(1.5), 1.5)
+      ...adjustFontSizeTo(rhythm(1.4), 1.5),
     },
 
     'h4': {
@@ -49,9 +52,9 @@ const typography = new Typography({
       opacity: 0.75,
       fontFamily: 'covik-sans',
       fontWeight: 400,
-      ...adjustFontSizeTo(rhythm(1), 1.25),
       letterSpacing: '-0.02em',
-      maxWidth: '80%'
+      maxWidth: '90%',
+      ...adjustFontSizeTo(rhythm(.9), 1),
     },
 
     'strong': {
@@ -60,14 +63,14 @@ const typography = new Typography({
 
     'figcaption': {
       opacity: 0.6,
-      marginBottom: '1em',
+      marginBottom: rhythm(1),
       textAlign: 'center'
     },
 
     'p, a, span, li, figcaption': {
       letterSpacing: '-0.02em'
     },
-    
+
     'a, a *': {
       color: 'inherit'
     },
@@ -85,7 +88,37 @@ const typography = new Typography({
       position: 'relative',
       top: '.05em'
     },
+
+    '@media only screen and (min-width:26rem)': {
+      'h1': {
+        ...adjustFontSizeTo(rhythm(3.33), 3),
+      },
+
+      'h2': {
+        marginTop: rhythm(1),
+        ...adjustFontSizeTo(rhythm(2.25))
+      },
+      
+      'h3': {
+        marginTop: rhythm(1),
+        ...adjustFontSizeTo(rhythm(1.5), 1.5)
+      },
+
+      'h4': {
+
+      },
+
+      'h5': {
+        ...adjustFontSizeTo(rhythm(1), 1.25),
+        maxWidth: '80%'
+      },
+
+      'p, a, span, li, figcaption': {
+        letterSpacing: '-0.02em'
+      },
+    },
   })
+
 })
 
 // Hot reload typography in development.

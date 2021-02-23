@@ -8,12 +8,19 @@ const StyledDiv = styled.div`
 `
 
 let width = props => 100/props.postsPerRow;
+let doubleWidth = props => 200/props.postsPerRow;
 let space = rhythm(.5);
 let doubleSpace = rhythm(1);
 
 
 const StyledPostWrapper = styled.div`
   margin-bottom: ${doubleSpace};
+  min-width: 100%;
+  @media only screen and (min-width:414px) and (max-width:640px) {
+    flex-basis: calc(${doubleWidth}% - ${space});
+    min-width:  calc(${doubleWidth}% - ${space});
+    margin-right: ${space};
+  }
   @media only screen and (min-width:641px) {
     flex-basis: calc(${width}% - ${space});
     min-width:  calc(${width}% - ${space});

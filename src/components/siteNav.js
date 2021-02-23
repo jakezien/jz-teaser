@@ -1,5 +1,6 @@
 import React from "react"
 import { Link } from "gatsby"
+import { rhythm } from "../utils/typography"
 import styled from "styled-components"
 
 const StyledUl = styled.ul`
@@ -14,14 +15,29 @@ const StyledLi = styled.li`
 `
 
 const StyledLink = styled(Link)`
-  margin-left: 2em;
+  margin-left: ${rhythm(.5)};
+
   &:hover, &[aria-current=page] {
     left: inherit;
     right:-4px;
-    margin-left: calc(2em - 8px);
+    margin-left: calc(${rhythm(.5)} - 8px);
   }
   &[aria-current=page] {
     color: ${props => props.theme.isDark ? props.theme.textTint : props.theme.textShade};
+  }
+  
+  @media only screen and (min-width:26rem) {
+    margin-left: ${rhythm(1)};
+    &:hover, &[aria-current=page] {
+      right:-4px;
+      margin-left: calc(${rhythm(1)} - 8px);
+    }
+  }
+`
+
+const StyledBr = styled.br`
+  @media only screen and (min-width:19rem) {
+    display: none;
   }
 `
 
@@ -37,6 +53,7 @@ const SiteNav = ({className, location}) => {
         <StyledLink className="link" to="/writing">
           <StyledLi>Writing</StyledLi>
         </StyledLink>
+        <StyledBr/>
         <StyledLink className="link" to="/favorites">
           <StyledLi>Favorites</StyledLi>
         </StyledLink>
