@@ -17,7 +17,11 @@ const StyledUl = styled.ul`
     list-style: none;
   }
 `
-
+const StyledLi = styled.li`
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%)
+`
 
 const PostFooterNav = ({pageContext}) => {
 
@@ -35,6 +39,7 @@ const PostFooterNav = ({pageContext}) => {
             </Link>
           )}
         </li>
+        <StyledLi><Link to="/work">All work</Link></StyledLi>
         <li>
           {next && (
             <Link to={next.fields.slug} rel="next">

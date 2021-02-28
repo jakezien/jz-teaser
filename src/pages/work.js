@@ -7,6 +7,10 @@ import { rhythm } from "../utils/typography"
 
 import SEO from "../components/seo"
 import Section from '../components/section'
+import TCensor from '../components/tCensor'
+import Pixellator from '../components/pixellator'
+
+
 import Grid from "../components/grid"
 import WorkPostCard from "../../src/templates/workPostCard"
 
@@ -33,7 +37,8 @@ const Work = ({ data, location }) => {
               postsPerRow="2"
         />
       </StyledSection>
-
+      <TCensor/>
+      <Pixellator/>
     </Layout>
   )
 }
@@ -62,6 +67,7 @@ export const pageQuery = graphql`
               date(formatString: "MMMM DD, YYYY")
               title
               description
+              oneliner
             }
           }
         }
