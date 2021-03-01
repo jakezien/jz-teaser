@@ -56,7 +56,7 @@ const Pixellator = (props) => {
     node.style.color = 'inherit'
     let nodeStyle = window.getComputedStyle(node);
     let color = rgba(nodeStyle.color);
-    console.log(color)
+    // console.log(color)
 
     ctx.fillStyle = 'rgb(' + color[0] + ', ' + color[1] + ', ' + color[2] + ')'
     ctx.strokeStyle = 'rgb(' + color[0] + ', ' + color[1] + ', ' + color[2] + ')'
