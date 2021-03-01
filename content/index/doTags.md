@@ -1,0 +1,3 @@
+- Lead design workshops
+- Get picky about typefaces
+- Love my wife
