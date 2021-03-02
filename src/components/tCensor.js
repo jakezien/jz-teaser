@@ -20,7 +20,6 @@ const TextCensor = () => {
         else return true;
       }
     });
-    
     return 
   })
 
