@@ -204,6 +204,13 @@ const pixellateCanvas = (c) => {
   ctx.drawImage(clone, 0, 0, w, h, 0, 0, c.width, c.height);
 }
 
+const onImageLoaded = () => {
+  let images = document.querySelectorAll('img')
+  images = [...images].filter(img => img.complete);
+  console.log('onImageLoaded', images)
+  images.forEach(img => detectFacesInImg(img))
+}
+
 
 const matcher = createFaceMatcher();
 loadFaceDetectionModels();

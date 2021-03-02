@@ -30,12 +30,12 @@ const TextCensor = () => {
 const TCensorWrapper = ({children}) => (
   <>
     <Helmet>
-      <script src="/faceapi/face-api.min.js"></script>
+      {/*<script src="/faceapi/face-api.min.js"></script>*/}
+      {/*<script defer src="/facematcher.js"></script>*/}
     </Helmet>
     {children}
     <TextCensor />
     <Pixellator />
-    <script src="/facematcher.js"></script>
   </>
 );
 

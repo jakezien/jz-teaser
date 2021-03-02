@@ -12,6 +12,8 @@ import { galleryArray, imageByName } from "../../../src/utils/functions";
 ##### In a fit of pique sometime in 2017, exhausted by an inescapable name and repugnant visage, I stretched my front-end development skills to create a plugin that would provide a more peaceful browsing experience across the web.
 Inspired by _Broad City_’s brilliant bleeping of his name, I realized the efficacy of this approach. We couldn’t do much until an election — but we could control one thing, which just happened to be the only thing he actually cares about. Ratings. Eyeballs. Hearing and seeing his own name; forcing himself on the world. Taking that away amounted to reclaiming some personal power — and it was a lot of snarky fun.
 
+<GatsbyImage image={imageByName(props, '13', true)} alt="FDT." onLoad={() => {onImageLoaded()}}/>
+
 ## What I did
 I built and published a Chrome extension that, once installed, would find every instance of his name or face on any webpage and pixellate them out, just as TV news would do to something vulgar and unairable. Users could also see a count of how many times they had been spared reading the name or seeing the face.
 - Learned several new developer tricks: training and using a client-side face-recognition API, using `canvas` to create the visual effect I wanted, efficiently parsing dynamic page content to find what I was looking for, and Chrome’s Extensions API
