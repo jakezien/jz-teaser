@@ -15,7 +15,7 @@ const TextCensor = () => {
       wrap: "span",
       wrapClass: 'censored',
       filterElements: (node) => {
-        if (node.parentNode.classList.contains('censored')) 
+        if (node.parentNode.classList.contains('censored') || node.classList.contains('censored')) 
           return false
         else return true;
       }
