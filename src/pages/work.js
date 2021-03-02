@@ -7,7 +7,7 @@ import { rhythm } from "../utils/typography"
 
 import SEO from "../components/seo"
 import Section from '../components/section'
-import TCensor from '../components/tCensor'
+// import TCensor from '../components/tCensor'
 import Pixellator from '../components/pixellator'
 
 
@@ -37,7 +37,7 @@ const Work = ({ data, location }) => {
               postsPerRow="2"
         />
       </StyledSection>
-      <TCensor/>
+      {/*<TCensor/>*/}
       <Pixellator/>
     </Layout>
   )

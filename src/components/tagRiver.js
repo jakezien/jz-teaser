@@ -41,14 +41,14 @@ const chunkArray = (array, chunkSize) => {
 const TagRiver = (props) => {
 
   const springProps = useSpring({
-    config: { duration: 90000 },
+    config: { duration: 100000 },
     from: {transform:'translate3d(0%,0,0)'},
     to: {transform:'translate3d(-50%,0,0)'},
     loop: true
   })
 
   const reverseSpringProps = useSpring({
-    config: { duration: 90000 },
+    config: { duration: 100000 },
     from: {transform:'translate3d(-50%,0,0)'},
     to: {transform:'translate3d(0%,0,0)'},
     loop: true

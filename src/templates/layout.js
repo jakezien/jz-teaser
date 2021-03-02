@@ -32,6 +32,8 @@ const Layout = withTheme((props) => {
     };
   });
 
+  console.log('layout loaded')
+
   return (
     <div>
       <GlobalStyle theme={props.theme} />

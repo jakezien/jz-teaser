@@ -8,7 +8,7 @@ import styled from "styled-components"
 import Layout from "../templates/layout"
 
 import Section from '../components/section'
-import TCensor from '../components/tCensor'
+// import TCensor from '../components/tCensor'
 import Pixellator from '../components/pixellator'
 
 import Hello from "../../content/index/hello"
@@ -49,8 +49,8 @@ const Home = ({ data, location }) => {
         <Like posts={data.favorites.edges} postCoverImages={data.favoritesCoverImages.nodes} />
       </FavoriteSection>
       
-      <TCensor/>
-      <Pixellator/>
+{/*      <TCensor/>
+      <Pixellator/>*/}
     </Layout>
   )
 }
