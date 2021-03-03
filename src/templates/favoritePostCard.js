@@ -23,8 +23,7 @@ const StyledDiv = styled.div`
   }
 `
 
-const StyledSubtitle = styled.p`
-  color: ${props => props.theme.textTint};
+const StyledSubtitle = styled.h5`
   @media only screen and (max-width:413px) {
     margin-bottom: 0;
   }
@@ -80,7 +79,7 @@ const FavoritePostCard = (props) => {
             />
             <FlexDiv>
               <h3>{post.frontmatter.title}</h3>
-              <StyledSubtitle>{post.frontmatter.category || post.frontmatter.author || post.frontmatter.artist}</StyledSubtitle>
+              <StyledSubtitle>{post.frontmatter.subtitle}</StyledSubtitle>
             </FlexDiv>
           </MobileWrap>
           <MDXRenderer>{post.body}</MDXRenderer>

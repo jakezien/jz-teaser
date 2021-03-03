@@ -59,17 +59,9 @@ export const pageQuery = graphql`{
           frontmatter {
             date(formatString: "MMMM DD, YYYY")
             title
-            oneliner
-            description
-            category
-            author
-            artist
+            subtitle
+            type
             imageMargin
-            coverImage {
-              childImageSharp {
-                gatsbyImageData(width: 400, layout: CONSTRAINED)
-              }
-            }
           }
         }
       }

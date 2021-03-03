@@ -2,7 +2,7 @@ import React from "react"
 import styled from "styled-components"
 
 const StyledDiv = styled.div`
-  border-radius: 5px;
+  border-radius: 6px;
   box-shadow: 0 2px 3px ${props => props.theme.shadow};
   background: ${props => props.theme.bg0};
   height: 100%;
