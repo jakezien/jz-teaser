@@ -21,7 +21,7 @@ const darkTheme = {
   textShade:    '#999',
   textOnYellow: lightTheme.textShade,
   bg0:    'black',
-  bg1:    'hsl(46, 100%, 4%)',
+  bg1:    'hsl(46, 100%, 5%)',
   bg2:    'hsl(46, 100%, 8%)',
   bg3:    'hsl(46, 100%, 12%)',
   bg4:    'hsl(46, 100%, 16%)',

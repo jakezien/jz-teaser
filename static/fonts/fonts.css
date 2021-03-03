@@ -1,4 +1,4 @@
-@font-face {
+/*@font-face {
   font-family: "Bau";
   src: url("./bau/Bau-Regular.ttf");
   font-weight: 400;
@@ -20,7 +20,7 @@
   font-family: "Bau";
   src: url("./bau/Bau-Black.ttf");
   font-weight: 700;
-}
+}*/
 
 
 
@@ -29,13 +29,13 @@
 
 
 
-@font-face {
+/*@font-face {
   font-family: "Pantograph";
   src: url("./colophon/pantograph-light-pro.woff2");
   font-stretch: normal;
   font-weight: 300;
 }
-
+*/
 @font-face {
   font-family: "Pantograph";
   src: url("./colophon/pantograph-regular-pro.woff2");
@@ -43,7 +43,7 @@
   font-weight: 400;
 }
 
-@font-face {
+/*@font-face {
   font-family: "Pantograph";
   src: url("./colophon/pantograph-medium-pro.woff2");
   font-stretch: normal;
@@ -62,16 +62,16 @@
   src: url("./colophon/pantograph-bold-pro.woff2");
   font-stretch: normal;
   font-weight: 700;
-}
+}*/
 
 
 
-@font-face {
+/*@font-face {
   font-family: "Pantograph";
   src: url("./colophon/pantograph-condensed-light-pro.woff2");
   font-weight: 300;
   font-stretch: condensed;
-}
+}*/
 
 @font-face {
   font-family: "Pantograph";
@@ -87,7 +87,7 @@
   font-stretch: condensed;
 }
 
-@font-face {
+/*@font-face {
   font-family: "Pantograph";
   src: url("./colophon/pantograph-condensed-semibold-pro.woff2");
   font-weight: 600;
@@ -99,17 +99,17 @@
   src: url("./colophon/pantograph-condensed-bold-pro.woff2");
   font-weight: 700;
   font-stretch: condensed;
-}
+}*/
 
 
 
 
-@font-face {
+/*@font-face {
   font-family: "Pantograph";
   src: url("./colophon/pantograph-compressed-light-pro.woff2");
   font-weight: 300;
   font-stretch: extra-condensed;
-}
+}*/
 
 @font-face {
   font-family: "Pantograph";
@@ -125,7 +125,7 @@
   font-stretch: extra-condensed;
 }
 
-@font-face {
+/*@font-face {
   font-family: "Pantograph";
   src: url("./colophon/pantograph-compressed-semibold-pro.woff2");
   font-weight: 600;
@@ -211,7 +211,7 @@
   src: url("./colophon/pantograph-extended-bold-pro.woff2");
   font-weight: 700;
   font-stretch: extra-expanded;
-}
+}*/
 
 
 
@@ -222,7 +222,7 @@
 
 
 
-@font-face {
+/*@font-face {
   font-family: "Montefiore";
   src: url("./colophon/montefiore-condensed-thin-trial.otf");
   font-weight: 200;
@@ -258,3 +258,4 @@
   font-weight: 700;
 }
 
+*/
