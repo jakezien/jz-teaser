@@ -17,11 +17,28 @@ const StyledSpan = styled.span`
   font-size: ${rhythm(.85)};
   color: ${props => props.theme.isDark ? props.theme.text : props.theme.textTint};
   display: inline-block;
+  > span {
+    position: relative;
+    top: 1px;
+    letter-spacing: 0.01em;
+  }
+
+  @media only screen and (max-width:414px) {
+    font-size: ${rhythm(.7)};
+    padding: ${rhythm(.15)} ${rhythm(.35)};
+    > span {
+      letter-spacing: 0.03em;
+    }
+  }
 `
 
 const Tag = (props) => {
   return (
-    <StyledSpan>{props.children}</StyledSpan>
+    <StyledSpan>
+      <span>
+        {props.children}
+      </span>
+    </StyledSpan>
   )
 }
 
