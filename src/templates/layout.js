@@ -1,21 +1,23 @@
 import React, { useEffect, useContext } from "react"
 import { Link } from "gatsby"
 import { rhythm, scale } from "../utils/typography"
+import styled from "styled-components"
 import { ThemeContext, withTheme } from "styled-components"
 import { useStyledDarkMode, ThemeSetting } from "gatsby-styled-components-dark-mode"
 import GlobalStyle from './globalStyle'
 
 import { MDXProvider } from "@mdx-js/react"
-import { GatsbyImage, getImage } from "gatsby-plugin-image";
+import { GatsbyImage, StaticImage, getImage } from "gatsby-plugin-image";
 import Gallery from "react-photo-gallery";
 import WidthBleeder from "../components/widthBleeder";
+import Inset from "../components/inset";
 import { galleryArray, imageByName } from "../utils/functions";
 
 
 import Header from '../components/header'
 import Footer from '../components/footer'
 
-const shortcodes = { GatsbyImage, getImage, Gallery, WidthBleeder, galleryArray, imageByName }
+const shortcodes = { Inset, GatsbyImage, StaticImage, getImage, Gallery, WidthBleeder, galleryArray, imageByName }
 
 const Layout = withTheme((props) => {
 

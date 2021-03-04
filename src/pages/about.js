@@ -52,7 +52,7 @@ export const pageQuery = graphql`query About {
       id
       extension
       childImageSharp {
-        gatsbyImageData(layout: FULL_WIDTH)
+        gatsbyImageData(layout:CONSTRAINED)
         original {
           src
           height
