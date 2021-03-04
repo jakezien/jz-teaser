@@ -1,11 +1,7 @@
 import React from "react"
 import { rhythm, scale } from "../utils/typography"
-import { hPadding, wideMaxWidth, wideHPadding } from "./container"
+import { hPadding, wideMaxWidth, wideHPadding, remToPx } from "./container"
 import styled from "styled-components"
-
-let remToPx
-if (typeof(window) != 'undefined')
-  remToPx = parseInt(getComputedStyle(document.documentElement).fontSize);
 
 let hPaddingPx = parseFloat(hPadding) * remToPx;
 let wideMaxWidthPx = parseFloat(wideMaxWidth) * remToPx;
@@ -22,7 +18,6 @@ const StyledOuterDiv = styled.div`
   height: ${props => props.height || 'auto'};
   max-height: ${props => props.maxHeight || 'auto'};
   overflow: hidden;
-  
   left: calc(-1 * ${hPaddingPx}px);
   
   @media screen and (min-width: 768px) and (max-width: ${wideMaxWidthPx}px) {

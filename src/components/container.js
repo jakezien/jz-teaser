@@ -4,7 +4,8 @@ import { rhythm, scale } from "../utils/typography"
 
 export const hPadding = rhythm(.75); 
 export const wideMaxWidth = rhythm(40); 
-export const wideHPadding = rhythm(3); 
+export const wideHPadding = rhythm(3);
+export const remToPx = 20; // BAD BAD BAD MAGIC NUMBER
 
 const StyledDiv = styled.div`
   padding: ${hPadding};
