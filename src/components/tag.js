@@ -27,6 +27,7 @@ const StyledSpan = styled.span`
     font-size: ${rhythm(.7)};
     padding: ${rhythm(.15)} ${rhythm(.35)};
     > span {
+      top: 0px;
       letter-spacing: 0.03em;
     }
   }
