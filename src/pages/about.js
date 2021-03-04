@@ -1,6 +1,5 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
-import { GatsbyImage } from "gatsby-plugin-image";
 import { MDXRenderer } from "gatsby-plugin-mdx"
 
 import styled from "styled-components"
@@ -11,18 +10,6 @@ import Section from "../components/section"
 
 import Resume from "./resume.js"
 
-const AboutImg = styled(GatsbyImage)`
-  border-radius: 4px;
-  margin-bottom: ${rhythm(2)}; 
-  max-height: ${rhythm(18)}; 
-  @media screen and (min-width: 641px) {
-    max-height: inherit ;
-    width: 50%;
-    float: right;    
-    margin-left: ${rhythm(2)};
-  }
-`
-
 const About = ({data, location}) => {
 
   return (
@@ -30,9 +17,7 @@ const About = ({data, location}) => {
       <SEO title="About" />
 
       <Section>
-        <h1>About</h1>
-        {/*IMAGE*/}
-        <MDXRenderer>{data.mdx.body}</MDXRenderer>
+        <MDXRenderer images={data.allFile.nodes}>{data.mdx.body}</MDXRenderer>
       </Section>
 
       <Section>
@@ -57,6 +42,24 @@ export const pageQuery = graphql`query About {
     id
     slug
     body
+  }
+  allFile(filter: {
+    absolutePath: {regex: "\\/content/about/"}, 
+    extension: {regex: "/(jpg)|(jpeg)|(png)/"}
+  }) {
+    nodes {
+      name
+      id
+      extension
+      childImageSharp {
+        gatsbyImageData(layout: FULL_WIDTH)
+        original {
+          src
+          height
+          width
+        }
+      }
+    }
   }
 }  
 `

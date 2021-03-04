@@ -1,22 +1,30 @@
 import React, { useEffect, useContext } from "react"
 import { Link } from "gatsby"
 import { rhythm, scale } from "../utils/typography"
-import { withTheme } from "styled-components"
-import { ThemeManagerContext, ThemeSetting } from "gatsby-styled-components-dark-mode"
+import { ThemeContext, withTheme } from "styled-components"
+import { useStyledDarkMode, ThemeSetting } from "gatsby-styled-components-dark-mode"
 import GlobalStyle from './globalStyle'
+
+import { MDXProvider } from "@mdx-js/react"
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
+import Gallery from "react-photo-gallery";
+import WidthBleeder from "../components/widthBleeder";
+import { galleryArray, imageByName } from "../utils/functions";
+
 
 import Header from '../components/header'
 import Footer from '../components/footer'
 
+const shortcodes = { GatsbyImage, getImage, Gallery, WidthBleeder, galleryArray, imageByName }
 
 const Layout = withTheme((props) => {
 
   const { location, title, children, theme } = props
-  const themeContext = useContext(ThemeManagerContext);
+  const { changeThemeSetting, themeSetting } = useStyledDarkMode();
 
   function setThemeToSystemTheme(e) {
     // let newTheme = e ? ThemeSetting.DARK : ThemeSetting.LIGHT;
-    themeContext.changeThemeSetting(ThemeSetting.SYSTEM);
+    changeThemeSetting(ThemeSetting.SYSTEM);
     // console.log('setting theme to ', newTheme)
   }
 
@@ -36,10 +44,12 @@ const Layout = withTheme((props) => {
 
   return (
     <div>
+      <MDXProvider components={shortcodes}>
       <GlobalStyle theme={props.theme} />
       <Header location={location}/>
       <main>{children}</main>
       <Footer/>
+      </MDXProvider>
     </div>
   )
 })
