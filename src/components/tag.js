@@ -10,7 +10,7 @@ const StyledSpan = styled.span`
   padding: ${rhythm(.2)} ${rhythm(.5)};
   margin: ${rhythm(.15)} ${rhythm(.1)};
   margin-bottom: ${rhythm(.15)} !important;
-  border-radius: ${rhythm(1)};
+  border-radius: ${rhythm(.666)};
   font-family: Pantograph;
   letter-spacing: 0.01em;
   font-weight: 400;
