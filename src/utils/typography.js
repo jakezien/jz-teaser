@@ -6,10 +6,10 @@ const typography = new Typography({
   baseLineHeight: 1.35,
   scaleRatio: 4.5,
  
-  headerFontFamily: ["Pantograph"],
+  headerFontFamily: ["Pantograph", 'ui-monospace', 'Menlo', 'Monaco', "Cascadia Mono", "Segoe UI Mono", "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro","Fira Mono", "Droid Sans Mono", "Courier New", 'monospace'],
   headerWeight: 500,
  
-  bodyFontFamily: ["covik-sans"],
+  bodyFontFamily: ["covik-sans", 'system-ui', 'apple-system', '-apple-system', 'BlinkMacSystemFont', "Segoe UI", 'Roboto', 'Oxygen-Sans', 'Ubuntu', 'Cantarell', "Helvetica Neue", 'sans-serif'],
   bodyWeight: 300,
 
   overrideStyles: ({ adjustFontSizeTo, rhythm }, options, styles) => ({
@@ -74,12 +74,8 @@ const typography = new Typography({
     'a, a *': {
       color: 'inherit'
     },
-
-    '*.inputFont': {
-      fontFamily: 'Pantograph',
-    },
     
-    'p>a, *.link': {
+    'p>a:not(.covik), *.link': {
       fontFamily: 'Pantograph',
       textDecoration: 'none',
       letterSpacing: '0.02em',

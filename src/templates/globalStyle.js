@@ -73,6 +73,11 @@ const GlobalStyle = createGlobalStyle`
     }
   }
 
+  .pantograph {
+    font-family: Pantograph, monospace;
+    letter-spacing: 0.02em;
+  }
+
   @media screen and (min-width: 641px) {
     .two-up {
       display: flex;
