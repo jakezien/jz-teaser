@@ -31,6 +31,34 @@ const GlobalStyle = createGlobalStyle`
     color: ${props => props.theme.textOnYellow}
   }
 
+  .bg1 {
+    background-color: ${props => props.theme.bg1}
+  }
+
+  .bg2 {
+    background-color: ${props => props.theme.bg2}
+  }
+
+  .bg3 {
+    background-color: ${props => props.theme.bg3}
+  }
+
+  .bg4 {
+    background-color: ${props => props.theme.bg4}
+  }
+
+  .bg5 {
+    background-color: ${props => props.theme.bg5}
+  }
+
+  .bg6 {
+    background-color: ${props => props.theme.bg6}
+  }
+
+  .bg7 {
+    background-color: ${props => props.theme.bg7}
+  }
+
   .react-photo-gallery--gallery {
     margin-bottom: ${rhythm(1)}
   }

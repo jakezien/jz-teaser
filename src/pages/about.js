@@ -10,20 +10,18 @@ import Section from "../components/section"
 
 import Resume from "./resume.js"
 
-const About = ({data, location}) => {
+const About = (props) => {
 
   return (
     <Layout>
       <SEO title="About" />
 
-      <Section>
-        <MDXRenderer images={data.allFile.nodes}>{data.mdx.body}</MDXRenderer>
-      </Section>
-
+      <MDXRenderer {...props} images={props.data.allFile.nodes}>{props.data.mdx.body}</MDXRenderer>
+{/*
       <Section>
         <h1>What I've done</h1>
         <Resume/>
-      </Section>
+      </Section>*/}
 
     </Layout>
   );

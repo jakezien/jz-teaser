@@ -5,9 +5,9 @@ import Container from "../components/container"
 
 let StyledSection = styled.section`
   width: 100%;  
-  background: ${props => props.bgColor}; 
+  background: ${props => props.bgcolor}; 
   * footer {
-    background: ${props => props.bgColor}; 
+    background: ${props => props.bgcolor}; 
     > div {
       padding: ${ rhythm(1) } 0 0 0;
       padding-right: 0;
@@ -15,11 +15,11 @@ let StyledSection = styled.section`
   }
 `
 
-const Section = ({children, bgColor, className}) => {
+const Section = (props) => {
   return (
-    <StyledSection className={className}>
+    <StyledSection {...props}>
       <Container>
-        {children}
+        {props.children}
       </Container>
     </StyledSection>
   )

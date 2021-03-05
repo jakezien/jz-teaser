@@ -10,6 +10,7 @@ import { MDXProvider } from "@mdx-js/react"
 import { GatsbyImage, StaticImage, getImage } from "gatsby-plugin-image";
 import Gallery from "react-photo-gallery";
 import WidthBleeder from "../components/widthBleeder";
+import Section from "../components/section";
 import Inset from "../components/inset";
 import { galleryArray, imageByName } from "../utils/functions";
 
@@ -17,12 +18,14 @@ import { galleryArray, imageByName } from "../utils/functions";
 import Header from '../components/header'
 import Footer from '../components/footer'
 
-const shortcodes = { Inset, GatsbyImage, StaticImage, getImage, Gallery, WidthBleeder, galleryArray, imageByName }
 
 const Layout = withTheme((props) => {
 
+
   const { location, title, children, theme } = props
   const { changeThemeSetting, themeSetting } = useStyledDarkMode();
+
+  const shortcodes = { Section, Link, Inset, GatsbyImage, StaticImage, getImage, Gallery, WidthBleeder, galleryArray, imageByName }
 
   function setThemeToSystemTheme(e) {
     // let newTheme = e ? ThemeSetting.DARK : ThemeSetting.LIGHT;
@@ -41,8 +44,6 @@ const Layout = withTheme((props) => {
       mediaQuery.removeEventListener('change', setThemeToSystemTheme)
     };
   });
-
-  console.log('layout loaded')
 
   return (
     <div>
