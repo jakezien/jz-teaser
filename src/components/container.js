@@ -13,7 +13,7 @@ const StyledDiv = styled.div`
   overflow: visible;
   @media screen and (min-width: 768px) {
     max-width: ${wideMaxWidth};
-    padding: ${rhythm(1)} ${wideHPadding};
+    padding: ${rhythm(1)} ${wideHPadding} ${rhythm(2)} ${wideHPadding};
   }
 `
 

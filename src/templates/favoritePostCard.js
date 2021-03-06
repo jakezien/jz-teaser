@@ -64,7 +64,6 @@ const FavoritePostCard = (props) => {
 
   return (
     <Card>
-      <Link to={post.fields.slug}>
         <StyledGatsbyImage 
           image={image ? image : ''} 
           alt={post.frontmatter.title}
@@ -84,7 +83,6 @@ const FavoritePostCard = (props) => {
           </MobileWrap>
           <MDXRenderer>{post.body}</MDXRenderer>
         </StyledDiv>
-      </Link>
     </Card>
   );
 }

@@ -8,15 +8,59 @@ const GlobalStyle = createGlobalStyle`
     color: ${props => (props.theme.text)};
   }
 
-  a {
-    // text-decoration: none;
+  a:not(.link) {
+    text-decoration: none;
+    position: relative;
+    transition: color 0.1s;
+
+    :hover {
+      color: ${props => props.theme.linkHover};
+      &:after {
+        background-color: ${props => props.theme.linkHover};
+      }
+    }
+
+    :after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      bottom: -2px;
+      left: 0;
+      border-radius: 2px;
+      opacity: 0.3;
+      background-color: ${props => props.theme.text};
+      transition: background-color 0.1s;
+
+    }
+
   }
 
-  p>a, *.link {
-    color: ${props => props.theme.text};
-    border-bottom: 2px solid ${props => props.theme.bg4};
 
-    &:hover, &[aria-current=page] {
+  .link {
+    font-family: "Pantograph", 'ui-monospace', 'Menlo', 'Monaco', "Cascadia Mono", "Segoe UI Mono", "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro","Fira Mono", "Droid Sans Mono", "Courier New", 'monospace';
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    font-size: ${rhythm(.85)};
+    font-weight: 400;
+    color: ${props => props.theme.text};
+    border: 4px solid transparent;
+    position: relative;
+    padding: 0 2px;
+    transition: color 0.1s, border 0.1s, background 0.1s;
+    
+    :after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      bottom: -2px;
+      left: 0;
+      border-radius: 2px;
+      background-color: ${props => props.theme.bg4};
+    }
+
+    :hover, &[aria-current=page] {
       background: ${props => props.theme.bg4};
       border: 4px solid ${props => props.theme.bg4};
       border-radius: 4px;

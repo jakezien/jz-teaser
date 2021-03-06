@@ -12,6 +12,7 @@ import Gallery from "react-photo-gallery";
 import WidthBleeder from "../components/widthBleeder";
 import Section from "../components/section";
 import Inset from "../components/inset";
+import TagList from "../components/tagList";
 import { galleryArray, imageByName } from "../utils/functions";
 
 
@@ -25,7 +26,7 @@ const Layout = withTheme((props) => {
   const { location, title, children, theme } = props
   const { changeThemeSetting, themeSetting } = useStyledDarkMode();
 
-  const shortcodes = { Section, Link, Inset, GatsbyImage, StaticImage, getImage, Gallery, WidthBleeder, galleryArray, imageByName }
+  const shortcodes = { TagList, Section, Link, Inset, GatsbyImage, StaticImage, getImage, Gallery, WidthBleeder, galleryArray, imageByName }
 
   function setThemeToSystemTheme(e) {
     // let newTheme = e ? ThemeSetting.DARK : ThemeSetting.LIGHT;

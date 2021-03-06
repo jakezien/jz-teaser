@@ -28,7 +28,11 @@ const typography = new Typography({
       marginBottom: rhythm(.5),
       fontStretch: 'extra-condensed',
       ...adjustFontSizeTo(rhythm(1.85), 1.66),
-      maxWidth:"90%"
+      maxWidth:"90%",
+    },
+
+    'h2:first-child' : {
+      marginTop:0
     },
     
     'h3': {
@@ -68,22 +72,13 @@ const typography = new Typography({
     },
 
     'p, a, span, li, figcaption': {
-      letterSpacing: '-0.02em'
+      letterSpacing: '-0.01em'
     },
 
     'a, a *': {
       color: 'inherit'
     },
-    
-    'p>a:not(.covik), *.link': {
-      fontFamily: 'Pantograph',
-      textDecoration: 'none',
-      letterSpacing: '0.02em',
-      fontSize: '1.1em',
-      fontWeight: 400,
-      position: 'relative',
-      top: '.05em'
-    },
+
 
     '@media only screen and (min-width:26rem)': {
       'h1': {
@@ -110,7 +105,7 @@ const typography = new Typography({
       },
 
       'p, a, span, li, figcaption': {
-        letterSpacing: '-0.02em'
+        letterSpacing: '-0.01em'
       },
     },
   })

@@ -39,14 +39,14 @@ const WorkPostTemplate = ({ data, pageContext, location }) => {
 
           <header>
             <h1>{post.frontmatter.title}</h1>
-            <p>{post.frontmatter.date}</p>
+            {/*<p>{post.frontmatter.date}</p>*/}
           </header>
 
           <MDXRenderer images={imgNodes}>{post.body}</MDXRenderer>
         </article>
 
-        <PostFooterNav pageContext={pageContext} />
       </Container>
+      <PostFooterNav pageContext={pageContext} />
 
 
     </Layout>

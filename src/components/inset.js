@@ -9,9 +9,9 @@ const otherSide = props => sides[!props.left | 0]
 
 const StyledDiv = styled.div`
   @media screen and (min-width: 641px) {
-    max-width: calc(50% - ${rhythm(.5)});
+    max-width: calc(50% - ${rhythm(1.5)});
     float: ${side};
-    margin-${otherSide}: ${rhythm(.5)};
+    margin-${otherSide}: ${rhythm(1)};
   }
 `
 

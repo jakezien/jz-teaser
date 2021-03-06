@@ -16,7 +16,10 @@ const StyledOuterSpan = styled.span`
     .jz-tooltip-trigger{
       border-bottom-color: transparent;
       &:before {
-        opacity: 1
+        opacity: 1;
+      }
+      &:after {
+        opacity: 0;
       }
     }
   }
@@ -24,7 +27,6 @@ const StyledOuterSpan = styled.span`
 
 const StyledSpan = styled.span`
   display: inline-block;
-  border-bottom: 4px solid ${props => props.theme.yellow};
   padding-bottom: 0;
   margin-top: initial;
   margin-bottom: 0.5rem;
@@ -42,6 +44,19 @@ const StyledSpan = styled.span`
     background-color: ${props => props.theme.isDark ? props.theme.bg4 : props.theme.yellow};
     opacity: 0;
     z-index: -1;
+    transition: opacity 0.1s;
+  }
+
+  :after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    background-color: ${props => props.theme.yellow};
+    bottom: -3px;
+    border-radius: 2px;
+    left: 0;
+    transition: opacity 0.1s;
   }
 `
 

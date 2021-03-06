@@ -17,21 +17,12 @@ const StyledLi = styled.li`
 const StyledLink = styled(Link)`
   margin-left: ${rhythm(.5)};
 
-  &:hover, &[aria-current=page] {
-    left: inherit;
-    right:-4px;
-    margin-left: calc(${rhythm(.5)} - 8px);
-  }
   &[aria-current=page] {
     color: ${props => props.theme.isDark ? props.theme.textTint : props.theme.textShade};
   }
   
   @media only screen and (min-width:26rem) {
     margin-left: ${rhythm(1)};
-    &:hover, &[aria-current=page] {
-      right:-4px;
-      margin-left: calc(${rhythm(1)} - 8px);
-    }
   }
 `
 

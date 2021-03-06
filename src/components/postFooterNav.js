@@ -5,7 +5,16 @@ import { rhythm } from "../utils/typography"
 import Container from "./container"
 
 const StyledNav = styled.nav`
-  margin-bottom: 1em;
+  // padding: ${rhythm(2)} 0;
+  background: ${props => props.theme.bg2};
+`
+
+const StyledHr = styled.div`
+  background: ${props => props.theme.bg4};
+  width: 100%;
+  height: 4px;
+  border-radius 2px;
+  margin-bottom: ${rhythm(2)};
 `
 
 const StyledUl = styled.ul`
@@ -30,24 +39,26 @@ const PostFooterNav = ({pageContext}) => {
   return (
 
     <StyledNav>
-      <hr/>
+      <Container>
+      {/*<StyledHr></StyledHr>*/}
       <StyledUl>
         <li>
           {previous && (
-            <Link to={previous.fields.slug} rel="prev">
+            <Link className="link" to={previous.fields.slug} rel="prev">
               ← {previous.frontmatter.title}
             </Link>
           )}
         </li>
-        <StyledLi><Link to="/work">All work</Link></StyledLi>
+        <StyledLi><Link className="link" to="/work">All work</Link></StyledLi>
         <li>
           {next && (
-            <Link to={next.fields.slug} rel="next">
+            <Link className="link" to={next.fields.slug} rel="next">
               {next.frontmatter.title} →
             </Link>
           )}
         </li>
       </StyledUl>
+      </Container>
     </StyledNav>
   )
 }
