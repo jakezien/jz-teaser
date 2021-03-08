@@ -53,7 +53,7 @@ const typography = new Typography({
     },
 
     'h5': {
-      opacity: 0.75,
+      opacity: 0.85,
       fontFamily: 'covik-sans',
       fontWeight: 400,
       letterSpacing: '-0.02em',

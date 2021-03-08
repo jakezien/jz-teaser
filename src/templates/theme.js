@@ -3,7 +3,7 @@ const lightTheme = {
   textTint:   '#777',
   textShade:  '#333',
   textOnYellow: () => this.text,
-  linkHover: 'hsl(46,60%,70%)',
+  linkHover: 'hsl(46,80%,45%)',
   bg0:    'white',
   bg1:    'hsl(46, 100%, 96%)',
   bg2:    'hsl(46, 100%, 92%)',

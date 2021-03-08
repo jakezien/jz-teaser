@@ -8,7 +8,7 @@ const GlobalStyle = createGlobalStyle`
     color: ${props => (props.theme.text)};
   }
 
-  a:not(.link) {
+  p a:not(.link) {
     text-decoration: none;
     position: relative;
     transition: color 0.1s;

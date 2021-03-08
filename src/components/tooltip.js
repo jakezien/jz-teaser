@@ -51,10 +51,10 @@ const StyledSpan = styled.span`
     content: '';
     position: absolute;
     width: 100%;
-    height: 4px;
+    height: 5px;
     background-color: ${props => props.theme.yellow};
     bottom: -3px;
-    border-radius: 2px;
+    border-radius: 3px;
     left: 0;
     transition: opacity 0.1s;
   }

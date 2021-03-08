@@ -26,6 +26,7 @@ const StyledSpan = styled.span`
   @media only screen and (max-width:414px) {
     font-size: ${rhythm(.7)};
     padding: ${rhythm(.15)} ${rhythm(.35)};
+    border-radius: ${rhythm(.4995)};
     > span {
       top: 0px;
       letter-spacing: 0.03em;
