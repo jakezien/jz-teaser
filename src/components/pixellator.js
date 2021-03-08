@@ -16,11 +16,12 @@ const Pixellator = (props) => {
   })
 
   const pixellateNode = (node) => {
+    node.classList.add('pixellated')
     node.style.visibility = 'hidden';
     setTimeout(() => {    
       let canvas = createCanvas(node);
       fillCanvas(canvas, node);
-      renderCanvas(canvas, node);  
+      renderCanvas(canvas, node);
       node.style.visibility = 'visible'
     }, 250)
   }
@@ -99,6 +100,8 @@ const Pixellator = (props) => {
 
     // draw the original image at a fraction of the final size
     let clone = c.cloneNode(true);
+    if (!clone.width || !clone.height) return;
+    
     clone.getContext('2d').drawImage(c, 0, 0, c.width, c.height, 0, 0, w, h);
     
     let ctx = c.getContext ('2d');
@@ -154,9 +157,13 @@ const Pixellator = (props) => {
     1 : 0.25
   });
 
-  const processCensoredNodes = () => {
+  const processCensoredNodes = (force) => {
     let array = [...document.getElementsByClassName('censored')];
-    array.forEach(node => pixellateNode(node))
+    array.forEach(node => {
+      if (!node.classList.contains('pixellated') || force === true) {
+        pixellateNode(node) 
+      }
+    })
   }
 
   useEffect(() => {
@@ -165,11 +172,11 @@ const Pixellator = (props) => {
     processCensoredNodes();
 
     let mediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
-    mediaQuery.addEventListener('change', processCensoredNodes);
+    mediaQuery.addEventListener('change', processCensoredNodes(true));
     
     // Specify how to clean up after this effect:
     return function cleanup() {
-      mediaQuery.removeEventListener('change', processCensoredNodes)
+      mediaQuery.removeEventListener('change', processCensoredNodes(true))
     };
   });
 
