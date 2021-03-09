@@ -1,4 +1,4 @@
-import "./static/fonts/fonts.css"
+// import "./static/fonts/fonts.css"
 import React from 'react';
 import Helmet from 'react-helmet'
 import TCensorWrapper from './src/components/tCensor'

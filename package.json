@@ -70,7 +70,7 @@
     "deploy": "gatsby build --prefix-paths && gh-pages -d public",
     "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
-    "preload-fonts": "gatsby-preload-fonts",
+    "preload-fonts": "gatsby-preload-fonts --prefix-paths",
     "start": "npm run develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
