@@ -22,7 +22,6 @@ module.exports = {
     `gatsby-plugin-image`,
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
-    `gatsby-plugin-preload-fonts`,
     // `gatsby-plugin-feed-mdx`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-react-svg`,
@@ -79,10 +78,10 @@ module.exports = {
     {
       resolve: 'gatsby-omni-font-loader',
       options: {
-        mode: "async",
+        mode: "render-blocking",
         custom: [{
           name: "Pantograph",
-          file: "/fonts/fonts.css",
+          file: "./fonts/fonts.css",
         }],
         web: [{
           name: "covik-sans",
