@@ -103,6 +103,10 @@ const GlobalStyle = createGlobalStyle`
     background-color: ${props => props.theme.bg7}
   }
 
+  figure .react-photo-gallery--gallery {
+    margin-bottom: 0
+  }
+
   .react-photo-gallery--gallery {
     margin-bottom: ${rhythm(1)}
   }

@@ -67,6 +67,7 @@ const typography = new Typography({
 
     'figcaption': {
       opacity: 0.6,
+      marginTop: rhythm(.25),
       marginBottom: rhythm(1),
       textAlign: 'center'
     },

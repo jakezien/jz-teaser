@@ -1,6 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import { rhythm } from "../utils/typography"
+import TagList from './tagList'
 
 const StyledSpan = styled.span`
   background: ${props => props.theme.bg5};
@@ -23,12 +24,22 @@ const StyledSpan = styled.span`
     letter-spacing: 0.01em;
   }
 
+  &.compact, ${TagList}.compact & {
+    font-size: ${rhythm(.7)};
+    padding: ${rhythm(.15)} ${rhythm(.35)};
+    border-radius: ${rhythm(.51)};
+    > span {
+      top: .5px;
+      letter-spacing: 0.03em;
+    }
+  }
+
   @media only screen and (max-width:414px) {
     font-size: ${rhythm(.7)};
     padding: ${rhythm(.15)} ${rhythm(.35)};
-    border-radius: ${rhythm(.499)};
+    border-radius: ${rhythm(.51)};
     > span {
-      top: 0px;
+      top: .5px;
       letter-spacing: 0.03em;
     }
   }

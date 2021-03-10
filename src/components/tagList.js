@@ -5,6 +5,7 @@ import Tag from "./tag"
 
 const StyledDiv = styled.div`
   padding: 2px;
+  margin-bottom: ${rhythm(.5)};
 
   ul {
     margin: 0;
@@ -27,7 +28,7 @@ const TagList = (props) => {
   const listItems = props.children.props.children;
 
   return (
-    <StyledDiv>
+    <StyledDiv className={props.className}>
       <ul>
         {listItems.map( (item, index) => {
           return(

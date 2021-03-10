@@ -13,8 +13,8 @@ date: "2020-03-05"
 Our research revealed that each team had its own way of making their most critical documents, cobbling email, spreadsheets, and PowerPoint templates, and leaving a patchy trail of copypasted data. Without a single, reliable source of truth, teams had to manually verify the same data again and again for each new document. Site IQ replaced this inefficient, error-prone process with a friendly, modern workflow built to keep data fresh and reliable.
 
 <figure>
-  <video controls muted width="100%" style="margin-bottom:1em">
-    <source src="./splash-page.mp4" type="video/mp4" />
+  <video controls muted width="100%" poster="./site-iq-overview.png">
+    <source src="./site-iq-overview.mp4" type="video/mp4" />
   </video>
   <figcaption>Watch a 2-minute overview of Site IQ.</figcaption>
 </figure>
@@ -22,7 +22,7 @@ Our research revealed that each team had its own way of making their most critic
 
 ## What I did
 
-<TagList>
+<TagList className="compact">
 
 - Discovery research & interviews
 - Product definition
@@ -45,11 +45,29 @@ I was Design Lead on this project, collaborating with my Product, Tech, and Busi
 - Did all the design work: information architecture, workflow definition, feature flows, wireframes, prototypes, usability audits, and production UI; iterating and validating continuously with the team, users, and stakeholders.
 
 ### Defining the product
+
+<GatsbyImage style={{marginTop:'.675rem'}} image={imageByName(props, 'journey-map', true)} alt="Diagram of a Journey Map for an industrial broker." />
+
+<br/>
+
 <figure>
-  <video loop autoplay playsinline muted width="100%" style="margin-bottom:1em">
-    <source src="./splash-page.mp4" type="video/mp4" />
+  <video loop autoplay playsinline muted width="100%">
+    <source src="./site-iq-whiteboarding.mp4" type="video/mp4" />
   </video>
-  <figcaption>Watch a 2-minute overview of Site IQ.</figcaption>
+  <figcaption>An all-day whiteboarding session defining Site IQ's workflows with my PM and our business stakeholder.</figcaption>
+</figure>
+
+## The outcome
+Site IQ launched to a handful of industrial brokerage teams across the US in 2019, and has added a few more teams each quarter since. Those who try it find it easy, useful and reliable enough for real business, and Site IQ-produced documents have landed in the hands of dozens of CBRE clients. Today, Site IQ is maintained overseas, but its design and its lessons formed the center of a new, companywide effort to create a platform for every team at CBRE. 
+
+<figure>
+<img src="./wireframe.gif" alt="A wireframe prototype of Site IQ." style="margin-bottom:0; display:block;"/>
+<figcaption>An early interactive prototype I threw together.</figcaption>
+</figure>
+
+<figure>
+<Gallery style="margin-bottom:0" photos={galleryArray(props, ['site-iq-ui'])} />
+<figcaption>Screenshots of the final, live-in-production UI for Site IQ.</figcaption>
 </figure>
 
 ## What went well
