@@ -81,7 +81,7 @@ module.exports = {
         mode: "render-blocking",
         custom: [{
           name: "Pantograph",
-          file: "/fonts/fonts.css",
+          file: process.env.FONTS_URL,
         }],
         web: [{
           name: "covik-sans",
