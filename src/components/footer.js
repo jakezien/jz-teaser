@@ -4,6 +4,7 @@ import styled from "styled-components"
 import { Link } from "gatsby"
 import { rhythm } from "../utils/typography"
 import Container from "./container"
+import SpotifyPlayer from "./SpotifyPlayer"
 
 const StyledFooter = styled.footer`
   min-height: ${ rhythm(8) };
@@ -17,6 +18,7 @@ const Footer = () => {
     <StyledFooter className="yellowBg">
       <Container>
         <h3>© {new Date().getFullYear()} Jake Zien.</h3>
+        <SpotifyPlayer />
       </Container>
     </StyledFooter>
   )

@@ -22,11 +22,10 @@ import Footer from '../components/footer'
 
 const Layout = withTheme((props) => {
 
-
   const { location, title, children, theme } = props
   const { changeThemeSetting, themeSetting } = useStyledDarkMode();
 
-  const shortcodes = { TagList, Section, Link, Inset, GatsbyImage, StaticImage, getImage, Gallery, WidthBleeder, galleryArray, imageByName, rhythm }
+  const shortcodes = { TagList, Section, Link, Inset, GatsbyImage, StaticImage, getImage, Gallery, WidthBleeder, galleryArray, imageByName }
 
   function setThemeToSystemTheme(e) {
     // let newTheme = e ? ThemeSetting.DARK : ThemeSetting.LIGHT;
@@ -49,10 +48,12 @@ const Layout = withTheme((props) => {
   return (
     <div>
       <MDXProvider components={shortcodes}>
-      <GlobalStyle theme={props.theme} />
-      <Header location={location}/>
-      <main>{children}</main>
-      <Footer/>
+        <GlobalStyle theme={props.theme} />
+        <Header location={location}/>
+        <main>
+          {children}
+        </main>
+        <Footer/>
       </MDXProvider>
     </div>
   )

@@ -12,6 +12,9 @@ jobs:
     env:
       FONTS_URL: /jz/fonts/fonts.css
       TYPEKIT_ID: ${{ secrets.TYPEKIT_ID }}
+      SPOTIFY_CLIENT_ID: ${{ secrets.SPOTIFY_CLIENT_ID }}
+      SPOTIFY_CLIENT_SECRET: ${{ secrets.SPOTIFY_CLIENT_SECRET }}
+      SPOTIFY_REFRESH_TOKEN: ${{ secrets.SPOTIFY_REFRESH_TOKEN }}
     steps:
       - uses: actions/checkout@v1
       - uses: enriikke/gatsby-gh-pages-action@v2
@@ -19,3 +22,5 @@ jobs:
           access-token: ${{ secrets.ACCESS_TOKEN }}
           deploy-branch: gh-pages
           gatsby-args: --prefix-paths
+
+

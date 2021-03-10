@@ -5,6 +5,7 @@ company: CBRE Build
 type: product
 date: "2020-03-05"
 ---
+import { rhythm } from "../../../src/utils/typography";
 
 
 ## What it is
@@ -67,13 +68,18 @@ Site IQ launched to a handful of industrial brokerage teams across the US in 201
 
 <figure>
 <Gallery style="margin-bottom:0" photos={galleryArray(props, ['site-iq-ui'])} />
-<figcaption>Screenshots of the final, live-in-production UI for Site IQ.</figcaption>
+<figcaption>Screenshots of the live UI for Site IQ.</figcaption>
 </figure>
 
 ## What went well
 - We solved the problem we set out to solve for our users. They found enough immediate, durable value in Site IQ to rely on it for real, everyday business.
 - We met the moment's business goal of helping teams be more efficient, but also correctly predicted and met the future business goal of empowering teams with data.
 - When a reorg scythed our 60-person group down to 10 lucky individuals (including me), Site IQ was the only product among a dozen to survive. It became the foundation of a CEO-led, companywide effort to build a workflow platform for every team at CBRE.
+
+<figure>
+<GatsbyImage style={{maxHeight:rhythm(30)}} imgStyle={{objectFit:'contain'}} image={imageByName(props, 'landing-page', true)} alt="The marketing website I designed for Site IQ." />
+<figcaption>The website I designed to market Site IQ internally to CBRE broker teams.</figcaption>
+</figure>
 
 ## What I learned
 - That an organization’s structure is a fundamental constraint on every project. It determines which strategies can succeed, and shapes any products or systems that result.
