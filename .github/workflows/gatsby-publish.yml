@@ -10,6 +10,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
+      FONTS_URL: /jz/fonts/fonts.css
       TYPEKIT_ID: ${{ secrets.TYPEKIT_ID }}
     steps:
       - uses: actions/checkout@v1
