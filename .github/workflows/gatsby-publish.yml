@@ -10,7 +10,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      FONTS_URL: /jz/fonts/fonts.css
+      PATH_PREFIX: '/jz'
       TYPEKIT_ID: ${{ secrets.TYPEKIT_ID }}
       SPOTIFY_CLIENT_ID: ${{ secrets.SPOTIFY_CLIENT_ID }}
       SPOTIFY_CLIENT_SECRET: ${{ secrets.SPOTIFY_CLIENT_SECRET }}

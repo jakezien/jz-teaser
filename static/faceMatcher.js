@@ -42,7 +42,7 @@ const josephArray = [
 
 const loadFaceDetectionModels = async () => {
   t0 = performance.now()
-  let url = "/faceapi/"
+  let url = "./faceapi/"
   await faceapi.loadTinyFaceDetectorModel(url)
   await faceapi.loadFaceLandmarkTinyModel(url)
   await faceapi.loadFaceRecognitionModel(url)

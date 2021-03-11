@@ -32,8 +32,8 @@ const TextCensor = () => {
 const TCensorWrapper = ({children}) => (
   <>
     <AppendHead>
-      <script name='faceapi' src="/faceapi/face-api.min.js" order='0'></script>
-      <script name='facematcher' defer src="/facematcher.js" order='1'></script>
+      <script name='faceapi' src={process.env.PATH_PREFIX + "/faceapi/face-api.min.js"} order='0'></script>
+      <script name='facematcher' src={process.env.PATH_PREFIX + "/facematcher.js"} order='1'></script>
     </AppendHead>
     {children}
     <TextCensor />
