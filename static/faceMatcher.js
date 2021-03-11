@@ -211,6 +211,5 @@ const onImageLoaded = () => {
   images.forEach(img => detectFacesInImg(img))
 }
 
-
 const matcher = createFaceMatcher();
 loadFaceDetectionModels();

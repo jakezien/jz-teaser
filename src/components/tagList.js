@@ -27,8 +27,10 @@ const TagList = (props) => {
 
   const listItems = props.children.props.children;
 
+  const attrs = (({children, ...o}) => o)(props)
+
   return (
-    <StyledDiv className={props.className}>
+    <StyledDiv {...attrs}>
       <ul>
         {listItems.map( (item, index) => {
           return(

@@ -166,17 +166,21 @@ const Pixellator = (props) => {
     })
   }
 
+  const forceProcessCensoredNodes = () => {
+    processCensoredNodes(true);
+  }
+
   useEffect(() => {
     if (typeof window === 'undefined') return;
 
-    processCensoredNodes();
+    document.fonts.ready.then(processCensoredNodes);
 
     let mediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
-    mediaQuery.addEventListener('change', processCensoredNodes(true));
+    mediaQuery.addEventListener('change', forceProcessCensoredNodes);
     
     // Specify how to clean up after this effect:
     return function cleanup() {
-      mediaQuery.removeEventListener('change', processCensoredNodes(true))
+      mediaQuery.removeEventListener('change', forceProcessCensoredNodes)
     };
   });
 

@@ -18,7 +18,7 @@ const Footer = () => {
     <StyledFooter className="yellowBg">
       <Container>
         <h3>© {new Date().getFullYear()} Jake Zien.</h3>
-        <SpotifyPlayer />
+        {/*<SpotifyPlayer />*/}
       </Container>
     </StyledFooter>
   )

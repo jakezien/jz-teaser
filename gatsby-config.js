@@ -79,6 +79,7 @@ module.exports = {
       resolve: 'gatsby-omni-font-loader',
       options: {
         mode: "render-blocking",
+        enableListener: true,
         custom: [{
           name: "Pantograph",
           file: process.env.FONTS_URL,

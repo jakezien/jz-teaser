@@ -24,7 +24,7 @@ const StyledSpan = styled.span`
     letter-spacing: 0.01em;
   }
 
-  &.compact, ${TagList}.compact & {
+  &.compact, ${TagList}.compact &, ${TagList}[compact] & {
     font-size: ${rhythm(.7)};
     padding: ${rhythm(.15)} ${rhythm(.35)};
     border-radius: ${rhythm(.51)};

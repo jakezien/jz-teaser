@@ -1,12 +1,10 @@
 import React, {useLayoutEffect} from "react"
-import Helmet from "react-helmet"
+import AppendHead from "react-append-head"
 import FindAndReplaceDOMText from "../utils/findAndReplaceDOMText"
 import Pixellator from "./pixellator"
 
 const TextCensor = () => {
-  // let trumps = [];
-
-  useLayoutEffect(() => {
+  const searchAndWrapText = () => {
     if (typeof window === 'undefined') return;
 
     FindAndReplaceDOMText(document.getElementById('___gatsby'), {
@@ -21,7 +19,11 @@ const TextCensor = () => {
         else return true;
       }
     });
-    return 
+    return
+  }
+
+  useLayoutEffect(() => {
+    searchAndWrapText();
   })
 
   return null;
@@ -29,10 +31,10 @@ const TextCensor = () => {
 
 const TCensorWrapper = ({children}) => (
   <>
-    <Helmet>
-      {/*<script src="/faceapi/face-api.min.js"></script>*/}
-      {/*<script defer src="/facematcher.js"></script>*/}
-    </Helmet>
+    <AppendHead>
+      <script name='faceapi' src="/faceapi/face-api.min.js" order='0'></script>
+      <script name='facematcher' defer src="/facematcher.js" order='1'></script>
+    </AppendHead>
     {children}
     <TextCensor />
     <Pixellator />
