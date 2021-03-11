@@ -82,7 +82,7 @@ module.exports = {
         enableListener: true,
         custom: [{
           name: "Pantograph",
-          file: process.env.PATH_PREFIX + '/fonts/fonts.css'
+          file: process.env.GATSBY_PATH_PREFIX + '/fonts/fonts.css'
         }],
         web: [{
           name: "covik-sans",
