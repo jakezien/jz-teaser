@@ -42,10 +42,14 @@ const josephArray = [
 
 const loadFaceDetectionModels = async () => {
   t0 = performance.now()
-  let url = "./faceapi/"
-  await faceapi.loadTinyFaceDetectorModel(url)
-  await faceapi.loadFaceLandmarkTinyModel(url)
-  await faceapi.loadFaceRecognitionModel(url)
+  let url = '/faceapi/'
+  await faceapi.loadTinyFaceDetectorModel(url).catch((err) => { console.error(err); });
+  await faceapi.loadFaceLandmarkTinyModel(url).catch((err) => { console.error(err); });
+  await faceapi.loadFaceRecognitionModel(url).catch((err) => { console.error(err); });
+  url = '/jz/faceapi/'
+  await faceapi.loadTinyFaceDetectorModel(url).catch((err) => { console.error(err); });
+  await faceapi.loadFaceLandmarkTinyModel(url).catch((err) => { console.error(err); });
+  await faceapi.loadFaceRecognitionModel(url).catch((err) => { console.error(err); });
   t1 = performance.now()
   console.log('models loaded in ' + (t1 - t0) +'ms');
 }
@@ -139,7 +143,7 @@ const drawLabelledDetections = (canvasArg, detections) => {
             ? det.box
             : (faceapi.isWithFaceDetection(det) ? det.detection.box : new faceapi.Box(det));
 
-        let bestMatch = matcher.findBestMatch(det.descriptor).toString();
+        let bestMatch = faceMatcher.findBestMatch(det.descriptor).toString();
         let isDon = bestMatch.includes('donald');
         let isJoe = bestMatch.includes('joseph');
         let labelName = bestMatch.includes('unknown') ? "" : bestMatch
@@ -154,7 +158,7 @@ const drawFaceCanvases = async (img, detections, canvas) => {
   // const regionsToExtract = [];
   var detectionsArray = Array.isArray(detections) ? detections : [detections];
   detectionsArray.forEach(async (det) => {
-    let bestMatch = matcher.findBestMatch(det.descriptor).toString();
+    let bestMatch = faceMatcher.findBestMatch(det.descriptor).toString();
     if (bestMatch.includes('donald')) {
       var box = det instanceof faceapi.FaceDetection
         ? det.box
@@ -211,5 +215,5 @@ const onImageLoaded = () => {
   images.forEach(img => detectFacesInImg(img))
 }
 
-const matcher = createFaceMatcher();
+var faceMatcher = createFaceMatcher();
 loadFaceDetectionModels();

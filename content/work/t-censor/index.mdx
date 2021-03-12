@@ -4,6 +4,17 @@ oneliner: a Chrome extension that pixellates out the most offensive thing on the
 type: product
 date: "2021-02-05 19:34"
 ---
+import ImageSearch from "../../../src/components/imageSearch";
+
+<ImageSearch />
+
+## What it is
+##### In a fit of pique sometime in 2017, exhausted by an inescapable name and repugnant visage, I stretched my front-end development skills to create a plugin that would provide a more peaceful browsing experience across the web.
+Inspired by _Broad City_’s brilliant bleeping of his name, I realized the efficacy of this approach. We couldn’t do much until an election — but we could control one thing, which just happened to be the only thing he actually cares about. Ratings. Eyeballs. Hearing and seeing his own name; forcing himself on the world. Taking that away amounted to reclaiming some personal power — and it was a lot of snarky fun.
+
+
+
+## What I did
 
 <TagList className='compact' compact>
 
@@ -14,13 +25,6 @@ date: "2021-02-05 19:34"
 
 </TagList>
 
-## What it is
-##### In a fit of pique sometime in 2017, exhausted by an inescapable name and repugnant visage, I stretched my front-end development skills to create a plugin that would provide a more peaceful browsing experience across the web.
-Inspired by _Broad City_’s brilliant bleeping of his name, I realized the efficacy of this approach. We couldn’t do much until an election — but we could control one thing, which just happened to be the only thing he actually cares about. Ratings. Eyeballs. Hearing and seeing his own name; forcing himself on the world. Taking that away amounted to reclaiming some personal power — and it was a lot of snarky fun.
-
-
-
-## What I did
 I built and published a Chrome extension that, once installed, would find every instance of his name or face on any webpage and pixellate them out, just as TV news would do to something vulgar and unairable. Users could also see a count of how many times they had been spared reading the name or seeing the face.
 - Learned several new developer tricks: training and using a client-side face-recognition API, using `canvas` to create the visual effect I wanted, efficiently parsing dynamic page content to find what I was looking for, and Chrome’s Extensions API
 - Experimented with online anonymity, using Tor to handle all the online parts of the project, including registering a Google Developer account, a Twitter account, and a domain name without giving away any personal information
