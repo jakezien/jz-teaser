@@ -54,6 +54,7 @@ const ImageSearch = (props) => {
 
   const handleSearchResults = (items) => {
     let newImages = [];
+    if (!items) return;
     items.forEach(item => newImages.push(corsProxy + item.link));
     setImages(images => [...images, newImages])
   }
