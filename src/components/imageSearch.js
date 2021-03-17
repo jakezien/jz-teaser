@@ -8,46 +8,19 @@ const ImageContainer = styled.div`
 
 const ImageSearch = (props) => {
 
-  const baseUri = 'https://www.googleapis.com/customsearch/v1?'
-  const searchParams = [
-    'cx=' + process.env.GATSBY_GOOGLE_CX,
-    'key=' + process.env.GATSBY_GOOGLE_API_KEY,
-    'imgSize=LARGE',
-    'num=10',
-    'searchType=image',
-    'start=1',
-    'q='
-  ]
   const corsProxy = 'https://jz-site-support.herokuapp.com/'
-
   const [images, setImages] = useState([]);
-
-  const urlForQuery = (query) => {
-    return baseUri + searchParams.join('&') + encodeURIComponent(query)
-  }
-
-  // const createImg = (index, url) => {
-  //   let corsUrl = corsProxy + url
-
-  //   setImages(prevImages => {
-  //     let newImages = prevImages;
-  //     // console.log(newImages, index, newImages[index])
-  //     newImages[index] = [corsUrl, ...prevImages[index]];
-  //     console.log(newImages)
-  //     return newImages;
-  //   })
-  // }
 
   const buttonClicked = (index) => {
     switch (index) {
       case 0: 
-        fetchImages(index, 'trump')
+        fetchImages('trump')
         break;
       case 1: 
-        fetchImages(index, 'trump and obama')
+        fetchImages('trump and obama')
         break;
       case 2: 
-        fetchImages(index, 'trump and biden')
+        fetchImages('trump and biden')
         break;
     }
   }
@@ -59,10 +32,10 @@ const ImageSearch = (props) => {
     setImages(images => [...images, newImages])
   }
 
-  const fetchImages = (index, query) => {
-    fetch(urlForQuery(query))
+  const fetchImages = (query) => {
+    fetch(corsProxy, {headers: {jzimages: query}})
       .then(response => response.json())
-      .then(data => handleSearchResults(data.items))
+      .then(json => handleSearchResults(json.data.items))
   }
 
   return (
