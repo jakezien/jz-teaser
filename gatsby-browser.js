@@ -1,6 +1,7 @@
 // import "./static/fonts/fonts.css"
 import React from 'react';
 import Helmet from 'react-helmet'
+import AppendHead from "react-append-head"
 import TCensorWrapper from './src/components/tCensor'
 
 export const wrapPageElement = ({element, props}) => (
