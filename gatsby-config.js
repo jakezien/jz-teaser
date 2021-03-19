@@ -111,7 +111,7 @@ module.exports = {
       options: {
         siteId: '1',
         matomoUrl: 'https://jz.matomo.cloud/',
-        siteUrl: 'https://jakezien.github.io.jz'
+        siteUrl: 'https://jakezien.github.io/jz'
       }
     }
 
