@@ -54,14 +54,20 @@ const josephArray = [
 
 const loadFaceDetectionModels = async () => {
   t0 = performance.now()
-  let url = '/faceapi/'
-  await faceapi.loadTinyFaceDetectorModel(url).catch((err) => { console.error(err); });
-  await faceapi.loadFaceLandmarkTinyModel(url).catch((err) => { console.error(err); });
-  await faceapi.loadFaceRecognitionModel(url).catch((err) => { console.error(err); });
-  url = '/jz/faceapi/'
-  await faceapi.loadTinyFaceDetectorModel(url).catch((err) => { console.error(err); });
-  await faceapi.loadFaceLandmarkTinyModel(url).catch((err) => { console.error(err); });
-  await faceapi.loadFaceRecognitionModel(url).catch((err) => { console.error(err); });
+  try {
+    await faceapi.loadTinyFaceDetectorModel('/jz/faceapi/');
+    // await faceapi.loadSsdMobilenetv1Model('/jz/faceapi/');
+    // await faceapi.loadMtcnnModel('/jz/faceapi/');
+    await faceapi.loadFaceLandmarkModel('/jz/faceapi/');
+    await faceapi.loadFaceRecognitionModel('/jz/faceapi/');
+  } catch (err) {
+    console.log('err', err)
+    await faceapi.loadTinyFaceDetectorModel('/faceapi/')
+    // await faceapi.loadSsdMobilenetv1Model('/faceapi/')
+    // await faceapi.loadMtcnnModel('/faceapi/')
+    await faceapi.loadFaceLandmarkModel('/faceapi/')
+    await faceapi.loadFaceRecognitionModel('/faceapi/')    
+  }
   t1 = performance.now()
   console.log('models loaded in ' + (t1 - t0) +'ms');
 }
@@ -100,18 +106,20 @@ const debouncedDetectFacesInImg = (img) => {
 }
 
 const detectFacesInImg = async (img) => {
-  console.log('detectFacesInImg', img)
-  // img.style.border = '2px solid yellow'
+  // console.log('detectFacesInImg', img)
+  // img.style.border = '2px solid moccasin'
   if (img.classList.contains('fdt-checked')) return;
   img.classList.add('fdt-checked')
 
   const tA = performance.now()
   const results = await faceapi
     .detectAllFaces(img, new faceapi.TinyFaceDetectorOptions({ inputSize: 640, scoreThreshold: 0.25 }))
-    .withFaceLandmarks(true)
+    // .detectAllFaces(img, new faceapi.SsdMobilenetv1Options({ minConfidence: 0.25 }))
+    // .detectAllFaces(img, new faceapi.MtcnnOptions())
+    .withFaceLandmarks()
     .withFaceDescriptors()
   const tB = performance.now()
-  console.log('img faces detected in ' + (tB - tA) +'ms', img.src.slice(0, 30));
+  // console.log('img faces detected in ' + (tB - tA) +'ms', img.src.slice(0, 30));
   
   let canvas = await createDetectionsCanvas(img, results)
   overlayCanvasOnImg(canvas, img);
@@ -142,13 +150,14 @@ const overlayCanvasOnImg = (canvas, img) => {
 }
 
 const createDetectionsCanvas = async (img, detections) => {
-  const displaySize = { width: img.width, height: img.height }
+  // const displaySize = { width: img.width, height: img.height }
   const canvas = document.createElement('canvas')
-  faceapi.matchDimensions(canvas, displaySize)
+  faceapi.matchDimensions(canvas, img, true)
 
-  const resizedDetections = faceapi.resizeResults(detections, displaySize)
-  // drawLabelledDetections(canvas, resizedDetections)
+  // const resizedDetections = faceapi.resizeResults(detections, displaySize)
+  const resizedDetections = faceapi.resizeResults(detections, canvas)
   await drawFaceCanvases(img, resizedDetections, canvas)
+  // drawLabelledDetections(canvas, resizedDetections)
   return canvas
 }
 
