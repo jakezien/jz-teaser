@@ -53,11 +53,17 @@ const StyledSpan = styled.span`
     width: 100%;
     height: 5px;
     background-color: ${props => props.theme.yellow};
-    bottom: -3px;
+    bottom: -5px;
     border-radius: 3px;
     left: 0;
     transition: opacity 0.1s;
   }
+  @media only screen and (min-width:26rem) {
+    :after {
+      bottom: -3px;
+    }
+  }
+
 `
 
 const StyledPopup = styled.div`

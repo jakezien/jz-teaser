@@ -120,7 +120,7 @@ const detectFacesInImg = async (img) => {
 }
 
 const overlayCanvasOnImg = (canvas, img) => {
-  canvas.style.cssText += "position: absolute; top: 0; left: 0; width: 100%; z-index: 1;"
+  canvas.style.cssText += "position: absolute; top: 0; left: 0; z-index: 1; width: 100%;"
   let imgStyle = window.getComputedStyle(img);
 
   if (imgStyle.position === 'absolute') {
@@ -134,7 +134,7 @@ const overlayCanvasOnImg = (canvas, img) => {
   else {  
     let wrapper = document.createElement('div');
     wrapper.classList.add("censor-wrapper");
-    wrapper.style.cssText = "position: relative;"
+    wrapper.style.cssText = "position: relative; display: inline-block;"
     img.before(wrapper);
     wrapper.appendChild(img);
     img.after(canvas);
