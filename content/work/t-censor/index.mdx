@@ -1,43 +1,82 @@
 ---
 title: Trump Censor
-oneliner: a Chrome extension that pixellates out the most offensive thing on the internet
+oneliner: A browser extension that pixellates out the most offensive thing on the internet
 type: product
 date: "2021-02-05 19:34"
 ---
 import ImageSearch from "../../../src/components/imageSearch";
 
-<ImageSearch />
 
 ## What it is
-##### In a fit of pique sometime in 2017, exhausted by an inescapable name and repugnant visage, I stretched my front-end development skills to create a plugin that would provide a more peaceful browsing experience across the web.
-Inspired by _Broad City_’s brilliant bleeping of his name, I realized the efficacy of this approach. We couldn’t do much until an election — but we could control one thing, which just happened to be the only thing he actually cares about. Ratings. Eyeballs. Hearing and seeing his own name; forcing himself on the world. Taking that away amounted to reclaiming some personal power — and it was a lot of snarky fun.
+##### I built and published a browser extension that used facial recognition to locate every instance of the internet's most offensive face and name, on any site, and pixellate them out — just as TV news would do to something vulgar and unairable. Users could also see a count of how many times they had been spared seeing the face or reading the name.
 
 
+Sometime in 2017, exhausted by an inescapable word and a repugnant visage, I stretched my web development skills to create a plugin that would provide a more peaceful browsing experience. Inspired by _Broad City_’s brilliant bleeping-out of his name, I realized the efficacy of this approach: we couldn’t do much until an election — but we could control one thing, which happened to be the only thing he actually cares about. Ratings. Eyeballs. Hearing and seeing his own name; forcing himself on the world. We could deny him our attention, and in doing so, his identity. Taking that away amounted to reclaiming some personal power — and it was a lot of snarky fun. 
+
+## Try it
+
+<ImageSearch />
 
 ## What I did
 
 <TagList className='compact' compact>
 
-- Frontend development
 - Learning new things
+- Chromium extensions API
+- Facial recognition and machine learning APIs
+- Solving CORS issues with a simple server
 - Identity and logo design
-- Internet anonymity
+- Experimenting with internet anonymity
 
 </TagList>
 
-I built and published a Chrome extension that, once installed, would find every instance of his name or face on any webpage and pixellate them out, just as TV news would do to something vulgar and unairable. Users could also see a count of how many times they had been spared reading the name or seeing the face.
-- Learned several new developer tricks: training and using a client-side face-recognition API, using `canvas` to create the visual effect I wanted, efficiently parsing dynamic page content to find what I was looking for, and Chrome’s Extensions API
-- Experimented with online anonymity, using Tor to handle all the online parts of the project, including registering a Google Developer account, a Twitter account, and a domain name without giving away any personal information
-- Created a graphic identity and website to promote the plugin and half-heartedly tried to spread it on Twitter
+- Learned several new developer tricks: training and using a client-side face-recognition API, using `canvas` to create the visual effect I wanted, efficiently parsing dynamic page content to find what I was looking for, Chrome’s Extensions API, creating a custom Google Search engine to grab images, solving "tainted canvases" and delving into the arcana of CORS, and setting up a simple node server on Heroku to route my image requests 
+- Worked iteratively: the first release of the plugin only pixellated his name; eventually I also added facial recognition and a counter of how many Trumps the user had blocked
+- Created a fake organization, FDT Industries, along with a graphic identity and website to promote the plugin 
+- Experimented with online anonymity, using Tor to handle all the online parts of the project, including registering a Google Developer account, a Twitter account, and a domain name for FDT without giving away any personal information
+- Half-heartedly tried to spread the work on [Twitter](https://twitter.com/fdtindustries)
+
+## The outcome
+I launched the plugin on Google's Chrome Extensions Gallery in 2017 under the name _T-Chip_, a reference to the TV-censoring V-Chips of the 80s, which no one understood. I half-heartedly tried to spread the work on Twitter, searching every few days for tweets about being tired of Trump, and responded to them from the FDT Industries Twitter account with links to the fdt.industries website. After a while, I moved on to other projects, and I let the domain registration lapse, along with the Google account and plugin listing on the Extensions Gallery.
+
+<figure>
+  <video controls muted width="100%" poster="./tchip-website-poster.png">
+    <source src="./tchip-website.mp4" type="video/mp4" />
+  </video>
+  <figcaption>The FDT Industries website, at www.fdt.industries.</figcaption>
+</figure>
+
+<figure>
+  <video controls muted width="100%" poster="./tchip-promo-poster.png">
+    <source src="./tchip-promo.mp4" type="video/mp4" />
+  </video>
+  <figcaption>A promo clip I made to spread the plugin on Twitter and the Chrome Extensions Gallery.</figcaption>
+</figure>
+
 ## What went well
 - The plugin worked satisfyingly and genuinely reduced my stress level when browsing the web for several years
-- The project got a “like” on Twitter from the official Broad City account
+- The project got a “like” on Twitter from the official @broadcity Twitter account
 - I felt re-empowered as a citizen of democracy, but also as a person able to turn a flash of inspiration into a fully realized project
+- I'm very, very pleased with the "FDT" logo, which nails the goofy 80's-TV vibe I was after, while (not so) subtly conveying its meaning, which is [definitely "Fortify Democracy Together"](https://youtu.be/WkZ5e94QnWk?t=52).
+
+<figure>
+<GatsbyImage image={imageByName(props, 'fdt-final-logo', true)} alt='The "FDT" logo I designed.' />
+</figure>
+
+
+<figure>
+<GatsbyImage image={imageByName(props, 'fdt-logos', true)} alt='The "FDT" logo I designed.' />
+<figcaption>A bunch of other FDT logo ideas that didn't work out.</figcaption>
+</figure>
+
+
 ## What I learned
-- Many technical skills already listed above
-- How difficult it is to use the internet today without giving up any personal information, the limit of my endurance for repeatedly proving I am Not A Robot, and how awful the web has become when scripts are disabled
-- ?
+- Many, many new technical skills already listed above
+- How difficult it is to use the internet today without giving up any personal information
+- The limit of my endurance for repeatedly proving I am Not A Robot, and how awful the web has become when scripts are disabled
+- That 
+
 ## What I’d do differently next time
-- Choose a more self-explanatory name for the project (I launched it under the name T-Chip, a reference to the TV-censoring V-Chips of the 80s, which no one understood)
-- Work harder to promote the thing and see if it might actually get a solid user base
-- Release an update in the runup to each election that replaced the pixellation effect with an image reading “VOTE” and the number of days until the election
+- Choose a more self-explanatory name for the project, like, I dunno, _Trump Censor_ 
+- Work harder to promote the thing and see if it might actually get a few users
+- In the runup to each election, replace the pixellation effect with an image reading “VOTE” and the number of days until the election

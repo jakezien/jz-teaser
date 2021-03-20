@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+import { useSpring, animated } from 'react-spring'
 import styled from "styled-components"
 
 const ImageContainer = styled.div`
@@ -10,6 +11,7 @@ const ImageSearch = (props) => {
 
   const corsProxy = 'https://jz-site-support.herokuapp.com/'
   const [images, setImages] = useState([]);
+  const srcList = []
 
   const buttonClicked = (index) => {
     switch (index) {
@@ -37,6 +39,20 @@ const ImageSearch = (props) => {
       .then(response => response.json())
       .then(json => handleSearchResults(json.data.items))
   }
+
+  const fetchSrcs = async (query) => {
+    const response = await fetch(corsProxy, {headers: {jzimages: query}})
+    const json = await response.json()
+    return json.data.items
+  }
+
+  const init = async () => {  
+    const t = await fetchSrcs('trump')
+    const tno = await fetchSrcs('trump and obama')
+    const tnb = await fetchSrcs('trump and biden')
+    console.log('init', t, tno, tnb)
+  }
+  init()
 
   return (
     <div>
