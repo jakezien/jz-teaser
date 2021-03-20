@@ -61,7 +61,7 @@ const loadFaceDetectionModels = async () => {
     await faceapi.loadFaceLandmarkModel('/jz/faceapi/');
     await faceapi.loadFaceRecognitionModel('/jz/faceapi/');
   } catch (err) {
-    console.log('err', err)
+    // console.log('err', err)
     await faceapi.loadTinyFaceDetectorModel('/faceapi/')
     // await faceapi.loadSsdMobilenetv1Model('/faceapi/')
     // await faceapi.loadMtcnnModel('/faceapi/')
@@ -69,7 +69,7 @@ const loadFaceDetectionModels = async () => {
     await faceapi.loadFaceRecognitionModel('/faceapi/')    
   }
   t1 = performance.now()
-  console.log('models loaded in ' + (t1 - t0) +'ms');
+  // console.log('models loaded in ' + (t1 - t0) +'ms');
 }
 
 const createFaceMatcher = () => {
@@ -79,7 +79,7 @@ const createFaceMatcher = () => {
   let josephDescriptor = createLabeledFaceDescriptor('joseph', josephArray);
   labeledFaceDescriptors.push(donaldDescriptor, josephDescriptor); 
   t3 = performance.now()
-  console.log('matcher created in ' + (t3 - t2) +'ms');
+  // console.log('matcher created in ' + (t3 - t2) +'ms');
   return new faceapi.FaceMatcher(labeledFaceDescriptors);
 }
 
@@ -121,14 +121,16 @@ const detectFacesInImg = async (img) => {
   const tB = performance.now()
   // console.log('img faces detected in ' + (tB - tA) +'ms', img.src.slice(0, 30));
   
-  let canvas = await createDetectionsCanvas(img, results)
-  overlayCanvasOnImg(canvas, img);
+  let { faceCanvas, boxCanvas } = await createDetectionsCanvases(img, results)
+  overlayCanvasOnImg(faceCanvas, img, 'faceCanvas');
+  overlayCanvasOnImg(boxCanvas, img, 'boxCanvas');
   // let tC = performance.now()
   // console.log('canvas stuff done in ' + (tC - tB) +'ms');
 }
 
-const overlayCanvasOnImg = (canvas, img) => {
+const overlayCanvasOnImg = (canvas, img, className) => {
   canvas.style.cssText += "position: absolute; top: 0; left: 0; z-index: 1; width: 100%;"
+  canvas.classList.add(className)
   let imgStyle = window.getComputedStyle(img);
 
   if (imgStyle.position === 'absolute') {
@@ -149,16 +151,18 @@ const overlayCanvasOnImg = (canvas, img) => {
   }
 }
 
-const createDetectionsCanvas = async (img, detections) => {
+const createDetectionsCanvases = async (img, detections) => {
   // const displaySize = { width: img.width, height: img.height }
-  const canvas = document.createElement('canvas')
-  faceapi.matchDimensions(canvas, img, true)
+  const faceCanvas = document.createElement('canvas')
+  const boxCanvas = document.createElement('canvas')
+  faceapi.matchDimensions(faceCanvas, img, true)
+  faceapi.matchDimensions(boxCanvas, img, true)
 
   // const resizedDetections = faceapi.resizeResults(detections, displaySize)
-  const resizedDetections = faceapi.resizeResults(detections, canvas)
-  await drawFaceCanvases(img, resizedDetections, canvas)
-  // drawLabelledDetections(canvas, resizedDetections)
-  return canvas
+  const resizedDetections = faceapi.resizeResults(detections, faceCanvas)
+  await drawFaceCanvases(img, resizedDetections, faceCanvas)
+  await drawLabelledDetections(boxCanvas, resizedDetections)
+  return { faceCanvas, boxCanvas }
 }
 
 const drawLabelledDetections = (canvasArg, detections) => {
@@ -240,7 +244,7 @@ const pixellateCanvas = (c) => {
 const onImageLoaded = () => {
   let images = document.querySelectorAll('img')
   images = [...images].filter(img => img.complete);
-  console.log('onImageLoaded', images)
+  // console.log('onImageLoaded', images)
   images.forEach(img => detectFacesInImg(img))
 }
 

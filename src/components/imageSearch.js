@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react"
 import { useSpring, animated } from 'react-spring'
 import { shuffleArray } from '../utils/functions'
+import WidthBleeder from './widthbleeder'
+import { rhythm } from "../utils/typography"
 import styled from "styled-components"
 import Switch from "react-switch"
 
 const ImageContainer = styled.div`
-  display: flex;
-  flex-direction: column-reverse;
+  max-height: ${rhythm(16)};
+  overflow-x: scroll;
 `
 
 const ImageControls = styled.div`
@@ -35,7 +37,7 @@ const ImageSearch = (props) => {
       const json = await response.json()
       const links = []
       if (!json.data.items) return
-      json.data.items.forEach(item => links.push(item.link))
+      json.data.items.forEach(item => links.push(jzServerUrl + item.link))
       return links
     }
 
@@ -65,6 +67,10 @@ const ImageSearch = (props) => {
 
   const buttonClicked = () => {
     // load images 8 at a time and animate them into the display area.
+    let list = srcList
+    console.log(list)
+    setImages(srcList.splice(0,8))
+    console.log(srcList)
   }
 
   const handleSearchResults = (items) => {
@@ -84,19 +90,16 @@ const ImageSearch = (props) => {
   return (
     <div>
       <ImageContainer>
-        {images.map((array, arrayIndex) => {return(
-          <div key={arrayIndex}>
-            {array.map((url, urlIndex) => {return(
-              <img 
-                key={urlIndex} 
-                src={url} 
-                crossOrigin="anonymous" 
-                onLoad={e => faceMatcher.detectFacesInImg(e.target)}
-              />
-            )})}
-          </div>
+        {images.map((url, urlIndex) => {return(
+          <img 
+            src={url} 
+            crossOrigin="anonymous" 
+            onLoad={e => faceMatcher.detectFacesInImg(e.target)}
+            key={urlIndex} 
+          />
         )})}
       </ImageContainer>
+
       <ImageControls>
         <SearchButton onClick={buttonClicked}>Search for Trump Images</SearchButton>
         <div>
@@ -110,8 +113,24 @@ const ImageSearch = (props) => {
           </label>
         </div>
       </ImageControls>
+
     </div>
   )
 }
 
 export default ImageSearch;
+
+{/*<ImageContainer>
+  {images.map((array, arrayIndex) => {return(
+    <div key={arrayIndex}>
+      {array.map((url, urlIndex) => {return(
+        <img 
+          key={urlIndex} 
+          src={url} 
+          crossOrigin="anonymous" 
+          onLoad={e => faceMatcher.detectFacesInImg(e.target)}
+        />
+      )})}
+    </div>
+  )})}
+</ImageContainer>*/}
