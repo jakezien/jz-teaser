@@ -1,65 +1,88 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { useSpring, animated } from 'react-spring'
+import { shuffleArray } from '../utils/functions'
 import styled from "styled-components"
+import Switch from "react-switch"
 
 const ImageContainer = styled.div`
   display: flex;
   flex-direction: column-reverse;
 `
 
+const ImageControls = styled.div`
+`
+
+const SearchButton = styled.button`
+`
+
 const ImageSearch = (props) => {
 
-  const corsProxy = 'https://jz-site-support.herokuapp.com/'
+  const jzServerUrl = 'https://jz-site-support.herokuapp.com/'
   const [images, setImages] = useState([]);
-  const srcList = []
+  const [showPixellate, setShowPixellate] = useState(true);
+  const [showBoxes, setShowBoxes] = useState(false);
+  let srcList = []
+  let populateSrcListCalled = false;
+  let queryPage = 1
+  let displayedImagesIndex = 0;
 
-  const buttonClicked = (index) => {
+  // Get a headstart by prefetching the src urls for the images we're gonna load later.
+  const populateSrcList = async () => {
+
+    // Helper function that calls my server, which fetches the images from Google and returns their urls.
+    const fetchSrcsForQuery = async (query, page) => {
+      const response = await fetch(jzServerUrl, {headers: {jzimages:query, jzimagespage: page}})
+      const json = await response.json()
+      const links = []
+      if (!json.data.items) return
+      json.data.items.forEach(item => links.push(item.link))
+      return links
+    }
+
+    const t = await fetchSrcsForQuery('trump', queryPage)
+    const tno = await fetchSrcsForQuery('trump and obama', queryPage)
+    const tnb = await fetchSrcsForQuery('trump and biden', queryPage)
+    const tnp = await fetchSrcsForQuery('trump and putin', queryPage)
+
+    let combined = [].concat(t, tno, tnb, tnp)
+    shuffleArray(combined)
+    srcList = srcList.concat(combined)
+
+    // Increment this so next time we fetch srcs, we get the subsequent ten results
+    queryPage++;
+  }
+
+  const handleSwitch = (index) => {
     switch (index) {
-      case 0: 
-        fetchImages('trump')
+      case 0:
+        setShowPixellate(!showPixellate);
         break;
-      case 1: 
-        fetchImages('trump and obama')
-        break;
-      case 2: 
-        fetchImages('trump and biden')
+      case 1:
+        setShowBoxes(!showBoxes);
         break;
     }
+  }
+
+  const buttonClicked = () => {
+    // load images 8 at a time and animate them into the display area.
   }
 
   const handleSearchResults = (items) => {
     let newImages = [];
     if (!items) return;
-    items.forEach(item => newImages.push(corsProxy + item.link));
+    items.forEach(item => newImages.push(jzServerUrl + item.link));
     setImages(images => [...images, newImages])
   }
 
-  const fetchImages = (query) => {
-    fetch(corsProxy, {headers: {jzimages: query}})
-      .then(response => response.json())
-      .then(json => handleSearchResults(json.data.items))
+
+  if (!populateSrcListCalled) {
+    populateSrcListCalled = true;
+    populateSrcList();
   }
 
-  const fetchSrcs = async (query) => {
-    const response = await fetch(corsProxy, {headers: {jzimages: query}})
-    const json = await response.json()
-    return json.data.items
-  }
-
-  const init = async () => {  
-    const t = await fetchSrcs('trump')
-    const tno = await fetchSrcs('trump and obama')
-    const tnb = await fetchSrcs('trump and biden')
-    console.log('init', t, tno, tnb)
-  }
-  init()
 
   return (
     <div>
-      <button onClick={() => buttonClicked(0)}>Trump Images</button>
-      <button onClick={() => buttonClicked(1)}>Trump & Obama Images</button>
-      <button onClick={() => buttonClicked(2)}>Trump & Biden Images</button>
-
       <ImageContainer>
         {images.map((array, arrayIndex) => {return(
           <div key={arrayIndex}>
@@ -74,6 +97,19 @@ const ImageSearch = (props) => {
           </div>
         )})}
       </ImageContainer>
+      <ImageControls>
+        <SearchButton onClick={buttonClicked}>Search for Trump Images</SearchButton>
+        <div>
+          <label>
+            <span>Censor his face</span>
+            <Switch onChange={() => handleSwitch(0)} checked={showPixellate} />
+          </label>
+          <label>
+            <span>Show recognized faces</span>
+            <Switch onChange={() => handleSwitch(1)} checked={showBoxes} />
+          </label>
+        </div>
+      </ImageControls>
     </div>
   )
 }
