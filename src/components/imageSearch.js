@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
 import { useSpring, animated } from 'react-spring'
 import { shuffleArray } from '../utils/functions'
-import WidthBleeder from './widthbleeder'
+import WidthBleeder from './widthBleeder'
 import { rhythm } from "../utils/typography"
 import styled from "styled-components"
 import Switch from "react-switch"
