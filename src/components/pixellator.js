@@ -27,7 +27,7 @@ const Pixellator = (props) => {
   }
 
   const getPxSize = (c) => {
-    let pxSize = 6;
+    let pxSize = 8;
     if (c.height >= 36)
       pxSize = 8;
     if (c.height >= 64)

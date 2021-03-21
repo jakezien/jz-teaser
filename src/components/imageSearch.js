@@ -1,28 +1,39 @@
-import React, { useState, useEffect } from "react"
-import { useSpring, animated } from 'react-spring'
+import React, { useState, useRef, useEffect } from "react"
+import { useSpring, useTransition, animated } from 'react-spring'
 import { shuffleArray } from '../utils/functions'
 import WidthBleeder from './widthBleeder'
 import { rhythm } from "../utils/typography"
 import styled from "styled-components"
 import Switch from "react-switch"
 
-const ImageContainer = styled.div`
-  height: ${rhythm(24)};
+const ImageContainer = styled('div').withConfig({
+  shouldForwardProp: prop => true
+})`
+  height: 480px;
   overflow-x: scroll;
-  display: flex;
+  overflow-y: hidden;
   flex-direction: row;
   white-space: nowrap;
-  > div {
-    flex-shrink: 0;
+
+  > div.censor-wrapper:not(:last-child) {
+    margin-right: 1em;
   }
 
-  &[data-showboxes=false] {
+  img {
+    box-sizing: border-box;
+    height:480px;
+    max-height: 480px;
+    width: auto;
+    margin: 0;
+  }
+
+  &[show-boxes='false'] {
     canvas.boxCanvas {
       visibility: hidden;
     }
   }
 
-  &[data-showpixellate=false] {
+  &[show-pixellate='false'] {
     canvas.faceCanvas {
       visibility: hidden;
     }
@@ -42,10 +53,10 @@ const ImageSearch = (props) => {
   const [images, setImages] = useState([]);
   const [showPixellate, setShowPixellate] = useState(true);
   const [showBoxes, setShowBoxes] = useState(false);
-  let srcList = []
-  let populateSrcListCalled = false;
-  let queryPage = 1
-  let displayedImagesIndex = 0;
+  const srcList = useRef([]);
+  const [srcListPopulated, setSrcListPopulated] = useState(false);
+  let queryPage = useRef(1)
+
 
   // Get a headstart by prefetching the src urls for the images we're gonna load later.
   const populateSrcList = async () => {
@@ -62,18 +73,23 @@ const ImageSearch = (props) => {
       return links
     }
 
-    const t = await fetchSrcsForQuery('trump', queryPage)
-    const tno = await fetchSrcsForQuery('trump and obama', queryPage)
-    const tnb = await fetchSrcsForQuery('trump and biden', queryPage)
-    const tnp = await fetchSrcsForQuery('trump and putin', queryPage)
+    const t = await fetchSrcsForQuery('trump', queryPage.current)
+    const tno = await fetchSrcsForQuery('trump and obama', queryPage.current)
+    const tnb = await fetchSrcsForQuery('trump and biden', queryPage.current)
+    const tnp = await fetchSrcsForQuery('trump and putin', queryPage.current)
 
     let combined = [].concat(t, tno, tnb, tnp)
     shuffleArray(combined)
-    srcList = srcList.concat(combined)
+    console.log('refff', srcList.current)
+    srcList.current = srcList.current.concat(combined)
+    console.log(srcList.current.length)
+    setSrcListPopulated(true)
+
 
 
     // Increment this so next time we fetch srcs, we get the subsequent ten results
-    queryPage++;
+    queryPage.current++;
+    console.log(queryPage.current)
   }
 
   const handleSwitch = (index) => {
@@ -88,8 +104,21 @@ const ImageSearch = (props) => {
   }
 
   const buttonClicked = () => {
+
+    // helper to grab more images when we run out
+    const refreshSrcs = async () => {
+      await populateSrcList();
+      setImages(images => [...images, ...srcList.current.splice(0,8)])
+      console.log('hmm')
+    }
+    
     // load images 8 at a time and animate them into the display area.
-    setImages(images => [...images, ...srcList.splice(0,8)])
+    if (!srcList.current.length) {
+      refreshSrcs();
+    }
+    else {
+      setImages(images => [...images, ...srcList.current.splice(0,8)])
+    }
   }
 
   const handleSearchResults = (items) => {
@@ -100,17 +129,20 @@ const ImageSearch = (props) => {
   }
 
 
-  if (!populateSrcListCalled) {
-    populateSrcListCalled = true;
-    populateSrcList();
-  }
+  useEffect(() => {
+    if (!srcList.current.length) {
+      populateSrcList();
+      console.log('pop!')
+    }
+  }, [])
+
 
 
   return (
     <div>
-      <ImageContainer showpixellate={showPixellate} showboxes={showBoxes} data-showpixellate={showPixellate} data-showboxes={showBoxes}>
+      <ImageContainer show-pixellate={showPixellate.toString()} show-boxes={showBoxes.toString()}>
         {images.map((url, urlIndex) => {return(
-          <img 
+          <animated.img 
             src={url} 
             crossOrigin="anonymous" 
             onLoad={e => faceMatcher.detectFacesInImg(e.target)}
@@ -120,7 +152,7 @@ const ImageSearch = (props) => {
       </ImageContainer>
 
       <ImageControls>
-        <SearchButton onClick={buttonClicked}>Search for Trump Images</SearchButton>
+        <SearchButton disabled={!srcListPopulated} onClick={buttonClicked}>Search for Trump Images</SearchButton>
         <div>
           <label>
             <span>Censor his face</span>
@@ -132,7 +164,6 @@ const ImageSearch = (props) => {
           </label>
         </div>
       </ImageControls>
-
     </div>
   )
 }
