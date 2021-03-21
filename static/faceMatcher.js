@@ -137,11 +137,11 @@ const overlayCanvasOnImg = (canvas, img, className) => {
     img.before(canvas);
   }
 
-  if (img.parentNode.classList.contains('censor-wrapper') && !img.nextSibling) {
+  if (img.parentNode.classList.contains('censor-wrapper')) {
     img.after(canvas);
   }
 
-  else {  
+  else if (!img.parentNode.classList.contains('censor-wrapper')) {  
     let wrapper = document.createElement('div');
     wrapper.classList.add("censor-wrapper");
     wrapper.style.cssText = "position: relative; display: inline-block;"

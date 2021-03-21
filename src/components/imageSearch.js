@@ -7,14 +7,25 @@ import styled from "styled-components"
 import Switch from "react-switch"
 
 const ImageContainer = styled.div`
-  height: auto;
+  height: ${rhythm(24)};
   overflow-x: scroll;
-  overflow-y: hidden;
   display: flex;
   flex-direction: row;
   white-space: nowrap;
   > div {
     flex-shrink: 0;
+  }
+
+  &[data-showboxes=false] {
+    canvas.boxCanvas {
+      visibility: hidden;
+    }
+  }
+
+  &[data-showpixellate=false] {
+    canvas.faceCanvas {
+      visibility: hidden;
+    }
   }
 
 `
@@ -39,7 +50,7 @@ const ImageSearch = (props) => {
   // Get a headstart by prefetching the src urls for the images we're gonna load later.
   const populateSrcList = async () => {
 
-    console.log('populateSrcList')
+    // console.log('populateSrcList')
 
     // Helper function that calls my server, which fetches the images from Google and returns their urls.
     const fetchSrcsForQuery = async (query, page) => {
@@ -59,7 +70,6 @@ const ImageSearch = (props) => {
     let combined = [].concat(t, tno, tnb, tnp)
     shuffleArray(combined)
     srcList = srcList.concat(combined)
-    console.log('srcList', srcList)
 
 
     // Increment this so next time we fetch srcs, we get the subsequent ten results
@@ -79,17 +89,14 @@ const ImageSearch = (props) => {
 
   const buttonClicked = () => {
     // load images 8 at a time and animate them into the display area.
-    let list = srcList
-    console.log(list)
-    setImages(srcList.splice(0,8))
-    console.log(srcList)
+    setImages(images => [...images, ...srcList.splice(0,8)])
   }
 
   const handleSearchResults = (items) => {
     let newImages = [];
     if (!items) return;
     items.forEach(item => newImages.push(jzServerUrl + item.link));
-    setImages(images => [...images, newImages])
+    setImages(images => [newImages, images])
   }
 
 
@@ -101,7 +108,7 @@ const ImageSearch = (props) => {
 
   return (
     <div>
-      <ImageContainer>
+      <ImageContainer showpixellate={showPixellate} showboxes={showBoxes} data-showpixellate={showPixellate} data-showboxes={showBoxes}>
         {images.map((url, urlIndex) => {return(
           <img 
             src={url} 
