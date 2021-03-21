@@ -39,6 +39,8 @@ const ImageSearch = (props) => {
   // Get a headstart by prefetching the src urls for the images we're gonna load later.
   const populateSrcList = async () => {
 
+    console.log('populateSrcList')
+
     // Helper function that calls my server, which fetches the images from Google and returns their urls.
     const fetchSrcsForQuery = async (query, page) => {
       const response = await fetch(jzServerUrl, {headers: {jzimages:query, jzimagespage: page}})
@@ -57,6 +59,8 @@ const ImageSearch = (props) => {
     let combined = [].concat(t, tno, tnb, tnp)
     shuffleArray(combined)
     srcList = srcList.concat(combined)
+    console.log('srcList', srcList)
+
 
     // Increment this so next time we fetch srcs, we get the subsequent ten results
     queryPage++;
