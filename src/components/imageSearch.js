@@ -7,8 +7,16 @@ import styled from "styled-components"
 import Switch from "react-switch"
 
 const ImageContainer = styled.div`
-  max-height: ${rhythm(16)};
+  height: auto;
   overflow-x: scroll;
+  overflow-y: hidden;
+  display: flex;
+  flex-direction: row;
+  white-space: nowrap;
+  > div {
+    flex-shrink: 0;
+  }
+
 `
 
 const ImageControls = styled.div`
