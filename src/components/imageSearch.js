@@ -27,15 +27,19 @@ const ImageContainer = styled('div').withConfig({
     margin: 0;
   }
 
+  canvas {
+    transition: opacity 0.11s;
+  }
+
   &[show-boxes='false'] {
     canvas.boxCanvas {
-      visibility: hidden;
+      opacity: 0;
     }
   }
 
   &[show-pixellate='false'] {
     canvas.faceCanvas {
-      visibility: hidden;
+      opacity: 0;
     }
   }
 
@@ -121,13 +125,6 @@ const ImageSearch = (props) => {
     }
   }
 
-  const handleSearchResults = (items) => {
-    let newImages = [];
-    if (!items) return;
-    items.forEach(item => newImages.push(jzServerUrl + item.link));
-    setImages(images => [newImages, images])
-  }
-
 
   useEffect(() => {
     if (!srcList.current.length) {
@@ -136,19 +133,28 @@ const ImageSearch = (props) => {
     }
   }, [])
 
+  let tProps = {
+    config: { mass: 1, tension: 330, friction: 12 },
+    from: { transform: 'translate3d(0,480px,0)' },
+    enter: { transform: 'translate3d(0,0px,0)' },
+    leave: { transform: 'translate3d(0,-480px,0)' },
+  }
 
+  const transition = useTransition(images, tProps)
+  const fragment = transition((style, item) => {
+    console.log('frag')
+    return <animated.img 
+              src={item} 
+              style={style} 
+              crossOrigin="anonymous" 
+              onLoad={e => faceMatcher.detectFacesInImg(e.target)}
+            />
+  })
 
   return (
     <div>
       <ImageContainer show-pixellate={showPixellate.toString()} show-boxes={showBoxes.toString()}>
-        {images.map((url, urlIndex) => {return(
-          <animated.img 
-            src={url} 
-            crossOrigin="anonymous" 
-            onLoad={e => faceMatcher.detectFacesInImg(e.target)}
-            key={urlIndex} 
-          />
-        )})}
+        {fragment}
       </ImageContainer>
 
       <ImageControls>
