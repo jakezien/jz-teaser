@@ -34,3 +34,17 @@ export function shuffleArray(a) {
   }
   return a;
 }
+
+export function setIntervalLimited(callback, interval, repetitions) {
+  for (var i = 0; i < repetitions; i++) {
+    setTimeout(callback, i * interval);
+  }
+}
+
+export function log(varObj, label) {
+  let name;
+  for(let varName in varObj) {
+    name = varName;
+  }
+  console.log(label || name, varObj[name]);
+}

@@ -115,57 +115,74 @@ const detectFacesInImg = async (img) => {
 
   const tA = performance.now()
   const results = await faceapi
-    .detectAllFaces(img, new faceapi.TinyFaceDetectorOptions({ inputSize: 800, scoreThreshold: 0.25 }))
     // .detectAllFaces(img, new faceapi.SsdMobilenetv1Options({ minConfidence: 0.25 }))
     // .detectAllFaces(img, new faceapi.MtcnnOptions())
+    .detectAllFaces(img, new faceapi.TinyFaceDetectorOptions({ inputSize: 800, scoreThreshold: 0.25 }))
     .withFaceLandmarks()
     .withFaceDescriptors()
   const tB = performance.now()
   // console.log('img faces detected in ' + (tB - tA) +'ms', img.src.slice(0, 30));
+
+  drawDetectionsIntoCanvases(img, results)
   
-  let { faceCanvas, boxCanvas } = await createDetectionsCanvases(img, results)
-  overlayCanvasOnImg(faceCanvas, img, 'faceCanvas');
-  overlayCanvasOnImg(boxCanvas, img, 'boxCanvas');
+  // let { faceCanvas, boxCanvas } = await createDetectionsCanvases(img, results)
+  // overlayCanvasOnImg(faceCanvas, img, 'faceCanvas');
+  // overlayCanvasOnImg(boxCanvas, img, 'boxCanvas');
   // let tC = performance.now()
   // console.log('canvas stuff done in ' + (tC - tB) +'ms');
 }
 
-const overlayCanvasOnImg = (canvas, img, className) => {
-  canvas.style.cssText += "position: absolute; top: 0; left: 0; z-index: 1; width: 100%;"
-  canvas.classList.add(className)
-  let imgStyle = window.getComputedStyle(img);
+const drawDetectionsIntoCanvases = async (img, detections) => {
+  let wrapper = img.parentNode
+  let faceCanvas = img.nextSibling;
+  let labelCanvas = faceCanvas.nextSibling;
 
-  if (imgStyle.position === 'absolute') {
-    img.before(canvas);
-  }
-
-  if (img.parentNode.classList.contains('censor-wrapper')) {
-    img.after(canvas);
-  }
-
-  else if (!img.parentNode.classList.contains('censor-wrapper')) {  
-    let wrapper = document.createElement('div');
-    wrapper.classList.add("censor-wrapper");
-    wrapper.style.cssText = "position: relative; display: inline-block;"
-    img.before(wrapper);
-    wrapper.appendChild(img);
-    img.after(canvas);
-  }
-}
-
-const createDetectionsCanvases = async (img, detections) => {
-  // const displaySize = { width: img.width, height: img.height }
-  const faceCanvas = document.createElement('canvas')
-  const boxCanvas = document.createElement('canvas')
   faceapi.matchDimensions(faceCanvas, img, true)
-  faceapi.matchDimensions(boxCanvas, img, true)
-
-  // const resizedDetections = faceapi.resizeResults(detections, displaySize)
+  faceapi.matchDimensions(labelCanvas, img, true)
   const resizedDetections = faceapi.resizeResults(detections, faceCanvas)
-  await drawFaceCanvases(img, resizedDetections, faceCanvas)
-  await drawLabelledDetections(boxCanvas, resizedDetections)
-  return { faceCanvas, boxCanvas }
+
+  drawFaceCanvases(img, resizedDetections, faceCanvas)
+  drawLabelledDetections(labelCanvas, resizedDetections)
 }
+
+// const createDetectionsCanvases = async (img, detections) => {
+//   // const displaySize = { width: img.width, height: img.height }
+//   const faceCanvas = document.createElement('canvas')
+//   const boxCanvas = document.createElement('canvas')
+//   faceapi.matchDimensions(faceCanvas, img, true)
+//   faceapi.matchDimensions(boxCanvas, img, true)
+
+//   // const resizedDetections = faceapi.resizeResults(detections, displaySize)
+//   const resizedDetections = faceapi.resizeResults(detections, faceCanvas)
+//   await drawFaceCanvases(img, resizedDetections, faceCanvas)
+//   await drawLabelledDetections(boxCanvas, resizedDetections)
+//   return { faceCanvas, boxCanvas }
+// }
+
+// const overlayCanvasOnImg = (canvas, img, className) => {
+//   canvas.style.cssText += "position: absolute; top: 0; left: 0; z-index: 1; width: 100%;"
+//   canvas.classList.add(className)
+//   let imgStyle = window.getComputedStyle(img);
+
+//   if (imgStyle.position === 'absolute') {
+//     img.before(canvas);
+//   }
+
+//   if (img.parentNode.classList.contains('censor-wrapper')) {
+//     img.after(canvas);
+//   }
+
+//   else if (!img.parentNode.classList.contains('censor-wrapper')) {  
+//     let wrapper = document.createElement('div');
+//     wrapper.classList.add("censor-wrapper");
+//     wrapper.style.cssText = "position: relative; display: inline-block;"
+//     img.before(wrapper);
+//     wrapper.appendChild(img);
+//     img.after(canvas);
+//   }
+// }
+
+
 
 const drawLabelledDetections = (canvasArg, detections) => {
     var detectionsArray = Array.isArray(detections) ? detections : [detections];

@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react"
 import { useSpring, useTransition, animated } from 'react-spring'
-import { shuffleArray } from '../utils/functions'
+import { shuffleArray, setIntervalLimited, log } from '../utils/functions'
 import WidthBleeder from './widthBleeder'
 import { rhythm } from "../utils/typography"
 import styled from "styled-components"
@@ -42,7 +42,19 @@ const ImageContainer = styled('div').withConfig({
       opacity: 0;
     }
   }
+`
 
+const CensorWrapper = styled(animated.div)`
+  position: relative;
+  display: inline-block;
+`
+
+const OverlayCanvas = styled.canvas`
+  position: absolute; 
+  top: 0;
+  left: 0; 
+  z-index: 1;
+  width: 100%;
 `
 
 const ImageControls = styled.div`
@@ -115,13 +127,22 @@ const ImageSearch = (props) => {
       setImages(images => [...images, ...srcList.current.splice(0,8)])
       console.log('hmm')
     }
+
+    const addOneSrcToImages = () => {
+      setImages(images => [...srcList.current.splice(0,1), ...images])
+      // let src = srcList.current.shift()
+      // log('src', srcList.current.length, src )
+      // let imgs = [src, ...images]
+      // console.log(images.length, imgs.length)
+      // setImages(imgs)
+    }
     
     // load images 8 at a time and animate them into the display area.
     if (!srcList.current.length) {
       refreshSrcs();
     }
     else {
-      setImages(images => [...images, ...srcList.current.splice(0,8)])
+      setIntervalLimited(addOneSrcToImages, 2000, 5)
     }
   }
 
@@ -129,26 +150,30 @@ const ImageSearch = (props) => {
   useEffect(() => {
     if (!srcList.current.length) {
       populateSrcList();
-      console.log('pop!')
+      // console.log('pop!')
     }
   }, [])
 
+  const transitionRef = useRef()
   let tProps = {
+    transitionRef,
     config: { mass: 1, tension: 330, friction: 12 },
-    from: { transform: 'translate3d(0,480px,0)' },
-    enter: { transform: 'translate3d(0,0px,0)' },
-    leave: { transform: 'translate3d(0,-480px,0)' },
+    from: { transform: 'translate3d(-100%,0,0)' },
+    enter: { transform: 'translate3d(0,0,0)' },
+    leave: { transform: 'translate3d(100%,0,0)' },
   }
 
   const transition = useTransition(images, tProps)
   const fragment = transition((style, item) => {
-    console.log('frag')
-    return <animated.img 
+    return <CensorWrapper style={style} > 
+            <img 
               src={item} 
-              style={style} 
               crossOrigin="anonymous" 
               onLoad={e => faceMatcher.detectFacesInImg(e.target)}
             />
+            <OverlayCanvas className="faceCanvas" />
+            <OverlayCanvas className="boxCanvas" />
+          </CensorWrapper>
   })
 
   return (

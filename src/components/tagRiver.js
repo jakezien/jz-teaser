@@ -14,6 +14,7 @@ const StyledUl = styled(animated.ul)`
   margin: 0;
   white-space: nowrap;
   position: absolute;
+  backface-visibility: hidden;
 `
 
 const StyledLi = styled.li`
