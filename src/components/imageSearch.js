@@ -1,35 +1,21 @@
-import React, { useState, useRef, useEffect } from "react"
-import { useSpring, useTransition, animated } from 'react-spring'
-import { shuffleArray, setIntervalLimited, log } from '../utils/functions'
-import WidthBleeder from './widthBleeder'
-import { rhythm } from "../utils/typography"
+import React, { useState, useRef, useEffect, useLayoutEffect } from "react"
+import ReactDOM from "react-dom";
+import { useSpring, useTransition, Transition, useChain, a, config } from 'react-spring'
 import styled from "styled-components"
 import Switch from "react-switch"
+import { shuffleArray, setIntervalLimited, log } from '../utils/functions'
+import { rhythm } from "../utils/typography"
+import WidthBleeder from './widthBleeder'
+import CensoredImg from './censoredImg'
 
+// styled-components
 const ImageContainer = styled('div').withConfig({
   shouldForwardProp: prop => true
 })`
   height: 480px;
   overflow-x: scroll;
   overflow-y: hidden;
-  flex-direction: row;
-  white-space: nowrap;
-
-  > div.censor-wrapper:not(:last-child) {
-    margin-right: 1em;
-  }
-
-  img {
-    box-sizing: border-box;
-    height:480px;
-    max-height: 480px;
-    width: auto;
-    margin: 0;
-  }
-
-  canvas {
-    transition: opacity 0.11s;
-  }
+  position: relative;
 
   &[show-boxes='false'] {
     canvas.boxCanvas {
@@ -44,42 +30,39 @@ const ImageContainer = styled('div').withConfig({
   }
 `
 
-const CensorWrapper = styled(animated.div)`
-  position: relative;
-  display: inline-block;
-`
-
-const OverlayCanvas = styled.canvas`
-  position: absolute; 
-  top: 0;
-  left: 0; 
-  z-index: 1;
-  width: 100%;
-`
-
 const ImageControls = styled.div`
 `
 
 const SearchButton = styled.button`
 `
 
+const SlideWrapper = styled(a.div)`
+  position: absolute;
+  display: inline-block;
+`
+
 const ImageSearch = (props) => {
 
   const jzServerUrl = 'https://jz-site-support.herokuapp.com/'
-  const [images, setImages] = useState([]);
+  let queryPage = useRef(1)
+  const srcList = useRef([]);
+  const slideRefs = useRef([])
+  const imageContainerRef = useRef()
+  const [srcListPopulated, setSrcListPopulated] = useState(false);
+
+  // Real data state
+  const [slides, setSlides] = useState([]);
+
+  // UI state
   const [showPixellate, setShowPixellate] = useState(true);
   const [showBoxes, setShowBoxes] = useState(false);
-  const srcList = useRef([]);
-  const [srcListPopulated, setSrcListPopulated] = useState(false);
-  let queryPage = useRef(1)
-
 
   // Get a headstart by prefetching the src urls for the images we're gonna load later.
   const populateSrcList = async () => {
 
     // console.log('populateSrcList')
 
-    // Helper function that calls my server, which fetches the images from Google and returns their urls.
+    // Calls my server, which fetches the images from Google and returns their urls.
     const fetchSrcsForQuery = async (query, page) => {
       const response = await fetch(jzServerUrl, {headers: {jzimages:query, jzimagespage: page}})
       const json = await response.json()
@@ -96,11 +79,10 @@ const ImageSearch = (props) => {
 
     let combined = [].concat(t, tno, tnb, tnp)
     shuffleArray(combined)
-    console.log('refff', srcList.current)
+    // console.log('srcList', srcList.current)
     srcList.current = srcList.current.concat(combined)
     console.log(srcList.current.length)
     setSrcListPopulated(true)
-
 
 
     // Increment this so next time we fetch srcs, we get the subsequent ten results
@@ -108,6 +90,13 @@ const ImageSearch = (props) => {
     console.log(queryPage.current)
   }
 
+  // Call this when we run out of image src urls.
+  const refreshSrcs = async () => {
+    await populateSrcList();
+    // do something with state
+  }
+
+  // UI logic
   const handleSwitch = (index) => {
     switch (index) {
       case 0:
@@ -119,67 +108,56 @@ const ImageSearch = (props) => {
     }
   }
 
-  const buttonClicked = () => {
-
-    // helper to grab more images when we run out
-    const refreshSrcs = async () => {
-      await populateSrcList();
-      setImages(images => [...images, ...srcList.current.splice(0,8)])
-      console.log('hmm')
-    }
-
-    const addOneSrcToImages = () => {
-      setImages(images => [...srcList.current.splice(0,1), ...images])
-      // let src = srcList.current.shift()
-      // log('src', srcList.current.length, src )
-      // let imgs = [src, ...images]
-      // console.log(images.length, imgs.length)
-      // setImages(imgs)
-    }
-    
-    // load images 8 at a time and animate them into the display area.
-    if (!srcList.current.length) {
-      refreshSrcs();
-    }
-    else {
-      setIntervalLimited(addOneSrcToImages, 2000, 5)
-    }
+  const addOneSlide = () => {
+    console.log('before', imageContainerRef.current.childElementCount) 
+    // console.log('slides', slides)
+    let newSlide = {src:srcList.current.shift(), x:0}
+    setSlides(slides => [newSlide, ...slides])
   }
 
+  const updateSlidePositions = (width) => {
+    const margin = 20;
+    let newSlides = [...slides] 
+    for (let i=1; i < newSlides.length; i++) {
+      let slide = newSlides[i]
+      slide.x = slide.x + width + margin;
+    }
+    setSlides(newSlides);
+  }
 
+  const buttonClicked = () => {
+    // setIntervalLimited(() => {addOneSlide()}, 4000, 3)
+    addOneSlide()
+  }
+
+  useLayoutEffect(() => {
+    if (!imageContainerRef.current.childElementCount) return;
+    let img = imageContainerRef.current.firstChild.firstChild
+    img.addEventListener("load", () => {
+      updateSlidePositions(imageContainerRef.current.firstChild.offsetWidth)
+    });
+  })
+
+
+  // Init, only called once, on mount
   useEffect(() => {
     if (!srcList.current.length) {
       populateSrcList();
-      // console.log('pop!')
     }
   }, [])
 
-  const transitionRef = useRef()
-  let tProps = {
-    transitionRef,
-    config: { mass: 1, tension: 330, friction: 12 },
-    from: { transform: 'translate3d(-100%,0,0)' },
-    enter: { transform: 'translate3d(0,0,0)' },
-    leave: { transform: 'translate3d(100%,0,0)' },
-  }
 
-  const transition = useTransition(images, tProps)
-  const fragment = transition((style, item) => {
-    return <CensorWrapper style={style} > 
-            <img 
-              src={item} 
-              crossOrigin="anonymous" 
-              onLoad={e => faceMatcher.detectFacesInImg(e.target)}
-            />
-            <OverlayCanvas className="faceCanvas" />
-            <OverlayCanvas className="boxCanvas" />
-          </CensorWrapper>
+  const transition = useTransition(slides, {
+    from: ({x}) => ({ x, y:'150%', }),
+    enter: ({x}) => ({ x, y:'0%', delay:700, config:config.stiff }),
+    update:({x}) => ({ x, config:config.default }),
+    leave: { opacity: 0 },   
   })
 
   return (
     <div>
-      <ImageContainer show-pixellate={showPixellate.toString()} show-boxes={showBoxes.toString()}>
-        {fragment}
+      <ImageContainer ref={imageContainerRef} show-pixellate={showPixellate.toString()} show-boxes={showBoxes.toString()}>
+        {transition((props, slide) => <CensoredImg src={slide.src} style={props} />)}
       </ImageContainer>
 
       <ImageControls>
@@ -195,6 +173,7 @@ const ImageSearch = (props) => {
           </label>
         </div>
       </ImageControls>
+
     </div>
   )
 }
@@ -215,3 +194,12 @@ export default ImageSearch;
     </div>
   )})}
 </ImageContainer>*/}
+
+
+//  // load images 8 at a time and animate them into the display area.
+// if (!srcList.current.length) {
+//   refreshSrcs();
+// }
+// else {
+//   setIntervalLimited(addOneSrcToImages, 2000, 5)
+// }

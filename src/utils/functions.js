@@ -36,7 +36,7 @@ export function shuffleArray(a) {
 }
 
 export function setIntervalLimited(callback, interval, repetitions) {
-  for (var i = 0; i < repetitions; i++) {
+  for (let i = 0; i < repetitions; i++) {
     setTimeout(callback, i * interval);
   }
 }
