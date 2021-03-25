@@ -14,6 +14,7 @@ const CensorWrapper = styled(animated.div)`
     max-height: 480px;
     width: auto;
     margin: 0;
+    border-radius: 3px;
   }
 `
 

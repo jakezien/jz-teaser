@@ -9,10 +9,20 @@ import WidthBleeder from './widthBleeder'
 import CensoredImg from './censoredImg'
 
 // styled-components
+
+const ImageContainerWrapper = styled('div')`
+  border-radius: 8px 8px 0 0;
+  padding: 0 16px;
+  background: ${props => props.theme.bg3};
+  border: 1px solid ${props => props.theme.bg5};
+  border-bottom-width: 0;
+  box-shadow: ${props => props.theme.isDark ? 'inset 0 1px 0 rgba(0,0,0, .2)' : 'inset 0 1px 0px rgba(0,0,0,.1)'}; 
+`
+
 const ImageContainer = styled('div').withConfig({
   shouldForwardProp: prop => true
 })`
-  height: 480px;
+  height: 512px;
   overflow-x: scroll;
   overflow-y: hidden;
   position: relative;
@@ -31,9 +41,49 @@ const ImageContainer = styled('div').withConfig({
 `
 
 const ImageControls = styled.div`
+  border-radius: 0 0 8px 8px;
+  padding: 0 16px 16px 16px;
+  background: ${props => props.theme.bg3};
+  border: 1px solid ${props => props.theme.bg6};
+  border-top-width: 0;
+  > div {
+    padding: 16px 0 8px 0;
+    display: flex;
+    justify-content: space-evenly;
+    > label > * {
+      margin: 0 .25em;
+      display: inline-block;
+      vertical-align: bottom;
+    }
+  }
 `
 
 const SearchButton = styled.button`
+  position: relative;
+  cursor: pointer;
+  width: 100%;
+  font-family:"Pantograph", 'ui-monospace', 'Menlo', 'Monaco', "Cascadia Mono", "Segoe UI Mono", "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro","Fira Mono", "Droid Sans Mono", "Courier New", 'monospace';
+  font-size: ${rhythm(1)};
+  color: ${props => props.theme.text};
+  height: ${rhythm(2)};
+  background: ${props => props.theme.bg7};
+  border: 1px solid ${props => props.theme.bg8};
+  border-radius: ${rhythm(.33)};
+  box-shadow: ${props => props.theme.isDark ? '0 1px 0 rgba(0,0,0,.66), inset 0 1px 0 rgba(255,255,255, .2)' : '0 1px 0 rgba(0,0,0,.1), inset 0 1px 0 rgba(255,255,255, .66)'}; 
+  text-shadow: ${props => props.theme.isDark ? '0 -1px 0 rgba(0,0,0,.66);' : '0 1px 0 rgba(255,255,255,.66)'};
+  transition: top 0.15s;
+  span {
+    position: relative;
+    top: 1px;
+  }
+  &:hover {
+    background: ${props => props.theme.bg8};
+  }
+  &:active {
+    background: ${props => props.theme.yellow};
+    box-shadow: ${props => props.theme.isDark ? 'inset 0 1px 0 rgba(0,0,0,.66), 0 1px 0 rgba(255,255,255, .2)' : 'inset 0 1px 0 rgba(0,0,0,.1), 0 1px 0 rgba(255,255,255, .66)'}; 
+    top: 2px;
+  }
 `
 
 const SlideWrapper = styled(a.div)`
@@ -116,7 +166,7 @@ const ImageSearch = (props) => {
   }
 
   const updateSlidePositions = (width) => {
-    const margin = 20;
+    const margin = 12;
     let newSlides = [...slides] 
     for (let i=1; i < newSlides.length; i++) {
       let slide = newSlides[i]
@@ -148,28 +198,41 @@ const ImageSearch = (props) => {
 
 
   const transition = useTransition(slides, {
-    from: ({x}) => ({ x, y:'150%', }),
-    enter: ({x}) => ({ x, y:'0%', delay:700, config:config.stiff }),
+    from: ({x}) => ({ x, y:1000, }),
+    enter: ({x}) => ({ x, y:16, delay:700, config:config.stiff }),
     update:({x}) => ({ x, config:config.default }),
     leave: { opacity: 0 },   
   })
 
   return (
     <div>
-      <ImageContainer ref={imageContainerRef} show-pixellate={showPixellate.toString()} show-boxes={showBoxes.toString()}>
-        {transition((props, slide) => <CensoredImg src={slide.src} style={props} />)}
-      </ImageContainer>
+      <ImageContainerWrapper>
+        <ImageContainer ref={imageContainerRef} show-pixellate={showPixellate.toString()} show-boxes={showBoxes.toString()}>
+          {transition((props, slide) => <CensoredImg src={slide.src} style={props} />)}
+        </ImageContainer>
+      </ImageContainerWrapper>
 
       <ImageControls>
-        <SearchButton disabled={!srcListPopulated} onClick={buttonClicked}>Search for Trump Images</SearchButton>
+        <SearchButton disabled={!srcListPopulated} onClick={buttonClicked}><span>Pull a random "Trump" image from Google</span></SearchButton>
         <div>
           <label>
-            <span>Censor his face</span>
-            <Switch onChange={() => handleSwitch(0)} checked={showPixellate} />
+            <span className="pantograph">Enable face censor</span>
+
+            <Switch onChange={() => handleSwitch(0)} 
+                     checked={showPixellate} 
+                     uncheckedIcon={false} 
+                     checkedIcon={false} 
+                     onColor='#00F'
+                     />
           </label>
           <label>
-            <span>Show recognized faces</span>
-            <Switch onChange={() => handleSwitch(1)} checked={showBoxes} />
+            <span className="pantograph">Outline detected faces</span>
+            <Switch onChange={() => handleSwitch(1)} 
+                     checked={showBoxes}
+                     uncheckedIcon={false} 
+                     checkedIcon={false} 
+                     onColor='#00F'
+                     />
           </label>
         </div>
       </ImageControls>

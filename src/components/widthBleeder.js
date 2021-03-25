@@ -32,7 +32,7 @@ const StyledOuterDiv = styled.div`
 const widthBleeder = (props) => {
   const { children, height } = props
   return (
-    <StyledOuterDiv height={height}>
+    <StyledOuterDiv {...props}>
       {children}
     </StyledOuterDiv>
   )
