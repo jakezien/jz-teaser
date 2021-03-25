@@ -70,6 +70,7 @@ module.exports = {
         start_url: `/`,
         background_color: `#ffffff`,
         theme_color: `rgb(255, 194, 41)`,
+        crossOrigin: 'anonymous',
         display: `minimal-ui`,
         icon: `content/assets/monogram.svg`,
       },
