@@ -111,7 +111,7 @@ module.exports = {
       resolve: 'gatsby-plugin-matomo',
       options: {
         siteId: '1',
-        matomoUrl: 'https://jz.matomo.cloud/',
+        matomoUrl: 'https://jz.matomo.cloud',
         siteUrl: 'https://jakezien.github.io/jz'
       }
     }
