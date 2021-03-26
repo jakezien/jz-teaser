@@ -14,7 +14,8 @@ const lightTheme = {
   bg7:    'hsl(46, 100%, 70%)',
   bg8:    'hsl(46, 100%, 65%)',
   yellow: 'hsl(46, 100%, 50%)',
-  shadow: 'hsla(0, 0%, 0%, 0.075)'
+  shadow: 'hsla(0, 0%, 0%, 0.075)',
+  offWhite: 'hsl(46, 50%, 98%)'
 };
 
 const darkTheme = {

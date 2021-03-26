@@ -37,6 +37,32 @@ const GlobalStyle = createGlobalStyle`
   }
 
 
+  .headerLink {
+    border: 4px solid transparent;
+    position: relative;
+    padding: 0;
+    transition: color 0.1s, border 0.1s, background 0.1s;
+    display: inline-block;
+    left: -2px;
+    
+    :before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 3px;
+      bottom: -4px;
+      left: 0;
+      border-radius: 2px;
+      background-color: ${props => props.theme.bg4};
+    }
+
+    :hover, &[aria-current=page] {
+      background: ${props => props.theme.bg4};
+      border: 4px solid ${props => props.theme.bg4};
+      border-radius: 4px;
+    }    
+  }
+
   .link {
     font-family: "Pantograph", 'ui-monospace', 'Menlo', 'Monaco', "Cascadia Mono", "Segoe UI Mono", "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro","Fira Mono", "Droid Sans Mono", "Courier New", 'monospace';
     text-decoration: none;
@@ -71,7 +97,7 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
   }
 
-  *.yellowBg {
+  .yellowBg {
     color: ${props => props.theme.textOnYellow}
   }
 
@@ -101,6 +127,10 @@ const GlobalStyle = createGlobalStyle`
 
   .bg7 {
     background-color: ${props => props.theme.bg7}
+  }
+
+  .bg8 {
+    background-color: ${props => props.theme.bg8}
   }
 
   figure .react-photo-gallery--gallery {

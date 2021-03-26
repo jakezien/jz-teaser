@@ -126,8 +126,9 @@ const ImageSearch = (props) => {
     const tno = await fetchSrcsForQuery('trump and obama', queryPage.current)
     const tnb = await fetchSrcsForQuery('trump and biden', queryPage.current)
     const tnp = await fetchSrcsForQuery('trump and putin', queryPage.current)
+    const tnm = await fetchSrcsForQuery('trump and melania', queryPage.current)
 
-    let combined = [].concat(t, tno, tnb, tnp)
+    let combined = [].concat(t, tno, tnb, tnp, tnm)
     shuffleArray(combined)
     // console.log('srcList', srcList.current)
     srcList.current = srcList.current.concat(combined)

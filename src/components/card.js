@@ -9,15 +9,17 @@ const StyledDiv = styled.div`
   overflow: hidden;
   position: relative;
   z-index: 0;
+  text-decoration: none;
+  transition: background 0.15s, color 0.15s, box-shadow 0.15s, transform 0.5s;
   a {
     text-decoration: none;
   }
 `
 
-const Card = ({children}) => {
+const Card = (props) => {
   return (
-    <StyledDiv>
-      {children}
+    <StyledDiv className={props.className}>
+      {props.children}
     </StyledDiv>
   )
 }

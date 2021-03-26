@@ -52,13 +52,23 @@ const typography = new Typography({
       letterSpacing: '0.1em',
     },
 
-    'h5, *.bigText': {
+    'h5': {
       opacity: 0.75,
       fontFamily: 'covik-sans',
       fontWeight: 400,
       letterSpacing: '-0.02em',
       maxWidth: '90%',
       ...adjustFontSizeTo(rhythm(.9), 1),
+    },
+
+    'p.bigText': {
+      opacity: 0.75,
+      fontFamily: 'covik-sans',
+      fontWeight: 400,
+      letterSpacing: '-0.02em',
+      maxWidth: '90%',
+      fontSize: '1.215rem',
+      lineHeight: '1.35rem'
     },
 
     'strong': {
@@ -102,6 +112,12 @@ const typography = new Typography({
 
       'h5': {
         ...adjustFontSizeTo(rhythm(1), 1.25),
+        maxWidth: '80%'
+      },
+
+      'p.bigText': {
+        fontSize: '1.35rem',
+        lineHeight: '1.6875rem',
         maxWidth: '80%'
       },
 

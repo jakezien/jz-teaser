@@ -73,7 +73,7 @@ const TagRiver = (props) => {
 
 
   const springProps = useSpring({
-    config: { duration: 100000 },
+    config: { duration: 120000 },
     from: {transform:'translate3d(0%,0,0)'},
     to: {transform:'translate3d(-50%,0,0)'},
     loop: true,
@@ -81,7 +81,7 @@ const TagRiver = (props) => {
   })
 
   const reverseSpringProps = useSpring({
-    config: { duration: 100000 },
+    config: { duration: 120000 },
     from: {transform:'translate3d(-50%,0,0)'},
     to: {transform:'translate3d(0%,0,0)'},
     loop: true,
