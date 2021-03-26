@@ -23,7 +23,7 @@ const WorkPostTemplate = ({ data, pageContext, location }) => {
     <Layout location={location} title={siteTitle}>
       <SEO
         title={post.frontmatter.title}
-        description={post.frontmatter.description || post.excerpt}
+        description={post.excerpt}
       />
 
       <Container>
@@ -68,7 +68,6 @@ export const pageQuery = graphql`query WorkPostBySlug($slug: String!) {
     frontmatter {
       title
       date(formatString: "MMMM DD, YYYY")
-      description
     }
   }
   allFile(filter: {extension: {regex: "/(jpg)|(jpeg)|(png)/"}, relativeDirectory: {regex: $slug}}) {

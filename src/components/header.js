@@ -32,8 +32,8 @@ const Header = ({location}) => {
   return (
     <Container>
       <StyledHeader>
-        <StyledLink to="/">
-          <StyledMonogram/>
+        <StyledLink to="/" aria-label="Homepage">
+          <StyledMonogram aria-hidden={true} />
         </StyledLink>
         <StyledSiteNav location={location}/>
       </StyledHeader>

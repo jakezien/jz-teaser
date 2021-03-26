@@ -23,7 +23,7 @@ const StyledDiv = styled.div`
   }
 `
 
-const StyledSubtitle = styled.h5`
+const StyledSubtitle = styled.p`
   @media only screen and (max-width:413px) {
     margin-bottom: 0;
   }
@@ -78,7 +78,7 @@ const FavoritePostCard = (props) => {
             />
             <FlexDiv>
               <h3>{post.frontmatter.title}</h3>
-              <StyledSubtitle>{post.frontmatter.subtitle}</StyledSubtitle>
+              <StyledSubtitle className="bigText">{post.frontmatter.subtitle}</StyledSubtitle>
             </FlexDiv>
           </MobileWrap>
           <MDXRenderer>{post.body}</MDXRenderer>

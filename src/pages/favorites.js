@@ -24,7 +24,7 @@ const Favorites = ({ data, location }) => {
 
       <Section>
         <h1>Things That I Like</h1>
-        <h5>Things I like enough to recommend generally, publicly, indefinitely.</h5>
+        <p className="bigText">Things I like enough to recommend generally, publicly, indefinitely.</p>
       </Section>
     
       <StyledSection>

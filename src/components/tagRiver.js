@@ -1,4 +1,4 @@
-import React from "react"
+import React, {useEffect, useState} from "react"
 import styled from "styled-components"
 import { rhythm } from "../utils/typography"
 import { useSpring, animated } from 'react-spring'
@@ -41,18 +41,51 @@ const chunkArray = (array, chunkSize) => {
 
 const TagRiver = (props) => {
 
+  const [paused, setPaused] = useState(false)
+
+  const pauseAnimation = () => {
+    setPaused(true)
+  }
+
+  const resumeAnimation = () => {
+    setPaused(false)
+  }
+
+  const handleReducedMotionChange = (e) => {
+    if (e.matches) pauseAnimation()
+    else resumeAnimation()
+  }
+
+  
+
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    let mediaQuery = window.matchMedia('(prefers-reduced-motion)')
+    mediaQuery.addEventListener('change', handleReducedMotionChange);
+    
+    // Specify how to clean up after this effect:
+    return function cleanup() {
+      mediaQuery.removeEventListener('change', handleReducedMotionChange)
+    };
+  });
+
+
   const springProps = useSpring({
     config: { duration: 100000 },
     from: {transform:'translate3d(0%,0,0)'},
     to: {transform:'translate3d(-50%,0,0)'},
-    loop: true
+    loop: true,
+    pause: paused 
   })
 
   const reverseSpringProps = useSpring({
     config: { duration: 100000 },
     from: {transform:'translate3d(-50%,0,0)'},
     to: {transform:'translate3d(0%,0,0)'},
-    loop: true
+    loop: true,
+    pause: paused 
   })
   
   if (!props.children.props || props.children.props.originalType !== 'ul')

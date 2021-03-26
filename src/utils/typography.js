@@ -52,7 +52,7 @@ const typography = new Typography({
       letterSpacing: '0.1em',
     },
 
-    'h5': {
+    'h5, *.bigText': {
       opacity: 0.75,
       fontFamily: 'covik-sans',
       fontWeight: 400,

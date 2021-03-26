@@ -13,6 +13,13 @@ const StyledSubtitle = styled.p`
   color: ${props => props.theme.textTint}
 `
 
+const StyledLink = styled(Link)`
+  box-sizing: border-box;
+  &:focus {
+    border: 3px solid ${props => props.theme.yellow};
+  }
+`
+
 
 const WorkPostCard = (props) => {
 
@@ -23,13 +30,13 @@ const WorkPostCard = (props) => {
 
   return (
     <Card>
-      <Link to={post.fields.slug}>
+      <StyledLink to={post.fields.slug}>
         <GatsbyImage image={image ? image : ''} alt={post.frontmatter.oneliner} />
         <StyledDiv>
             <h3>{post.frontmatter.title}</h3>
           <StyledSubtitle>{post.frontmatter.oneliner}</StyledSubtitle>
         </StyledDiv>
-      </Link>
+      </StyledLink>
     </Card>
 
   )
