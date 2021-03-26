@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import { useSpring, useTransition, Transition, useChain, a, config } from 'react-spring'
 import styled from "styled-components"
 import Switch from "react-switch"
-import { shuffleArray, setIntervalLimited, log } from '../utils/functions'
+import { shuffleArray, setIntervalLimited, log, pushEvent } from '../utils/functions'
 import { rhythm } from "../utils/typography"
 import WidthBleeder from './widthBleeder'
 import CensoredImg from './censoredImg'
@@ -100,6 +100,7 @@ const ImageSearch = (props) => {
   const imageContainerRef = useRef()
   const [srcListPopulated, setSrcListPopulated] = useState(false);
 
+
   // Real data state
   const [slides, setSlides] = useState([]);
 
@@ -152,9 +153,11 @@ const ImageSearch = (props) => {
     switch (index) {
       case 0:
         setShowPixellate(!showPixellate);
+        pushEvent('Click', 'Toggle Switch', 'Censor Pixellate', showPixellate);
         break;
       case 1:
         setShowBoxes(!showBoxes);
+        pushEvent('Click', 'Toggle Switch', 'Censor Boxes', showBoxes);
         break;
     }
   }
@@ -179,6 +182,7 @@ const ImageSearch = (props) => {
   const buttonClicked = () => {
     // setIntervalLimited(() => {addOneSlide()}, 4000, 3)
     addOneSlide()
+    pushEvent('Click', 'Load Censor Image');
   }
 
   useLayoutEffect(() => {

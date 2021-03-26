@@ -28,6 +28,7 @@ const Work = ({ data, location }) => {
 
       <Section>
         <h1>Things That I've Worked On</h1>
+        <p className="bigText">For me, design is a general skill with broad applications — I'm more a handyman than a plumber. Here are some of the things I've used design to do.</p>
       </Section>
     
       <StyledSection>

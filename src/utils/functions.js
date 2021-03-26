@@ -48,3 +48,8 @@ export function log(varObj, label) {
   }
   console.log(label || name, varObj[name]);
 }
+
+export function pushEvent(category, action, name, value) {
+  if (window && window._paq)
+    window._paq.push(['trackEvent', category, action, name, value])
+}
