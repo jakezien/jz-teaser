@@ -93,6 +93,10 @@ const GlobalStyle = createGlobalStyle`
     }
   }
 
+  .bigtext a:after {
+    bottom: 2px;
+  }
+
   ul {
     margin: 0;
   }
