@@ -133,6 +133,8 @@ const GlobalStyle = createGlobalStyle`
     background-color: ${props => props.theme.bg8}
   }
 
+
+
   figure .react-photo-gallery--gallery {
     margin-bottom: 0
   }
@@ -144,6 +146,11 @@ const GlobalStyle = createGlobalStyle`
   [class*=widthBleeder] .react-photo-gallery--gallery {
     margin-bottom: 0
   }
+
+  .gatsby-image-wrapper:not(:last-of-type) {
+    margin-bottom: ${rhythm(1)}
+  }
+
 
   .half-margin-bottom {
     h5, p {

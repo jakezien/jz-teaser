@@ -25,7 +25,7 @@ const StyledLink = styled(Link)`
   }
 
   ${StyledCard} {
-    background: ${props => props.theme.offWhite};
+    background: ${props => props.theme.isDark ? props.theme.bg0 : props.theme.offWhite};
 
     .gatsby-image-wrapper picture {
 
@@ -46,7 +46,7 @@ const StyledLink = styled(Link)`
 
   &:hover {
     ${StyledCard} {
-      background: white;
+      background: ${props => props.theme.isDark ? props.theme.offBlack : props.theme.bg0};
       box-shadow: 0 3px 4px ${props => props.theme.shadow};
       transform: translateY(-1px);
 
