@@ -8,7 +8,10 @@ import Card from "../components/card"
 
 const StyledGatsbyImage = styled(GatsbyImage)`
   background: ${props => props.theme.bg1};
+  margin-bottom: ${rhythm(.5)} !important;
+
   @media only screen and (max-width:413px) {
+    margin-bottom: 0 !important;
     display: none;
   }
 `
@@ -21,6 +24,10 @@ const StyledDiv = styled.div`
       padding: ${rhythm(0.5)};
     }
   }
+`
+
+const StyledTitle = styled.h3`
+  margin-top: 0;
 `
 
 const StyledSubtitle = styled.p`
@@ -77,7 +84,7 @@ const FavoritePostCard = (props) => {
               imgStyle={{padding:'calc(' + imageMargin + '/2)'}}
             />
             <FlexDiv>
-              <h3>{post.frontmatter.title}</h3>
+              <StyledTitle>{post.frontmatter.title}</StyledTitle>
               <StyledSubtitle className="bigText">{post.frontmatter.subtitle}</StyledSubtitle>
             </FlexDiv>
           </MobileWrap>

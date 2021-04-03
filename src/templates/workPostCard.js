@@ -80,9 +80,9 @@ const WorkPostCard = (props) => {
   return (
       <StyledLink to={post.fields.slug}>
         <StyledCard>
-          <GatsbyImage image={image ? image : ''} alt={post.frontmatter.oneliner} />
+          <GatsbyImage style={{marginBottom:0}} image={image ? image : ''} alt={post.frontmatter.oneliner} />
           <StyledDiv>
-              <h3 className="headerLink">{post.frontmatter.title}</h3>
+              <h3 style={{marginTop:rhythm(.25)}} className="headerLink">{post.frontmatter.title}</h3>
             <StyledSubtitle>{post.frontmatter.oneliner} &rarr;</StyledSubtitle>
           </StyledDiv>
         </StyledCard>
