@@ -151,6 +151,10 @@ const GlobalStyle = createGlobalStyle`
     margin-bottom: 0
   }
 
+  [class*=card] .gatsby-image-wrapper picture {
+    border-radius: 6px 6px 0 0;
+  }
+
   .gatsby-image-wrapper:not(:last-of-type) {
     margin-bottom: ${rhythm(1)}
   }
