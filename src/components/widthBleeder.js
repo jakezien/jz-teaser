@@ -34,7 +34,7 @@ const SpacerDiv = styled.div`
   width: ${hPaddingPx}px;
 
   @media screen and (min-width: 768px) and (max-width: ${wideMaxWidthPx}px) {
-    width: ${wideHPadding}px;
+    width: ${wideHPaddingPx}px;
   }
 
   @media screen and (min-width: ${wideMaxWidthPx}px) {

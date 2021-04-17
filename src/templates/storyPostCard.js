@@ -13,7 +13,12 @@ const StyledDiv = styled.div`
 
 const StyledCard = styled(Card)`
   flex-shrink: 0;
-  max-width: ${rhythm(16)}
+  max-width: ${rhythm(16)};
+
+
+  &:not(last-of-type) {
+    margin-right: ${rhythm(1.5)}
+  }
 `
 
 const StoryPostCard = (props) => {
