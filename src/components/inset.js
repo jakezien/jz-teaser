@@ -12,6 +12,11 @@ const StyledDiv = styled.div`
     max-width: calc(50% - ${rhythm(1.5)});
     float: ${side};
     margin-${otherSide}: ${rhythm(1)};
+    &:after {
+      content: '';
+      display: block;
+      clear: both;
+    }
   }
 `
 

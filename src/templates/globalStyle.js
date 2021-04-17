@@ -28,7 +28,7 @@ const GlobalStyle = createGlobalStyle`
       bottom: -2px;
       left: 0;
       border-radius: 2px;
-      opacity: 0.3;
+      opacity: 0.4;
       background-color: ${props => props.theme.text};
       transition: background-color 0.1s;
 

@@ -118,7 +118,7 @@ const typography = new Typography({
       'p.bigText': {
         fontSize: '1.35rem',
         lineHeight: '1.6875rem',
-        maxWidth: '80%'
+        maxWidth: '85%'
       },
 
       'p, a, span, li, figcaption': {

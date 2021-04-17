@@ -4,7 +4,7 @@ import styled from "styled-components"
 const StyledDiv = styled.div`
   border-radius: 6px;
   box-shadow: 0 2px 3px ${props => props.theme.shadow};
-  background: ${props => props.theme.bg0};
+  background: ${props => props.theme.isDark ? props.theme.bg0 : props.theme.offWhite};
   height: 100%;
   overflow: hidden;
   position: relative;

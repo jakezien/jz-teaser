@@ -11,10 +11,10 @@ let wideHSpacePx = wideMaxWidthPx - (wideHPaddingPx * 2);
 
 
 const StyledOuterDiv = styled.div`
+  box-sizing: border-box;
   position: relative;
   margin-bottom: ${rhythm(1)};
   width: 100vw;
-  box-sizing: border-box;
   height: ${props => props.height || 'auto'};
   max-height: ${props => props.maxHeight || 'auto'};
   overflow: hidden;
@@ -25,15 +25,32 @@ const StyledOuterDiv = styled.div`
   }
 
   @media screen and (min-width: ${wideMaxWidthPx}px) {
-    left: calc( (100vw - ${wideHSpacePx}px) / -2 );
+    left: calc( (100vw - ${wideHSpacePx}px) / -2 ) !important;
+  }
+`
+
+const SpacerDiv = styled.div`
+  flex-shrink: 0;
+  width: ${hPaddingPx}px;
+
+  @media screen and (min-width: 768px) and (max-width: ${wideMaxWidthPx}px) {
+    width: ${wideHPadding}px;
+  }
+
+  @media screen and (min-width: ${wideMaxWidthPx}px) {
+    width: calc((100vw - ${wideHSpacePx}px) / 2);
   }
 `
 
 const widthBleeder = (props) => {
-  const { children, height } = props
+  let elements = React.Children.toArray(props.children)
+  if (props.spacers) {
+    elements.unshift(<SpacerDiv/>)
+    elements.push(<SpacerDiv/>)
+  }
   return (
     <StyledOuterDiv {...props}>
-      {children}
+      {elements}
     </StyledOuterDiv>
   )
 }
