@@ -63,7 +63,6 @@ const typography = new Typography({
 
     'p.bigText': {
       opacity: 0.75,
-      fontFamily: 'covik-sans',
       fontWeight: 400,
       letterSpacing: '-0.02em',
       maxWidth: '90%',

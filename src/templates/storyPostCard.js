@@ -13,7 +13,7 @@ const StyledDiv = styled.div`
 
 const StyledCard = styled(Card)`
   flex-shrink: 0;
-  max-width: ${rhythm(16)};
+  max-width: ${rhythm(14)};
 
 
   &:not(last-of-type) {

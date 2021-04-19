@@ -1,11 +1,18 @@
 @font-face {
   font-family: "Pantograph";
+  src: url("./colophon/pantograph-light-pro.woff2");
+  font-stretch: normal;
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: "Pantograph";
   src: url("./colophon/pantograph-regular-pro.woff2");
   font-stretch: normal;
   font-weight: 400;
 }
 
-/*@font-face {
+@font-face {
   font-family: "Pantograph";
   src: url("./colophon/pantograph-medium-pro.woff2");
   font-stretch: normal;
@@ -24,34 +31,153 @@
   src: url("./colophon/pantograph-bold-pro.woff2");
   font-stretch: normal;
   font-weight: 700;
-}*/
+}
+
+
 
 
 @font-face {
   font-family: "Pantograph";
-  src: url("./colophon/pantograph-condensed-regular-pro.woff2");
-  font-weight: 400;
+  src: url("./colophon/pantograph-condensed-light-pro.woff2");
   font-stretch: condensed;
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: "Pantograph";
+  src: url("./colophon/pantograph-condensed-regular-pro.woff2");
+  font-stretch: condensed;
+  font-weight: 400;
 }
 
 @font-face {
   font-family: "Pantograph";
   src: url("./colophon/pantograph-condensed-medium-pro.woff2");
-  font-weight: 500;
   font-stretch: condensed;
+  font-weight: 500;
 }
+
+@font-face {
+  font-family: "Pantograph";
+  src: url("./colophon/pantograph-condensed-semibold-pro.woff2");
+  font-stretch: condensed;
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: "Pantograph";
+  src: url("./colophon/pantograph-condensed-bold-pro.woff2");
+  font-stretch: condensed;
+  font-weight: 700;
+}
+
 
 
 @font-face {
   font-family: "Pantograph";
-  src: url("./colophon/pantograph-compressed-regular-pro.woff2");
-  font-weight: 400;
+  src: url("./colophon/pantograph-compressed-light-pro.woff2");
   font-stretch: extra-condensed;
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: "Pantograph";
+  src: url("./colophon/pantograph-compressed-regular-pro.woff2");
+  font-stretch: extra-condensed;
+  font-weight: 400;
 }
 
 @font-face {
   font-family: "Pantograph";
   src: url("./colophon/pantograph-compressed-medium-pro.woff2");
-  font-weight: 500;
   font-stretch: extra-condensed;
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "Pantograph";
+  src: url("./colophon/pantograph-compressed-semibold-pro.woff2");
+  font-stretch: extra-condensed;
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: "Pantograph";
+  src: url("./colophon/pantograph-compressed-bold-pro.woff2");
+  font-stretch: extra-condensed;
+  font-weight: 700;
+}
+
+
+
+@font-face {
+  font-family: "Pantograph";
+  src: url("./colophon/pantograph-wide-light-pro.woff2");
+  font-stretch: expanded;
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: "Pantograph";
+  src: url("./colophon/pantograph-wide-regular-pro.woff2");
+  font-stretch: expanded;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Pantograph";
+  src: url("./colophon/pantograph-wide-medium-pro.woff2");
+  font-stretch: expanded;
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "Pantograph";
+  src: url("./colophon/pantograph-wide-semibold-pro.woff2");
+  font-stretch: expanded;
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: "Pantograph";
+  src: url("./colophon/pantograph-wide-bold-pro.woff2");
+  font-stretch: expanded;
+  font-weight: 700;
+}
+
+
+
+@font-face {
+  font-family: "Pantograph";
+  src: url("./colophon/pantograph-extended-light-pro.woff2");
+  font-stretch: extra-expanded;
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: "Pantograph";
+  src: url("./colophon/pantograph-extended-regular-pro.woff2");
+  font-stretch: extra-expanded;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Pantograph";
+  src: url("./colophon/pantograph-extended-medium-pro.woff2");
+  font-stretch: extra-expanded;
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "Pantograph";
+  src: url("./colophon/pantograph-extended-semibold-pro.woff2");
+  font-stretch: extra-expanded;
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: "Pantograph";
+  src: url("./colophon/pantograph-extended-bold-pro.woff2");
+  font-stretch: extra-expanded;
+  font-weight: 700;
 }
