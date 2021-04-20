@@ -15,11 +15,20 @@ const StyledCard = styled(Card)`
   flex-shrink: 0;
   max-width: ${rhythm(14)};
 
-
   &:not(last-of-type) {
     margin-right: ${rhythm(1.5)}
   }
 `
+
+const StyledGatsbyImage = styled(GatsbyImage)`
+  margin-bottom: ${rhythm(.5)} !important;
+
+  @media only screen and (max-width:413px) {
+    margin-bottom: 0 !important;
+    display: none;
+  }
+`
+
 
 const StoryPostCard = (props) => {
 
@@ -27,7 +36,13 @@ const StoryPostCard = (props) => {
 
   return (
     <StyledCard>
-      <GatsbyImage style={{marginBottom:0}} image={coverImage && getImage(coverImage[0])} alt="" />
+      <StyledGatsbyImage 
+        image={coverImage && getImage(coverImage[0])}
+        alt=""
+        imgStyle={post.frontmatter.imageMargin && {padding:'calc(' + post.frontmatter.imageMargin + '/2)'}}
+        objectFit='contain'
+        style={{marginBottom:0}}
+      />
       <StyledDiv>
         <h3 style={{marginTop:rhythm(.25)}}>{post.frontmatter.title}</h3>
         <p className="bigText">{post.frontmatter.subtitle}</p>

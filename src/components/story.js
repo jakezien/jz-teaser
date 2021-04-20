@@ -31,6 +31,7 @@ const Story = (props) => {
 						order
 						title
 						subtitle
+						imageMargin
 					}
 				}
 			}
@@ -38,7 +39,7 @@ const Story = (props) => {
 				nodes {
 					name
 					childImageSharp {
-						gatsbyImageData(layout: FULL_WIDTH, aspectRatio:1, backgroundColor:"transparent", transformOptions:{fit:CONTAIN})
+						gatsbyImageData(layout: FULL_WIDTH, aspectRatio:1.5, backgroundColor:"transparent", transformOptions:{fit:CONTAIN})
 					}
 				}
 			}
