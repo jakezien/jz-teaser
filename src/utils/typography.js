@@ -6,11 +6,11 @@ const typography = new Typography({
   baseLineHeight: 1.35,
   scaleRatio: 4.5,
  
-  headerFontFamily: ["Pantograph", 'system-ui', 'apple-system', '-apple-system', 'BlinkMacSystemFont', "Segoe UI", 'Roboto', 'Oxygen-Sans', 'Ubuntu', 'Cantarell', "Helvetica Neue", 'sans-serif'],
+  headerFontFamily: ["Pantograph", 'ui-monospace', 'Menlo', 'Monaco', "Cascadia Mono", "Segoe UI Mono", "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro","Fira Mono", "Droid Sans Mono", "Courier New", 'monospace'],
   headerWeight: 500,
  
-  bodyFontFamily: ["Pantograph", 'system-ui', 'apple-system', '-apple-system', 'BlinkMacSystemFont', "Segoe UI", 'Roboto', 'Oxygen-Sans', 'Ubuntu', 'Cantarell', "Helvetica Neue", 'sans-serif'],
-  bodyWeight: 400,
+  bodyFontFamily: ["covik-sans", 'system-ui', 'apple-system', '-apple-system', 'BlinkMacSystemFont', "Segoe UI", 'Roboto', 'Oxygen-Sans', 'Ubuntu', 'Cantarell', "Helvetica Neue", 'sans-serif'],
+  bodyWeight: 300,
 
   overrideStyles: ({ adjustFontSizeTo, rhythm }, options, styles) => ({
 
@@ -63,11 +63,10 @@ const typography = new Typography({
 
     'p.bigText': {
       opacity: 0.75,
-      fontWeight: 500,
+      fontWeight: 400,
       letterSpacing: '-0.02em',
       maxWidth: '90%',
       fontSize: '1.215rem',
-      fontStretch: 'extra-expanded',
       lineHeight: '1.35rem'
     },
 
@@ -83,7 +82,7 @@ const typography = new Typography({
     },
 
     'p, a, span, li, figcaption': {
-
+      letterSpacing: '-0.01em'
     },
 
     'a, a *': {
@@ -121,6 +120,9 @@ const typography = new Typography({
         maxWidth: '85%'
       },
 
+      'p, a, span, li, figcaption': {
+        letterSpacing: '-0.01em'
+      },
     },
   })
 
@@ -133,4 +135,4 @@ if (process.env.NODE_ENV !== `production`) {
 
 export default typography;
 export const rhythm = typography.rhythm
-export const scale = typography.scale
+export const scale = typography.scaleRatio
