@@ -14,7 +14,7 @@ export function galleryArray(props, names, namesToSkip) {
         }
       }
     }
-    else array.push(props.images[i].childImageSharp.original);  
+    else if(props.images[i].childImageSharp) array.push(props.images[i].childImageSharp.original);  
   }
   return array;
 }
