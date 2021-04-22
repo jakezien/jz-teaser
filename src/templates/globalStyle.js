@@ -160,6 +160,35 @@ const GlobalStyle = createGlobalStyle`
   }
 
 
+  .carousel__slider-tray {
+    align-items: center !important; 
+    li {
+      margin: 0 1em;
+    }
+  }
+
+  .carousel__slider-tray-wrapper {
+    padding: 0 ${rhythm(4)}
+  }
+
+  .carousel__dot-group {
+    text-align: center;
+    button {
+      border: none;
+      background-color: ${props => props.theme.bg4};
+      width: 12px;
+      height: 12px;
+      border-radius: 6px;
+      margin: .25em;
+      &:hover, &:disabled {
+        background-color: ${props => props.theme.yellow};
+      }
+    }
+  }
+
+
+
+
   .half-margin-bottom {
     h5, p {
       margin-bottom: ${rhythm(.5)}
