@@ -99,7 +99,15 @@ const GlobalStyle = createGlobalStyle`
 
   ul {
     margin: 0;
+    padding-left: .5em;
   }
+  @media screen and (min-width: 768px) {
+    ul {
+      padding-left: 0;
+    }
+  }
+
+
 
   .yellowBg {
     color: ${props => props.theme.textOnYellow}
@@ -167,7 +175,7 @@ const GlobalStyle = createGlobalStyle`
     position: absolute;
     top: 0;
     height: 100%;
-    width: ${rhythm(4)};
+    width: ${rhythm(1)};
     border: none;
     background: transparent;
     &[disabled] {
@@ -180,6 +188,7 @@ const GlobalStyle = createGlobalStyle`
     &:last-of-type{
       right: 0;
     }
+
   }
 
   .carousel__slider-tray {
@@ -187,26 +196,69 @@ const GlobalStyle = createGlobalStyle`
       align-items: center !important;   
     }
     li {
-      margin: 0 1em;
+      margin: 0 .33em;
+      &:first-child {
+        margin-left: 0;
+      }
+      &:last-child {
+        margin-right: 0;
+      }
     }
   }
 
   .carousel__slider-tray-wrapper {
-    padding: 0 ${rhythm(4)}
+    padding: 0 ${rhythm(1)}
   }
 
   .carousel__dot-group {
     text-align: center;
     button {
       border: none;
+      padding: 0;
       background-color: ${props => props.theme.bg4};
-      width: 12px;
-      height: 12px;
-      border-radius: 6px;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
       margin: .25em;
       &:hover, &:disabled {
         background-color: ${props => props.theme.yellow};
       }
+    }
+  }
+
+  @media screen and (min-width: 768px) {
+    .carousel__back-button, .carousel__next-button {
+      width: ${rhythm(3)}
+    }
+    .carousel__slider-tray-wrapper {
+      padding: 0 ${rhythm(3)}
+    }
+    .carousel__slider-tray{
+      li {
+        margin: 0 1em
+      }
+    }
+    .carousel__dot-group button{
+      width: 12px;
+      height: 12px;
+    }
+  }
+
+  @media screen and (max-width: 479px) {
+    .carousel-tray-story {
+        width: 900% !important
+    }
+  }
+
+  @media screen and (min-width: 480px) and (max-width: 1023px) {
+    .carousel-tray-story {
+        width: 720% !important
+    }
+  }
+
+  @media screen and (min-width: 1024px) {
+    .carousel-tray-story {
+        width: 450% !important
     }
   }
 

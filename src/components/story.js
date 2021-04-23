@@ -56,11 +56,11 @@ const Story = (props) => {
 			      naturalSlideWidth={400}
 			      naturalSlideHeight={400}
 			      totalSlides={9}
-			      visibleSlides={2}
+			      visibleSlides={1}
 			      step={1}
 			      isIntrinsicHeight={true}
 			>
-				<Slider>
+				<Slider classNameTray="carousel-tray-story">
 					{data.allMdx.nodes.map((post, index) => (
 						<Slide index={index}>
 							<StoryPostCard post={post} coverImage={getImageForPost(post)} />
