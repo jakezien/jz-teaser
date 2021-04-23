@@ -159,9 +159,33 @@ const GlobalStyle = createGlobalStyle`
     margin-bottom: ${rhythm(1)}
   }
 
+  .carousel {
+    position: relative;
+  }
+
+  .carousel__back-button, .carousel__next-button {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: ${rhythm(4)};
+    border: none;
+    background: transparent;
+    &[disabled] {
+      cursor:default;
+    }
+
+    &:first-of-type{
+      left: 0;
+    }
+    &:last-of-type{
+      right: 0;
+    }
+  }
 
   .carousel__slider-tray {
-    align-items: center !important; 
+    &.center {
+      align-items: center !important;   
+    }
     li {
       margin: 0 1em;
     }

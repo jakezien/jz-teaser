@@ -11,15 +11,6 @@ const StyledDiv = styled.div`
   padding: ${rhythm(0.5)};
 `
 
-const StyledCard = styled(Card)`
-  flex-shrink: 0;
-  max-width: ${rhythm(14)};
-
-  &:not(last-of-type) {
-    margin-right: ${rhythm(1.5)}
-  }
-`
-
 const StyledGatsbyImage = styled(GatsbyImage)`
   margin-bottom: ${rhythm(.5)} !important;
 
@@ -35,7 +26,7 @@ const StoryPostCard = (props) => {
   const {post, coverImage} = props;
 
   return (
-    <StyledCard>
+    <Card>
       <StyledGatsbyImage 
         image={coverImage && getImage(coverImage[0])}
         alt=""
@@ -48,7 +39,7 @@ const StoryPostCard = (props) => {
         <p className="bigText">{post.frontmatter.subtitle}</p>
         <MDXRenderer>{post.body}</MDXRenderer>
       </StyledDiv>
-    </StyledCard>
+    </Card>
   )
 }
 

@@ -4,6 +4,7 @@ import styled from "styled-components"
 import { rhythm, scale } from "../utils/typography"
 import StoryPostCard from "../templates/storyPostCard"
 import WidthBleeder from "./widthBleeder"
+import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext, DotGroup } from 'pure-react-carousel';
 
 export const hPadding = rhythm(.75); 
 export const wideMaxWidth = rhythm(40); 
@@ -50,10 +51,28 @@ const Story = (props) => {
 	
 
 	return(
-		<WidthBleeder spacers={true} style={{display:'flex',overflowX:'scroll'}}>
-			{data.allMdx.nodes.map(post => <StoryPostCard post={post} coverImage={getImageForPost(post)} />)}
+		<WidthBleeder >
+			<CarouselProvider
+			      naturalSlideWidth={400}
+			      naturalSlideHeight={400}
+			      totalSlides={9}
+			      visibleSlides={2}
+			      step={1}
+			      isIntrinsicHeight={true}
+			>
+				<Slider>
+					{data.allMdx.nodes.map((post, index) => (
+						<Slide index={index}>
+							<StoryPostCard post={post} coverImage={getImageForPost(post)} />
+						</Slide>
+					))}
+				</Slider>
+			      <ButtonBack />
+			      <ButtonNext />
+			      <DotGroup showAsSelectedForCurrentSlideOnly={true}/>
+			</CarouselProvider>
 		</WidthBleeder>
-		)
+	)
 }
 
 
