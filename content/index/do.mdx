@@ -1,18 +1,14 @@
+import { useContext, useEffect, useState } from 'react';
+import { CarouselContext } from 'pure-react-carousel';
 import ExampleList from "../../src/components/exampleList"
-import Tag from "../../src/components/tag"
-import TagList from "../../src/components/tagList"
 import TagRiver from "../../src/components/tagRiver"
-import Grid from "../../src/components/grid"
-import WidthBleeder from "../../src/components/widthBleeder"
 import WorkPostCard from "../../src/templates/workPostCard"
 
 
 ## Things that I do
 
-
 <WidthBleeder>
 <TagRiver>
-
 
 - Avoid participating in social media
 - Graphic design
@@ -59,29 +55,66 @@ import WorkPostCard from "../../src/templates/workPostCard"
 - Lift weights
 - Keep a very tidy workspace
 
-
-
 </TagRiver>
 </WidthBleeder>
 
 
 <div>
-
 <p class="bigText"> For me, design is a general skill with broad applications — I'm&nbsp;more a handyman than a plumber. Here are some of the things I've used design to do. </p>
+<WidthBleeder >
+<CarouselProvider
+      naturalSlideWidth={400}
+      naturalSlideHeight={400}
+      totalSlides={3}
+      visibleSlides={2}
+      step={1}
+      isIntrinsicHeight={true}
+      className="do"
+>
+<Slider classNameTray="carousel-tray-do">
+<Slide index={0}>
 
 ### Create products
-This is a blurry term, but for me, it has meant devising business strategy; researching, validating and defining ideas; leading interdisciplinary workshops; sketching, prototyping, and other UX methods; positioning and visual design; and more than anything, lots of communication and collaboration with others who think in different ways. 
-  
+For me, this is mostly about communication and collaboration with others who think in different ways. It includes devising business strategy; researching, defining and validating ideas; leading interdisciplinary workshops; sketching, prototyping, and other UX methods; and positioning and visual design.
+
+</Slide>
+<Slide index={1}>
 
 ### Develop brands
 This is product design too, but the product is a system of ideas and visuals that help an organization shape peoples' behavior.
 
+</Slide>
+<Slide index={2}>
+
 ### Communicate anything
-One colleague said, "as a designer, communication is your superpower." Whether in person or in writing; with friends or among executives; one-on-one or before an audience; I work to always make my message plainspoken and engaging, and to listen actively and with an open mind. Having others' attention is a privilege, so I aim to reward it with well-chosen words, analogies that make complicated things easy to understand, good storytelling that explains as it entertains, and, if I can work them in appropriately, a solid joke or two.
+I've been told, "communication is your superpower." In person or in writing, among friends or executives, one-on-one or before an audience, I work to be plainspoken and engaging, and I listen actively with an open mind. Others' attention is a privilege. I aim to reward it with well-chosen words, analogies that render complicated things as familiar ideas, storytelling that explains as it entertains, and a few solid jokes.
 
-
+</Slide>
+</Slider>
+<ButtonBack />
+<ButtonNext />
+<DotGroup showAsSelectedForCurrentSlideOnly={true}/>
+</CarouselProvider>
+</WidthBleeder>
 </div>
 
 ## Things that I’ve worked&nbsp;on
+
 <Grid {...props} postTemplate={WorkPostCard} postsPerRow="2" />
 
+export function MyComponentUsingContext() {
+ const carouselContext = useContext(CarouselContext);
+ const [touchEnabled, setTouchEnabled] = useState(carouselContext.state.touchEnabled);
+ const [dragEnabled, setDragEnabled] = useState(carouselContext.state.dragEnabled);
+ const toggleCarousel = (newState) => {
+   setTouchEnabled(newState);
+   setDragEnabled(newState);
+ }
+ useEffect(() => {
+  function onChange() {
+   console.log('change')
+  }
+ carouselContext.subscribe(onChange);
+   return () => carouselContext.unsubscribe(onChange);
+ }, [carouselContext]);
+}

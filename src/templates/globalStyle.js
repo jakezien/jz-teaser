@@ -262,6 +262,35 @@ const GlobalStyle = createGlobalStyle`
     }
   }
 
+  @media screen and (max-width: 639px) {
+    .carousel-tray-do {
+        width: 300% !important
+    }
+  }
+
+  @media screen and (min-width: 640px) and (max-width: 1079px) {
+    .carousel-tray-do {
+        width: 150% !important;
+    }
+  }
+
+  @media screen and (min-width: 1080px) {
+    .carousel.do {
+      max-width 1080px !important;
+      margin: 0 auto;
+      user-select: none;
+      .carousel-tray-do {
+        width: 100% !important;
+      }
+      .carousel__dot-group {
+        display: none;
+      }
+      .carousel__back-button, .carousel__next-button {
+        display: none;
+      }
+    }
+  }
+
 
 
 
