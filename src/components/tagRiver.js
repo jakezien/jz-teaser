@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from "react"
+import { MDXRenderer } from "gatsby-plugin-mdx"
 import styled from "styled-components"
 import { rhythm } from "../utils/typography"
 import { useSpring, animated } from 'react-spring'
@@ -8,7 +9,6 @@ const StyledDiv = styled.div`
   padding: 2px;
   position: relative;
 `
-
 
 const StyledUl = styled(animated.ul)`
   margin: 0;
@@ -56,9 +56,6 @@ const TagRiver = (props) => {
     else resumeAnimation()
   }
 
-  
-
-
   useEffect(() => {
     if (typeof window === 'undefined') return;
 
@@ -88,11 +85,23 @@ const TagRiver = (props) => {
     pause: paused 
   })
   
-  if (!props.children.props || props.children.props.originalType !== 'ul')
-    return null;
 
-  let listItems = [...props.children.props.children];
-  let chunkedItems = chunkArray(listItems, Math.ceil(listItems.length/4));
+
+
+
+
+  const {children} = props;
+  let childrenArray = React.Children.toArray(children)
+  console.log(childrenArray)
+
+  if (!childrenArray.length) {
+    console.log('nokids')
+    return null;
+  }
+
+  childrenArray = React.Children.toArray(childrenArray[0].props.children)
+
+  let chunkedItems = chunkArray(childrenArray, Math.ceil(childrenArray.length/4));
 
   return (
     <StyledDiv>
@@ -106,7 +115,7 @@ const TagRiver = (props) => {
             <StyledLi key={itemIndex}><Tag>{item.props.children}</Tag></StyledLi>
           )})}
         </StyledUl>
-        <SpacerUl aria-hidden="true"><StyledLi><Tag>poop</Tag></StyledLi></SpacerUl>
+        <SpacerUl aria-hidden="true"><StyledLi><Tag>&nbsp</Tag></StyledLi></SpacerUl>
         </div>
       )})}
     </StyledDiv>
