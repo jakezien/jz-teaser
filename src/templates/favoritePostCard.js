@@ -8,32 +8,14 @@ import Card from "../components/card"
 
 const StyledGatsbyImage = styled(GatsbyImage)`
   background: ${props => props.theme.bg1};
-  margin-bottom: ${rhythm(.5)} !important;
-
-  @media only screen and (max-width:413px) {
-    margin-bottom: 0 !important;
-    display: none;
-  }
 `
 
 const StyledDiv = styled.div`
   padding: ${rhythm(0.5)};
-  @media only screen and (max-width:413px) {
-    padding: 0;
-    & > p {
-      padding: ${rhythm(0.5)};
-    }
-  }
 `
 
 const StyledTitle = styled.h3`
   margin-top: 0;
-`
-
-const StyledSubtitle = styled.p`
-  @media only screen and (max-width:413px) {
-    margin-bottom: 0;
-  }
 `
 
 const MobileWrap = styled.div`
@@ -41,54 +23,29 @@ const MobileWrap = styled.div`
     display: none;
   }
 
-  @media only screen and (max-width:413px) {
-    display: flex;
-    [class*=StyledGatsbyImage] {
-      display: block;
-      width: 33vw;
-      height: 33vw;
-      flex-basis: 33vw;
-      margin-right: ${rhythm(0.25)};
-    }
-  }
+
 `
 
 const FlexDiv = styled.div`
-  @media only screen and (max-width:413px) {
-    padding: ${rhythm(0.25)};
-    flex-shrink: 5;
-  }
+
 `
 
 const FavoritePostCard = (props) => {
 
   const {post, coverImage} = props;
-
-  let image
-  if (coverImage.length) image = getImage(coverImage[0])
-  let imageMargin = 0;
-  if (post.frontmatter.imageMargin) imageMargin = post.frontmatter.imageMargin;
+  console.log(post, coverImage)
 
   return (
     <Card>
         <StyledGatsbyImage 
-          image={image ? image : ''} 
-          alt={post.frontmatter.title}
-          imgStyle={{padding:imageMargin}}
+          image={coverImage && getImage(coverImage[0])}
+          alt=""
+          imgStyle={post.frontmatter.imageMargin && {padding:'calc(' + post.frontmatter.imageMargin + '/2)'}}
         />
         <StyledDiv>
-          <MobileWrap>
-            <StyledGatsbyImage 
-              image={image ? image : ''} 
-              alt={post.frontmatter.title}
-              imgStyle={{padding:'calc(' + imageMargin + '/2)'}}
-            />
-            <FlexDiv>
-              <StyledTitle>{post.frontmatter.title}</StyledTitle>
-              <StyledSubtitle className="bigText">{post.frontmatter.subtitle}</StyledSubtitle>
-            </FlexDiv>
-          </MobileWrap>
-          <MDXRenderer>{post.body}</MDXRenderer>
+            <StyledTitle>{post.frontmatter.title}</StyledTitle>
+            <p className="bigText">{post.frontmatter.subtitle}</p>
+            <MDXRenderer>{post.body}</MDXRenderer>
         </StyledDiv>
     </Card>
   );

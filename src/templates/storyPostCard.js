@@ -11,23 +11,13 @@ const StyledDiv = styled.div`
   padding: ${rhythm(0.5)};
 `
 
-const StyledGatsbyImage = styled(GatsbyImage)`
-  margin-bottom: ${rhythm(.5)} !important;
-
-  @media only screen and (max-width:413px) {
-    margin-bottom: 0 !important;
-    display: none;
-  }
-`
-
-
 const StoryPostCard = (props) => {
 
   const {post, coverImage} = props;
 
   return (
     <Card>
-      <StyledGatsbyImage 
+      <GatsbyImage 
         image={coverImage && getImage(coverImage[0])}
         alt=""
         imgStyle={post.frontmatter.imageMargin && {padding:'calc(' + post.frontmatter.imageMargin + '/2)'}}

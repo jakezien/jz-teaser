@@ -44,7 +44,7 @@ const Home = ({ data, location }) => {
       </DoSection>
 
       <FavoriteSection>
-        <Like posts={data.favorites.edges} postCoverImages={data.favoritesCoverImages.nodes} />
+        <Like />
       </FavoriteSection>
 
     </Layout>
@@ -84,33 +84,5 @@ export const pageQuery = graphql`{
       }
     }
   }
-
-  favorites: allMdx(limit: 12, filter: {fileAbsolutePath: {regex: "\\/content/favorites/"}}, sort: {fields: [frontmatter___date], order: DESC}) {
-    edges {
-      node {
-        body
-        fields {
-          slug
-        }
-        frontmatter {
-          date(formatString: "MMMM DD, YYYY")
-          title
-          subtitle
-          type
-          imageMargin
-        }
-      }
-    }
-  }
-
-  favoritesCoverImages: allFile(filter: {extension: {regex: "/(jpg)|(jpeg)|(png)/"}, absolutePath: {regex: "\\/content/favorites/"}}) {
-    nodes {
-      name
-      childImageSharp {
-        gatsbyImageData(layout: FULL_WIDTH, aspectRatio:1, backgroundColor:"transparent", transformOptions:{fit:CONTAIN})
-      }
-    }
-  }
-
 }
 `
