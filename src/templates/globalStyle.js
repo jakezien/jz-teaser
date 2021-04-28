@@ -227,7 +227,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
 .favorites-dot-group button {
-  background-color: ${props => props.theme.bg5};
+  background-color: ${props => props.theme.bg6};
 }
 
 @media screen and (min-width: 768px) {
