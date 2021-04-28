@@ -17,49 +17,62 @@ type: branding
 A whole bunch ideas for stickers, buttons and patches to be used as promotional giveaways at MAPS conferences and events.
 
 <WidthBleeder>
-<figure>
-<Gallery photos={galleryArray(props, ['stickers-0', 'stickers-1', 'stickers-2'])} />
-<Gallery photos={galleryArray(props, ['stickers-3', 'stickers-4', 'stickers-5'])} />
-</figure>
+      <figure>
+            <FlexContainer breakpoint='768px'>
+                  <GatsbyImage image={imageByName(props, 'stickers-0')} alt='This image, and the following 5, are various designs for circular stickers bearing the words "Support Psychedelic Science."' objectFit='contain' />
+                  <GatsbyImage image={imageByName(props, 'stickers-1')} alt="" objectFit='contain' />
+            </FlexContainer>
+            <FlexContainer breakpoint='768px'>
+                  <GatsbyImage image={imageByName(props, 'stickers-2')} alt="" objectFit='contain' />
+                  <GatsbyImage image={imageByName(props, 'stickers-3')} alt="" objectFit='contain' />
+            </FlexContainer>
+            <FlexContainer breakpoint='600px'>
+                  <GatsbyImage image={imageByName(props, 'stickers-4')} alt="" objectFit='contain' />
+                  <GatsbyImage image={imageByName(props, 'stickers-5')} alt="" objectFit='contain' />
+            </FlexContainer>
+      </figure>
 </WidthBleeder>
 
 ### Conference Identity
 Visual identity concepts for MAPS' triannual Psychedelic Science Conference in California, where scientists and doctors from institutions like Johns Hopkins, NYU, and Oxford gather to present the latest findings in medical research into psychedelic compounds.
 
 <figure>
-<GatsbyImage image={imageByName(props, 'psyence-original', true)} alt="" />
-<figcaption>This was the existing visual material MAPS had developed for its conference. The new directions I developed sought to refine and evolve these graphics while referencing the same ideas.</figcaption>
+      <GatsbyImage image={imageByName(props, 'psyence-original', true)} alt="" />
+      <figcaption>This was the existing visual material MAPS had developed for its conference. The new directions I developed sought to refine and evolve these graphics while referencing the same ideas.</figcaption>
 </figure>
 
 <figure>
-<GatsbyImage image={imageByName(props, 'psyence-posters-0', true)} alt="" />
-<GatsbyImage image={imageByName(props, 'psyence-posters-1', true)} alt="" />
-<GatsbyImage image={imageByName(props, 'psyence-posters-2', true)} alt="" />
-<figcaption>These three sets of posters each propose a different visual evolution of the "Psychedelic Science" idea.</figcaption>
+      <GatsbyImage image={imageByName(props, 'psyence-posters-0', true)} alt="" />
+      <GatsbyImage image={imageByName(props, 'psyence-posters-1', true)} alt="" />
+      <GatsbyImage image={imageByName(props, 'psyence-posters-2', true)} alt="" />
+      <figcaption>These three sets of posters each propose a different visual evolution of the "Psychedelic Science" idea.</figcaption>
 </figure>
 
 <WidthBleeder>
-<figure>
-<Gallery photos={galleryArray(props, ['psyence-site'])}/>
-<figcaption>Two proposals for website designs for the Psychedelic Science conference.</figcaption>
-</figure>
+      <figure>
+            <FlexContainer breakpoint='768px'>
+                  <GatsbyImage image={imageByName(props, 'psyence-site-0')} alt="" objectFit='contain'/>
+                  <GatsbyImage image={imageByName(props, 'psyence-site-1')} alt="" objectFit='contain'/>
+            </FlexContainer>
+            <figcaption>Two proposals for website designs for the Psychedelic Science conference.</figcaption>
+      </figure>
 </WidthBleeder>
 
 ### Social Media Campaign
 A campaign to promote MAPS "Global Psychedelic Dinners", where donors host simultaneous dinner symposia to discuss and fundraise MAPS' FDA-approved study of MDMA as a therapy for PTSD. I came up with the idea for this campaign, and the graphics to support it.
 
 <figure>
-<GatsbyImage image={imageByName(props, 'social-0', true)} alt="" />
-<GatsbyImage image={imageByName(props, 'social-1', true)} alt="" />
-<figcaption>MAPS ran these graphics on its Instagram, Facebook, and Twitter accounts.</figcaption>
+      <GatsbyImage image={imageByName(props, 'social-0', true)} alt="" />
+      <GatsbyImage image={imageByName(props, 'social-1', true)} alt="" />
+      <figcaption>MAPS ran these graphics on its Instagram, Facebook, and Twitter accounts.</figcaption>
 </figure>
 
 ### Event Poster
 A short-notice, quick-deadline poster I created for a MAPS-sponsored workshop at University of Southern California.
 
 <figure>
-<GatsbyImage image={imageByName(props, 'trauma-flyer', true)} style={{maxHeight:rhythm(30)}} imgStyle={{objectFit:'contain'}} alt="" />
-<figcaption>The subject of the workshop was "trauma and reintegration".</figcaption>
+      <GatsbyImage className="shadow" image={imageByName(props, 'trauma-flyer', true)} style={{maxHeight:rhythm(30)}} imgStyle={{objectFit:'contain'}} alt="" />
+      <figcaption>The subject of the workshop was "trauma and reintegration".</figcaption>
 </figure>
 
 

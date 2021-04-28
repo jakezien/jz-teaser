@@ -6,25 +6,26 @@ export function galleryArray(props, names, namesToSkip) {
   for (let i in props.images) {
     if (namesToSkip && namesToSkip.includes(props.images[i].name))
       continue;
+
     if (names) {
       for (let j in names) {
         if (props.images[i].name.includes(names[j])) {
-          array.push(props.images[i].childImageSharp.original);
+          console.log(props.images[i], getImage(props.images[i]))
+          array.push(getImage(props.images[i]));
           continue;
         }
       }
     }
-    else if(props.images[i].childImageSharp) array.push(props.images[i].childImageSharp.original);  
+    
+    else if(getImage(props.images[i])) 
+      array.push(getImage(props.images[i]));  
   }
   return array;
 }
 
 // filter a collection of file nodes and return one with matching name
-export function imageByName(props, name, getFile) {
-  let img = props.images.filter(node => 
-    {return node.name.includes(name)})[0]
-  getFile ? img = getImage(img) : img = img;
-  return img;
+export function imageByName(props, name) {
+  return getImage(props.images.filter(node => node.name.includes(name))[0])
 }
 
 export function shuffleArray(a) {

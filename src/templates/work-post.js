@@ -1,6 +1,6 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
-import { GatsbyImage } from "gatsby-plugin-image";
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import Layout from "./layout"
 import SEO from "../components/seo"
@@ -15,8 +15,7 @@ const WorkPostTemplate = ({ data, pageContext, location }) => {
   const post = data.mdx
   const siteTitle = data.site.siteMetadata.title
   const imgNodes = data.allFile.nodes
-  const coverImage = imgNodes.filter(node => 
-    {return node.name.includes("cover")})[0].childImageSharp
+  const coverImage = getImage(imgNodes.filter(node => node.name.includes("cover"))[0])
 
 
   return (
@@ -31,7 +30,7 @@ const WorkPostTemplate = ({ data, pageContext, location }) => {
 
           <WidthBleeder>
             <GatsbyImage 
-              image={coverImage.gatsbyImageData} 
+              image={coverImage} 
               alt={post.frontmatter.title} 
               style={{maxHeight: '60vh'}}
             />
@@ -76,7 +75,7 @@ export const pageQuery = graphql`query WorkPostBySlug($slug: String!) {
       id
       extension
       childImageSharp {
-        gatsbyImageData(layout: FULL_WIDTH)
+        gatsbyImageData(layout: FULL_WIDTH, formats:[WEBP, AUTO])
         original {
           src
           height
