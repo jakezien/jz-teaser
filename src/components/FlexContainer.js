@@ -24,10 +24,6 @@ let StyledDiv = styled.div`
   }
 `
 
-
-
-
-
 const FlexContainer = (props) => {
   return (
     <StyledDiv {...props}>
