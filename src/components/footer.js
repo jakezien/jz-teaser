@@ -32,13 +32,15 @@ const StyledDiv = styled.div`
 const Footer = () => {
   const emailRef = useRef();
 
+  const mailto = () => {if (window) window.location.href='mailto:jakezien@hey.com?subject=Hello%20from%20your%20website'}
+
   return (
     <StyledFooter className="yellowBg">
       <Header monogramBg="hsl(46, 100%, 70%)" showHome='1'/>
       <Container style={{paddingBottom:0}}>
         {/*<SpotifyPlayer />*/}
         <StyledDiv> 
-          <p className="link" ref={emailRef}>Email me</p>
+          <p className="link" onClick={mailto}>Email me</p>
           <p className="linkish">© {new Date().getFullYear()} Jake Zien.</p>
         </StyledDiv>
       </Container>
