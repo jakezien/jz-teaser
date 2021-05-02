@@ -105,6 +105,32 @@ const GlobalStyle = createGlobalStyle`
     }
   }
 
+  footer {
+    .link, .linkish {
+      color: ${props => props.theme.textOnYellow};
+    }
+    .link {
+      :after {
+        background-color: hsl(46, 100%, 84%);
+      }
+
+      :hover {
+        background: hsl(46, 100%, 84%);
+        border: 4px solid hsl(46, 100%, 84%);
+      }
+
+      &[aria-current=page] {
+        background: unset;
+        color: unset;
+        border-color: transparent;
+        &:hover {
+          background: hsl(46, 100%, 84%);
+          border: 4px solid hsl(46, 100%, 84%);
+        }
+      }
+    }
+  }
+
   .bigtext a:after {
     bottom: 2px;
   }

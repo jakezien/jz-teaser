@@ -12,6 +12,7 @@ const StyledFooter = styled.footer`
   position: relative;
   z-index: 0;
   background: ${props => props.theme.yellow};
+  color: ${props => props.theme.textOnYellow};
 `
 const StyledDiv = styled.div`
   display: flex;
