@@ -5,6 +5,7 @@ import styled from "styled-components"
 
 const StyledUl = styled.ul`
   margin: 0;
+  display:block;
   text-align: right;
 `
 
@@ -12,10 +13,13 @@ const StyledLi = styled.li`
   display: inline-block;
   list-style: none;
   margin: 0;
+  @media only screen and (max-width:22rem) {
+    margin-bottom: ${rhythm(.25)}
+  }
 `
 
 const StyledLink = styled(Link)`
-  margin-left: ${rhythm(.5)};
+  margin-left: ${(props) => props.showHome ? rhythm(.1) : rhythm(.25)};
 
   &[aria-current=page] {
     color: ${props => props.theme.isDark ? props.theme.textTint : props.theme.textShade};
@@ -27,39 +31,46 @@ const StyledLink = styled(Link)`
 `
 
 const StyledBr = styled.br`
-  @media only screen and (min-width:19rem) {
+  @media only screen and (min-width:22rem) {
     display: none;
   }
 `
 
 
-const SiteNav = ({className, location}) => {
+const SiteNav = (props) => {
+
   return (
-    <nav className={className}>
+    <nav className={props.className}>
       <StyledUl>
-        {/*<pre>{location.pathname}</pre>;*/}
-        
+        {props.showHome ? 
+          <StyledLi>
+            <StyledLink {...props} className="link" to="/">
+              Home
+            </StyledLink>
+          </StyledLi>
+        : null}
+          
         <StyledLi>
-          <StyledLink className="link" to="/work">
+          <StyledLink {...props} className="link" to="/work">
             Work
           </StyledLink>
         </StyledLi>
         
         <StyledLi>
-          <StyledLink className="link" to="/writing">
+          <StyledLink {...props} className="link" to="/writing">
             Writing
           </StyledLink>
         </StyledLi>
         <StyledBr/>
         
         <StyledLi>
-          <StyledLink className="link" to="/favorites">
+          <StyledLink {...props} className="link" to="/favorites">
             Favorites
           </StyledLink>
         </StyledLi>
         
         <StyledLi>
-          <StyledLink className="link" to="/about">
+          <StyledLink {...props} className="link" to="/about">
             About
           </StyledLink>
         </StyledLi>

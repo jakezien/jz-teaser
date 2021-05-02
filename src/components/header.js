@@ -11,10 +11,15 @@ const StyledHeader = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  @media only screen and (max-width:22rem) {
+    align-items: flex-start;
+  }
+
 `
 
 const StyledSiteNav = styled(SiteNav)`
   margin-left: auto
+  flex: 1 1 auto;
 `
 
 const StyledLink = styled(Link)`
@@ -24,18 +29,24 @@ const StyledLink = styled(Link)`
 `
 
 const StyledMonogram = styled(Monogram)`
-  width: 54px;
-  height: 54px
+  width: 64px;
+  height: 64px;
+  #monogram-bg {
+    fill: ${(props) => props.monogramBg ? props.monogramBg : props.theme.yellow} !important;
+  }
+  @media only screen and (max-width:22rem) {
+    margin-top: ${rhythm(.175)}
+  }
 `
 
-const Header = ({location}) => {
+const Header = (props) => {
   return (
     <Container>
       <StyledHeader>
         <StyledLink to="/" aria-label="Homepage">
-          <StyledMonogram aria-hidden={true} />
+          <StyledMonogram aria-hidden={true} {...props} />
         </StyledLink>
-        <StyledSiteNav location={location}/>
+        <StyledSiteNav showHome={props.showHome}/>
       </StyledHeader>
     </Container>
 

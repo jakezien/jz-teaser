@@ -36,6 +36,9 @@ const GlobalStyle = createGlobalStyle`
 
   }
 
+  p.limit-width {
+      max-width: ${rhythm(18.5)};
+ }
 
   .headerLink {
     border: 4px solid transparent;
@@ -63,6 +66,14 @@ const GlobalStyle = createGlobalStyle`
     }    
   }
 
+  .linkish {
+    font-family: "Pantograph", 'ui-monospace', 'Menlo', 'Monaco', "Cascadia Mono", "Segoe UI Mono", "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro","Fira Mono", "Droid Sans Mono", "Courier New", 'monospace';
+    letter-spacing: 0.02em;
+    font-size: ${rhythm(.85)};
+    font-weight: 400;
+    color: ${props => props.theme.text};
+  }
+
   .link {
     font-family: "Pantograph", 'ui-monospace', 'Menlo', 'Monaco', "Cascadia Mono", "Segoe UI Mono", "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro","Fira Mono", "Droid Sans Mono", "Courier New", 'monospace';
     text-decoration: none;
@@ -74,6 +85,7 @@ const GlobalStyle = createGlobalStyle`
     position: relative;
     padding: 0 2px;
     transition: color 0.1s, border 0.1s, background 0.1s;
+    cursor: pointer;
     
     :after {
       content: '';

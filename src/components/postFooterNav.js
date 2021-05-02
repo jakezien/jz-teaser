@@ -19,11 +19,26 @@ const StyledHr = styled.div`
 
 const StyledUl = styled.ul`
   display: flex;
-  justify-content: space-between;
+  justify-content: stretch;
   margin: 0;
+  padding: 0;
 
   li {
     list-style: none;
+    flex: 1 0 auto;
+    &:first-child {
+      text-align:left;
+    }
+    &:last-child {
+      text-align:right;
+    }
+  }
+  @media screen and (max-width: 550px) {
+    display: block;
+    li {
+      &:first-child, &:last-child {
+      text-align: center;
+    }
   }
 `
 const StyledLi = styled.li`
@@ -45,15 +60,15 @@ const PostFooterNav = ({pageContext}) => {
         <li>
           {previous && (
             <Link className="link" to={previous.fields.slug} rel="prev">
-              ← {previous.frontmatter.title}
+              ←&nbsp;{previous.frontmatter.title}
             </Link>
           )}
         </li>
-        <StyledLi><Link className="link" to="/work">All work</Link></StyledLi>
+
         <li>
           {next && (
             <Link className="link" to={next.fields.slug} rel="next">
-              {next.frontmatter.title} →
+              {next.frontmatter.title}&nbsp;→
             </Link>
           )}
         </li>
