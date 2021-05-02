@@ -33,7 +33,6 @@ const FlexDiv = styled.div`
 const FavoritePostCard = (props) => {
 
   const {post, coverImage} = props;
-  console.log(post, coverImage)
 
   return (
     <Card>

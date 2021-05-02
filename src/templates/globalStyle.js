@@ -107,8 +107,9 @@ const GlobalStyle = createGlobalStyle`
 
   footer {
     .link, .linkish {
-      color: ${props => props.theme.textOnYellow};
+      color: ${props => props.theme.textOnYellow} !important;
     }
+
     .link {
       :after {
         background-color: hsl(46, 100%, 84%);

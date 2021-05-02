@@ -10,7 +10,6 @@ export function galleryArray(props, names, namesToSkip) {
     if (names) {
       for (let j in names) {
         if (props.images[i].name.includes(names[j])) {
-          console.log(props.images[i], getImage(props.images[i]))
           array.push(getImage(props.images[i]));
           continue;
         }

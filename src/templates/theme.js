@@ -22,7 +22,7 @@ const darkTheme = {
   text:         '#bbb',
   textTint:     '#ddd',
   textShade:    '#999',
-  textOnYellow: lightTheme.textOnYellow,
+  textOnYellow: '#555',
   linkHover: 'hsl(46,60%,70%)',
   bg0:    'black',
   bg1:    'hsl(46, 100%, 5%)',
