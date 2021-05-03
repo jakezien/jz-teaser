@@ -59,7 +59,7 @@ export const pageQuery = graphql`{
       title
     }
   }
-  work: allMdx(filter: {fileAbsolutePath: {regex: "\\/content/work/"}}, sort: {fields: [frontmatter___date], order: DESC}) {
+  work: allMdx(limit: 8, filter: {fileAbsolutePath: {regex: "\\/content/work/"}}, sort: {fields: [frontmatter___date], order: DESC}) {
     edges {
       node {
         excerpt
@@ -80,7 +80,7 @@ export const pageQuery = graphql`{
     nodes {
       relativeDirectory
       childImageSharp {
-        gatsbyImageData(layout: FULL_WIDTH)
+        gatsbyImageData(layout: FULL_WIDTH, aspectRatio:1.33)
       }
     }
   }

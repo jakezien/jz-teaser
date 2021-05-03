@@ -1,9 +1,11 @@
 import React from "react"
+import {Link} from "gatsby"
 import { useStaticQuery, graphql } from 'gatsby'
 import styled from "styled-components"
 import { rhythm, scale } from "../utils/typography"
 import FavoritePostCard from "../templates/favoritePostCard"
 import WidthBleeder from "./widthBleeder"
+import Card from "./card"
 import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext, DotGroup } from 'pure-react-carousel';
 
 export const hPadding = rhythm(.75); 
@@ -24,7 +26,7 @@ const FavoritesCarousel = (props) => {
 
 	const data =  useStaticQuery(graphql`
 		query FavoritesQuery { 
-			allMdx(filter: {fileAbsolutePath: {regex: "\\/content/favorites/"}},  sort: {fields: [frontmatter___date], order: DESC}) {
+			allMdx(limit:6, filter: {fileAbsolutePath: {regex: "\\/content/favorites/"}},  sort: {fields: [frontmatter___date], order: DESC}) {
 				nodes {
 					body
 					fields {
@@ -62,12 +64,19 @@ const FavoritesCarousel = (props) => {
 			      step={1}
 			      isIntrinsicHeight={true}
 			>
-				<Slider classNameTray="carousel-tray-favorites">
+				<Slider classNameTray="carousel-tray-favoritess">
 					{data.allMdx.nodes.map((post, index) => (
-						<Slide index={index}>
+						<Slide key={index} index={index}>
 							<FavoritePostCard post={post} coverImage={getImageForPost(post)} />
 						</Slide>
 					))}
+					<Slide key={6} index={6}>
+					      <Link to="/favorites">
+							<Card>
+								<h3>All favorites &rarr;</h3>
+							</Card>
+						</Link>
+					</Slide>
 				</Slider>
 			      <ButtonBack />
 			      <ButtonNext />

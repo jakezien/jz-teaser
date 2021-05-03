@@ -1,27 +1,5 @@
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 
-// input a collection of file nodes and return an array of {src, height, width}
-export function galleryArray(props, names, namesToSkip) {
-  let array = [];
-  for (let i in props.images) {
-    if (namesToSkip && namesToSkip.includes(props.images[i].name))
-      continue;
-
-    if (names) {
-      for (let j in names) {
-        if (props.images[i].name.includes(names[j])) {
-          array.push(getImage(props.images[i]));
-          continue;
-        }
-      }
-    }
-    
-    else if(getImage(props.images[i])) 
-      array.push(getImage(props.images[i]));  
-  }
-  return array;
-}
-
 // filter a collection of file nodes and return one with matching name
 export function imageByName(props, name) {
   return getImage(props.images.filter(node => node.name.includes(name))[0])

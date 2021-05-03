@@ -34,7 +34,7 @@ const Footer = () => {
 
   return (
     <StyledFooter className="yellowBg">
-      <Header monogramBg="hsl(46, 100%, 70%)" showHome='1'/>
+      <Header monogrambg="hsl(46, 100%, 70%)" showhome='1'/>
       <Container style={{paddingBottom:0}}>
         {/*<SpotifyPlayer />*/}
         <StyledDiv> 

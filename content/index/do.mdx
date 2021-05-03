@@ -1,3 +1,4 @@
+import {Link} from "gatsby"
 import ExampleList from "../../src/components/exampleList"
 import Grid from "../../src/components/grid"
 import CarouselToggler from "../../src/components/carouselToggler"
@@ -55,3 +56,5 @@ I've been told, "communication is your superpower." In person or in writing, amo
 ## Things that I’ve worked&nbsp;on
 
 <Grid {...props} postTemplate={WorkPostCard} postsPerRow="2" />
+
+<p className="bigText" style={{textAlign:'center', maxWidth:'100%'}}><Link to="/work">All work &rarr;</Link></p>

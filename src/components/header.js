@@ -32,7 +32,7 @@ const StyledMonogram = styled(Monogram)`
   width: 64px;
   height: 64px;
   #monogram-bg {
-    fill: ${(props) => props.monogramBg ? props.monogramBg : props.theme.yellow} !important;
+    fill: ${(props) => props.monogrambg ? props.monogrambg : props.theme.yellow} !important;
   }
   @media only screen and (max-width:22rem) {
     margin-top: ${rhythm(.175)}
@@ -46,7 +46,7 @@ const Header = (props) => {
         <StyledLink to="/" aria-label="Homepage">
           <StyledMonogram aria-hidden={true} {...props} />
         </StyledLink>
-        <StyledSiteNav showHome={props.showHome}/>
+        <StyledSiteNav show-home={props.showhome}/>
       </StyledHeader>
     </Container>
 
