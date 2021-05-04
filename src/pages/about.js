@@ -7,6 +7,7 @@ import Layout from "../templates/layout"
 import { rhythm } from "../utils/typography"
 import SEO from "../components/seo"
 import Section from "../components/section"
+import { imageByName, testFunc } from "../utils/functions";
 
 import Resume from "./resume.js"
 

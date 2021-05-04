@@ -5,6 +5,8 @@ import { MDXRenderer } from "gatsby-plugin-mdx"
 import Layout from "./layout"
 import SEO from "../components/seo"
 import { rhythm, scale } from "../utils/typography"
+import { imageByName, testFunc } from "../utils/functions";
+
 
 import Container from "../components/container"
 import WidthBleeder from "../components/widthBleeder"
