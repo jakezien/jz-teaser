@@ -1,6 +1,9 @@
 import { css } from "styled-components"
 import { rhythm, scale } from "../utils/typography"
 
+const storyCount = 9
+const favesCount = 7
+
 export const SpecificCarouselStyles = css`
 .carousel-tray-favorites {
   li {
@@ -12,44 +15,49 @@ export const SpecificCarouselStyles = css`
   }
 }
 
-@media screen and (max-width: 479px) {
-  .carousel-tray-story {
-    width: 900% !important
-  }
-  .carousel-tray-favorites {
-    width: 1400% !important
-  }
-}
 
-@media screen and (min-width: 480px) and (max-width: 1023px) {
+@media screen and (min-width: 480px) and (max-width: 639px) {
   .carousel-tray-story{
-    width: 720% !important
+    width: calc(${storyCount} * 100% / 1.5) !important
   }
-  .carousel-tray-favorites {
+  .carousel-tray-favorites {  
+    width: calc(${favesCount} * 100% / 1.5) !important
   }
 }
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 640) and (max-width: 1023px) {
   .carousel-tray-story{
-    width: 450% !important
+    width: calc(${storyCount} * 100% / 1.5) !important
   }
-  .carousel-tray-favorites {
+  .carousel-tray-favorites {  
+    width: calc(${favesCount} * 100% / 2) !important
   }
 }
 
-@media screen and (min-width: 1280px) {
+@media screen and (min-width: 1024px) and (max-width: 1279px) {
   .carousel-tray-story{
-    width: 375% !important
+    width: calc(${storyCount} * 100% / 3) !important
   }
   .carousel-tray-favorites {
+    width: calc(${favesCount} * 100% / 3) !important
   }
 }
 
-@media screen and (min-width: 1600px) {
+@media screen and (min-width: 1280px) and (max-width: 1599px) {
+  .carousel-tray-story{
+    width: calc(${storyCount} * 100% / 3) !important
+  }
+  .carousel-tray-favorites {
+    width: calc(${favesCount} * 100% / 4) !important
+  }
+}
+
+@media screen and (min-width: 1600px) and (max-width: 1919px) {
   .carousel-tray-story{
     width: 300% !important
   }
   .carousel-tray-favorites {
+    width: calc(${favesCount} * 100% / 5.5) !important
   }
 }
 
@@ -58,14 +66,20 @@ export const SpecificCarouselStyles = css`
     width: 200% !important
   }
   .carousel-tray-favorites {
+    width: calc(${favesCount} * 100% / 7) !important
   }
 }
+
+
+
+
 
 @media screen and (max-width: 639px) {
   .carousel-tray-do {
     width: 300% !important
   }
 }
+
 
 @media screen and (min-width: 640px) and (max-width: 1079px) {
   .carousel-tray-do {

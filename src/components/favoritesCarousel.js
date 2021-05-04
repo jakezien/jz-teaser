@@ -59,12 +59,12 @@ const FavoritesCarousel = (props) => {
 			<CarouselProvider
 			      naturalSlideWidth={400}
 			      naturalSlideHeight={400}
-			      totalSlides={data.allMdx.nodes.length}
+			      totalSlides={data.allMdx.nodes.length + 1}
 			      visibleSlides={1}
 			      step={1}
 			      isIntrinsicHeight={true}
 			>
-				<Slider classNameTray="carousel-tray-favoritess">
+				<Slider classNameTray="carousel-tray-favorites">
 					{data.allMdx.nodes.map((post, index) => (
 						<Slide key={index} index={index}>
 							<FavoritePostCard post={post} coverImage={getImageForPost(post)} />

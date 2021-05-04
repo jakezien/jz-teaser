@@ -1,5 +1,9 @@
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 
+export function testFunc(arg) {
+  return arg
+}
+
 // filter a collection of file nodes and return one with matching name
 export function imageByName(props, name) {
   return getImage(props.images.filter(node => node.name.includes(name))[0])
