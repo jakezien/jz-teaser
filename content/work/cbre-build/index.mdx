@@ -57,8 +57,8 @@ We needed a new identity, and it had many jobs to do: to celebrate and befit thi
 - Working with CBRE’s global heads of marketing and technology, I iterated on visual concepts that fused elements of real estate and tech, extending CBRE’s existing brand and values for a new audience.
 
 <figure>
-      <GatsbyImage image={imageByName(props, 'posters0', true)} alt="" />
-      <GatsbyImage image={imageByName(props, 'posters1', true)} alt="" />
+      <GatsbyImage className="shadow" image={imageByName(props, 'posters0', true)} alt="" />
+      <GatsbyImage className="shadow" image={imageByName(props, 'posters1', true)} alt="" />
       <figcaption>A whole bunch of posters I created in visual exploration of the nascent Build brand.</figcaption>
 </figure>
 
@@ -79,14 +79,16 @@ We needed a new identity, and it had many jobs to do: to celebrate and befit thi
                   <video loop autoplay playsinline muted width="100%">
                         <source src="./party.mp4" type="video/mp4" />
                   </video>
+                  <figcaption>Animation by <a href="https://www.terrahenderson.com" target="_blank">Terra Henderson.</a></figcaption>
             </Slide>
             <Slide index={1}>
-                  <GatsbyImage image={imageByName(props, 'style-guide', true)} alt="Pages from the Build brand style guide."/>
+                  <GatsbyImage className="shadow" image={imageByName(props, 'style-guide')} alt="Pages from the Build brand style guide."/>
             </Slide>
             <Slide index={2}>
                   <video loop autoplay playsinline muted width="100%">
                         <source src="./builder-gifs.mp4" type="video/mp4" />
                   </video>
+                  <figcaption>Animation by <a href="https://www.terrahenderson.com" target="_blank">Terra Henderson.</a></figcaption>
             </Slide>
             <Slide index={3}>
                   <GatsbyImage image={imageByName(props, 'swag', true)} alt="Build swag, including duffel bags and enamel pins."/>

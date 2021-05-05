@@ -25,6 +25,7 @@ const StyledCard = styled(Card)`
 		position: absolute;
 		width: 100%;
 		text-align: center;
+		color: ${props => props.theme.textOnYellow};
 	}
 	&:hover {
 		background: ${props => props.theme.yellowHover};
@@ -98,7 +99,7 @@ const FavoritesCarousel = (props) => {
 							<StyledCard>
 								<MosaicBg className="bg">
 									{data.allFile.nodes.map((img, index) => (
-										<StyledGatsbyImage key={index} image={getImage(img)} alt={img.name} />
+										<StyledGatsbyImage key={index} image={getImage(img)} alt={img.name} loading="eager"/>
 									))}
 								</MosaicBg>
 								<h3>All favorites &rarr;</h3>
