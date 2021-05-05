@@ -27,7 +27,7 @@ const GlobalStyle = createGlobalStyle`
     }
   }
 
-  [class*=card] .gatsby-image-wrapper picture {
+  [class*=card] :not([class*=MosaicBg]) .gatsby-image-wrapper [data-main-image] {
     border-radius: 6px 6px 0 0;
   }
 

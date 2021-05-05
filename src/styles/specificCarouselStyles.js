@@ -11,7 +11,10 @@ export const SpecificCarouselStyles = css`
   transition-timing-function: cubic-bezier(.645,.045,.355,1);
 }
 
-.carousel-tray-favorites {
+
+.carousel-tray-favorites, .carousel-slider-story {
+  overflow: visible;
+
   li {
     margin: 0 .5em;
     [class*=card] {

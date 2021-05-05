@@ -59,8 +59,9 @@ const Story = (props) => {
 			      visibleSlides={1}
 			      step={1}
 			      isIntrinsicHeight={true}
+			      lockOnWindowScroll={true}
 			>
-				<Slider classNameTray="carousel-tray-story">
+				<Slider className="carousel-slider-story" classNameTray="carousel-tray-story">
 					{data.allMdx.nodes.map((post, index) => (
 						<Slide key={index} index={index}>
 							<StoryPostCard post={post} coverImage={getImageForPost(post)} />
