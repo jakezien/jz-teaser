@@ -42,7 +42,7 @@ const SiteNav = (props) => {
   return (
     <nav className={props.className}>
       <StyledUl>
-        {props.showHome ? 
+        {props.showhome ? 
           <StyledLi>
             <StyledLink {...props} className="link" to="/">
               Home

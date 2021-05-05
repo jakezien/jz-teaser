@@ -6,9 +6,11 @@ export const TwoUpStyles = css`
     .two-up {
       display: flex;
       div {
-        flex-basis: calc(50% - ${rhythm(.5)});
-        min-width:  calc(50% - ${rhythm(.5)});
-        margin-right: ${rhythm(.5)};
+        flex: 1 1 calc(50% - ${rhythm(1)});
+        max-width:  50%;
+        &:first-child {
+          margin-right: ${rhythm(1)};
+        }
         h3 {
           margin-top: 0
         }

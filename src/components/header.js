@@ -46,7 +46,7 @@ const Header = (props) => {
         <StyledLink to="/" aria-label="Homepage">
           <StyledMonogram aria-hidden={true} {...props} />
         </StyledLink>
-        <StyledSiteNav show-home={props.showhome}/>
+        <StyledSiteNav showhome={props.showhome}/>
       </StyledHeader>
     </Container>
 
