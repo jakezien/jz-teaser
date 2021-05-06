@@ -9,16 +9,6 @@ import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext, DotGroup } fro
 export const hPadding = rhythm(.75); 
 export const wideMaxWidth = rhythm(40); 
 export const wideHPadding = rhythm(3);
-export const remToPx = 20; // BAD BAD BAD MAGIC NUMBER
-
-const StyledDiv = styled.div`
-display: flex;
-overflow-x: scroll;
-@media screen and (min-width: 768px) {
-	
-	
-}
-`
 
 const Story = (props) => {
 
@@ -61,12 +51,13 @@ const Story = (props) => {
 			      isIntrinsicHeight={true}
 			      lockOnWindowScroll={true}
 			>
-				<Slider className="carousel-slider-story" classNameTray="carousel-tray-story">
-					{data.allMdx.nodes.map((post, index) => (
+				<Slider className='carousel-slider-story' classNameTray="carousel-tray-story">
+					{data.allMdx.nodes.map((post, index) => {console.log(index, post.slug, post.frontmatter); return (
+
 						<Slide key={index} index={index}>
 							<StoryPostCard post={post} coverImage={getImageForPost(post)} />
 						</Slide>
-					))}
+					)})}
 				</Slider>
 			      <ButtonBack />
 			      <ButtonNext />
