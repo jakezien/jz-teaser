@@ -40,6 +40,7 @@ const StyledLink = styled(Link)`
         opacity: 0;
         mix-blend-mode: hard-light;
         transition: opacity 0.1s;
+        border-radius: 6px 6px 0 0;
       }
     }
   }
