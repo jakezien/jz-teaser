@@ -14,7 +14,21 @@ export const TwoUpStyles = css`
         h3 {
           margin-top: 0
         }
+        &[class*=mobile] {
+          display: none;
+        }
       }
     }
   }
+
+@media screen and (max-width: 640px) {
+  .about-image {
+    display: none;
+    &-mobile {
+      display: block;
+      max-height: ${rhythm(20)}
+    }
+  }
+}
+
 `

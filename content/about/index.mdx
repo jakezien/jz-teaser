@@ -12,6 +12,9 @@ import { imageByName, testFunc } from "../../src/utils/functions";
 
 ## About me
 
+<GatsbyImage className="about-image-mobile" objectFit="contain" style={{marginBottom:rhythm(1)}} image={imageByName(props, 'jakey0', true)} alt="A photo of me as a toddler." />
+
+
 <p class="bigText">I am trillions of individual, living cells that comprise a person called Jake Zien.</p>
 
 I, too, am one cell of a bigger, weirder organism that is just beginning to figure out that that is what it is. I live on a round mossy rock floating in nothing.
@@ -19,7 +22,7 @@ I, too, am one cell of a bigger, weirder organism that is just beginning to figu
 I approach life with a design mindset: curious, empathetic, skeptical; eager to learn, absorb, and improve myself and the world around me. I think that a designer is not an artist, but a mechanic: one who fixes problems of behavior and communication.
 
 </div>
-<GatsbyImage image={imageByName(props, 'jakey0', true)} alt="A photo of me as a toddler." />
+<GatsbyImage className="about-image"  image={imageByName(props, 'jakey0', true)} alt="A photo of me as a toddler." />
 </div>
 </Section>
 
@@ -49,7 +52,6 @@ Today, I see design is less about the shape of a dresser, and more about shaping
 <Section class="bg3 half-margin-bottom">
 
 ## About this website
-
 <p class="bigText">"What do you do?”</p>
 
 There's a common complaint about this icebreaker: it sucks. I agree. It's reductive, and it's boring. 

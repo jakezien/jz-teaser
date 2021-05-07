@@ -37,7 +37,7 @@ export const pageQuery = graphql`query About {
       title
     }
   }
-  mdx(fields: {slug: {regex: "/about/"}}) {
+  mdx(fields: {slug: {regex: "\\/about/(?!story)/"}}) {
     id
     slug
     body
