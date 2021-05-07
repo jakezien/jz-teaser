@@ -27,8 +27,14 @@ const GlobalStyle = createGlobalStyle`
     }
   }
 
-  [class*=card] :not([class*=MosaicBg]) .gatsby-image-wrapper [data-main-image] {
-    border-radius: 6px 6px 0 0;
+  [class*=card] {
+   .gatsby-image-wrapper [data-main-image] {
+      border-radius: 6px 6px 0 0;
+    }
+  }
+
+  [class*=MosaicBg] .gatsby-image-wrapper [data-main-image] {
+      border-radius: 0 !important;
   }
 
   .gatsby-image-wrapper:not(:last-of-type) {
