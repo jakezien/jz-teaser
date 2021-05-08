@@ -21,7 +21,7 @@ const StoryPostCard = (props) => {
         image={coverImage && getImage(coverImage[0])}
         alt=""
         imgStyle={post.frontmatter.imageMargin && {padding:'calc(' + post.frontmatter.imageMargin + '/2)'}}
-        objectFit='contain'
+        objectFit='cover'
         style={{marginBottom:0}}
       />
       <StyledDiv>
