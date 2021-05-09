@@ -52,12 +52,11 @@ const Story = (props) => {
 			      lockOnWindowScroll={true}
 			>
 				<Slider className='carousel-slider-story' classNameTray="carousel-tray-story">
-					{data.allMdx.nodes.map((post, index) => {console.log(index, post.slug, post.frontmatter); return (
-
+					{data.allMdx.nodes.map((post, index) => (
 						<Slide key={index} index={index}>
 							<StoryPostCard post={post} coverImage={getImageForPost(post)} />
 						</Slide>
-					)})}
+					))}
 				</Slider>
 			      <ButtonBack />
 			      <ButtonNext />
