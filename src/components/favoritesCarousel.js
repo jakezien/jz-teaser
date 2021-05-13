@@ -75,8 +75,9 @@ const FavoritesCarousel = (props) => {
 		}
 		`)
 
+	const slugName = (post) => post.fields.slug.split('/')[2].replace('/', '')
 	const getImageForPost = (post) => data.allFile.nodes.filter(imgNode => post.fields.slug.includes(imgNode.name))
-	
+
 	return(
 		<WidthBleeder >
 			<CarouselProvider
@@ -91,7 +92,7 @@ const FavoritesCarousel = (props) => {
 				<Slider className="carousel-slider-favorites" classNameTray="carousel-tray-favorites">
 					{data.allMdx.nodes.map((post, index) => (
 						<Slide key={index} index={index}>
-							<FavoritePostCard post={post} coverImage={getImageForPost(post)} />
+							<FavoritePostCard post={post} coverImage={getImageForPost(post)} className={'favorites-' + slugName(post)}/>
 						</Slide>
 					))}
 					<Slide key={6} index={6}>
