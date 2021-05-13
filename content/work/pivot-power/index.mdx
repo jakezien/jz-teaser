@@ -6,37 +6,131 @@ date: "2021-04-13"
 type: product
 ---
 
-<p className="bigText">This page is unfinished. More content coming soon.</p>
-
 [Buy Pivot Power](https://smile.amazon.com/dp/B073RB8GFT/)
 
 ## What it is
-<p className="bigText">Creating the world's first flexible power strip, a [Red Dot Design award-winning](http://red-dot-21.com/design/pivot-power/) product that sold over two million units, through the Quirky invention platform.</p>
+<p className="bigText">Creating the world's first flexible power strip, a <a href="https://www.red-dot.org/project/pivot-power-29708">Red Dot</a> Design Award-winning product that sold over two million units, through the Quirky invention platform.</p>
 
 
 ## What I did
 As a rising high school senior in summer 2006, I sketched a concept power strip that could extend to fit adapters of any size. 
 
-[image: original sketch, board, model]
+<figure>
+      <GatsbyImage image={imageByName(props, 'power-strip-sketch', true)} alt="My original sketch of the extendable power strip." />
+      <div className="two-up">
+            <GatsbyImage image={imageByName(props, 'power-strip-board', true)} alt="My presentation board for the extendable power strip." />
+            <GatsbyImage image={imageByName(props, 'power-strip-model', true)} alt="My very poorly made physical model of the power strip." />
+      </div>
+      <figcaption>My original sketch, presentation board, and physical prototype of the extendable power strip.</figcaption>
+</figure>
 
 I knew the idea had teeth. But I didn't know how to bring it to fruition — until I heard about Quirky, the startup “invention platform” that developed products from crowdsourced ideas. Bored in class in 2010, I paid $99 to submit “The Usable Power Strip”. It was the best hundred bucks I ever spent.
 
-[image: quirky submission page]
+<figure>
+      <GatsbyImage image={imageByName(props, 'submission', true)} alt="A screenshot of my submission on quirky.com." />
+</figure>
+
+<figure>
+      <WidthBleeder style={{marginBottom:0}}>
+      <CarouselProvider
+            naturalSlideWidth={700}
+            naturalSlideHeight={560}
+            totalSlides={4}
+            visibleSlides={1}
+            step={1}
+            isIntrinsicHeight={true}
+      >
+            <Slider classNameTray="center">
+                  <Slide index={0}>
+                        <GatsbyImage image={imageByName(props, 'Power_Strip_Hero', true)} alt="" />
+                  </Slide>
+                  <Slide index={1}>
+                        <GatsbyImage image={imageByName(props, 'Power_Strip_Face', true)} alt="" />
+                  </Slide>
+                  <Slide index={2}>
+                        <GatsbyImage image={imageByName(props, 'Power_Strip_Plug', true)} alt="" />
+                  </Slide>
+                  <Slide index={3}>
+                        <GatsbyImage image={imageByName(props, 'Power_Strip_Modular', true)} alt="" />
+                  </Slide>
+            </Slider>
+            <ButtonBack />
+            <ButtonNext />
+            <DotGroup showAsSelectedForCurrentSlideOnly={true}/>
+      </CarouselProvider>
+      </WidthBleeder>
+      <figcaption>My submission on quirky.com, and the renderings I included with it.</figcaption>
+</figure>
 
 In the following months, I collaborated directly with Quirky's founder, designers, engineers, and online community as my concept made its way off the page and into reality. In under a year, my sketch became a shipping product, sold at Target, Bed Bath & Beyond, and Home Depot. 
 
-Quirky calls me Pivot Power's "inventor,” but the credit for my idea's success belongs to the Quirky team. They evolved its telescoping form into the iconic snake, gave it its catchy name, worked out its challenging electrical engineering, navigated manufacturing and regulatory approvals, and marketed it. I just sparked the idea and lived the backstory that proved their business model.
+Quirky calls me Pivot Power's "inventor,” but the credit for my idea's success belongs to them, especially industrial designers Kate Vallon and Jordan Diatlo. The Quirky team evolved the form into the iconic snake, gave it its catchy name, worked out its challenging electrical engineering, navigated manufacturing and regulatory approvals, and marketed it. I just sparked the idea, and provided the story to test the business model.
 
 ## The outcome
-Pivot Power launched in summer 2011 and immediately became Quirky's bestselling, best-known product, a status it has firmly held ever since. It landed Quirky (and me) in the pages of [_Wired_](http://www.wired.com/2011/08/quirky-inventions/), [_Inc_](http://www.inc.com/magazine/201310/josh-dean/is-quirky-the-worlds-most-creative-manufacturer.html
-), and the [New York _Times_](), and across the tech [blogosphere](). Its promise earned Quirky distribution in big-box retail, including a flashy launch with Bed Bath & Beyond, where shoppers could find an entire Quirky aisle. 
+Pivot Power launched in summer 2011 and immediately became Quirky's bestselling, best-known product, a status it has firmly held ever since. It landed Quirky (and me) in the pages of [_Wired_](https://www.wired.com/2010/06/quirky-jointed-power-strip-is-a-creative-outlet/), [_Inc_](http://www.inc.com/magazine/201310/josh-dean/is-quirky-the-worlds-most-creative-manufacturer.html), and the [New York _Times_](https://www.nytimes.com/2015/02/15/technology/quirky-tests-the-crowd-based-creative-process.html), and across the tech [blogosphere](https://www.engadget.com/2010-06-29-community-developed-pivot-power-strip-now-available-to-order.html). Its promise earned Quirky distribution in big-box retail, including a flashy launch with Bed Bath & Beyond, where shoppers could find an entire Quirky aisle. 
 
-[BBB images]
+<figure>
+      <GatsbyImage image={imageByName(props, 'bbb-window0', true)} alt="Pivot Power's launch display in the window of the flagship Bed Bath & Beyond on 6th Avenue in Manhattan." />
+      <GatsbyImage image={imageByName(props, 'bbb-window3', true)} alt="A better look at the window display." />
+      <GatsbyImage image={imageByName(props, 'bbb-aisle', true)} alt="The Quirky aisle inside Bed Bath and Beyond, stacked to the ceiling with Pivot Powers." />
+      <figcaption>Pivot Power starred in Quirky's launch at Bed Bath & Beyond, taking over the front window of their enormous store on 6th Avenue in Manhattan.</figcaption>
+</figure>
 
-Pivot Power's success rocketed Quirky from a startup with a small team to a potential unicorn with a staff of hundreds. It spawned a family, including mini, rugged, and smarthome editions, and was the only Quirky product to be given a sleek "2.0" redesign. It even survived Quirky's 2015 bankruptcy. After a daylong bidding war that proved Pivot Power to be Quirky's most valuable asset, its intellectual property was sold to Aliph Brands. Pivot Power is still available today, licensed by Aliph and manufactured by Viatek.
+Pivot Power's success rocketed Quirky from a startup with a small team to a potential “unicorn” with a staff of hundreds. It spawned a family, including mini, rugged, and smarthome editions, and was the only Quirky product to be given a sleek "2.0" redesign. It even survived Quirky's 2015 bankruptcy. At a daylong auction of Quirky’s assets, Pivot Power generated a bidding war that proved it the most valuable item on offer. It was bought by Aliph Brands, who today sells Pivot Power through licensing to manufacturers.
+
+<figure>
+      <WidthBleeder style={{marginBottom:0}}>
+      <CarouselProvider
+            naturalSlideWidth={900}
+            naturalSlideHeight={600}
+            totalSlides={5}
+            visibleSlides={1}
+            step={1}
+            isIntrinsicHeight={true}
+      >
+            <Slider classNameTray="center">
+                  <Slide index={0}>
+                        <GatsbyImage image={imageByName(props, 'pp-colors', true)} alt="" />
+                  </Slide>
+                  <Slide index={1}>
+                        <GatsbyImage image={imageByName(props, 'pp-junior', true)} alt="" />
+                  </Slide>
+                  <Slide index={2}>
+                        <GatsbyImage image={imageByName(props, 'pp-2', true)} alt="" />
+                  </Slide>
+                  <Slide index={3}>
+                        <GatsbyImage image={imageByName(props, 'pp-smart', true)} alt="" />
+                  </Slide>
+                  <Slide index={4}>
+                        <GatsbyImage image={imageByName(props, 'pp-extensions', true)} alt="" />
+                  </Slide>
+            </Slider>
+            <ButtonBack />
+            <ButtonNext />
+            <DotGroup showAsSelectedForCurrentSlideOnly={true}/>
+      </CarouselProvider>
+      </WidthBleeder>
+      <figcaption>Marketing images from Quirky showcasing various members of the Pivot Power family.</figcaption>
+</figure>
+
+## Honors, Awards and Patents
+- [Red Dot Design Award winner 2012](https://www.red-dot.org/project/pivot-power-29708)
+- Included in the Cooper-Hewitt Smithsonian Design Museum's [permanent collection](https://collection.cooperhewitt.org/objects/68250889/), and the exhibition [_Beautiful Users_](https://collection.cooperhewitt.org/exhibitions/51669015/)
+- [Patented across the world](https://patents.google.com/patent/US9755388B2/en?inventor=jacob+zien&oq=jacob+zien)
+- Covered in _Wired_ Magazine under the headline "From the 'Why Didn't We Think of That Depatment'"
+- Sold (for a time) at the MoMA Design Store
+
+<figure>
+      <GatsbyImage image={imageByName(props, 'moma', true)} alt="" />
+      <figcaption>Pivot Power on display at the MoMA design store.</figcaption>
+</figure>
 
 
 ## What I learned
-My Quirky experience taught me about startups, investors, and intellectual property; that “hardware is hard,”; that a sustainable business model is hard to prove; that a period of exuberant success can be shorter than the process of corporate bankruptcy. More than anything, it taught me the value of ideas relative to execution: ideas are cheap; execution is everything. Being promoted as the “inventor” of a product made by a team whose knowledge and effort far surpassed my own made me deeply and immediately uncomfortable. At every opportunity I gave credit where due, and resisted learning that through a modicum of work, I would be rewarded with success, praise, and press. But this poisonous dynamic, fed by the overwhelming response to Pivot Power, snuck tendrils through my defenses. I internalized the message in subtle ways that stunted my early growth as a professional designer — and took years to notice and uproot. That was the biggest lesson.
+My Quirky experience taught me about startups, investors, and intellectual property; that “hardware is hard,”; that proving a business model is harder; that a period of exuberant success can be shorter than the process of corporate bankruptcy. 
 
-## What I’d do differently next time
+More than anything, it taught me the value of ideas relative to execution: ideas are cheap; execution is everything. 
+
+Being promoted as the “inventor” of a product made by a team whose knowledge and effort far surpassed my own made me deeply and immediately uncomfortable. At every opportunity I gave credit where due, and resisted the lesson that a modicum of work would reward me with praise, press, and success. But this poisonous dynamic, fed by the overwhelming response to Pivot Power, snuck tendrils through my defenses. I internalized the message in subtle ways that stunted my early growth as a professional designer — and took years to notice and uproot. 
+
+That was the biggest lesson.

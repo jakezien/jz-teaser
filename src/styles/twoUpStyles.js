@@ -10,6 +10,7 @@ export const TwoUpStyles = css`
         max-width:  50%;
         &:first-child {
           margin-right: ${rhythm(1)};
+          margin-bottom: 0 !important;
         }
         h3 {
           margin-top: 0
