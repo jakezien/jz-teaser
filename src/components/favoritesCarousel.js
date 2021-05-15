@@ -7,7 +7,8 @@ import FavoritePostCard from "../templates/favoritePostCard"
 import WidthBleeder from "./widthBleeder"
 import Card from "./card"
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
-import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext, DotGroup } from 'pure-react-carousel';
+import { Slider, Slide, DotGroup } from 'pure-react-carousel';
+import ScrollableCarouselProvider from './ScrollableCarouselProvider'
 
 export const hPadding = rhythm(.75); 
 export const wideMaxWidth = rhythm(40); 
@@ -80,7 +81,7 @@ const FavoritesCarousel = (props) => {
 
 	return(
 		<WidthBleeder style={{overflow:'visible'}}>
-			<CarouselProvider
+			<ScrollableCarouselProvider
 			      naturalSlideWidth={400}
 			      naturalSlideHeight={400}
 			      totalSlides={data.allMdx.nodes.length + 1}
@@ -108,10 +109,8 @@ const FavoritesCarousel = (props) => {
 						</Link>
 					</Slide>
 				</Slider>
-			      <ButtonBack />
-			      <ButtonNext />
 			      <DotGroup showAsSelectedForCurrentSlideOnly={true} className="favorites-dot-group"/>
-			</CarouselProvider>
+			</ScrollableCarouselProvider>
 		</WidthBleeder>
 	)
 }

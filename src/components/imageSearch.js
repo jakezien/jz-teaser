@@ -7,7 +7,6 @@ import { shuffleArray, setIntervalLimited, log, pushEvent } from '../utils/funct
 import { rhythm } from "../utils/typography"
 import WidthBleeder from './widthBleeder'
 import CensoredImg from './censoredImg'
-import { useScroll } from 'react-use-gesture'
 import VisibilitySensor from 'react-visibility-sensor'
 
 // styled-components

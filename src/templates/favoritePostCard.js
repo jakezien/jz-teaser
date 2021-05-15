@@ -53,6 +53,7 @@ const FavoritePostCard = (props) => {
               loading="eager"
               imgStyle={post.frontmatter.imageMargin && {padding:'calc(' + post.frontmatter.imageMargin + '/2)'}}
               className="hover-image"
+              critical="true"
             />
           }
           <StyledGatsbyImage 

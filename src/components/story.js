@@ -4,7 +4,8 @@ import styled from "styled-components"
 import { rhythm, scale } from "../utils/typography"
 import StoryPostCard from "../templates/storyPostCard"
 import WidthBleeder from "./widthBleeder"
-import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext, DotGroup } from 'pure-react-carousel';
+import { Slider, Slide, DotGroup } from 'pure-react-carousel';
+import ScrollableCarouselProvider from './ScrollableCarouselProvider'
 
 export const hPadding = rhythm(.75); 
 export const wideMaxWidth = rhythm(40); 
@@ -42,7 +43,7 @@ const Story = (props) => {
 
 	return(
 		<WidthBleeder >
-			<CarouselProvider
+			<ScrollableCarouselProvider
 			      naturalSlideWidth={400}
 			      naturalSlideHeight={400}
 			      totalSlides={9}
@@ -58,10 +59,8 @@ const Story = (props) => {
 						</Slide>
 					))}
 				</Slider>
-			      <ButtonBack />
-			      <ButtonNext />
 			      <DotGroup showAsSelectedForCurrentSlideOnly={true}/>
-			</CarouselProvider>
+			</ScrollableCarouselProvider>
 		</WidthBleeder>
 	)
 }
