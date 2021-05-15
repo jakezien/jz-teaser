@@ -4,7 +4,8 @@ import { rhythm, scale } from "../utils/typography"
 import styled from "styled-components"
 import { ThemeProvider, ThemeContext, withTheme } from "styled-components"
 import { useStyledDarkMode, ThemeSetting } from "gatsby-styled-components-dark-mode"
-import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext, DotGroup } from 'pure-react-carousel';
+import ScrollableCarouselProvider from "../components/ScrollableCarouselProvider"
+import { Slider, Slide, DotGroup } from 'pure-react-carousel';
 import 'pure-react-carousel/dist/react-carousel.es.css';
 import GlobalStyle from '../styles/globalStyle'
 
@@ -25,7 +26,7 @@ const Layout = withTheme((props) => {
   const { location, title, children, theme } = props
   const { changeThemeSetting, themeSetting } = useStyledDarkMode();
 
-  const shortcodes = { TagList, Section, Link, Inset, GatsbyImage, StaticImage, imageByName, getImage, FlexContainer, WidthBleeder, CarouselProvider, Slider, Slide, ButtonBack, ButtonNext, DotGroup  }
+  const shortcodes = { TagList, Section, Link, Inset, GatsbyImage, StaticImage, imageByName, getImage, FlexContainer, WidthBleeder, ScrollableCarouselProvider, Slider, Slide, DotGroup  }
 
   function setThemeToSystemTheme(e) {
     // let newTheme = e ? ThemeSetting.DARK : ThemeSetting.LIGHT;

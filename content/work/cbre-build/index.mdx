@@ -66,7 +66,7 @@ We needed a new identity, and it had many jobs to do: to celebrate and befit thi
 - Created a unique and extensible illustration style and personally vector-drew at least a hundred hours’ worth of characters, icons, and one incredibly complicated pattern.
 
 <WidthBleeder style={{marginBottom:0}}>
-<CarouselProvider
+<ScrollableCarouselProvider
       naturalSlideWidth={900}
       naturalSlideHeight={600}
       totalSlides={5}
@@ -97,10 +97,8 @@ We needed a new identity, and it had many jobs to do: to celebrate and befit thi
                   <GatsbyImage image={imageByName(props, 'slides', true)} alt="Slide templates with various Build graphics."/>
             </Slide>
       </Slider>
-      <ButtonBack />
-      <ButtonNext />
       <DotGroup showAsSelectedForCurrentSlideOnly={true}/>
-</CarouselProvider>
+</ScrollableCarouselProvider>
 </WidthBleeder>
 <figcaption>Some of the final Build brand materials.</figcaption>
 
@@ -111,7 +109,7 @@ We needed a new identity, and it had many jobs to do: to celebrate and befit thi
 
 
 <WidthBleeder style={{marginBottom:0}}>
-<CarouselProvider
+<ScrollableCarouselProvider
       naturalSlideWidth={900}
       naturalSlideHeight={600}
       totalSlides={3}
@@ -130,10 +128,8 @@ We needed a new identity, and it had many jobs to do: to celebrate and befit thi
                   <GatsbyImage image={imageByName(props, 'office0', true)} alt="" />
             </Slide>
       </Slider>
-      <ButtonBack />
-      <ButtonNext />
       <DotGroup showAsSelectedForCurrentSlideOnly={true}/>
-</CarouselProvider>
+</ScrollableCarouselProvider>
 </WidthBleeder>
 <figcaption>Scenes from the CBRE Build NYC office.</figcaption>
 
