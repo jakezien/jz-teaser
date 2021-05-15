@@ -41,7 +41,6 @@ const FlexDiv = styled.div`
 const FavoritePostCard = (props) => {
 
   const {post, coverImage} = props;
-  console.log(coverImage)
 
   return (
     <StyledCard className={props.className}>

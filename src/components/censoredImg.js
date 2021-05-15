@@ -10,19 +10,20 @@ const CensorWrapper = styled(animated.div)`
 
   img {
     box-sizing: border-box;
-    height:480px;
-    max-height: 480px;
-    width: auto;
+    height:auto;
+    width: 100%;
     margin: 0;
     border-radius: 3px;
+    object-fit: contain;
   }
 `
 
 const OverlayCanvas = styled.canvas`
   position: absolute; 
-  top: 0;
+  top: 50%;
   left: 0; 
   width: 100%;
+  transform: translateY(-50%);
   transition: opacity 0.11s;  
 `
 

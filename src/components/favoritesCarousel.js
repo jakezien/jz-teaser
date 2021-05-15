@@ -40,8 +40,8 @@ const MosaicBg = styled.div`
 	mix-blend-mode: plus-darker;
 
 	${StyledGatsbyImage} {
-		flex: 0 1 calc(33% - 1em);
-		margin: .5em;
+		flex: 0 1 calc(33% - .8em);
+		margin: .4em;
 	}
 `
 
@@ -79,7 +79,7 @@ const FavoritesCarousel = (props) => {
 	const getImageForPost = (post) => data.allFile.nodes.filter(imgNode => post.fields.slug.includes(imgNode.name))
 
 	return(
-		<WidthBleeder >
+		<WidthBleeder style={{overflow:'visible'}}>
 			<CarouselProvider
 			      naturalSlideWidth={400}
 			      naturalSlideHeight={400}
@@ -99,11 +99,11 @@ const FavoritesCarousel = (props) => {
 					      <Link to="/favorites">
 							<StyledCard>
 								<MosaicBg className="bg">
-									{data.allFile.nodes.map((img, index) => (
+									{data.allFile.nodes.slice(0,15).map((img, index) => (
 										<StyledGatsbyImage key={index} image={getImage(img)} alt={img.name} loading="eager"/>
 									))}
 								</MosaicBg>
-								<h3>All favorites &rarr;</h3>
+								<h3 style={{opacity:1}}>All favorites &rarr;</h3>
 							</StyledCard>
 						</Link>
 					</Slide>

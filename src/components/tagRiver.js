@@ -92,7 +92,6 @@ const TagRiver = (props) => {
 
   const {children} = props;
   let childrenArray = React.Children.toArray(children)
-  console.log(childrenArray)
 
   if (!childrenArray.length) {
     console.log('nokids')

@@ -7,9 +7,10 @@ import { shuffleArray, setIntervalLimited, log, pushEvent } from '../utils/funct
 import { rhythm } from "../utils/typography"
 import WidthBleeder from './widthBleeder'
 import CensoredImg from './censoredImg'
+import { useScroll } from 'react-use-gesture'
+import VisibilitySensor from 'react-visibility-sensor'
 
 // styled-components
-
 const ImageContainerWrapper = styled('div')`
   border-radius: 8px 8px 0 0;
   padding: 0 16px;
@@ -22,7 +23,7 @@ const ImageContainerWrapper = styled('div')`
 const ImageContainer = styled('div').withConfig({
   shouldForwardProp: prop => true
 })`
-  height: 512px;
+  height: ${rhythm(20)};
   overflow-x: scroll;
   overflow-y: hidden;
   position: relative;
@@ -91,6 +92,10 @@ const SlideWrapper = styled(a.div)`
   display: inline-block;
 `
 
+
+
+
+
 const ImageSearch = (props) => {
 
   const jzServerUrl = 'https://jz-site-support.herokuapp.com/'
@@ -100,13 +105,12 @@ const ImageSearch = (props) => {
   const imageContainerRef = useRef()
   const [srcListPopulated, setSrcListPopulated] = useState(false);
 
-
   // Real data state
   const [slides, setSlides] = useState([]);
 
   // UI state
   const [showPixellate, setShowPixellate] = useState(true);
-  const [showBoxes, setShowBoxes] = useState(false);
+  const [showBoxes, setShowBoxes] = useState(true);
 
   // Get a headstart by prefetching the src urls for the images we're gonna load later.
   const populateSrcList = async () => {
@@ -133,13 +137,16 @@ const ImageSearch = (props) => {
     shuffleArray(combined)
     // console.log('srcList', srcList.current)
     srcList.current = srcList.current.concat(combined)
-    console.log(srcList.current.length)
+    // console.log(srcList.current.length)
     setSrcListPopulated(true)
 
 
     // Increment this so next time we fetch srcs, we get the subsequent ten results
     queryPage.current++;
-    console.log(queryPage.current)
+    // console.log(queryPage.current)
+
+    //prefetch the first image
+    addOneSlide();
   }
 
   // Call this when we run out of image src urls.
@@ -149,6 +156,15 @@ const ImageSearch = (props) => {
   }
 
   // UI logic
+  const handleVisibilityChange = (isVisible) => {
+
+    if (isVisible && slides.length === 1) {
+      transition.pause = false;
+      // console.log('unpause')
+    }
+    // console.log('visible', isVisible, slides.length)
+  }
+
   const handleSwitch = (index) => {
     switch (index) {
       case 0:
@@ -163,7 +179,7 @@ const ImageSearch = (props) => {
   }
 
   const addOneSlide = () => {
-    console.log('before', imageContainerRef.current.childElementCount) 
+    // console.log('before', imageContainerRef.current.childElementCount) 
     // console.log('slides', slides)
     let newSlide = {src:srcList.current.shift(), x:0}
     setSlides(slides => [newSlide, ...slides])
@@ -172,10 +188,25 @@ const ImageSearch = (props) => {
   const updateSlidePositions = (width) => {
     const margin = 12;
     let newSlides = [...slides] 
-    for (let i=1; i < newSlides.length; i++) {
+    // console.log(newSlides)
+    let imgContainer = imageContainerRef.current;
+
+    for (let i=0; i < newSlides.length; i++) {
+      // console.log(i, newSlides[i])
+      if (i === 0) {
+        newSlides[i].x = 0;
+        continue;
+      }
+
+      let lastSlide = newSlides[i - 1]
+      let lastSlideEl = imgContainer.children[i - 1]
       let slide = newSlides[i]
-      slide.x = slide.x + width + margin;
+      let slideEl = imgContainer.children[i]
+
+      slide.x = lastSlide.x + lastSlideEl.offsetWidth + margin
+      // console.log(lastSlide.x, lastSlideEl.offsetWidth, margin)
     }
+
     setSlides(newSlides);
   }
 
@@ -185,32 +216,43 @@ const ImageSearch = (props) => {
     pushEvent('Click', 'Load Censor Image');
   }
 
-  useLayoutEffect(() => {
+
+  const layoutEffect = () => {
     if (!imageContainerRef.current.childElementCount) return;
     let img = imageContainerRef.current.firstChild.firstChild
     img.addEventListener("load", () => {
-      updateSlidePositions(imageContainerRef.current.firstChild.offsetWidth)
+      // console.log('updatePositions')
+      updateSlidePositions()
     });
-  })
+  }
 
+  useLayoutEffect(layoutEffect)
 
   // Init, only called once, on mount
   useEffect(() => {
     if (!srcList.current.length) {
       populateSrcList();
     }
+    if (window) {
+      window.addEventListener('resize', layoutEffect)
+    }
+    return () => {
+      window.removeEventListener('resize', layoutEffect)
+    }
   }, [])
 
 
   const transition = useTransition(slides, {
-    from: ({x}) => ({ x, y:1000, }),
-    enter: ({x}) => ({ x, y:16, delay:700, config:config.stiff }),
+    from: ({x}) => ({ x, top:'200%', y:'-50%', }),
+    enter: ({x}) => ({ x, top:'50%', y:'-50%', delay:700, config:config.stiff }),
     update:({x}) => ({ x, config:config.default }),
-    leave: { opacity: 0 },   
+    leave: { opacity: 0 },
+    pause: true
   })
 
   return (
-    <div>
+    <VisibilitySensor onChange={handleVisibilityChange} partialVisibility={true} minTopValue={400}>
+      <div>
       <ImageContainerWrapper>
         <ImageContainer ref={imageContainerRef} show-pixellate={showPixellate.toString()} show-boxes={showBoxes.toString()}>
           {transition((props, slide) => <CensoredImg src={slide.src} style={props} />)}
@@ -218,11 +260,12 @@ const ImageSearch = (props) => {
       </ImageContainerWrapper>
 
       <ImageControls>
-        <SearchButton disabled={!srcListPopulated} onClick={buttonClicked}><span>Pull a random "Trump" image from Google</span></SearchButton>
+        <SearchButton disabled={!srcListPopulated} onClick={buttonClicked}>
+          <span>Pull a random "Trump" image from Google</span>
+        </SearchButton>
         <div>
           <label>
             <span className="pantograph">Enable face censor</span>
-
             <Switch onChange={() => handleSwitch(0)} 
                      checked={showPixellate} 
                      uncheckedIcon={false} 
@@ -241,33 +284,9 @@ const ImageSearch = (props) => {
           </label>
         </div>
       </ImageControls>
-
-    </div>
+      </div>
+    </VisibilitySensor>
   )
 }
 
 export default ImageSearch;
-
-{/*<ImageContainer>
-  {images.map((array, arrayIndex) => {return(
-    <div key={arrayIndex}>
-      {array.map((url, urlIndex) => {return(
-        <img 
-          key={urlIndex} 
-          src={url} 
-          crossOrigin="anonymous" 
-          onLoad={e => faceMatcher.detectFacesInImg(e.target)}
-        />
-      )})}
-    </div>
-  )})}
-</ImageContainer>*/}
-
-
-//  // load images 8 at a time and animate them into the display area.
-// if (!srcList.current.length) {
-//   refreshSrcs();
-// }
-// else {
-//   setIntervalLimited(addOneSrcToImages, 2000, 5)
-// }
