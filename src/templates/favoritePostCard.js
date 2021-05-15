@@ -50,6 +50,7 @@ const FavoritePostCard = (props) => {
               image={coverImage && getImage(coverImage[1])}
               style ={{position:'absolute', width:'100%',height:'100%', display:'none', zIndex:'1'}}
               alt=""
+              loading="eager"
               imgStyle={post.frontmatter.imageMargin && {padding:'calc(' + post.frontmatter.imageMargin + '/2)'}}
               className="hover-image"
             />
