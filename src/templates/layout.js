@@ -20,6 +20,7 @@ import { imageByName, testFunc } from "../utils/functions";
 
 import Header from '../components/header'
 import Footer from '../components/footer'
+import Analytics from '../components/analytics'
 
 const Layout = withTheme((props) => {
 
@@ -55,6 +56,7 @@ const Layout = withTheme((props) => {
           {children}
         </main>
         <Footer/>
+        <Analytics/>
       </MDXProvider>
     </div>
   )

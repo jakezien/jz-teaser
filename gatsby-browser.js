@@ -3,14 +3,54 @@ import React from 'react';
 import Helmet from 'react-helmet'
 import TCensorWrapper from './src/components/tCensor'
 
+const buildScriptsDiv = () => {
+      if (!document) return;
+
+      let scriptsDiv = document.createElement('div');
+      scriptsDiv.setAttribute('id','jz-analytics');
+
+      let jitt = document.createElement('script');
+      jitt.src = 'https://app.jitt.io/pixel/I5EkPtLtiykovzTw'
+      jitt.async = true
+
+      let privera = document.createElement('script');
+      privera.src = 'https://privera.io/aap.js'
+      privera.async = true;
+      privera.setAttribute('pe-ua', 'UA-58831210-1')
+
+      let gc = document.createElement('script');
+      gc.src = '//gc.zgo.at/count.js'
+      gc.async = true;
+      gc.setAttribute('data-goatcounter', 'https://jakezien.goatcounter.com/count')
+
+      let protegant = document.createElement('script');
+      protegant.src = 'https://protegant.io/js/script.js'
+      protegant.async = true;
+      protegant.setAttribute('defer', true)
+      protegant.setAttribute('data-host', 'https://protegant.io')
+      protegant.setAttribute('data-dnt', 'false')
+      protegant.setAttribute('id', 'ZwSg9rf6GA')
+
+      scriptsDiv.appendChild(jitt)
+      scriptsDiv.appendChild(privera)
+      scriptsDiv.appendChild(gc)
+      scriptsDiv.appendChild(protegant);
+
+      return scriptsDiv;
+}
+
+const jzAnalytics = buildScriptsDiv();
+
+export const onRouteUpdate = (location, prevLocation) => {
+      let div = document.querySelector('#jz-analytics');
+      div && div.remove();
+      document.body.appendChild(jzAnalytics)
+}
+
 export const wrapPageElement = ({element, props}) => (
   <>
       <TCensorWrapper {...props}>
             {element}
       </TCensorWrapper>
-      <script defer data-host="https://protegant.io" data-dnt="false" src="https://protegant.io/js/script.js" id="ZwSg9rf6GA"></script>
-      <script data-goatcounter="https://jakezien.goatcounter.com/count" src="//gc.zgo.at/count.js"></script>
-      <script src="https://app.jitt.io/pixel/I5EkPtLtiykovzTw"></script>
-      <script src="https://privera.io/aap.js" pe-ua="UA-58831210-1" ></script>
   </>
 )
