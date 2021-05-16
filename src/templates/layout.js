@@ -49,6 +49,7 @@ const Layout = withTheme((props) => {
 
   return (
     <div>
+      <Analytics/>
       <MDXProvider components={shortcodes}>
         <GlobalStyle theme={props.theme} />
         <Header location={location}/>
@@ -56,7 +57,6 @@ const Layout = withTheme((props) => {
           {children}
         </main>
         <Footer/>
-        <Analytics/>
       </MDXProvider>
     </div>
   )

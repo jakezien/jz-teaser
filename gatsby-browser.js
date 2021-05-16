@@ -39,12 +39,12 @@ const buildScriptsDiv = () => {
       return scriptsDiv;
 }
 
-const jzAnalytics = buildScriptsDiv();
+// const jzAnalytics = buildScriptsDiv();
 
 export const onRouteUpdate = (location, prevLocation) => {
-      let div = document.querySelector('#jz-analytics');
-      div && div.remove();
-      document.body.appendChild(jzAnalytics)
+      if (window.goatcounter && window.goatcounter.count) {
+            window.goatcounter.count()
+      } 
 }
 
 export const wrapPageElement = ({element, props}) => (
