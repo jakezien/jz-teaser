@@ -45,6 +45,11 @@ export const onRouteUpdate = (location, prevLocation) => {
       if (window.goatcounter && window.goatcounter.count) {
             window.goatcounter.count()
       } 
+      if (window.privera) {
+            setTimeout(() => {
+                  window.privera(document)
+            }, 100)
+      }
 }
 
 export const wrapPageElement = ({element, props}) => (
