@@ -2,8 +2,8 @@
 
 window.privera = async function(e) {
     function r(e, r) {
-        const t = `${(e = new URL(e)).protocol}//${e.host}`;
-        return r ? t : `${t}${e.pathname}`
+        let t = `${(e = new URL(e)).protocol}//${e.host}/`;
+        return r ? t : `${t}${e.pathname}${e.search}`
     }
     const t = 'UA-58831210-1'
 
@@ -15,6 +15,7 @@ window.privera = async function(e) {
             title: e.title,
             url: r(n.href || e.location.href)
         });
+        console.log('url', r(n.href || e.location.href))
     e.referrer && o.set("referrer", r(e.referrer), !0);
     await fetch(`https://proxy.privera.io/ua/${t}/anonymize`, {
         method: "POST",
