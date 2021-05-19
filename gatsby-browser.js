@@ -47,7 +47,7 @@ export const onRouteUpdate = (location, prevLocation) => {
       } 
       if (window.privera) {
             setTimeout(() => {
-                  window.privera(document)
+                  window.privera.count(document)
             }, 100)
       }
 }
