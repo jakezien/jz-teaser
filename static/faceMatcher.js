@@ -56,20 +56,11 @@ const josephArray = [
 
 const loadFaceDetectionModels = async () => {
   t0 = performance.now()
-  try {
-    await faceapi.loadTinyFaceDetectorModel('/jz/faceapi/');
-    // await faceapi.loadSsdMobilenetv1Model('/jz/faceapi/');
-    // await faceapi.loadMtcnnModel('/jz/faceapi/');
-    await faceapi.loadFaceLandmarkModel('/jz/faceapi/');
-    await faceapi.loadFaceRecognitionModel('/jz/faceapi/');
-  } catch (err) {
-    // console.log('err', err)
-    await faceapi.loadTinyFaceDetectorModel('/faceapi/')
-    // await faceapi.loadSsdMobilenetv1Model('/faceapi/')
-    // await faceapi.loadMtcnnModel('/faceapi/')
-    await faceapi.loadFaceLandmarkModel('/faceapi/')
-    await faceapi.loadFaceRecognitionModel('/faceapi/')    
-  }
+  await faceapi.loadTinyFaceDetectorModel('/faceapi/')
+  // await faceapi.loadSsdMobilenetv1Model('/faceapi/')
+  // await faceapi.loadMtcnnModel('/faceapi/')
+  await faceapi.loadFaceLandmarkModel('/faceapi/')
+  await faceapi.loadFaceRecognitionModel('/faceapi/')    
   t1 = performance.now()
   // console.log('models loaded in ' + (t1 - t0) +'ms');
 }
