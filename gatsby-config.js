@@ -22,6 +22,7 @@ module.exports = {
     `gatsby-plugin-image`,
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
+    // `gatsby-plugin-sharp-exif`,
     // `gatsby-plugin-feed-mdx`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-react-svg`,

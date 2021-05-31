@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import styled from "styled-components"
 import { rhythm } from "../utils/typography"
+import { chunkArray } from "../utils/functions"
 import { useSpring, animated } from 'react-spring'
 import Tag from "./tag"
 
@@ -30,13 +31,7 @@ const SpacerUl = styled.ul`
   visibility: hidden
 `
 
-const chunkArray = (array, chunkSize) => {
-  let results = [];
-  while (array.length) {
-    results.push(array.splice(0, chunkSize));
-  }
-  return results;
-}
+
 
 
 const TagRiver = (props) => {

@@ -1,5 +1,6 @@
 const path = require(`path`)
 const { createFilePath } = require(`gatsby-source-filesystem`)
+const { createExif } = require(`./createExif`)
 
 
 exports.createPages = async ({ graphql, actions }) => {
@@ -105,7 +106,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
 }
 
-exports.onCreateNode = ({ node, actions, getNode }) => {
+exports.onCreateNode = ({ node, actions, getNode, createNodeId }) => {
   const { createNodeField } = actions
 
   function nthIndex(str, pat, n){
@@ -136,5 +137,9 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
       node,
       value,
     })
+  }
+
+  if (node.internal.mediaType === 'image/jpeg' && node.absolutePath.includes('jakestagram')) {
+    createExif(node, actions, createNodeId)
   }
 }

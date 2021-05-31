@@ -9,6 +9,15 @@ export function imageByName(props, name) {
   return getImage(props.images.filter(node => node.name.includes(name))[0])
 }
 
+
+export function chunkArray(array, chunkSize) {
+  let results = [];
+  while (array.length) {
+    results.push(array.splice(0, chunkSize));
+  }
+  return results;
+}
+
 export function shuffleArray(a) {
   for (let i = a.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
