@@ -38,7 +38,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   .gatsby-image-wrapper:not(:last-of-type) {
-    margin-bottom: ${rhythm(1)}
+    // margin-bottom: ${rhythm(1)}
   }
 `
 

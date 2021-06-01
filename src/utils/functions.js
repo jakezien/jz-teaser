@@ -12,8 +12,9 @@ export function imageByName(props, name) {
 
 export function chunkArray(array, chunkSize) {
   let results = [];
-  while (array.length) {
-    results.push(array.splice(0, chunkSize));
+  let clone = array.slice()
+  while (clone.length) {
+    results.push(clone.splice(0, chunkSize));
   }
   return results;
 }
