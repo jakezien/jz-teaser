@@ -5,8 +5,9 @@ import SEO from "../components/seo"
 import { rhythm } from "../utils/typography"
 import { chunkArray } from "../utils/functions"
 import styled from "styled-components"
-import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import { GatsbyImage, getImage, getSrc } from "gatsby-plugin-image"
 import VisibilitySensor from 'react-visibility-sensor'
+import Lightbox from 'react-image-lightbox';
 
 import Layout from "../templates/layout"
 import Section from '../components/section'
@@ -14,6 +15,10 @@ import Section from '../components/section'
 const StyledGatsbyImage = styled(GatsbyImage)`
   flex: 1 0 0%;
   margin-right:3px;
+  cursor: pointer;
+  > div:first-child {
+    padding-top: 100% !important;
+  }
   &:not(:last-of-type) {
     margin-bottom: 0;
   }
@@ -40,6 +45,8 @@ const Jakestagram = ({ data, location }) => {
   const [list, setList] = useState([...allPosts.slice(0, loadAmt)])
   const [loadMore, setLoadMore] = useState(false)
   const [hasMore, setHasMore] = useState(allPosts.length > loadAmt)
+  const [lightboxOpen, setLightboxOpen] = useState(false)
+  const [lightboxIndex, setLightboxIndex] = useState(0)
 
 
   const handleVisibilityChange = (isVisible) => {
@@ -47,6 +54,11 @@ const Jakestagram = ({ data, location }) => {
       console.log('load more')
       setLoadMore(true)
     }
+  }
+
+  const handleImageClick = (e) => {
+    setLightboxIndex(e.target.getAttribute('index'))
+    setLightboxOpen(true)
   }
 
   useEffect(() => {
@@ -73,9 +85,9 @@ const Jakestagram = ({ data, location }) => {
         {chunkArray(list, 3).map((listChunk, i) => { 
           return (
             <ImageRow key={i}>
-              <StyledGatsbyImage image={getImage(listChunk[0])} alt=""/>
-              <StyledGatsbyImage image={getImage(listChunk[1])} alt=""/>
-              <StyledGatsbyImage image={getImage(listChunk[2])} alt=""/>
+              <StyledGatsbyImage image={getImage(listChunk[0])} alt="" index={i*3 + 0} onClick={handleImageClick}/>
+              <StyledGatsbyImage image={getImage(listChunk[1])} alt="" index={i*3 + 1} onClick={handleImageClick}/>
+              <StyledGatsbyImage image={getImage(listChunk[2])} alt="" index={i*3 + 2} onClick={handleImageClick}/>
             </ImageRow>
         )})}
         <VisibilitySensor 
@@ -88,6 +100,23 @@ const Jakestagram = ({ data, location }) => {
         >
           {hasMore ? <p>Loading…</p> : <p>That's all there is</p>}
         </VisibilitySensor>
+
+        {lightboxOpen && (
+          <Lightbox
+            mainSrc={getSrc(list[lightboxIndex])}
+            nextSrc={getSrc(list[(lightboxIndex + 1) % list.length])}
+            prevSrc={getSrc(list[(lightboxIndex + list.length - 1) % list.length])}
+            onCloseRequest={() => setLightboxOpen(false) }
+            onMovePrevRequest={() =>
+              setLightboxIndex((lightboxIndex + list.length - 1) % list.length)
+            }
+            onMoveNextRequest={() =>
+              setLightboxIndex((lightboxIndex + 1) % list.length)
+            }
+            clickOutsideToClose={true}
+          />
+        )}
+
       </Section>
     </Layout>
   )
@@ -114,7 +143,7 @@ Jakestagram :  allFile(
         }
       }
       childImageSharp {
-        gatsbyImageData(layout: FULL_WIDTH, aspectRatio:1)
+        gatsbyImageData(layout: FULL_WIDTH)
       }
     }
   }

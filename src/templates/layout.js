@@ -7,6 +7,7 @@ import { useStyledDarkMode, ThemeSetting } from "gatsby-styled-components-dark-m
 import ScrollableCarouselProvider from "../components/ScrollableCarouselProvider"
 import { Slider, Slide, DotGroup } from 'pure-react-carousel';
 import 'pure-react-carousel/dist/react-carousel.es.css';
+import 'react-image-lightbox/style.css';
 import GlobalStyle from '../styles/globalStyle'
 
 import { MDXProvider } from "@mdx-js/react"
