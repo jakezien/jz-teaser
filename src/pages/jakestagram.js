@@ -57,8 +57,24 @@ const Jakestagram = ({ data, location }) => {
   }
 
   const handleImageClick = (e) => {
-    setLightboxIndex(e.target.getAttribute('index'))
+    let index = parseInt(e.target.getAttribute('index'))
+    console.log(index)
+    setLightboxIndex(index)
     setLightboxOpen(true)
+  }
+
+  const handleLightboxPrevClick = () => {
+    console.log(lightboxIndex)
+    let index = (lightboxIndex + list.length - 1) % list.length
+    console.log(index, lightboxIndex, list.length)
+    setLightboxIndex(index);
+  }
+
+  const handleLightboxNextClick = () => {
+    console.log(lightboxIndex)
+    let index = (lightboxIndex + 1) % list.length
+    console.log(index, lightboxIndex, list.length)
+    setLightboxIndex(index)
   }
 
   useEffect(() => {
@@ -106,14 +122,11 @@ const Jakestagram = ({ data, location }) => {
             mainSrc={getSrc(list[lightboxIndex])}
             nextSrc={getSrc(list[(lightboxIndex + 1) % list.length])}
             prevSrc={getSrc(list[(lightboxIndex + list.length - 1) % list.length])}
-            onCloseRequest={() => setLightboxOpen(false) }
-            onMovePrevRequest={() =>
-              setLightboxIndex((lightboxIndex + list.length - 1) % list.length)
-            }
-            onMoveNextRequest={() =>
-              setLightboxIndex((lightboxIndex + 1) % list.length)
-            }
+            onCloseRequest={() => setLightboxOpen(false)}
+            onMovePrevRequest={handleLightboxPrevClick}
+            onMoveNextRequest={handleLightboxNextClick}
             clickOutsideToClose={true}
+            imagePadding={64}
           />
         )}
 
