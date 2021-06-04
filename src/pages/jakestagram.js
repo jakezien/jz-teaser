@@ -10,31 +10,50 @@ import VisibilitySensor from 'react-visibility-sensor'
 import Lightbox from 'react-image-lightbox';
 
 import Layout from "../templates/layout"
-import Section from '../components/section'
+import Container from '../components/container'
+import JakestagramImage from '../components/jakestagramImage'
+import ImageMetadata from '../components/imageMetadata'
 
-const StyledGatsbyImage = styled(GatsbyImage)`
-  flex: 1 0 0%;
-  margin-right:3px;
-  cursor: pointer;
-  > div:first-child {
-    padding-top: 100% !important;
-  }
-  &:not(:last-of-type) {
-    margin-bottom: 0;
-  }
-  &:last-child {
-    margin-right: 0;
-  }
-  @media (min-width: 768px) {
-    margin-right: 28px;
+const StyledContainer = styled(Container)`
+  @media screen and (max-width: 767px) {
+    padding-left: 0;
+    padding-right: 0;
   }
 `
 
+const ImageWrapper = styled.div``
+
 const ImageRow = styled.div`
-  display: flex;
-  margin-bottom: 3px;
-  @media (min-width: 768px) {
-    margin-bottom: 28px;
+  ${ImageWrapper}.grid & { 
+    display: flex;
+    margin-bottom: 3px;
+    @media (min-width: 768px) {
+      margin-bottom: 28px;
+    }
+  }
+`
+
+const StyledGatsbyImage = styled(GatsbyImage)`
+  cursor: pointer;
+  ${ImageWrapper}.grid & {  
+    flex: 1 0 0%;
+    margin-right:3px;
+    > div:first-child {
+      padding-top: 100% !important;
+    }
+    &:not(:last-of-type) {
+      margin-bottom: 0;
+    }
+    &:last-of-type {
+      margin-right: 0;
+    }
+    @media (min-width: 768px) {
+      margin-right: 28px;
+    }
+  }
+
+  ${ImageWrapper}.list & { 
+    flex: 1 0 100%;
   }
 `
 
@@ -47,6 +66,7 @@ const Jakestagram = ({ data, location }) => {
   const [hasMore, setHasMore] = useState(allPosts.length > loadAmt)
   const [lightboxOpen, setLightboxOpen] = useState(false)
   const [lightboxIndex, setLightboxIndex] = useState(0)
+  const [displayStyle, setDisplayStyle] = useState('grid')
 
 
   const handleVisibilityChange = (isVisible) => {
@@ -61,6 +81,12 @@ const Jakestagram = ({ data, location }) => {
     console.log(index)
     setLightboxIndex(index)
     setLightboxOpen(true)
+  }
+
+  const handleButtonClick = (e) => {
+    let name = e.target.getAttribute('name')
+    // console.log(index)
+    setDisplayStyle(name)
   }
 
   const handleLightboxPrevClick = () => {
@@ -94,43 +120,54 @@ const Jakestagram = ({ data, location }) => {
     setHasMore(isMore)
   }, [list])
 
+
   return (
     <Layout>
       <SEO title="Jakestagram" />
-      <Section>
-        {chunkArray(list, 3).map((listChunk, i) => { 
-          return (
-            <ImageRow key={i}>
-              <StyledGatsbyImage image={getImage(listChunk[0])} alt="" index={i*3 + 0} onClick={handleImageClick}/>
-              <StyledGatsbyImage image={getImage(listChunk[1])} alt="" index={i*3 + 1} onClick={handleImageClick}/>
-              <StyledGatsbyImage image={getImage(listChunk[2])} alt="" index={i*3 + 2} onClick={handleImageClick}/>
-            </ImageRow>
-        )})}
-        <VisibilitySensor 
-          onChange={handleVisibilityChange} 
-          partialVisibility={true}
-          offset={{bottom:-300}} 
-          scrollCheck={true}
-          scrollThrottle={10}
-          resizeCheck={true}
-        >
-          {hasMore ? <p>Loading…</p> : <p>That's all there is</p>}
-        </VisibilitySensor>
+      <section>
+        <StyledContainer>
+          <div>
+            <button name="grid" onClick={handleButtonClick}>Grid</button>
+            <button name="list" onClick={handleButtonClick}>List</button>
+          </div>
+          <ImageWrapper className={displayStyle}>
+          {chunkArray(list, 3).map((listChunk, i) => { 
+            return (
+              <ImageRow key={i}>
+                <StyledGatsbyImage image={getImage(listChunk[0])} alt="" index={i*3 + 0} onClick={handleImageClick}/>
+                <ImageMetadata image={listChunk[0]} />
+                <StyledGatsbyImage image={getImage(listChunk[1])} alt="" index={i*3 + 1} onClick={handleImageClick}/>
+                <ImageMetadata image={listChunk[1]} />
+                <StyledGatsbyImage image={getImage(listChunk[2])} alt="" index={i*3 + 2} onClick={handleImageClick}/>
+                <ImageMetadata image={listChunk[2]} />
+              </ImageRow>
+          )})}
+          <VisibilitySensor 
+            onChange={handleVisibilityChange} 
+            partialVisibility={true}
+            offset={{bottom:-300}} 
+            scrollCheck={true}
+            scrollThrottle={10}
+            resizeCheck={true}
+          >
+            {hasMore ? <p>Loading…</p> : <p>That's all there is</p>}
+          </VisibilitySensor>
+          </ImageWrapper>
 
-        {lightboxOpen && (
-          <Lightbox
-            mainSrc={getSrc(list[lightboxIndex])}
-            nextSrc={getSrc(list[(lightboxIndex + 1) % list.length])}
-            prevSrc={getSrc(list[(lightboxIndex + list.length - 1) % list.length])}
-            onCloseRequest={() => setLightboxOpen(false)}
-            onMovePrevRequest={handleLightboxPrevClick}
-            onMoveNextRequest={handleLightboxNextClick}
-            clickOutsideToClose={true}
-            imagePadding={64}
-          />
-        )}
-
-      </Section>
+          {lightboxOpen && (
+            <Lightbox
+              mainSrc={getSrc(list[lightboxIndex])}
+              nextSrc={getSrc(list[(lightboxIndex + 1) % list.length])}
+              prevSrc={getSrc(list[(lightboxIndex + list.length - 1) % list.length])}
+              onCloseRequest={() => setLightboxOpen(false)}
+              onMovePrevRequest={handleLightboxPrevClick}
+              onMoveNextRequest={handleLightboxNextClick}
+              clickOutsideToClose={true}
+              imagePadding={64}
+            />
+          )}
+        </StyledContainer>
+      </section>
     </Layout>
   )
 }
@@ -145,8 +182,12 @@ Jakestagram :  allFile(
     nodes {
       fields {
         exif {
-          formatted {
-            model
+          exif {
+            DateTimeOriginal
+          }
+          image {
+            Make
+            Model
           }
           iptc {
             caption

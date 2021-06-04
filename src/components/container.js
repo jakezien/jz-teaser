@@ -17,10 +17,10 @@ const StyledDiv = styled.div`
   }
 `
 
-const Container = ({children}) => {
+const Container = (props) => {
   return (
-    <StyledDiv>
-      {children}
+    <StyledDiv {...props}>
+      {props.children}
     </StyledDiv>
   )
 }
