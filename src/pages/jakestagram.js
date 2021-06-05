@@ -59,6 +59,8 @@ const StyledGatsbyImage = styled(GatsbyImage)`
 
 const Jakestagram = ({ data, location }) => {
 
+  let padding = window.innerWidth > 767 ? 64 : 8
+
   const loadAmt = 12;
   const allPosts = data.Jakestagram.nodes
   const [list, setList] = useState([...allPosts.slice(0, loadAmt)])
@@ -66,6 +68,7 @@ const Jakestagram = ({ data, location }) => {
   const [hasMore, setHasMore] = useState(allPosts.length > loadAmt)
   const [lightboxOpen, setLightboxOpen] = useState(false)
   const [lightboxIndex, setLightboxIndex] = useState(0)
+  const [lightboxPadding, setlightboxPadding] = useState(padding)
   const [displayStyle, setDisplayStyle] = useState('grid')
 
 
@@ -103,6 +106,11 @@ const Jakestagram = ({ data, location }) => {
     setLightboxIndex(index)
   }
 
+  const handleWindowResize = () => {
+    let padding = window.innerWidth > 767 ? 64 : 8
+    setlightboxPadding(padding);
+  }
+
   useEffect(() => {
     if (loadMore && hasMore) {
       const currentLength = list.length
@@ -119,6 +127,13 @@ const Jakestagram = ({ data, location }) => {
     const isMore = list.length < allPosts.length
     setHasMore(isMore)
   }, [list])
+
+  useEffect(() => {
+    window.addEventListener('resize', handleWindowResize)
+    return () => {
+      window.removeEventListener('resize', handleWindowResize)
+    }
+  })
 
 
   return (
@@ -163,7 +178,7 @@ const Jakestagram = ({ data, location }) => {
               onMovePrevRequest={handleLightboxPrevClick}
               onMoveNextRequest={handleLightboxNextClick}
               clickOutsideToClose={true}
-              imagePadding={64}
+              imagePadding={lightboxPadding}
             />
           )}
         </StyledContainer>
