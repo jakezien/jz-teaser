@@ -74,7 +74,6 @@ const Jakestagram = ({ data, location }) => {
 
   const handleVisibilityChange = (isVisible) => {
     if (isVisible) {
-      console.log('load more')
       setLoadMore(true)
     }
   }
@@ -94,14 +93,15 @@ const Jakestagram = ({ data, location }) => {
 
   const handleLightboxPrevClick = () => {
     console.log(lightboxIndex)
-    let index = (lightboxIndex + list.length - 1) % list.length
+    let index = (lightboxIndex - 1 + list.length) % list.length
     console.log(index, lightboxIndex, list.length)
     setLightboxIndex(index);
   }
 
   const handleLightboxNextClick = () => {
     console.log(lightboxIndex)
-    let index = (lightboxIndex + 1) % list.length
+    if (lightboxIndex === list.length - 1) setLoadMore(true)
+    let index = lightboxIndex + 1
     console.log(index, lightboxIndex, list.length)
     setLightboxIndex(index)
   }
@@ -113,6 +113,7 @@ const Jakestagram = ({ data, location }) => {
 
   useEffect(() => {
     if (loadMore && hasMore) {
+      console.log('load more')
       const currentLength = list.length
       const isMore = currentLength < allPosts.length
       const nextResults = isMore 

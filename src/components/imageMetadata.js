@@ -23,10 +23,10 @@ const StyledDiv = styled.div`
 `
 
 const ImageMetadata = ({image}) => {
-  let make = image.fields.exif.image.Make
-  let model = image.fields.exif.image.Model
-  let utcDate = image.fields.exif.exif.DateTimeOriginal
-  let displayDate = moment.utc(utcDate).format('MMM D, YYYY h:mm A')
+  let make = image?.fields.exif.image.Make
+  let model = image?.fields.exif.image.Model
+  let utcDate = image?.fields.exif.exif.DateTimeOriginal
+  let displayDate = utcDate ? moment.utc(utcDate).format('MMM D, YYYY h:mm A') : ''
   
   return (
     <StyledSpan>
