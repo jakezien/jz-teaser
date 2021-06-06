@@ -60,7 +60,10 @@ const StyledGatsbyImage = styled(GatsbyImage)`
 const Jakestagram = ({ data, location }) => {
 
   let padding;
-  if (window) {padding = window.innerWidth > 767 ? 64 : 8}
+  
+  if (typeof window !== 'undefined') {
+    padding = window.innerWidth > 767 ? 64 : 8
+  }
 
   const loadAmt = 12;
   const allPosts = data.Jakestagram.nodes
@@ -130,6 +133,7 @@ const Jakestagram = ({ data, location }) => {
   }, [list])
 
   useEffect(() => {
+    if (typeof window === 'undefined') return
     window.addEventListener('resize', handleWindowResize)
     return () => {
       window.removeEventListener('resize', handleWindowResize)
