@@ -59,7 +59,8 @@ const StyledGatsbyImage = styled(GatsbyImage)`
 
 const Jakestagram = ({ data, location }) => {
 
-  if (window) let padding = window.innerWidth > 767 ? 64 : 8
+  let padding;
+  if (window) {padding = window.innerWidth > 767 ? 64 : 8}
 
   const loadAmt = 12;
   const allPosts = data.Jakestagram.nodes
