@@ -8,6 +8,7 @@ import styled from "styled-components"
 import { GatsbyImage, getImage, getSrc } from "gatsby-plugin-image"
 import VisibilitySensor from 'react-visibility-sensor'
 import Lightbox from 'react-image-lightbox';
+import NoScroll from 'no-scroll';
 
 import Layout from "../templates/layout"
 import Container from '../components/container'
@@ -122,6 +123,7 @@ const Jakestagram = ({ data, location }) => {
   }
 
   const handleImageClick = (e) => {
+    NoScroll.on()
     let index = parseInt(e.target.getAttribute('index'))
     console.log(index, allPosts.length - index)
     setLightboxIndex(allPosts.length - index)
@@ -223,7 +225,7 @@ const Jakestagram = ({ data, location }) => {
               mainSrc={getSrc(list[lightboxIndex])}
               nextSrc={getSrc(list[(lightboxIndex + 1)])}
               prevSrc={getSrc(list[(lightboxIndex - 1)])}
-              onCloseRequest={() => setLightboxOpen(false)}
+              onCloseRequest={() => {setLightboxOpen(false); NoScroll.off(); }}
               onMovePrevRequest={handleLightboxPrevClick}
               onMoveNextRequest={handleLightboxNextClick}
               clickOutsideToClose={true}

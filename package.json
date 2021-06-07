@@ -43,6 +43,7 @@
     "gatsby-source-filesystem": "^3.0.0",
     "gatsby-styled-components-dark-mode": "^2.0.3",
     "gatsby-transformer-sharp": "^3.0.0",
+    "no-scroll": "^2.1.1",
     "node-iptc": "^1.0.5",
     "prismjs": "^1.23.0",
     "pure-react-carousel": "^1.27.6",
