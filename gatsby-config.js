@@ -106,7 +106,7 @@ module.exports = {
         light: require(`${__dirname}/src/templates/theme.js`).lightTheme,
         dark: require(`${__dirname}/src/templates/theme.js`).darkTheme,
       },
-    },
+    }
 
  
     // this (optional) plugin enables Progressive Web App + Offline functionality

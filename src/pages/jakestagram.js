@@ -13,11 +13,50 @@ import Layout from "../templates/layout"
 import Container from '../components/container'
 import JakestagramImage from '../components/jakestagramImage'
 import ImageMetadata from '../components/imageMetadata'
+import GridIcon from '../../static/svg/icon-grid.svg'
+import ListIcon from '../../static/svg/icon-list.svg'
 
 const StyledContainer = styled(Container)`
   @media screen and (max-width: 767px) {
     padding-left: 0;
     padding-right: 0;
+  }
+`
+
+
+
+const FeedStyleToggle = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-bottom: ${rhythm(1)};
+  border-top: 1px solid ${props => props.theme.bg3};
+  button {
+    flex: 0 0 25%;
+    padding: 0;
+    cursor: pointer;
+    border: 0;
+    background: ${props => props.theme.bg0};
+    svg {
+      pointer-events: none;
+      position: relative;
+      border: 0;
+      padding: ${rhythm(.5)} ${rhythm(.25)};
+      width: auto;
+      max-width: ${rhythm(1.5)};
+      height: ${rhythm(1.5)};
+      box-sizing: content-box;
+      g * {
+        stroke: ${props => props.theme.bg5} !important;
+      }
+    }
+    &.active, &:hover, &:active {
+      svg {
+        top: -1px;
+        border-top: 1px solid ${props => props.theme.yellow};
+        g * {
+          stroke: ${props => props.theme.yellow} !important;
+        }
+    }
   }
 `
 
@@ -84,30 +123,30 @@ const Jakestagram = ({ data, location }) => {
 
   const handleImageClick = (e) => {
     let index = parseInt(e.target.getAttribute('index'))
-    console.log(index)
-    setLightboxIndex(index)
+    console.log(index, allPosts.length - index)
+    setLightboxIndex(allPosts.length - index)
     setLightboxOpen(true)
   }
 
   const handleButtonClick = (e) => {
     let name = e.target.getAttribute('name')
-    // console.log(index)
+    console.log(e.target)
     setDisplayStyle(name)
   }
 
   const handleLightboxPrevClick = () => {
     console.log(lightboxIndex)
-    let index = (lightboxIndex - 1 + list.length) % list.length
-    console.log(index, lightboxIndex, list.length)
-    setLightboxIndex(index);
+    let newIndex = (lightboxIndex - 1 + list.length) % list.length
+    console.log(lightboxIndex, newIndex, list.length)
+    setLightboxIndex(newIndex);
   }
 
   const handleLightboxNextClick = () => {
     console.log(lightboxIndex)
-    if (lightboxIndex === list.length - 1) setLoadMore(true)
-    let index = lightboxIndex + 1
-    console.log(index, lightboxIndex, list.length)
-    setLightboxIndex(index)
+    if (lightboxIndex === list.length - 2) setLoadMore(true)
+    let newIndex = lightboxIndex + 1
+    console.log(lightboxIndex, newIndex, list.length)
+    setLightboxIndex(newIndex)
   }
 
   const handleWindowResize = () => {
@@ -147,19 +186,23 @@ const Jakestagram = ({ data, location }) => {
       <SEO title="Jakestagram" />
       <section>
         <StyledContainer>
-          <div>
-            <button name="grid" onClick={handleButtonClick}>Grid</button>
-            <button name="list" onClick={handleButtonClick}>List</button>
-          </div>
+          <FeedStyleToggle>
+            <button name="grid" className={displayStyle==='grid' ? 'active':''} onClick={handleButtonClick}>
+              <GridIcon/>
+            </button>
+            <button name="list" className={displayStyle==='list' ? 'active':''} onClick={handleButtonClick}>
+              <ListIcon/>
+            </button>
+          </FeedStyleToggle>
           <ImageWrapper className={displayStyle}>
           {chunkArray(list, 3).map((listChunk, i) => { 
             return (
               <ImageRow key={i}>
-                <StyledGatsbyImage image={getImage(listChunk[0])} alt="" index={i*3 + 0} onClick={handleImageClick}/>
+                <StyledGatsbyImage image={getImage(listChunk[0])} alt="" index={allPosts.length - (i*3 + 0)} onClick={handleImageClick}/>
                 <ImageMetadata image={listChunk[0]} />
-                <StyledGatsbyImage image={getImage(listChunk[1])} alt="" index={i*3 + 1} onClick={handleImageClick}/>
+                <StyledGatsbyImage image={getImage(listChunk[1])} alt="" index={allPosts.length - (i*3 + 1)} onClick={handleImageClick}/>
                 <ImageMetadata image={listChunk[1]} />
-                <StyledGatsbyImage image={getImage(listChunk[2])} alt="" index={i*3 + 2} onClick={handleImageClick}/>
+                <StyledGatsbyImage image={getImage(listChunk[2])} alt="" index={allPosts.length - (i*3 + 2)} onClick={handleImageClick}/>
                 <ImageMetadata image={listChunk[2]} />
               </ImageRow>
           )})}
@@ -178,13 +221,14 @@ const Jakestagram = ({ data, location }) => {
           {lightboxOpen && (
             <Lightbox
               mainSrc={getSrc(list[lightboxIndex])}
-              nextSrc={getSrc(list[(lightboxIndex + 1) % list.length])}
-              prevSrc={getSrc(list[(lightboxIndex + list.length - 1) % list.length])}
+              nextSrc={getSrc(list[(lightboxIndex + 1)])}
+              prevSrc={getSrc(list[(lightboxIndex - 1)])}
               onCloseRequest={() => setLightboxOpen(false)}
               onMovePrevRequest={handleLightboxPrevClick}
               onMoveNextRequest={handleLightboxNextClick}
               clickOutsideToClose={true}
               imagePadding={lightboxPadding}
+              wrapperClassName={(lightboxIndex===0 ? 'firstImage ' : '') + (lightboxIndex===allPosts.length-1 ? 'lastImage ' : '')}
             />
           )}
         </StyledContainer>

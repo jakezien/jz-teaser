@@ -2,6 +2,7 @@ import { createGlobalStyle, css } from "styled-components"
 import { rhythm, scale } from "../utils/typography"
 
 import { CarouselStyles } from "../styles/carouselStyles"
+import { LightboxStyles } from "../styles/lightboxStyles"
 import { LinkStyles } from "../styles/linkStyles"
 import { SpecificCarouselStyles } from "../styles/specificCarouselStyles"
 import { ThemeStyles } from "../styles/themeStyles"
@@ -11,6 +12,7 @@ import { TypeStyles } from "../styles/typeStyles"
 const GlobalStyle = createGlobalStyle`
 
   ${CarouselStyles}
+  ${LightboxStyles}
   ${LinkStyles}
   ${SpecificCarouselStyles}
   ${ThemeStyles}
