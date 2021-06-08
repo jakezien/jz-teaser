@@ -14,6 +14,7 @@ import Layout from "../templates/layout"
 import Container from '../components/container'
 import JakestagramImage from '../components/jakestagramImage'
 import ImageMetadata from '../components/imageMetadata'
+import Logo from '../../static/svg/logo-jakestagram.svg'
 import GridIcon from '../../static/svg/icon-grid.svg'
 import ListIcon from '../../static/svg/icon-list.svg'
 
@@ -24,13 +25,37 @@ const StyledContainer = styled(Container)`
   }
 `
 
+const Header = styled.div`
+  display: flex;
+  margin-bottom: ${rhythm(1)};
+
+  div:first-child {
+    flex: 1 0 33%
+    margin-right:3px;
+    @media (min-width: 768px) {
+      margin-right: 28px;
+    }
+  }
+  div:last-child {
+    flex: 1 0 66%;
+    p {
+      margin: 0;
+    }
+  }
+`
+
+const StyledLogo = styled(Logo)`
+  path {
+    fill: ${props => props.theme.isDark ? props.theme.textTint : props.theme.textShade};
+  }  
+`
 
 
 const FeedStyleToggle = styled.div`
   display: flex;
   justify-content: center;
   margin-bottom: ${rhythm(1)};
-  border-top: 1px solid ${props => props.theme.bg3};
+  border-top: 1px solid ${props => props.theme.bg4};
   button {
     flex: 0 0 25%;
     padding: 0;
@@ -107,6 +132,12 @@ const Jakestagram = ({ data, location }) => {
 
   const loadAmt = 12;
   const allPosts = data.Jakestagram.nodes
+  let tags = [...new Set(allPosts.flatMap(node => {
+    if (node.fields.exif.iptc.keywords) 
+      return node.fields.exif.iptc.keywords
+    else return []
+  }))]
+  
   const [list, setList] = useState([...allPosts.slice(0, loadAmt)])
   const [loadMore, setLoadMore] = useState(false)
   const [hasMore, setHasMore] = useState(allPosts.length > loadAmt)
@@ -188,6 +219,14 @@ const Jakestagram = ({ data, location }) => {
       <SEO title="Jakestagram" />
       <section>
         <StyledContainer>
+          <Header>
+            <div><StyledLogo/></div>
+            <div>
+              <p>jakezien</p>
+              <p><span><strong>{allPosts.length}</strong> posts</span></p>
+              <p>{tags.join(' ')}</p>
+            </div>
+          </Header>
           <FeedStyleToggle>
             <button name="grid" className={displayStyle==='grid' ? 'active':''} onClick={handleButtonClick}>
               <GridIcon/>
