@@ -1,88 +1,70 @@
 import React from "react"
-import { Link, graphql } from "gatsby"
-
-import SEO from "../components/seo"
-import { rhythm } from "../utils/typography"
+import { MDXRenderer } from "gatsby-plugin-mdx"
 import styled from "styled-components"
 
-import Layout from "../templates/layout"
+import LayoutMinimal from "../templates/layoutMinimal"
+import { rhythm } from "../utils/typography"
+import SEO from "../components/seo"
+import Container from '../components/container'
+import Monogram from "../../content/assets/monogram.svg"
 
-import Section from '../components/section'
-
-import Hello from "../../content/index/hello"
-import Think from "../../content/index/think"
-import Do from "../../content/index/do"
-import Like from "../../content/index/like"
-
-
-const ThinkSection = styled(Section)`
-  background-color: ${props => props.theme.bg1};
+const Center = styled.div`
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  height: 100%;
+  position: relative;
+  text-align: center;
+  h1 {
+    font-size: 8em;
+    line-height: 0.8;
+    font-weight: 300;
+    color: ${props => props.theme.bg4}
+  }
 `
-const DoSection = styled(Section)`
-  background-color: ${props => props.theme.bg2};
-`
-const FavoriteSection = styled(Section)`
-  background-color: ${props => props.theme.bg3};
+
+const MonogramWrap = styled.div`
+  position: absolute;
+  height: ${rhythm(4)};
+  width: ${rhythm(4)};
+  left: calc(50% - ${rhythm(2)});
 `
 
-const Home = ({ data, location }) => {
+const MonogramLink = styled.a`
+  display: block;
+  transition: transform 0.5s ease;
+  #monogram-bg {
+    fill: rgb(255, 196, 0);
+  }
 
+  &:hover {
+    transition: transform 1s ease-out;
+    transform: scale(1.1);
+    #monogram-bg {
+      fill: hsl(46, 100%, 70%) !important;
+    }
+  }
+`
+
+const Teaser = ({ data, location }) => {
   return (
-    <Layout>
-      <SEO title="Jake Zien" />
+    <LayoutMinimal location={location}>
 
-      <Section>
-        <Hello />
-      </Section>
+      <SEO title="Almost done…"/>
 
-      <ThinkSection>
-        <Think />
-      </ThinkSection>
-
-      <DoSection>
-        <Do posts={data.work.edges} postCoverImages={data.workCoverImages.nodes} />
-      </DoSection>
-
-      <FavoriteSection>
-        <Like />
-      </FavoriteSection>
-
-    </Layout>
+      <Container style={{height:'100vh'}}>
+        <Center>
+          <h1>New site<br/>coming soon</h1>
+          <MonogramWrap>
+            <MonogramLink href="https://www.youtube.com/embed/5nO7IA1DeeI?autoplay=1">
+              <Monogram/>
+            </MonogramLink>
+          </MonogramWrap>
+        </Center>
+      </Container>
+    
+    </LayoutMinimal>
   )
 }
 
-export default Home
-
-export const pageQuery = graphql`{
-  site {
-    siteMetadata {
-      title
-    }
-  }
-  work: allMdx(limit: 8, filter: {fileAbsolutePath: {regex: "\\/content/work/"}}, sort: {fields: [frontmatter___date], order: DESC}) {
-    edges {
-      node {
-        excerpt
-        fields {
-          slug
-        }
-        frontmatter {
-          date(formatString: "MMMM DD, YYYY")
-          title
-          oneliner
-          company
-          type
-        }
-      }
-    }
-  }
-  workCoverImages: allFile(filter: {absolutePath: {regex: "\\/content/work/.*/cover/"}}) {
-    nodes {
-      relativeDirectory
-      childImageSharp {
-        gatsbyImageData(layout: FULL_WIDTH, aspectRatio:1.33)
-      }
-    }
-  }
-}
-`
+export default Teaser
