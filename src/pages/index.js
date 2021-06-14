@@ -34,7 +34,7 @@ const MonogramLink = styled.a`
   display: block;
   transition: transform 0.5s ease;
   #monogram-bg {
-    fill: rgb(255, 196, 0);
+    fill: rgb(255, 196, 0) !important;
   }
 
   &:hover {

@@ -1,7 +1,6 @@
 // import "./static/fonts/fonts.css"
 import React from 'react';
 import Helmet from 'react-helmet'
-import TCensorWrapper from './src/components/tCensor'
 
 const buildScriptsDiv = () => {
       if (!document) return;
@@ -51,11 +50,3 @@ export const onRouteUpdate = (location, prevLocation) => {
             }, 100)
       }
 }
-
-export const wrapPageElement = ({element, props}) => (
-  <>
-      <TCensorWrapper {...props}>
-            {element}
-      </TCensorWrapper>
-  </>
-)
